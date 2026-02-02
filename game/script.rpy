@@ -1,4 +1,4 @@
-﻿# The script of the game goes in this file.
+# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -68,7 +68,7 @@ label start:
     captain "What the hell?" 
     
     show captain mad with hpunch 
-    play audio captain smack desk
+    play audio "captain smack desk.mp3"
     captain "(smacks terminal)"
 
     "Then the lights come on again. Thankfully."
