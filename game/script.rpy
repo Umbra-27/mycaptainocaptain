@@ -16,6 +16,8 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
+    play music "Electric_Dawn.mp3"
+
     scene bg computer bridge placeholder
 
     # This shows a character sprite. A placeholder is used, but you can
@@ -24,15 +26,21 @@ label start:
 
     show computer placeholder
     show captain placeholder behind computer
+    
+    play audio "captainslog_background.mp3"
 
     captain "Captain’s Log — September 24th. We’ve successfully drilled through the ice layer of Europa and retrieved an 
                 artifact that resembles life. Short on time, we’ve started the course back to Earth. Dr. Fernando’s begun 
                 studying the artifact. I’ve ordered her to confirm the form of life, and Technician Braun’s been commanded to 
                 conduct maintenance on the equipment in the bio-lab." 
 
+    play audio "m4d1_notification.mp3"
+
     computer "Message from Cosmotechnician Eugene Braun. Open message?"
 
     captain "Open and read."
+
+    play audio "m4d1_message_open.mp3"
 
     computer "Engineer: Commander, I have been reviewing the bio lab’s system; the data does not align with standard 
                 operating parameters. This does not appear to be a malfunction or human error; there seems to be an 
@@ -43,16 +51,26 @@ label start:
 
     computer "Initiating system diagnostics. Analyzing running operations."
 
+    play audio "system_diagnostic_start.mp3"
+
     captain "This is probably my fault… I made us take an extra day travelling to find his ship. I’m rushing us home to return on time."
 
+    play audio "electric_oh_no.mp3"
     computer "Error. Process failure. Reinitiating process. Error. System failure."
-    computer " Error. Error. E̷̠̓r̷̖͆r̵̼͋o̷̳̔r"
+
+    stop music fadeout 1.0
+    play audio "error.mp3"
+    computer "Error. Error. E̷̠̓r̷̖͆r̵̼͋o̷̳̔r"
 
     show captain mad with hpunch 
     captain "What’s happening? MAD1, show me the error logs."
 
+    play audio "error.mp3"
     computer "Error. Unable to end process." 
+    play audio "error.mp3"
     computer "Pulling error log̶̕s. Ê̴̋͒͠r̵̛̈̏r̸̳̯͎͍̬̊̇̀o̵r̷͘. Sys̷̖̏ṭ̷̋e̵̗̬͋m̵̩͋̕ṡ̴̨͎ dò̷̧͎͍͇̫͆̕ẃ̵̛̔n̶-"
+
+    play audio "systems_off.mp3"
 
     "The lights go out. Everything stops. The buzz and rumbles of the ship go deadly silent, and it’s as if time and space have frozen solid." 
     "Everything goes wrong."
@@ -68,8 +86,11 @@ label start:
     captain "What the hell?" 
     
     show captain mad with hpunch 
-    play audio "captain smack desk.mp3"
+    play audio "captain_smack_1.mp3"
     captain "(smacks terminal)"
+
+    play audio "systems_back_online.mp3"
+    play music "Ice_Cold.mp3"
 
     "Then the lights come on again. Thankfully."
     "Sound returns as I presume the system reboots."
@@ -89,6 +110,8 @@ label start:
     computer "Mission status paused. To preserve power and life support, non-essential rooms have been sealed. Oxygen will be rerouted."
 
     show captain mad with hpunch 
+    play audio "captain_smack_2.mp3"
+
     captain "*slams fist on table* Right now? In the most important phase of this mission?"
 
     computer "Captain, I recommend checking on the crew to maintain morale and investigate the cause of the system failure."
