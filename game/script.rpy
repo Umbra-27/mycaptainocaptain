@@ -70,6 +70,7 @@ label start:
 
     stop sound
     play sound "systems_off.mp3"
+    show bg_dark
 
     "The lights go out. Everything stops. The buzz and rumbles of the ship go deadly silent, and it’s as if time and space have frozen solid." 
     "Everything goes wrong."
