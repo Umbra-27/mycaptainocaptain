@@ -1,42 +1,52 @@
-2026-02-04 03:02:41 UTC
-Windows-11-10.0.26100-SP0
-Ren'Py 8.5.2.26010301
+2026-02-04 20:30:56 UTC
+Windows-10-10.0.26200
+Ren'Py 8.3.7.25031702
 
-Early init took 36 ms
-Loading error handling took 69 ms
-Loading script took 604 ms
-Loading save slot metadata took 20 ms
-Loading persistent took 0 ms
-Running init code took 26 ms
-Loading analysis data took 10 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 7 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 28 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 23 ms
-DPI scale factor: 2.000000
+Early init took 0.05s
+Loading error handling took 0.03s
+Loading script took 0.21s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\carine.ho\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.02s
+DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 2 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 1 ms
-Analyze screens took 10 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 3 ms
-Save bytecode took 17 ms
-Running _start took 0 ms
-Interface start took 302 ms
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.56s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2698, 1518) drawable=(2698, 1518)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s

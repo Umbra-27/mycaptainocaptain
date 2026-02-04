@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 71: expected end of line
-    play audio captain smack desk
-                       ^
+File "game/script.rpy", line 99: expected end of line
+    play sound "captain_smack_1.mp3" with hpunch 
+                                     ^
+
+File "game/script.rpy", line 129: end of line expected.
+    captain "Right now? In the most important phase of this mission?"\
+                                                                     ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Feb  2 16:41:08 2026
+Wed Feb  4 15:27:59 2026
