@@ -3,10 +3,13 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define captain = Character("Captain", image="captain", kind=bubble)
+define captain = Character("Captain", image="captain", kind=bubble,)
 define engineer = Character("Eugene", image="engineer placeholder", kind=bubble)
 define medic = Character("Sarah", image="medic placeholder", kind=bubble)
 define computer = Character("MAD1", image="computer placeholder", kind=bubble)
+
+# realigning captain images
+image captain neutral-open = Image("captain neutral-open.png", yalign=0.0)
 
 # The game starts here.
 
