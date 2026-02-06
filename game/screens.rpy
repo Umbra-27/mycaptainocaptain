@@ -291,26 +291,25 @@ screen navigation():
 
     vbox:
         style_prefix "navigation"
+        xfill True        # This makes the vbox the full width of the screen
 
-        xpos gui.navigation_xpos
-        yalign 0.5
 
         spacing gui.navigation_spacing
 
         if main_menu:
 
-            textbutton _("Start") action Start()
-
+            textbutton _("NEW GAME") action Start():
+                pos (928, 288)
         else:
 
             textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
-
-        textbutton _("Preferences") action ShowMenu("preferences")
-
+        textbutton _("LOAD GAME") action ShowMenu("load"):
+            pos (960, 352)   
+        textbutton _("OPTIONS") action ShowMenu("preferences"):
+            pos (962, 418)
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)
@@ -319,19 +318,16 @@ screen navigation():
 
             textbutton _("Main Menu") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+  
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
-
+            textbutton _("QUIT") action Quit(confirm=not main_menu):
+                pos (935, 475)
+              
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -339,10 +335,15 @@ style navigation_button_text is gui_button_text
 style navigation_button:
     size_group "navigation"
     properties gui.button_properties("navigation_button")
-
+    hover_background Transform("images/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.99)
+    
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
-
+    font "fonts/Orbitron-VariableFont_wght.ttf"
+    hover_bold True
+    color "#ffffff"       # Sets the idle text to white
+    hover_color "#ffffff" # Keeps the text white when hovered
+    size 44
 
 ## Main Menu screen ############################################################
 ##
@@ -355,26 +356,29 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
-
+    add "images/background.png"
+    add "images/abstract_details_layer.png"
+    # Add your logo here
+    add "images/logo_placeholder.png":
+        pos (110,450)
     ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
+    ##frame:
+       ## style "main_menu_frame"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     use navigation
 
-    if gui.show_name:
+    ##if gui.show_name:
 
-        vbox:
-            style "main_menu_vbox"
+       ## vbox:
+          ##  style "main_menu_vbox"
 
-            text "[config.name!t]":
-                style "main_menu_title"
+          ##  text "[config.name!t]":
+             ##   style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
+           ## text "[config.version]":
+            ##    style "main_menu_version"
 
 
 style main_menu_frame is empty
