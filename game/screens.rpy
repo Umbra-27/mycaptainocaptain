@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -363,7 +363,7 @@ screen main_menu():
         pos (110,450)
     ## This empty frame darkens the main menu.
     ##frame:
-       ## style "main_menu_frame"
+    ## style "main_menu_frame"
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
@@ -1474,8 +1474,10 @@ style bubble_what:
     layout "subtitle"
     color "#000"
 
-define bubble.frame = Frame("gui/bubble.png", 55, 55, 55, 95)
-define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 55, 55, 55, 55)
+define bubble.frame = Frame("gui/bubble.png", 400, 585, 1120, 315)
+define bubble.captain = Frame("gui/rudybubble.png", 400, 585, 1120, 315)
+define bubble.computer = Frame("gui/computerbubble.png", 400, 585, 1120, 315)
+define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 400, 585, 1120, 315)
 
 define bubble.properties = {
     "bottom_left" : {
