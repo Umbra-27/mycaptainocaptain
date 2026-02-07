@@ -59,18 +59,18 @@ label start:
     computer "Error. Process failure. Reinitiating process. Error. System failure."
 
     stop music fadeout 1.0
-    play sound "error.mp3"
+    play sound "error_sound_1.mp3"
     computer "Error. Error. E̷̠̓r̷̖͆r̵̼͋o̷̳̔r"
 
     show captain mad with hpunch 
     captain "What’s happening? MAD1, show me the error logs."
 
     computer "Error. Unable to end process." 
+    play sound "error_sound_2.mp3"
     computer "Pulling error log̶̕s. Ê̴̋͒͠r̵̛̈̏r̸̳̯͎͍̬̊̇̀o̵r̷͘. Sys̷̖̏ṭ̷̋e̵̗̬͋m̵̩͋̕ṡ̴̨͎ dò̷̧͎͍͇̫͆̕ẃ̵̛̔n̶-"
 
     stop sound
     play sound "systems_off.mp3"
-    show bg_dark
 
     "The lights go out. Everything stops. The buzz and rumbles of the ship go deadly silent, and it’s as if time and space have frozen solid." 
     "Everything goes wrong."
