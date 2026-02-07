@@ -291,42 +291,31 @@ screen navigation():
 
     vbox:
         style_prefix "navigation"
-        xfill True        # This makes the vbox the full width of the screen
-
-
+        xfill True        
         spacing gui.navigation_spacing
 
-        if main_menu:
-
+        # Added a check to see if the Load screen is currently visible
+        if main_menu and not renpy.get_screen("load") and not renpy.get_screen("preferences"):
             textbutton _("NEW GAME") action Start():
                 pos (928, 288)
+            
+            textbutton _("LOAD GAME") action ShowMenu("load"):
+                pos (960, 352)   
+            
+            textbutton _("OPTIONS") action ShowMenu("preferences"):
+                pos (962, 418)
+
+            if renpy.variant("pc"):
+                textbutton _("QUIT") action Quit(confirm=not main_menu):
+                    pos (935, 475)
+
         else:
-
-            textbutton _("History") action ShowMenu("history")
-
-            textbutton _("Save") action ShowMenu("save")
-
-        textbutton _("LOAD GAME") action ShowMenu("load"):
-            pos (960, 352)   
-        textbutton _("OPTIONS") action ShowMenu("preferences"):
-            pos (962, 418)
-        if _in_replay:
-
-            textbutton _("End Replay") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("Main Menu") action MainMenu()
-
+            # These only show when the game is paused or in a sub-menu
   
 
-
-        if renpy.variant("pc"):
-
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("QUIT") action Quit(confirm=not main_menu):
-                pos (935, 475)
+            textbutton _("Load") action ShowMenu("load")
+            textbutton _("Settings") action ShowMenu("preferences")
+            textbutton _("Quit") action Quit(confirm=True)
               
 
 style navigation_button is gui_button
@@ -477,7 +466,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
                     transclude
 
-    use navigation
+   # use navigation
 
     textbutton _("Return"):
         style "return_button"
