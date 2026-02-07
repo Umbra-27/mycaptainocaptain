@@ -18,7 +18,7 @@ image bgCompDark = im.MatrixColor(
     im.matrix.brightness(-0.5))
 
 image captainDark = im.MatrixColor(
-    "captain",
+    "captain/captain",
     im.matrix.brightness(-0.5))
 
 # The game starts here.

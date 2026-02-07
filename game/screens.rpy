@@ -1461,23 +1461,24 @@ style bubble_window:
     bottom_padding 5
 
 style bubble_namebox:
-    xalign 0.5
+    xalign 1
+    yalign 0.2
 
 style bubble_who:
     xalign 0.5
     textalign 0.5
-    color "#000"
+    color "#ffffff"
 
 style bubble_what:
-    align (0.5, 0.5)
+    align (0.5, 0.75)
     text_align 0.5
     layout "subtitle"
-    color "#000"
+    color "#ffffff"
 
-define bubble.frame = Frame("gui/bubble.png", 400, 585, 1120, 315)
-define bubble.captain = Frame("gui/rudybubble.png", 400, 585, 1120, 315)
-define bubble.computer = Frame("gui/computerbubble.png", 400, 585, 1120, 315)
-define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 400, 585, 1120, 315)
+define bubble.frame = Frame("gui/bubble.png", 400, 600, 1120, 315)
+define bubble.captain = Frame("gui/rudybubble.png", 400, 600, 1120, 315)
+define bubble.computer = Frame("gui/computerbubble.png", 400, 600, 1120, 315)
+define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 400, 600, 1120, 315)
 
 define bubble.properties = {
     "bottom_left" : {
@@ -1502,6 +1503,16 @@ define bubble.properties = {
 
     "thought" : {
         "window_background" : bubble.thoughtframe,
+    },
+
+    "captain" : {
+        "window_background" : bubble.captain,
+        "window_top_padding" : 27,
+    },
+    
+    "computer" : {
+        "window_background" : bubble.computer,
+        "window_bottom_padding" : 27,
     }
 }
 

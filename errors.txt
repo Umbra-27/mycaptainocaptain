@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 99: expected end of line
-    play sound "captain_smack_1.mp3" with hpunch 
-                                     ^
+File "game/screens.rpy", line 1503: invalid syntax. Perhaps you forgot a comma?
+    "thought" : {\
+                ^
 
-File "game/script.rpy", line 129: end of line expected.
-    captain "Right now? In the most important phase of this mission?"\
-                                                                     ^
-
-Ren'Py Version: Ren'Py 8.3.7.25031702
-Wed Feb  4 15:27:59 2026
+Ren'Py Version: Ren'Py 8.5.2.26010301
+Sat Feb  7 15:19:05 2026

@@ -2,17 +2,17 @@
 
 While running game code:
   File "game/script.rpy", line 6, in script
-    define captain = Character("Captain", image="captain/captain", kind=rudybubble)
+    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
   File "game/script.rpy", line 6, in <module>
-    define captain = Character("Captain", image="captain/captain", kind=rudybubble)
-                                                                        ^^^^^^^^^^ 
-NameError: name 'rudybubble' is not defined
+    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Frame.__init__() got multiple values for argument 'image'
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
   File "game/script.rpy", line 6, in script
-    define captain = Character("Captain", image="captain/captain", kind=rudybubble)
+    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
   File "renpy/ast.py", line 2463, in execute
     self.set()
     ~~~~~~~~^^
@@ -23,11 +23,14 @@ Traceback (most recent call last):
     return eval(bytecode, globals, locals)
            ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "game/script.rpy", line 6, in <module>
-    define captain = Character("Captain", image="captain/captain", kind=rudybubble)
-                                                                        ^^^^^^^^^^ 
-NameError: name 'rudybubble' is not defined
+    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/character.py", line 1903, in Character
+    return type(kind)(name, kind=kind, **properties)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Frame.__init__() got multiple values for argument 'image'
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.5.2.26010301
 DG8010  Oh Captain My Captain 1.0
-Sat Feb  7 14:51:56 2026
+Sat Feb  7 15:16:23 2026

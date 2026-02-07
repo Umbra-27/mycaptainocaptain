@@ -13,7 +13,8 @@
             585,
             1120,
             315
-        ]
+        ],
+        "properties": "captain"
     },
     "start_24749ec8": {
         "area": [
@@ -29,15 +30,17 @@
             585,
             1120,
             315
-        ]
+        ],
+        "properties": "computer"
     },
     "start_4b6ffc38": {
         "area": [
             400,
             585,
             1120,
-            315
-        ]
+            450
+        ],
+        "properties": "computer"
     },
     "start_54194229": {
         "area": [
@@ -61,15 +64,17 @@
             585,
             1120,
             315
-        ]
+        ],
+        "properties": "computer"
     },
     "start_a006643f": {
         "area": [
             400,
-            585,
+            450,
             1120,
-            315
-        ]
+            450
+        ],
+        "properties": "captain"
     },
     "start_a43896b3": {
         "area": [
@@ -85,7 +90,8 @@
             585,
             1120,
             315
-        ]
+        ],
+        "properties": "captain"
     },
     "start_c49a959c": {
         "area": [
@@ -101,7 +107,8 @@
             585,
             1120,
             315
-        ]
+        ],
+        "properties": "computer"
     },
     "start_fa4edbe4": {
         "area": [
