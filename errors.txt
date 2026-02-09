@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 27: positional argument follows keyword argument
-    im.matrix.brightness(-0.2))
-                              ^
+File "game/script.rpy", line 76: Menu does not contain any choices.
+    menu:
+         ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Feb  9 00:42:43 2026
+Mon Feb  9 01:37:48 2026

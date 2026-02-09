@@ -73,8 +73,10 @@ label start:
 
     computer "Message from Cosmotechnician Eugene Braun. Open message?"
 
-    show captain neutral-open behind computer
-    captain "Open and read."
+    menu:
+        "Open message":
+            show captain neutral-open behind computer
+            captain "Open and read."
 
     play sound "m4d1_message_open.mp3"
     show computer neutral-3
