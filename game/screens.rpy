@@ -135,7 +135,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Image("gui/textbox.png", xalign=0.5, yalign=0.5)
 
 style namebox:
     xpos gui.name_xpos
@@ -1458,7 +1458,7 @@ style bubble_window:
     bottom_padding 5
 
 style bubble_namebox:
-    xalign 1
+    xalign 0.1
     yalign 0.2
 
 style bubble_who:
@@ -1473,8 +1473,8 @@ style bubble_what:
     color "#ffffff"
 
 define bubble.frame = Frame("gui/bubble.png", 400, 600, 1120, 315)
-define bubble.captain = Frame("gui/rudybubble.png", 400, 600, 1120, 315)
-define bubble.computer = Frame("gui/computerbubble.png", 400, 600, 1120, 315)
+define bubble.captain = Frame("gui/rudybubble.png", 400, 450, 1120, 450)
+define bubble.computer = Frame("gui/computerbubble.png", 400, 600, 1120, 450)
 define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 400, 600, 1120, 315)
 
 define bubble.properties = {
@@ -1509,7 +1509,7 @@ define bubble.properties = {
     
     "computer" : {
         "window_background" : bubble.computer,
-        "window_bottom_padding" : 27,
+        "window_bottom_padding" : 200,
     }
 }
 
@@ -1519,6 +1519,8 @@ define bubble.expand_area = {
     "top_left" : (0, 22, 0, 0),
     "top_right" : (0, 22, 0, 0),
     "thought" : (0, 0, 0, 0),
+    "captain" : (0, 0, 0, 0),
+    "computer" : (0, 0, 0, 0),
 }
 
 

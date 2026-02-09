@@ -1,36 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 6, in script
-    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
-  File "game/script.rpy", line 6, in <module>
-    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
-                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: Frame.__init__() got multiple values for argument 'image'
+  File "game/script.rpy", line 28, in script
+    image captainNeutralClosedDark = Image(captainNeutralClosedDark, yalgin=0.25)
+  File "game/script.rpy", line 28, in <module>
+    image captainNeutralClosedDark = Image(captainNeutralClosedDark, yalgin=0.25)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^              
+NameError: name 'captainNeutralClosedDark' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 6, in script
-    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
-  File "renpy/ast.py", line 2463, in execute
-    self.set()
-    ~~~~~~~~^^
-  File "renpy/ast.py", line 2475, in set
-    value = renpy.python.py_eval_bytecode(self.code.bytecode)
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "game/script.rpy", line 28, in script
+    image captainNeutralClosedDark = Image(captainNeutralClosedDark, yalgin=0.25)
+  File "renpy/ast.py", line 1273, in execute
+    img = renpy.python.py_eval_bytecode(self.code.bytecode)
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
   File "renpy/python.py", line 1298, in py_eval_bytecode
     return eval(bytecode, globals, locals)
            ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 6, in <module>
-    define captain = Character("Captain", image="captain/captain", kind=bubble.captain)
-                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/character.py", line 1903, in Character
-    return type(kind)(name, kind=kind, **properties)
-           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: Frame.__init__() got multiple values for argument 'image'
+  File "game/script.rpy", line 28, in <module>
+    image captainNeutralClosedDark = Image(captainNeutralClosedDark, yalgin=0.25)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^              
+NameError: name 'captainNeutralClosedDark' is not defined
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.5.2.26010301
 DG8010  Oh Captain My Captain 1.0
-Sat Feb  7 15:16:23 2026
+Mon Feb  9 00:46:48 2026
