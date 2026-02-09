@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1503: invalid syntax. Perhaps you forgot a comma?
-    "thought" : {\
-                ^
+The label start is defined twice, at File "game/MVP/game/script.rpyc", line 11:
+and File "game/script.rpy", line 13:
+label start:
+
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Sat Feb  7 15:19:05 2026
+Tue Feb  3 22:03:04 2026
