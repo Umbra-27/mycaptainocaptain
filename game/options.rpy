@@ -19,7 +19,13 @@ define config.name = _("DG8010  Oh Captain My Captain")
 ## this to False to hide the title.
 
 define gui.show_name = True
+# In a generic init block or script.rpy
+define config.game_menu_action = ShowMenu("pause")
 
+# Then add this dummy screen to screens.rpy
+screen pause():
+    tag menu
+    use game_menu(_("Game Paused"))
 
 ## The version of the game.
 

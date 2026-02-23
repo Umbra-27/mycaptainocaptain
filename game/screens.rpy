@@ -291,10 +291,8 @@ screen navigation():
 
     vbox:
         style_prefix "navigation"
-        xfill True        
         spacing gui.navigation_spacing
 
-        # Added a check to see if the Load screen is currently visible
         if main_menu and not renpy.get_screen("load") and not renpy.get_screen("preferences"):
             textbutton _("NEW GAME") action Start():
                 pos (928, 288)
@@ -310,28 +308,60 @@ screen navigation():
                     pos (935, 475)
 
         else:
-            # These only show when the game is paused or in a sub-menu
-  
-
-            textbutton _("Load") action ShowMenu("load")
+            # FIX: These buttons must be indented 4 spaces further than the 'else:'
+            textbutton _("Resume") action Return()
+            textbutton _("Save Game") action ShowMenu("save")
             textbutton _("Settings") action ShowMenu("preferences")
-            textbutton _("Quit") action Quit(confirm=True)
-              
+            textbutton _("Exit Game") action Quit(confirm=True)
+
+screen pause():
+    tag menu
+    
+    # ADD BACKGROUNDS HERE
+    
+    add "images/pause_overlay.png" alpha 1.00
+    add "images/pause_abstract_background.png"
+    add "images/pause_abstract_background.png"
+    use game_menu(_("Game Paused"))
+    
+screen pause_navigation():
+    vbox:
+        style_prefix "navigation"
+        
+        # 1. Expand the vbox to the full width of the screen
+        xfill True  
+        
+        yalign 0.5
+        spacing gui.navigation_spacing
+
+        textbutton _("Resume") action Return()
+        textbutton _("Save Game") action ShowMenu("save") 
+        textbutton _("Settings") action ShowMenu("preferences")
+        textbutton _("Exit Game") action Quit(confirm=True)
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
 
 style navigation_button:
-    size_group "navigation"
+    # 2. REMOVE size_group "navigation"
     properties gui.button_properties("navigation_button")
+    
+    # 3. Center the button and its contents
+    xalign 0.5
+    
     hover_background Transform("images/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.99)
     
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
     font "fonts/Orbitron-VariableFont_wght.ttf"
+    
+    # 4. Ensure the text inside the button is centered
+    text_align 0.5
+    xalign 0.5
+    
     hover_bold True
-    color "#ffffff"       # Sets the idle text to white
-    hover_color "#ffffff" # Keeps the text white when hovered
+    color "#ffffff"
+    hover_color "#ffffff"
     size 44
 
 ## Main Menu screen ############################################################
@@ -415,63 +445,48 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     if main_menu:
         add gui.main_menu_background
     else:
-        add gui.game_menu_background
+        add "images/pause_abstract_background.png"
+        add "images/pause_overlay.png" alpha 0.85
+        add "images/pause_abstract_background.png"
 
-    frame:
-        style "game_menu_outer_frame"
-
-        hbox:
-
-            ## Reserve space for the navigation section.
-            frame:
-                style "game_menu_navigation_frame"
-
-            frame:
-                style "game_menu_content_frame"
-
-                if scroll == "viewport":
-
-                    viewport:
-                        yinitial yinitial
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        vbox:
-                            spacing spacing
-
-                            transclude
-
-                elif scroll == "vpgrid":
-
-                    vpgrid:
-                        cols 1
-                        yinitial yinitial
-
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        spacing spacing
-
+# This should be at the bottom of the game_menu screen, 
+    # not indented inside the 'hbox' or 'frame' blocks.
+    if title == _("Pause") or title == _("Game Paused"):
+        use pause_navigation
+    
+    # 2. Show the content frame for EVERY screen EXCEPT the Pause screens
+    else:
+        frame:
+            style "game_menu_outer_frame"
+            hbox:
+                frame:
+                    style "game_menu_navigation_frame"
+                    # Optional: use navigation here if you want a sidebar on Save/Load
+                
+                frame:
+                    style "game_menu_content_frame"
+                    if scroll == "viewport":
+                        viewport:
+                            yinitial yinitial
+                            scrollbars "vertical"
+                            mousewheel True
+                            draggable True
+                            pagekeys True
+                            side_yfill True
+                            vbox:
+                                spacing spacing
+                                transclude
+                    else:
                         transclude
 
-                else:
-
-                    transclude
-
-   # use navigation
-
-    textbutton _("Return"):
-        style "return_button"
-        action Return()
-        id "return_btn_fixed"  # This ID is critical for stability
+    # 3. Handle the Return button for sub-menus
+    if not main_menu:
+        key "game_menu" action Return()
+        if title != _("Pause") and title != _("Game Paused"):
+            textbutton _("Return"):
+                style "return_button"
+                action Return()
+    
     label title
 
     if main_menu:
@@ -485,8 +500,18 @@ style game_menu_viewport is gui_viewport
 style game_menu_side is gui_side
 style game_menu_scrollbar is gui_vscrollbar
 
-style game_menu_label is gui_label
-style game_menu_label_text is gui_label_text
+style game_menu_label:
+    xalign 0.5        # Change from xpos 75 to xalign 0.5
+    ypos 50           # Adjust this to move the title up or down
+    ysize 180
+
+style game_menu_label_text:
+    font "fonts/Orbitron-VariableFont_wght.ttf" # Use your custom font
+    size 54
+    color "#ffffff"
+    xalign 0.5        # Center the text inside the label
+    text_align 0.5
+    yalign 0.5
 
 style return_button is default:
     properties gui.button_properties("return_button")
@@ -504,7 +529,7 @@ style game_menu_outer_frame:
     bottom_padding 45
     top_padding 180
 
-    background "gui/overlay/game_menu.png"
+    background None
 
 style game_menu_navigation_frame:
     xsize 420
@@ -525,12 +550,13 @@ style game_menu_side:
     spacing 15
 
 style game_menu_label:
-    xpos 75
-    ysize 180
+    xalign 0.5        # Centers the container horizontally
+    yalign 0.06       # Adjusts vertical height from the top
+    ysize 400        # Height of the title area
 
 style game_menu_label_text:
-    size 75
-    color gui.accent_color
+    size 54
+    color "#ffffff"
     yalign 0.5
 
 style return_button:
