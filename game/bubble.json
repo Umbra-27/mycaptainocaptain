@@ -1,4 +1,12 @@
 {
+    "EI_000e1c93": {
+        "area": [
+            400,
+            585,
+            1040,
+            495
+        ]
+    },
     "EI_87c4793c": {
         "area": [
             400,
@@ -6,6 +14,23 @@
             1120,
             540
         ]
+    },
+    "EI_96d82aad": {
+        "area": [
+            400,
+            630,
+            1040,
+            450
+        ]
+    },
+    "EI_9c1bea9c": {
+        "area": [
+            400,
+            585,
+            1120,
+            360
+        ],
+        "properties": "engineer"
     },
     "EI_b0302a09": {
         "area": [
@@ -15,6 +40,47 @@
             495
         ],
         "properties": "engineer"
+    },
+    "EI_cf001452": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "M1_0105fd82": {
+        "area": [
+            400,
+            540,
+            1120,
+            540
+        ],
+        "properties": "computer"
+    },
+    "M1_3acf010c": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "M1_56cf2e9e": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "M1_6e9a7328": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
     },
     "M1_82c39a66": {
         "area": [
@@ -41,6 +107,24 @@
             540
         ],
         "properties": "captain"
+    },
+    "M1_aca20f95": {
+        "area": [
+            400,
+            540,
+            1120,
+            540
+        ],
+        "properties": "computer"
+    },
+    "M1_be66d186": {
+        "area": [
+            400,
+            540,
+            1120,
+            450
+        ],
+        "properties": "computer"
     },
     "M1_bea3b866": {
         "area": [
@@ -77,6 +161,14 @@
         ],
         "properties": "computer"
     },
+    "SI_70ff8279": {
+        "area": [
+            400,
+            540,
+            1040,
+            495
+        ]
+    },
     "SI_b6dc6811": {
         "area": [
             320,
@@ -86,6 +178,14 @@
         ],
         "properties": "medic"
     },
+    "SI_caae9cab": {
+        "area": [
+            400,
+            495,
+            1120,
+            450
+        ]
+    },
     "SI_ceb06aea": {
         "area": [
             400,
@@ -93,6 +193,32 @@
             1120,
             540
         ]
+    },
+    "SI_e2fd9709": {
+        "area": [
+            400,
+            585,
+            960,
+            450
+        ],
+        "properties": "medic"
+    },
+    "start_07d41ce3": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "start_1781458f": {
+        "area": [
+            400,
+            540,
+            1120,
+            450
+        ],
+        "properties": "computer"
     },
     "start_1b0f0213": {
         "area": [
@@ -138,6 +264,14 @@
         ],
         "properties": "captain"
     },
+    "start_33e84fc1": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
     "start_4282c1ed": {
         "area": [
             400,
@@ -164,6 +298,15 @@
             450
         ]
     },
+    "start_60237331": {
+        "area": [
+            400,
+            540,
+            1120,
+            450
+        ],
+        "properties": "computer"
+    },
     "start_6577d071": {
         "area": [
             400,
@@ -172,12 +315,38 @@
             450
         ]
     },
+    "start_6cf4dbc6": {
+        "area": [
+            400,
+            540,
+            1120,
+            450
+        ],
+        "properties": "computer"
+    },
     "start_8dd6a50f": {
         "area": [
             400,
             585,
             1120,
             450
+        ],
+        "properties": "computer"
+    },
+    "start_90ee720c": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "start_96f56c40": {
+        "area": [
+            400,
+            585,
+            1120,
+            405
         ],
         "properties": "computer"
     },
@@ -189,6 +358,14 @@
             495
         ],
         "properties": "captain"
+    },
+    "start_a1813092": {
+        "area": [
+            400,
+            540,
+            1120,
+            540
+        ]
     },
     "start_a43896b3": {
         "area": [
@@ -206,6 +383,15 @@
             495
         ],
         "properties": "captain"
+    },
+    "start_c135bd57": {
+        "area": [
+            400,
+            540,
+            1120,
+            450
+        ],
+        "properties": "computer"
     },
     "start_c49a959c": {
         "area": [

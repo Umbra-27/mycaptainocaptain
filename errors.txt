@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1507: invalid syntax
-            style bubble_who:\
-                   ^
+File "game/script.rpy", line 252: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    show captain frustrated behind computer 
+    ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Feb 23 15:40:27 2026
+Mon Feb 23 17:08:38 2026
