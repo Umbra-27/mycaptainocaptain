@@ -135,7 +135,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox@3.5.png", xalign=0.5, yalign=0.5)
+    background Image("gui/textbox@4.png", xalign=0.5, yalign=0.5)
 
 style namebox:
     xpos gui.name_xpos
@@ -1460,8 +1460,8 @@ style bubble_window:
     right_padding 20
 
 style bubble_namebox:
-    xalign 0.09
-    yalign 0.18
+    xalign 0.08
+    yalign 0.17
 
 style bubble_who:
     xalign 0.1
@@ -1476,7 +1476,7 @@ style bubble_what:
 
 define bubble.frame = Frame("gui/bubble.png", 400, 600, 1120, 315)
 define bubble.captain = Frame("gui/rudybubble.png", 400, 540, 1120, 495)
-define bubble.computer = Frame("gui/computerbubble.png", 400, 585, 1120, 450)
+define bubble.computer = Frame("gui/computerbubble.png", 400, 540, 1120, 450)
 define bubble.engineer = Frame("gui/eugenebubble.png", 400, 585, 1120, 495)
 define bubble.medic = Frame("gui/sarahbubble@3.5.png", 320, 540, 1280, 540)
 
@@ -1484,13 +1484,16 @@ define bubble.properties = {
     "captain" : {
         "window_background" : bubble.captain,
         "window_top_padding" : 10,
+        "window_left_padding" : 25,
+        "window_right_padding" : 20,
     },
     
     "computer" : {
         "window_background" : bubble.computer,
-        "window_top_padding" : 5,
-        "left_padding" : 20,
-        "right_padding" : 20,
+        "window_top_padding" : 0,
+        "window_bottom_padding" : 70,
+        "window_left_padding" : 25,
+        "window_right_padding" : 25,
     },
 
     "engineer" : {
@@ -1507,7 +1510,9 @@ define bubble.properties = {
 define bubble.expand_area = {
     "thought" : (0, 0, 0, 0),
     "captain" : (0, 0, 0, 0),
-    "computer" : (0, 0, 0, 0),
+    "computer" : (0, 0, 0, 0),    
+    "engineer" : (0, 0, 0, 0),
+    "medic" : (0, 0, 0, 0),
 }
 
 

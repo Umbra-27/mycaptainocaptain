@@ -60,7 +60,7 @@ label start:
     captain "We’ve successfully drilled through the ice layer of Europa and retrieved an 
                 artifact that resembles life. Short on time, we’ve started the course back 
                 to Earth."
-    captain "Dr. Fernando’s begun studying the artifact. I’ve ordered her to confirm the 
+    captain "Dr. Fernando’s begun studying the specimen. I’ve ordered her to confirm the 
                 form of life, and Technician Braun’s been commanded to 
                 conduct maintenance on the equipment in the bio-lab." 
 
@@ -81,7 +81,7 @@ label start:
 
     computer "Engineer: Commander, I have been reviewing the bio lab’s system; the data does not align with standard 
                 operating parameters." 
-    computer "This does not appear to be a malfunction or human error; there seems to be an 
+    computer "Engineer: This does not appear to be a malfunction or human error; there seems to be an 
                 interference with the processes. It will be best to address this immediately."
 
     show captain frustrated behind computer
