@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 76: Menu does not contain any choices.
-    menu:
-         ^
+File "game/script.rpy", line 508: end of line expected.
+    computer "Rebooting."{w=0.5}{nw}""
+                         ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Feb  9 01:37:48 2026
+Mon Feb 23 00:28:53 2026

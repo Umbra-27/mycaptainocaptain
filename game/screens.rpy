@@ -135,7 +135,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=0.5)
+    background Image("gui/textbox@3.5.png", xalign=0.5, yalign=0.5)
 
 style namebox:
     xpos gui.name_xpos
@@ -345,7 +345,7 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add "images/background.png"
+    add "images/bg menu.png"
     add "images/abstract_details_layer.png"
     # Add your logo here
     add "images/logo_placeholder.png":
@@ -1453,71 +1453,58 @@ style bubble_who is default
 style bubble_what is default
 
 style bubble_window:
-    xpadding 30
+    xpadding 5
     top_padding 5
     bottom_padding 5
+    left_padding 20
+    right_padding 20
 
 style bubble_namebox:
-    xalign 0.1
-    yalign 0.2
+    xalign 0.09
+    yalign 0.18
 
 style bubble_who:
-    xalign 0.5
+    xalign 0.1
     textalign 0.5
-    color "#ffffff"
+    color "#fff"
 
 style bubble_what:
-    align (0.5, 0.75)
+    align (0.5, 0.5)
     text_align 0.5
     layout "subtitle"
-    color "#ffffff"
+    color "#fff"
 
 define bubble.frame = Frame("gui/bubble.png", 400, 600, 1120, 315)
-define bubble.captain = Frame("gui/rudybubble.png", 400, 450, 1120, 450)
-define bubble.computer = Frame("gui/computerbubble.png", 400, 600, 1120, 450)
-define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 400, 600, 1120, 315)
+define bubble.captain = Frame("gui/rudybubble.png", 400, 540, 1120, 495)
+define bubble.computer = Frame("gui/computerbubble.png", 400, 585, 1120, 450)
+define bubble.engineer = Frame("gui/eugenebubble.png", 400, 585, 1120, 495)
+define bubble.medic = Frame("gui/sarahbubble@3.5.png", 320, 540, 1280, 540)
 
 define bubble.properties = {
-    "bottom_left" : {
-        "window_background" : Transform(bubble.frame, xzoom=1, yzoom=1),
-        "window_bottom_padding" : 27,
-    },
-
-    "bottom_right" : {
-        "window_background" : Transform(bubble.frame, xzoom=-1, yzoom=1),
-        "window_bottom_padding" : 27,
-    },
-
-    "top_left" : {
-        "window_background" : Transform(bubble.frame, xzoom=1, yzoom=-1),
-        "window_top_padding" : 27,
-    },
-
-    "top_right" : {
-        "window_background" : Transform(bubble.frame, xzoom=-1, yzoom=-1),
-        "window_top_padding" : 27,
-    },
-
-    "thought" : {
-        "window_background" : bubble.thoughtframe,
-    },
-
     "captain" : {
         "window_background" : bubble.captain,
-        "window_top_padding" : 27,
+        "window_top_padding" : 10,
     },
     
     "computer" : {
         "window_background" : bubble.computer,
-        "window_bottom_padding" : 200,
+        "window_top_padding" : 5,
+        "left_padding" : 20,
+        "right_padding" : 20,
+    },
+
+    "engineer" : {
+        "window_background" : bubble.engineer,
+        "window_top_padding" : 10,
+    },
+    
+    "medic" : {
+        "window_background" : bubble.medic,
+        "window_top_padding" : 10,
     }
 }
 
 define bubble.expand_area = {
-    "bottom_left" : (0, 0, 0, 22),
-    "bottom_right" : (0, 0, 0, 22),
-    "top_left" : (0, 22, 0, 0),
-    "top_right" : (0, 22, 0, 0),
     "thought" : (0, 0, 0, 0),
     "captain" : (0, 0, 0, 0),
     "computer" : (0, 0, 0, 0),

@@ -3,39 +3,36 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define captain = Character("Captain", image="captain/captain", kind=bubble)
-define engineer = Character("Eugene", image="engineer placeholder", kind=bubble)
-define medic = Character("Sarah", image="medic placeholder", kind=bubble)
+define captain = Character("Captain", image="captain@3.5/captain", kind=bubble)
+define engineer = Character("Eugen", image="engineer placeholder", kind=bubble)
+define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
 
-# realigning captain images
-image captain neutral-open = Image("captain/captain neutral-open.png", yalign=0.25)
-image captain neutral-closed = Image("captain/captain neutral-closed.png", yalign=0.25)
-image captain anger-open = Image("captain/captain anger-open.png", yalign=0.25)
-image captain anger-closed = Image("captain/captain anger-closed.png", yalign=0.25)
-image captain confusion-open = Image("captain/captain confusion-open.png", yalign=0.25)
-image captain confusion-closed = Image("captain/captain confusion-closed.png", yalign=0.25)
+# Setting base approval scores
+init python:
+    medApproval = 0
+    engApproval = 0
 
 # dark ver
 image bgCompDark = im.MatrixColor(
     "bg computer.png",
-    im.matrix.brightness(-0.3))
+    im.matrix.brightness(-0.2))
 
 image captainNeutralClosedDark = im.MatrixColor(
-    "captain/captain neutral-closed.png",
+    "captain@3.5/captain neutral-closed.png",
     im.matrix.brightness(-0.2))
 
 image captainNeutralOpenDark = im.MatrixColor(
-    "captain/captain neutral-open.png", 
+    "captain@3.5/captain neutral-open.png", 
     im.matrix.brightness(-0.2),
     yalign=0.25)
 
 image captainConfusedOpenDark = im.MatrixColor(
-    "captain/captain confusion-open.png", 
+    "captain@3.5/captain confusion-open.png", 
     im.matrix.brightness(-0.2))
 
 image captainConfusedClosedDark = im.MatrixColor(
-    "captain/captain confusion-closed.png", 
+    "captain@3.5/captain confusion-closed.png", 
     im.matrix.brightness(-0.2))
 
 # The game starts here.
@@ -215,18 +212,334 @@ label start:
     captain "Let’s check on the crew."
     show captain neutral-closed behind computer 
 
-    menu:
-        "Speak to Eugene":
-            captain "I should speak to Eugene. He’ll probably know what’s happening."
-            #block of code to run
-            jump endDemo
+    $ seenSI = False
+    $ seenEI = False
 
-        "Speak to Sarah":
-            captain "I should speak to Sarah. She’s probably freaking out right now."
-            #block of code to run
-            jump endDemo
+    menu:
+        "Speak to Eugen":
+            captain "I should speak to Eugen. He’ll probably know what’s happening."
+            jump EI
+
+        "Speak to Sara":
+            captain "I should speak to Sara. She’s probably freaking out right now."
+            jump SI
         
-    label endDemo:
-        "End of MVP"
+    
+    label SI:
+        $ seenSI = True
+        scene bg medic
+        show medic nervous
+        show captain neutral-closed behind medic
+
+        medic "Captain! W-what just happened! Thank goodness you arrived when you did. I was going to—" 
+        
+        show captain neutral-open behind medic
+        captain "Yes, quite unexpected. I’m sorting it out with Eugen." 
+        captain "We’ve had good luck so far—we’ve achieved something no man has managed before. These things happen."
+
+        show medic neutral
+        show captain neutral-closed behind medic
+        medic "Yes, yes, of course!" 
+
+        show medic explaining
+        show captain neutral-closed behind medic
+        medic "I mean, this cargo—this discovery—would revolutionize everything." 
+        medic "Our very understanding of the universe. Extraterrestrial life! Aboard this ship." 
+        show medic excited
+        show captain neutral-closed behind medic
+        medic "I still can’t believe it." 
+        show medic neutral
+        show captain neutral-closed behind medic
+        medic "But this… development is most concerning." 
+
+        show medic nervous
+        show captain neutral-closed behind medic
+        medic "What could possibly be happening, Captain?" 
+        medic "Could it—could this result in some kind of irreparable, cascading failure?"
+
+        show captain neutral-open behind medic
+        captain "Like I said before, Sara, we’ll find out soon. There is no reason to assume the worst." 
+
+        show captain neutral-closed behind medic
+        medic "I understand. I just—given what has happened before…"
+
+        show captain anger-open behind medic
+        captain "What happened to the previous mission has nothing to do with what is happening now."
+
+        # SI.1
+        show medic stressed
+        show captain anger-closed behind medic
+        medic "I’m sorry. I-I guess I’ve always felt you were easier to talk to on this ship." 
+        medic "I admit this incident isn’t making me think straight. I shouldn’t have brought it up." 
+        medic "I understand it must be painful for you—"
+
+        menu:
+            # SI.1.a
+            "We’re all stressed.":
+                $ medApproval += 1
+
+                show captain concern-open behind medic
+                captain "It’s okay, Sara. This is stressful for all of us."
+
+                show medic neutral
+                show captain concern-closed behind medic
+                medic "This is true, I apologize for bringing it up."
+
+            # SI.1.b
+            "It’s fine.":
+                $ medApproval -= 1
+
+                show captain anger-open behind medic
+                captain "It’s fine. Just don’t do it again."
+
+                show medic stressed
+                show captain anger-closed behind medic
+                medic "I’m sorry, Captain. I’ll just, um…"
+
+        show captain neutral-open behind medic
+        captain "How about you go through your notes so far?"
+        captain "We could use any theories on what this specimen is and its properties."
+
+        show medic excited
+        show captain neutral-closed behind medic
+        medic "Yes, yes… I already have working hypotheses, though nothing exactly seems to work out perfectly at the moment."
+        
+        show medic nervous
+        show captain neutral-closed behind medic
+        medic "I should work harder…"
+
+        show captain concern-open behind medic
+        captain "Sara, you’re already working very hard."
+        captain "You’re the best in the field. Remember; it’s why we have you on this mission."
+
+        show medic neutral
+        show captain concern-closed behind medic
+        medic "Thank you, Captain. I can’t overstate how much this mission means to me."
+        show medic excited
+        show captain concern-closed behind medic
+        medic "This—this specimen we’ve found is the holy grail of astrobiology."
+
+        show captain neutral-open behind medic 
+        captain "And that’s exactly why I need you to tell us what we’re dealing with here."
+        captain "I’m counting on you Sarah."
+        captain "We’ll get the system back up one way or another."
+
+        # SI.2
+        show medic stressed
+        show captain neutral-closed behind medic
+        medic "But my research is in the system. How long will it take?" 
+        medic "All I have to work with is my journal." 
+        medic "I-if this takes a long time, what am I supposed to do?"
+        
+        show medic nervous
+        show captain neutral-closed behind medic
+
+        menu:
+            # SI.2.a
+            "You can figure it out.":
+                $ medApproval -= 1
+                
+                show captain anger-open behind medic
+                captain "Figure it out. That’s an order."
+
+                show medic stressed
+                show captain anger-closed behind medic
+                medic "O-of course Captain."
+
+            # SI.2.b
+            "I have faith in you." :
+                $ medApproval += 1
+                
+                show captain neutral-open behind medic
+                captain "I can’t say for sure, but I’ve seen you work with less before."
+                captain "I expect you’d gain more insight once you study your notes. I have faith in you."
+
+                show medic neutral
+                show captain neutral-closed behind medic
+                medic "I won’t let you down!"
+
+        if seenEI is False:
+            menu: 
+                "Speak to Eugen":
+                    show captain neutral-closed behind medic
+                    captain "I should speak to Eugen now. He’ll probably know what’s happening."
+                    jump EI
+
+        else:
+            jump M1
+
+
+    label EI:
+        $ seenEI = True
+        scene bg engineer
+        show engineer neutral
+        show captain neutral-closed behind engineer
+
+        show captain neutral-open behind engineer
+        captain "How’re you holding up Eugen?"
+
+        show captain neutral-closed behind engineer
+        engineer "As well as one can, given the circumstances." 
+        engineer "May we skip the pleasantries? I dislike small talk." 
+        engineer "I’m sure Sara would appreciate it more."
+
+        show captain neutral-open behind engineer
+        captain "Got it... Straight to the point then. Report."
+
+        show captain neutral-closed behind engineer
+        engineer "Captain, the situation is not ideal. There appears to be a system failure on a magnitude I’ve never seen."
+        engineer "I am looking into it, however, little progress is being made."
+        engineer "At the rate we’re losing oxygen, I estimate that we have approximately one hour."
+        
+        show captain frustrated behind engineer
+        captain "Shit… Well there goes my hope for any good news."
+
+        # EI.1
+        show captain neutral-closed behind engineer
+        engineer "Is there any information you can provide? Do you know what might have caused this?"
+
+        menu:
+            # EI.1a
+            "I’m not sure yet.":
+                $ engApproval -= 1
+                show captain thinking behind engineer
+                captain "I’m not sure yet. I want to find out a bit more before I give any concrete answers."
+
+                # show engineer frustrated
+                # show captain thinking behind engineer
+                engineer "I urge you to produce any information as soon as possible. When you have something, please let me know."
+
+            # EI.1b
+            "Share what you know.":
+                $ engApproval += 1
+
+                show captain confusion-open behind engineer
+                captain "The computer began to glitch after beginning a diagnostic."
+                captain "It started reciting Walt Whitman before the entire system crashed."
+
+                show engineer neutral
+                show captain confusion-closed behind engineer
+                engineer "Can’t say I’ve ever heard of something like this; but, everything has a fix."
+                engineer "I’ll begin looking into this immediately."
+        
+        show engineer neutral
+        show captain confusion-closed behind engineer      
+
+        engineer "In the meantime, I’ve reviewed the oxygen depletion curve 3 times now."
+        engineer "This is not a random failure. Something is interfering with the system's command execution."
+
+        show captain confusion-open behind engineer        
+        captain "Captain.040: What could possibly be interfering? Everything on this mission has been smooth thus far." 
+        captain "And why the whole system? A function or two, sure those might glitch and need maintenance." 
+        captain "But what the hell happened to MAD1?"
+
+        # EI.2
+        show captain confusion-closed behind engineer
+
+        engineer "We must stay focused, Captain. If we’re to correct this, we must proceed methodically."
+
+        menu: 
+            # EI.2a
+            "Stand by.":
+                $ engApproval -= 1
+                show captain anger-open behind engineer
+                captain "I am proceeding methodically... I need more information first."
+                captain "Stand by for now."
+
+                #show engineer frustrated
+                show captain anger-closed behind engineer
+                engineer "As you wish, however, I urge you to think about this decision further."
+            
+            # EI.2b
+            "Make haste.":
+                $ engApproval += 1
+                show captain confusion-open behind engineer
+                captain "Make haste but proceed with caution." 
+                captain "We don’t fully know yet what’s happening, but I trust you to make progress."
+
+                show captain confusion-closed behind engineer
+                engineer "Of course, the sooner we address this, the sooner the root of the problem will present itself."
+
+        if seenSI is False:
+            menu: 
+                "Speak to Sara":
+                    show captain neutral-closed behind engineer
+                    captain "I should speak to Sara. She’s probably freaking out right now."
+                    jump SI
+
+        else:
+            jump M1
+
+    label M1:
+        scene bg computer
+        show computer neutral-1
+        show captain neutral-closed behind computer
+
+        computer "Welcome back, Captain. Oxygen at 75%%."
+
+        show captain neutral-open behind computer
+        captain "The Astrobiologist and Cosmotechnician both are on track now to find out what’s wrong with the ship."
+        show captain frustrated behind computer
+        captain "And I guess you… Please don’t break on me again…"
+        show captain concern-open behind computer
+        captain "How’s the ship doing MAD1?"
+
+        show computer processing-1
+        show captain concern-closed behind computer
+        computer "Assessing ship systems…"
+        show computer processing-2
+        show captain concern-closed behind computer
+        computer "Processi̶̒͜n̵͖̕ġ̷͍ġ̷͍ġ̷͍-"
+
+        scene bg computer error
+        show computer error-1
+        show captain confusion-closed behind computer with hpunch 
+        computer "Water, water, every where,
+                    And all the boards did shrink;
+                    Water, water, every where,
+                    Nor any drop to drink."
+        
+        show captain confusion-open behind computer with hpunch 
+        captain "More poems? MAD1 I can’t lose you right now!"
+
+        scene bg computer
+        show computer reboot-1
+        show captain confusion-closed behind computer
+        computer "Rebooting.{w=0.5}{nw}"
+        show computer reboot-2
+        show captain confusion-closed behind computer
+        computer "Rebooting.{w=0.5}{nw}"
+        show computer reboot-3
+        show captain confusion-closed behind computer
+        computer "Rebooting."
+        show computer neutral-2
+        show captain confusion-closed behind computer
+        computer "System functionality at 69%%." 
+        computer "Apologies, Captain. It seems my software is continuing to deteriorate." 
+        computer "Something is interfering with the ship systems and my code. I am unable to identify wh̸̥͛a̸͇̋t̶̜̕" 
+        computer "Captain, I’m afraid my ability to assist you will be limited soon."
+
+        show captain anger-open behind computer with hpunch
+        captain "Dammit! I can’t afford to have more things break down now."
+        captain "What am I supposed to do?"
+
+        show computer neutral-3
+        show captain anger-closed behind computer
+        computer "I suggest checking with the crew, Captain." 
+        computer "Perhaps they will have answers soon with your ss-ssupp-portt-ttt-"
+
+        show computer error-1 with hpunch
+        show captain anger-closed behind computer with hpunch 
+
+        computer "The one by toil, the other to complain
+                    How far I toil, still farther off from thee."
+
+        show computer error-2
+        show captain concern-open behind computer
+        captain "... How far I toil, indeed."
+        captain "I hope one of them has found something."
+        captain "Hang in there MAD1."
+
+        "End of Demo"
 
     return
