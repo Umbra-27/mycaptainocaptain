@@ -1504,7 +1504,7 @@ define bubble.frame = Frame("gui/bubble.png", 400, 600, 1120, 315)
 define bubble.captain = Frame("gui/rudybubble.png", 400, 540, 1120, 495)
 define bubble.computer = Frame("gui/computerbubble.png", 400, 540, 1120, 450)
 define bubble.engineer = Frame("gui/eugenebubble.png", 400, 585, 1120, 495)
-define bubble.medic = Frame("gui/sarahbubble@3.5.png", 320, 540, 1280, 540)
+define bubble.medic = Frame("gui/sarabubble.png", 320, 540, 1280, 540)
 
 define bubble.properties = {
     "captain" : {

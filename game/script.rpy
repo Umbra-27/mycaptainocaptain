@@ -88,7 +88,7 @@ label start:
             voice "voice/captain/C1.006.mp3"
             captain "Open and read."
 
-    play sound "m4d1_message_open.mp3"
+    play sound "m4d1_message_open.mp3" 
     show computer neutral-3
     show captain neutral-closed behind computer
 
@@ -120,15 +120,15 @@ label start:
     play sound "electric_oh_no.mp3"
     show computer error-1
     voice "voice/madi/M1.004.mp3"
-    computer "Error. Process failure." 
+    computer "Error. Process failure.{w=0.5}" 
     show computer processing-1
     voice sustain
-    computer " Reinitiating process.{w=0.5}{nw}" 
+    computer " Reinitiating process.{w=0.5}" 
     show computer processing-2
     show computer processing-3
     show computer error-1
     voice sustain
-    computer " Error. System failure.{w=0.5}{nw}"
+    computer " Error. System failure.{w=0.5}"
     
     scene bg computer error
     show computer error-1

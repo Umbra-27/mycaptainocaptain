@@ -171,9 +171,9 @@
     },
     "SI_b6dc6811": {
         "area": [
-            320,
+            400,
             540,
-            1280,
+            1120,
             540
         ],
         "properties": "medic"
@@ -383,6 +383,15 @@
             495
         ],
         "properties": "captain"
+    },
+    "start_c003d450": {
+        "area": [
+            400,
+            585,
+            1120,
+            450
+        ],
+        "properties": "computer"
     },
     "start_c135bd57": {
         "area": [
