@@ -119,15 +119,17 @@ label start:
 
     play sound "electric_oh_no.mp3"
     show computer error-1
-    voice "voice/madi/M1.004.mp3"
+    voice "voice/madi/M1.004.1.mp3"
     computer "Error. Process failure.{w=0.5}" 
     show computer processing-1
     voice sustain
+    voice "voice/madi/M1.004.2.mp3"
     computer " Reinitiating process.{w=0.5}" 
     show computer processing-2
     show computer processing-3
     show computer error-1
     voice sustain
+    voice "voice/madi/M1.004.3.mp3"
     computer " Error. System failure.{w=0.5}"
     
     scene bg computer error
@@ -137,6 +139,7 @@ label start:
     stop music fadeout 1.0
     play sound "error_sound_1.mp3"
     voice sustain
+    voice "voice/madi/M1.004.4.mp3"
     computer " Error. Error. E̷̠̓r̷̖͆r̵̼͋o̷̳̔r{w=0.5}{nw}"
 
     show captain confusion-open with hpunch 
@@ -147,14 +150,17 @@ label start:
     show computer error-1
     show captain confusion-closed behind computer
 
-    voice "voice/madi/M1.005.mp3"
+    voice "voice/madi/M1.005.1.mp3"
     computer "Error. Unable to end process." 
     play sound "error_sound_2.mp3"
     voice sustain
+    voice "voice/madi/M1.005.2.mp3"
     computer "Pulling error log̶̕s.{w=0.5}{nw}"
     voice sustain
+    voice "voice/madi/M1.005.3.mp3"
     computer "Ê̴̋͒͠r̵̛̈̏r̸̳̯͎͍̬̊̇̀o̵r̷͘. {w=0.3}{nw}" 
     voice sustain
+    voice "voice/madi/M1.005.4.mp3"
     computer "Sys̷̖̏ṭ̷̋e̵̗̬͋m̵̩͋̕ṡ̴̨͎ dò̷̧͎͍͇̫͆̕ẃ̵̛̔n̶-{w=0.5}{nw}"
 
     stop sound
@@ -232,7 +238,7 @@ label start:
     captain "(Slams fist on table)" with hpunch 
     show captain anger-open behind computer
     voice "voice/captain/C1.013.mp3"
-    captain "Right now? In the most important phase of this mission?"
+    captain "Right now? But we're so close..."
     
     show captain anger-closed behind computer 
 
@@ -251,9 +257,10 @@ label start:
 
     show captain frustrated behind computer 
     captain "..." 
-    voice "voice/captain/C1.015.mp3"
+    voice "voice/captain/C1.015.1.mp3"
     captain "Thanks..."
     show captain neutral-open behind computer 
+    voice "voice/captain/C1.015.2.mp3"
     captain "Let’s check on the crew."
     show captain neutral-closed behind computer 
 
@@ -629,19 +636,19 @@ label start:
         scene bg computer
         show computer reboot-1
         show captain confusion-closed behind computer
-        voice "voice/madi/M1.023.mp3"
+        voice "voice/madi/M1.024.mp3"
         computer "Rebooting.{w=0.5}{nw}"
         show computer reboot-2
         show captain confusion-closed behind computer
-        voice "voice/madi/M1.023.mp3"
+        voice "voice/madi/M1.024.mp3"
         computer "Rebooting.{w=0.5}{nw}"
         show computer reboot-3
         show captain confusion-closed behind computer
-        voice "voice/madi/M1.023.mp3"
+        voice "voice/madi/M1.024.mp3"
         computer "Rebooting."
         show computer neutral-2
         show captain confusion-closed behind computer
-        voice "voice/madi/M1.024.mp3"
+        voice "voice/madi/M1.023.mp3"
         computer "System functionality at 69%%." 
         voice "voice/madi/M1.025.mp3"
         computer "Apologies, Captain. It seems my software is continuing to deteriorate." 
