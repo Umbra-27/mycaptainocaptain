@@ -1,52 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/screens.rpy", line 225, in <module>
-    spacing gui.choice_spacing/items
-                               ^^^^^
-NameError: name 'items' is not defined. Did you mean: 'iter'?
+  File "game/script.rpy", line 1192, in script
+    return with fade
+  File "game/script.rpy", line 1192
+    with fade
+    ^^^^^^^^^
+SyntaxError: invalid syntax
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "renpy/common/00start.rpy", line 216, in script
-    python:
-  File "renpy/ast.py", line 1187, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1273, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/00start.rpy", line 217, in <module>
-    _init_language()
-    ~~~~~~~~~~~~~~^^
-  File "renpy/common/00start.rpy", line 86, in _init_language
-    renpy.change_language(language, force=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/translation/__init__.py", line 848, in change_language
-    run_blocks()
-    ~~~~~~~~~~^^
-  File "renpy/translation/__init__.py", line 803, in run_blocks
-    new_change_language(tl, language, changed)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/translation/__init__.py", line 747, in new_change_language
-    i.apply()
-    ~~~~~~~^^
-  File "renpy/ast.py", line 2679, in apply
-    value = renpy.python.py_eval(expr)
-            ~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "renpy/python.py", line 1305, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1298, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/screens.rpy", line 225, in <module>
-    spacing gui.choice_spacing/items
-                               ^^^^^
-NameError: name 'items' is not defined. Did you mean: 'iter'?
+  File "game/script.rpy", line 1192, in script
+    return with fade
+  File "renpy/ast.py", line 1690, in execute
+    renpy.store._return = renpy.python.py_eval(self.expression)
+                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1303, in py_eval
+    code = py_compile(code, "eval")
+           ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1260, in py_compile
+    raise e
+  File "renpy/python.py", line 1190, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, True)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/script.rpy", line 1192
+    with fade
+    ^^^^^^^^^
+SyntaxError: invalid syntax
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.2.26010301
 DG8010  Oh Captain My Captain 1.0
-Sun Mar  1 23:38:38 2026
+Mon Mar  2 14:32:23 2026
