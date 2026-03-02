@@ -8,7 +8,9 @@ define engineer = Character("Eugen", image="engineer placeholder", kind=bubble)
 define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
 
-# Sound Settingsa
+define nvlChar = Character(None, kind=nvl)
+
+# Sound Settings
 default preferences.volume.music = 0.5
 default preferences.volume.sfx = 0.5
 
@@ -46,6 +48,7 @@ image captainConfusedClosedDark = im.MatrixColor(
 # The game starts here.
 
 label start:
+    
     play music "Electric_Dawn.mp3"
 
     scene bg computer with fade
@@ -194,8 +197,13 @@ label start:
 
     "Then the lights come on again. Thankfully."
     show computer reboot-2
-    "Sound returns as I presume the system reboots."
+    pause(0.5)
     show computer reboot-3
+    pause(0.5)
+    show computer reboot-4
+    pause(0.5)
+    show computer reboot-5
+    "Sound returns as I presume the system reboots."
 
     voice "voice/madi/M1.007.mp3"
     computer "System force restart. Diagnostics complete." 
@@ -645,20 +653,21 @@ label start:
         show computer reboot-1
         show captain confusion-closed behind computer
         voice "voice/madi/M1.024.mp3"
-        computer "Rebooting.{w=0.5}{nw}"
+        computer "Rebooting.{w=0.3}{nw}"
         show computer reboot-2
-        show captain confusion-closed behind computer
-        voice "voice/madi/M1.024.mp3"
-        computer "Rebooting.{w=0.5}{nw}"
+        computer "Rebooting.{w=0.3}{nw}"
         show computer reboot-3
-        show captain confusion-closed behind computer
-        voice "voice/madi/M1.024.mp3"
+        computer "Rebooting.{w=0.3}{nw}"
+        show computer reboot-4
+        computer "Rebooting.{w=0.3}{nw}"
+        show computer reboot-5
         computer "Rebooting."
-        show computer neutral-2
         show captain confusion-closed behind computer
         voice "voice/madi/M1.023.mp3"
+        show computer neutral-1
         computer "System functionality at 69%%." 
         voice "voice/madi/M1.025.mp3"
+        show computer neutral-2
         computer "Apologies, Captain. It seems my software is continuing to deteriorate." 
         voice "voice/madi/M1.026.mp3"
         computer "Something is interfering with the ship systems and my code. I am unable to identify wha̸͇̋t̶̜̕" 
@@ -1102,6 +1111,10 @@ label start:
         show computer reboot-2
         computer "Rebootinggg.{w=0.3}{nw}"
         show computer reboot-3
+        computer "Rebootinggg.{w=0.3}{nw}"
+        show computer reboot-4
+        computer "Rebootinggg.{w=0.3}{nw}"
+        show computer reboot-5
         computer "Rebootinggg." 
         show computer neutral-1
         show captain anger-closed behind computer
@@ -1121,6 +1134,8 @@ label start:
 
         show captain anger-open behind computer with hpunch
         captain "NO I HEARD YOU THE FIRST TIME!"
+
+        show captain frustrated behind computer
         captain "(Laboured breathing)"
 
         show computer neutral-1
@@ -1168,6 +1183,8 @@ label start:
                 captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
                 captain "We’ll all make it home. We need to make it home."
 
+                jump endDemo
+
     label EndC:
         nvl clear
         
@@ -1177,15 +1194,30 @@ label start:
 
         window hide
         scene ending captain with fade
-        pause(1.0)
+        pause(0.5)
         window show
 
-        "He rose the morrow morn.
-        A sadder and a wiser man.
-        He went like one that hath been stunned,
-        And is of sense forlorn:
-        The Captain, whose eye is dark,
-        Whose beard with age is hoar,
-        Is gone."
+        nvlChar "He rose the morrow morn.{w=1}{nw}"
+        nvlChar "A sadder and a wiser man.{w=1}{nw}"
+        nvlChar "He went like one that hath been stunned,{w=1}{nw}"
+        nvlChar "And is of sense forlorn:{w=1}{nw}"
+        nvlChar "The Captain, whose eye is dark,{w=1}{nw}"
+        nvlChar "Whose beard with age is hoar,{w=1}{nw}"
+        nvlChar "Is gone."
+
+        nvl clear
+
+        "Thank you for playing the demo"
+        
+        #show text "He rose the morrow morn." with dissolve
+        #show text "A sadder and a wiser man." with dissolve
+        #show text "He went like one that hath been stunned," with dissolve
+        #show text "And is of sense forlorn:" with dissolve
+        #show text "The Captain, whose eye is dark," with dissolve
+        #show text "Whose beard with age is hoar," with dissolve
+        #show text "Is gone." with dissolve
+
+    label endDemo:
+        "Thank you for playing the demo"
 
     return

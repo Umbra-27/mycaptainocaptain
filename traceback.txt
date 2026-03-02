@@ -1,35 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1192, in script
-    return with fade
-  File "game/script.rpy", line 1192
-    with fade
-    ^^^^^^^^^
-SyntaxError: invalid syntax
+  File "game/script.rpy", line 1187, in script
+    show text "He rose the morrow morn.\n A sadder and a wiser man.
+SyntaxError: EOL while scanning string literal (<none>, line 1)
 
 -- Full Traceback ------------------------------------------------------------
 
-Traceback (most recent call last):
-  File "game/script.rpy", line 1192, in script
-    return with fade
-  File "renpy/ast.py", line 1690, in execute
-    renpy.store._return = renpy.python.py_eval(self.expression)
-                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1303, in py_eval
-    code = py_compile(code, "eval")
-           ~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1260, in py_compile
+Full traceback:
+  File "game/script.rpy", line 1187, in script
+    show text "He rose the morrow morn.\n A sadder and a wiser man.
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\ast.py", line 1124, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\ast.py", line 1087, in show_imspec
+    renpy.config.show(name,
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\exports\displayexports.py", line 477, in show
+    if not base.find_target() and renpy.config.missing_show:
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\display\image.py", line 421, in find_target
+    self.target = target._duplicate(a)
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\text\extras.py", line 266, in _duplicate
+    string = renpy.python.py_eval(param)
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\python.py", line 1216, in py_eval
+    code = py_compile(code, 'eval')
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\python.py", line 1153, in py_compile
     raise e
-  File "renpy/python.py", line 1190, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, True)
-           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 1192
-    with fade
-    ^^^^^^^^^
-SyntaxError: invalid syntax
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\python.py", line 1090, in py_compile
+    raise orig_e
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\python.py", line 1082, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
+SyntaxError: EOL while scanning string literal (<none>, line 1)
 
-Windows-11-10.0.26200-SP0 AMD64
-Ren'Py 8.5.2.26010301
+Windows-10-10.0.26200 AMD64
+Ren'Py 8.3.7.25031702
 DG8010  Oh Captain My Captain 1.0
-Mon Mar  2 14:32:23 2026
+Mon Mar  2 16:07:48 2026

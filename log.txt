@@ -1,455 +1,344 @@
-2026-03-02 19:24:15 UTC
-Windows-11-10.0.26200-SP0
-Ren'Py 8.5.2.26010301
+2026-03-02 21:51:35 UTC
+Windows-10-10.0.26200
+Ren'Py 8.3.7.25031702
 
-Early init took 30 ms
-Loading error handling took 24 ms
-Loading script took 442 ms
-Loading save slot metadata took 15 ms
-Loading persistent took 0 ms
-Running init code took 48 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 0 ms
-Reloading save slot metadata took 6 ms
-Dump and make backups took 22 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 22 ms
-DPI scale factor: 2.000000
+Early init took 0.06s
+Loading error handling took 0.02s
+Loading script took 0.19s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\carine.ho\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.03s
+DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 1 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 10 ms
-Analyze screens took 0 ms
-Save screen analysis took 0 ms
-Save pyanalysis took 0 ms
-Save bytecode took 17 ms
-Running _start took 0 ms
-Interface start took 202 ms
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Interface start took 0.78s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 6 ms
-Loading error handling took 14 ms
-Loading script took 176 ms
-Loading save slot metadata took 9 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 18: invalid syntax
-    engApproval =
-                      ^
-DPI scale factor: 2.000000
-Interface start took 111 ms
+Early init took 138.04s
+Loading error handling took 0.02s
+Loading script took 0.18s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\carine.ho\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.03s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.23s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 6 ms
-Loading error handling took 16 ms
-Loading script took 159 ms
-Loading save slot metadata took 10 ms
-Loading persistent took 1 ms
-Running init code took 22 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 0 ms
-Reloading save slot metadata took 7 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 27 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 25 ms
-DPI scale factor: 2.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 0 ms
-Save bytecode took 1 ms
-Running _start took 0 ms
-Interface start took 198 ms
+Early init took 304.64s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\carine.ho\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.04s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.01s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.26s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 6 ms
-Loading error handling took 9 ms
-Loading script took 171 ms
-Loading save slot metadata took 9 ms
-Loading persistent took 0 ms
-Running init code took 21 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 0 ms
-Reloading save slot metadata took 6 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 23 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 35 ms
-DPI scale factor: 2.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 1 ms
-Analyze screens took 6 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 0 ms
-Save bytecode took 1 ms
-Running _start took 0 ms
-Interface start took 183 ms
+Early init took 312.59s
+Loading error handling took 0.01s
+Loading script took 0.19s
+Loading save slot metadata took 0.03s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\carine.ho\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.03s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.01s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.25s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 7 ms
-Loading error handling took 7 ms
-Loading script took 160 ms
-Loading save slot metadata took 9 ms
-Loading persistent took 1 ms
-
-Full traceback:
-  File "game/script.rpy", line 16, in script
-    init python:
-  File "renpy/ast.py", line 1187, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1273, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 20, in <module>
-    config.window_hide_transition = none
-                                    ^^^^
-NameError: name 'none' is not defined. Did you mean: 'None'?
-
-While running game code:
-  File "game/script.rpy", line 16, in script
-    init python:
-  File "game/script.rpy", line 20, in <module>
-    config.window_hide_transition = none
-                                    ^^^^
-NameError: name 'none' is not defined. Did you mean: 'None'?
-DPI scale factor: 2.000000
-Interface start took 164 ms
+Early init took 344.71s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.03s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\carine.ho\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.04s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.01s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.26s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 6 ms
-Loading error handling took 7 ms
-Loading script took 145 ms
-Loading save slot metadata took 10 ms
-Loading persistent took 0 ms
-Running init code took 33 ms
-Loading analysis data took 3 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 5 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 23 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 28 ms
-DPI scale factor: 2.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 6 ms
-Save screen analysis took 6 ms
-Save pyanalysis took 0 ms
-Save bytecode took 1 ms
-Running _start took 1 ms
-Interface start took 191 ms
+Early init took 388.94s
+Loading error handling took 0.01s
+Loading script took 0.20s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to 'C:\\Users\\carine.ho\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.04s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.01s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.01s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Interface start took 0.23s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 7 ms
-Loading error handling took 7 ms
-Loading script took 163 ms
-Loading save slot metadata took 10 ms
-Loading persistent took 0 ms
-Running init code took 18 ms
-Loading analysis data took 3 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 5 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 24 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 36 ms
-DPI scale factor: 2.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 7 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 1 ms
-Interface start took 205 ms
+Early init took 404.30s
+Loading error handling took 0.01s
+Loading script took 0.10s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.04s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.26s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
 Resetting cache.
-Early init took 7 ms
-Loading error handling took 7 ms
-Loading script took 159 ms
-Loading save slot metadata took 8 ms
-Loading persistent took 0 ms
-Running init code took 20 ms
-Loading analysis data took 1 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 5 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 25 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 39 ms
-DPI scale factor: 2.000000
-Creating interface object took 1 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 9 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 2 ms
-Save bytecode took 1 ms
-Running _start took 0 ms
-Interface start took 226 ms
+Early init took 471.18s
+Loading error handling took 0.01s
+Loading script took 0.11s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.02s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Dump and make backups took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.04s
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.27s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
+primary display bounds: (0, 0, 2560, 1440)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 7 ms
-Loading error handling took 7 ms
-Loading script took 162 ms
-Loading save slot metadata took 9 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 1174: invalid syntax
-    define narrator = nvl_narrator
-                       ^^^^^^^^
-DPI scale factor: 2.000000
-Interface start took 127 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 6 ms
-Loading error handling took 7 ms
-Loading script took 150 ms
-Loading save slot metadata took 10 ms
-Loading persistent took 0 ms
-Running init code took 37 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 6 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 22 ms
-Cleaning cache took 0 ms
-Making clean stores took 2 ms
-Initial gc took 25 ms
-DPI scale factor: 2.000000
-Creating interface object took 1 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 0 ms
-Save bytecode took 1 ms
-Running _start took 0 ms
-Interface start took 192 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
-Maximum texture size: 4096x4096
-
-Full traceback:
-  File "game/script.rpy", line 1192, in script
-    return with fade
-  File "renpy/ast.py", line 1690, in execute
-    renpy.store._return = renpy.python.py_eval(self.expression)
-                          ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1303, in py_eval
-    code = py_compile(code, "eval")
-           ~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1260, in py_compile
-    raise e
-  File "renpy/python.py", line 1190, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, True)
-           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 1192
-    with fade
-    ^^^^^^^^^
-SyntaxError: invalid syntax
-
-While running game code:
-  File "game/script.rpy", line 1192, in script
-    return with fade
-  File "game/script.rpy", line 1192
-    with fade
-    ^^^^^^^^^
-SyntaxError: invalid syntax
-Resetting cache.
-Early init took 7 ms
-Loading error handling took 8 ms
-Loading script took 169 ms
-Loading save slot metadata took 10 ms
-Loading persistent took 0 ms
-Running init code took 22 ms
-Loading analysis data took 2 ms
-Analyze and compile ATL took 0 ms
-Reloading save slot metadata took 5 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 25 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 34 ms
-DPI scale factor: 2.000000
-Creating interface object took 0 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 1 ms
-Analyze screens took 6 ms
-Save screen analysis took 8 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 0 ms
-Interface start took 202 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
-Maximum texture size: 4096x4096
-Cleaning stores took 0 ms
-Load screen analysis took 14 ms
-Analyze screens took 0 ms
-Running _start took 1 ms
-Resetting cache.
-Early init took 6 ms
-Loading error handling took 7 ms
-Loading script took 155 ms
-Loading save slot metadata took 10 ms
-Loading persistent took 0 ms
-Running init code took 19 ms
-Loading analysis data took 3 ms
-Analyze and compile ATL took 2 ms
-Reloading save slot metadata took 6 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 24 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 34 ms
-DPI scale factor: 2.000000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 5 ms
-Save screen analysis took 7 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 0 ms
-Interface start took 191 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2880, 1620)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel'
-Renderer: 'Intel(R) Iris(R) Xe Graphics'
-Version: '4.6.0 - Build 32.0.101.7076'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 25.10.30.02.250923'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
 Maximum texture size: 4096x4096

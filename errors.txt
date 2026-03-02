@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1174: invalid syntax
-    define narrator = nvl_narrator
-                       ^^^^^^^^
+File "game/script.rpy", line 1221: expected statement.
+    clear scene
+               ^
 
-Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Mar  2 14:32:02 2026
+Ren'Py Version: Ren'Py 8.3.7.25031702
+Mon Mar  2 16:50:18 2026

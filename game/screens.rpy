@@ -249,13 +249,13 @@ screen quick_menu():
             style "quick_menu"
 
             textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
+            # textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            # textbutton _("Prefs") action ShowMenu('preferences')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -778,12 +778,12 @@ screen preferences():
                         textbutton _("Window") action Preference("display", "window")
                         textbutton _("Fullscreen") action Preference("display", "fullscreen")
 
-                vbox:
-                    style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+                # vbox:
+                    # style_prefix "check"
+                    # label _("Skip")
+                    # textbutton _("Unseen Text") action Preference("skip", "toggle")
+                    # textbutton _("After Choices") action Preference("after choices", "toggle")
+                    # textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
 
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
@@ -1401,7 +1401,7 @@ style nvl_window:
     xfill True
     yfill True
 
-    background "gui/nvl.png"
+    # background im.Alpha("gui/phone/nvl.png", 0.5)
     padding gui.nvl_borders.padding
 
 style nvl_entry:
@@ -1507,6 +1507,7 @@ define bubble.captain = Frame("gui/rudybubble.png", 400, 540, 1120, 495)
 define bubble.computer = Frame("gui/computerbubble.png", 400, 540, 1120, 495)
 define bubble.engineer = Frame("gui/eugenebubble.png", 400, 540, 1120, 495)
 define bubble.medic = Frame("gui/sarabubble.png", 400, 540, 1120, 495)
+define bubble.captainbreakdown = Frame("gui/rudythoughtbubble.png", 400, 540, 1120, 495)
 
 define bubble.properties = {
     "captain" : {
@@ -1529,7 +1530,14 @@ define bubble.properties = {
     "medic" : {
         "window_background" : bubble.medic,
         "window_top_padding" : 10,
-    }
+    },
+
+    "captainbreakdown" : {
+        "window_background" : bubble.captainbreakdown,
+        "window_top_padding" : 10,
+        "window_left_padding" : 25,
+        "window_right_padding" : 20,
+    },
 }
 
 define bubble.expand_area = {
@@ -1583,7 +1591,7 @@ style check_button:
 
 style nvl_window:
     variant "small"
-    background "gui/phone/nvl.png"
+    # background im.Alpha("gui/phone/nvl.png", 0.5)
 
 style main_menu_frame:
     variant "small"
