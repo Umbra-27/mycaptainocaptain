@@ -207,24 +207,26 @@ style input:
 screen choice(items):
     style_prefix "choice"
 
-    vbox:
+    hbox:
         for i in items:
             textbutton i.caption action i.action
 
 
-style choice_vbox is vbox
+style choice_hbox is hbox
 style choice_button is button
 style choice_button_text is button_text
 
-style choice_vbox:
+style choice_hbox:
     xalign 0.5
-    ypos 405
+    ypos 605
+    xanchor 0.5
     yanchor 0.5
 
     spacing gui.choice_spacing
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
+    background Image("images/menu_item_highlight.png", xalign=0.5, yalign=0.5)
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
@@ -1502,9 +1504,9 @@ style bubble_what:
 
 define bubble.frame = Frame("gui/bubble.png", 400, 600, 1120, 315)
 define bubble.captain = Frame("gui/rudybubble.png", 400, 540, 1120, 495)
-define bubble.computer = Frame("gui/computerbubble.png", 400, 540, 1120, 450)
-define bubble.engineer = Frame("gui/eugenebubble.png", 400, 585, 1120, 495)
-define bubble.medic = Frame("gui/sarabubble.png", 320, 540, 1280, 540)
+define bubble.computer = Frame("gui/computerbubble.png", 400, 540, 1120, 495)
+define bubble.engineer = Frame("gui/eugenebubble.png", 400, 540, 1120, 495)
+define bubble.medic = Frame("gui/sarabubble.png", 400, 540, 1120, 495)
 
 define bubble.properties = {
     "captain" : {
@@ -1516,10 +1518,7 @@ define bubble.properties = {
     
     "computer" : {
         "window_background" : bubble.computer,
-        "window_top_padding" : 0,
-        "window_bottom_padding" : 70,
-        "window_left_padding" : 25,
-        "window_right_padding" : 25,
+        "window_top_padding" : 10,
     },
 
     "engineer" : {

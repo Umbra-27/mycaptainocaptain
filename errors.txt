@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 82: expected end of line
-    voice "voice/madi/M1.001.mp3" volume 0.5
-                                  ^
+File "game/screens.rpy", line 215: keyword argument 'xanchor' is incompatible with 'xalign'.
+    xanchor 0.5
+           ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Tue Feb 24 18:52:15 2026
+Sun Mar  1 23:18:22 2026

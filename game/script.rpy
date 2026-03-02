@@ -7,6 +7,7 @@ define captain = Character("Captain", image="captain@3.5/captain", kind=bubble)
 define engineer = Character("Eugen", image="engineer placeholder", kind=bubble)
 define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
+image desk = "desk.png"
 
 # Sound Settingsa
 default preferences.volume.music = 0.5
@@ -42,21 +43,12 @@ image captainConfusedClosedDark = im.MatrixColor(
 # The game starts here.
 
 label start:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
     play music "Electric_Dawn.mp3"
 
-    scene bg computer
+    scene bg computer with fade
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    show computer neutral-1
-    show captain neutral-open behind computer
+    show computer neutral-1 with dissolve
+    show captain neutral-open behind computer with dissolve
     
     play sound "captainslog_background.mp3"
 
@@ -101,7 +93,7 @@ label start:
 
     show captain frustrated behind computer
     voice "voice/captain/C1.007.mp3"
-    captain "(Sighs, rubs temples)"
+    captain "..."
     voice "voice/captain/C1.008.mp3"
     captain "MAD1, run ship diagnostics."
 
@@ -262,18 +254,20 @@ label start:
     show captain neutral-open behind computer 
     voice "voice/captain/C1.015.2.mp3"
     captain "Let’s check on the crew."
-    show captain neutral-closed behind computer 
+    show captain thinking behind computer 
 
     $ seenSI = False
     $ seenEI = False
 
     menu:
         "Speak to Eugen":
+            show captain neutral-open behind computer 
             voice "voice/captain/C1.017.mp3"
             captain "I should speak to Eugen. He’ll probably know what’s happening."
-            jump EI
+            jump EI 
 
         "Speak to Sara":
+            show captain neutral-open behind computer 
             voice "voice/captain/C1.016.mp3"
             captain "I should speak to Sara. She’s probably freaking out right now."
             jump SI
@@ -281,9 +275,10 @@ label start:
     
     label SI:
         $ seenSI = True
-        scene bg medic
-        show medic nervous
-        show captain neutral-closed behind medic
+        scene bg medic with fade
+        show medic nervous with dissolve 
+        pause(0.5)
+        show captain neutral-closed behind medic with dissolve
 
         voice "voice/sara/S1.001.mp3"
         medic "Captain! W-what just happened! Thank goodness you arrived when you did. I was going to—" 
@@ -465,27 +460,32 @@ label start:
 
     label EI:
         $ seenEI = True
-        scene bg engineer
-        show engineer neutral
-        show captain neutral-closed behind engineer
+        scene bg engineer with fade
+        show desk with dissolve
+        show engineer neutral with dissolve
+        pause(0.5)
+        show captain neutral-closed behind desk with dissolve
 
-        show captain neutral-open behind engineer
+        show captain neutral-open behind desk
         voice "voice/captain/C1.034.mp3"
         captain "How’re you holding up Eugen?"
 
-        show captain neutral-closed behind engineer
+        show captain neutral-closed behind desk
         voice "voice/eugen/E1.003.mp3"
         engineer "As well as one can, given the circumstances." 
         voice "voice/eugen/E1.004.mp3"
+        show engineer stressed
         engineer "May we skip the pleasantries? I dislike small talk." 
         voice "voice/eugen/E1.005.mp3"
         engineer "I’m sure Sara would appreciate it more."
 
-        show captain neutral-open behind engineer
+        show engineer neutral
+        show captain neutral-open behind desk
         voice "voice/captain/C1.035.mp3"
         captain "Got it... Straight to the point then. Report."
 
-        show captain neutral-closed behind engineer
+        show engineer stressed
+        show captain neutral-closed behind desk
         voice "voice/eugen/E1.006.mp3"
         engineer "Captain, the situation is not ideal. There appears to be a system failure on a magnitude I’ve never seen."
         voice "voice/eugen/E1.007.mp3"
@@ -493,12 +493,14 @@ label start:
         voice "voice/eugen/E1.008.mp3"
         engineer "At the rate we’re losing oxygen, I estimate that we have approximately one hour."
         
-        show captain frustrated behind engineer
+        show engineer neutral
+        show captain frustrated behind desk
         voice "voice/captain/C1.036.mp3"
         captain "Shit… Well there goes my hope for any good news."
 
         # EI.1
-        show captain neutral-closed behind engineer
+        show engineer stressed
+        show captain neutral-closed behind desk
         voice "voice/eugen/E1.009.mp3"
         engineer "Is there any information you can provide? Do you know what might have caused this?"
 
@@ -506,12 +508,14 @@ label start:
             # EI.1a
             "I’m not sure yet.":
                 $ engApproval -= 1
-                show captain thinking behind engineer
+                show captain thinking behind desk
                 voice "voice/captain/C1.037.mp3"
                 captain "I’m not sure yet. I want to find out a bit more before I give any concrete answers."
 
                 # show engineer frustrated
                 # show captain thinking behind engineer
+                show engineer stressed
+                show captain thinking behind desk
                 voice "voice/eugen/E1.010.mp3"
                 engineer "I urge you to produce any information as soon as possible. When you have something, please let me know."
 
@@ -519,28 +523,28 @@ label start:
             "Share what you know.":
                 $ engApproval += 1
 
-                show captain confusion-open behind engineer
+                show captain confusion-open behind desk
                 voice "voice/captain/C1.038.mp3"
                 captain "The computer began to glitch after beginning a diagnostic."
                 voice "voice/captain/C1.039.mp3"
                 captain "It started reciting Walt Whitman before the entire system crashed."
 
                 show engineer neutral
-                show captain confusion-closed behind engineer
+                show captain confusion-closed behind desk
                 voice "voice/eugen/E1.011.mp3"
                 engineer "Can’t say I’ve ever heard of something like this; but, everything has a fix."
                 voice "voice/eugen/E1.012.mp3"
                 engineer "I’ll begin looking into this immediately."
         
-        show engineer neutral
-        show captain confusion-closed behind engineer      
+        show engineer stressed
+        show captain confusion-closed behind desk    
 
         voice "voice/eugen/E1.013.mp3"
         engineer "In the meantime, I’ve reviewed the oxygen depletion curve 3 times now."
         voice "voice/eugen/E1.014.mp3"
         engineer "This is not a random failure. Something is interfering with the system's command execution."
 
-        show captain confusion-open behind engineer    
+        show captain confusion-open behind desk  
         voice "voice/captain/C1.040.mp3"    
         captain "What could possibly be interfering? Everything on this mission has been smooth thus far." 
         voice "voice/captain/C1.041.mp3"
@@ -549,7 +553,8 @@ label start:
         captain "But what the hell happened to MAD1?"
 
         # EI.2
-        show captain confusion-closed behind engineer
+        show engineer neutral
+        show captain confusion-closed behind desk
 
         voice "voice/eugen/E1.015.mp3"
         engineer "We must stay focused, Captain. If we’re to correct this, we must proceed methodically."
@@ -558,34 +563,34 @@ label start:
             # EI.2a
             "Stand by.":
                 $ engApproval -= 1
-                show captain anger-open behind engineer
+                show captain anger-open behind desk
                 voice "voice/captain/C1.043.mp3"
                 captain "I am proceeding methodically... I need more information first."
                 voice "voice/captain/C1.044.mp3"
                 captain "Stand by for now."
 
-                #show engineer frustrated
-                show captain anger-closed behind engineer
+                show engineer stressed
+                show captain anger-closed behind desk
                 voice "voice/eugen/E1.016.mp3"
                 engineer "As you wish, however, I urge you to think about this decision further."
             
             # EI.2b
             "Make haste.":
                 $ engApproval += 1
-                show captain confusion-open behind engineer
+                show captain confusion-open behind desk
                 voice "voice/captain/C1.045.mp3"
                 captain "Make haste but proceed with caution." 
                 voice "voice/captain/C1.046.mp3"
                 captain "We don’t fully know yet what’s happening, but I trust you to make progress."
 
-                show captain confusion-closed behind engineer
+                show captain confusion-closed behind desk
                 voice "voice/eugen/E1.017.mp3"
                 engineer "Of course, the sooner we address this, the sooner the root of the problem will present itself."
 
         if seenSI is False:
             menu: 
                 "Speak to Sara":
-                    show captain neutral-closed behind engineer
+                    show captain neutral-closed behind desk
                     voice "voice/captain/C1.016.mp3"
                     captain "I should speak to Sara. She’s probably freaking out right now."
                     jump SI
@@ -594,9 +599,9 @@ label start:
             jump M1
 
     label M1:
-        scene bg computer
-        show computer neutral-1
-        show captain neutral-closed behind computer
+        scene bg computer with fade
+        show computer neutral-1 with dissolve
+        show captain neutral-closed behind computer with dissolve
 
         voice "voice/madi/M1.019.mp3"
         computer "Welcome back, Captain. Oxygen at 75%%."
@@ -624,10 +629,10 @@ label start:
         show computer error-1
         show captain confusion-closed behind computer with hpunch 
         voice "voice/madi/M1.022.mp3"
-        computer "Water, water, every where,
+        computer "Water, wả̵̳t̷̨̍e̴͚̔r̵̥̉, every where,
                     And all the boards did shrink;
-                    Water, water, every where,
-                    Nor any drop to drink."
+                    Water, ẉ̸̢̟͑ͅą̷̓͝tĕ̵͈̗̆͒̚r̷̢̼͈͚̈́̐, eve̴̤̚r̷̈́y̴͉̌ ̵̦̈́ẁ̸̺h̵̻̿e̸͉̋ŗ̵̈́e̸̛̝,
+                    Nor a̴̞̓ǹ̷̢y̷̾ͅ ̵̡̐d̸̟̄ȓ̶̼o̷̻͒p̴̛̦ ̵̦̈́t̵̨͝ó̴̝ ̸̜͋d̸̝̑rī̶̻n̵̺̍ḱ̴͍."
         
         show captain confusion-open behind computer with hpunch 
         voice "voice/captain/C1.050.mp3"
@@ -653,7 +658,7 @@ label start:
         voice "voice/madi/M1.025.mp3"
         computer "Apologies, Captain. It seems my software is continuing to deteriorate." 
         voice "voice/madi/M1.026.mp3"
-        computer "Something is interfering with the ship systems and my code. I am unable to identify wh̸̥͛a̸͇̋t̶̜̕" 
+        computer "Something is interfering with the ship systems and my code. I am unable to identify wha̸͇̋t̶̜̕" 
         voice "voice/madi/M1.027.mp3"
         computer "Captain, I’m afraid my ability to assist you will be limited soon."
 
@@ -667,14 +672,14 @@ label start:
         show captain anger-closed behind computer
         voice "voice/madi/M1.028.mp3"
         computer "I suggest checking with the crew, Captain. 
-            Perhaps they will have answers soon with your ss-ssupp-portt-ttt-"
+            Perhaps they will have answers soon with your ss-ssupp̷̞̏-pǫ̸̊ȑ̸̨t̷͎̎t̷͎̎-t̷̠̆t̵̞̓t̴̘͑-"
 
         show computer error-1 with hpunch
         show captain anger-closed behind computer with hpunch 
 
         voice "voice/madi/M1.029.mp3"
-        computer "The one by toil, the other to complain
-                    How far I toil, still farther off from thee."
+        computer "The one by toi̷l̵, the other to comp̸̖̓l̴͎̀a̴̺͗ì̴̩n
+                    How far I t̴̡̃o̴̳͒i̶̥͋l̶̮̍, still farther ó̷̖ff f̵̲͒ȑ̷͉o̵̮̓m̴̮̌ ̶͓̈́t̷͎̑h̶̏e̶e̶̻̔."
 
         show computer error-2
         show captain concern-open behind computer
