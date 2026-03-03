@@ -169,7 +169,6 @@ label start:
 
     "The lights go out. Everything stops." 
     "The buzz and rumbles of the ship go deadly silent, and it’s as if time and space have frozen solid." 
-    "Everything goes wrong."
     "Only one terminal blinks online."
 
     voice "voice/madi/M1.006.mp3"
