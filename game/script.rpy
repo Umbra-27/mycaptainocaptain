@@ -1079,7 +1079,7 @@ label start:
         computer "Greetings, my̸̛̝̎ love̵̦͆͑̚ͅě̸̦͝͝e̸̘͋, Captain."
 
         show captain concern-open behind computer
-        captain "What? MAD1 what the fuck?"
+        captain "What? MAD1 what the hell?"
 
         scene bg computer error
         show computer error-1
@@ -1154,7 +1154,7 @@ label start:
 
         captain "No. No…"
         show bg escape pod with hpunch
-        captain "How the fuck am I meant to choose one life over another?! How am I supposed to decipher all of this… poetry?"
+        captain "How the hell am I meant to choose one life over another?! How am I supposed to decipher all of this… poetry?"
 
         if seenS1 is True:
             captain "Aghh! Someone has to go home with the specimen."
@@ -1163,9 +1163,9 @@ label start:
 
         elif seenE1 is True:
             captain "*sighs* Eugen’s right. Matthew would know what to do."
-            captain "If it wasn’t for that fucking asteroid we wouldn’t even be here right now."
+            captain "If it wasn’t for that damn asteroid we wouldn’t even be here right now."
 
-        captain "We can’t—I can’t fail now. Not when we’re so fucking close."
+        captain "We can’t—I can’t fail now. Not when we’re so damn close."
         captain "God if I had him here with me this would—"
         captain "Matthew… What do I do..?"
         
