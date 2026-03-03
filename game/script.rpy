@@ -11,7 +11,7 @@ define computer = Character("MAD1", image="computer/computer", kind=bubble)
 define nvlChar = Character(None, kind=nvl)
 
 # Sound Settings
-default preferences.volume.music = 0.5
+default preferences.volume.music = 0.3
 default preferences.volume.sfx = 0.5
 
 # Setting base approval scores
@@ -49,7 +49,7 @@ image captainConfusedClosedDark = im.MatrixColor(
 
 label start:
     
-    play music "Electric_Dawn.mp3"
+    play music "Electric_Dawn.mp3" volume 0.3
 
     scene bg computer with fade
 
@@ -189,7 +189,7 @@ label start:
     captain "(Smacks terminal)" with hpunch 
 
     scene bg computer
-    play sound "systems_back_online.mp3"
+    play sound "systems_back_online.mp3" volume 0.3
     play music "Ice_Cold.mp3"
 
     show computer reboot-1
@@ -845,7 +845,7 @@ label start:
 
         show medic nervous
         show captain neutral-closed behind medic
-        medic "SARA: But can MAD1 not figure out what is happening?"
+        medic "But can MAD1 not figure out what is happening?"
   
         show captain concern-open behind medic      
         captain "Actually… MAD1 is malfunctioning."
