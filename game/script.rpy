@@ -1172,7 +1172,22 @@ label start:
         captain "I… I could just leave right now… Be done with it… Be with him…"
         menu:
             "Escape":
-                jump EndC
+                menu: 
+                    "Are you sure, captain?"
+
+                    "Yes":
+                        jump EndC
+
+                    "No":
+                        captain "No, I can't leave."
+                        captain "…"
+                        
+                        show bg escape pod with hpunch
+                        captain "(slams fist on escape pod)"
+                        captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
+                        captain "We’ll all make it home. We need to make it home."
+
+                        jump endDemo
             
             "No, I can't leave.":
                 captain "No, I can't leave."
