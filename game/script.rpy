@@ -249,6 +249,7 @@ label start:
     computer "Captain, I recommend checking on the crew to maintain morale and investigate the cause of the system failure."
 
     show captain frustrated behind computer 
+    voice "voice/captain/C1.SIGH.mp3"
     captain "(Sighs)" 
     show captain neutral-open behind computer 
     voice "voice/captain/C1.014.mp3"
