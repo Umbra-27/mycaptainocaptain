@@ -12,7 +12,8 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("DG8010  Oh Captain My Captain")
+define config.name = _("My Captain, O' Captain")
+define build.itch_project ="skellytonnestudio/My Captain, O' Captain"
 
 
 ## Determines if the title given above is shown on the main menu screen. Set

@@ -169,7 +169,6 @@ label start:
 
     "The lights go out. Everything stops." 
     "The buzz and rumbles of the ship go deadly silent, and it’s as if time and space have frozen solid." 
-    "Everything goes wrong."
     "Only one terminal blinks online."
 
     voice "voice/madi/M1.006.mp3"
@@ -249,6 +248,7 @@ label start:
     computer "Captain, I recommend checking on the crew to maintain morale and investigate the cause of the system failure."
 
     show captain frustrated behind computer 
+    voice "voice/captain/C1.SIGH.mp3"
     captain "(Sighs)" 
     show captain neutral-open behind computer 
     voice "voice/captain/C1.014.mp3"
@@ -1172,7 +1172,22 @@ label start:
         captain "I… I could just leave right now… Be done with it… Be with him…"
         menu:
             "Escape":
-                jump EndC
+                menu: 
+                    "Are you sure, captain?"
+
+                    "Yes":
+                        jump EndC
+
+                    "No":
+                        captain "No, I can't leave."
+                        captain "…"
+                        
+                        show bg escape pod with hpunch
+                        captain "(slams fist on escape pod)"
+                        captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
+                        captain "We’ll all make it home. We need to make it home."
+
+                        jump endDemo
             
             "No, I can't leave.":
                 captain "No, I can't leave."
