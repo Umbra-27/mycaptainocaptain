@@ -540,6 +540,15 @@
         ],
         "properties": "computer"
     },
+    "start_8a1c821a": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
     "start_8dd6a50f": {
         "area": [
             400,
