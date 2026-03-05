@@ -78,7 +78,7 @@ label start:
     show captain neutral-closed behind computer
 
     voice "voice/madi/M1.001.mp3"
-    computer "Message from Cosmotechnician Eugene Braun. Open message?"
+    computer "Message from Cosmotechnician Eugen Braun. Open message?"
 
     menu:
         "Open message":
