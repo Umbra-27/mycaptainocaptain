@@ -1069,6 +1069,9 @@ label start:
 
         jump M2
 
+    label Map1:
+
+
     label M2:
         scene bg computer with fade
         show computer neutral-1 with dissolve
@@ -1176,7 +1179,7 @@ label start:
                     "Are you sure, captain?"
 
                     "Yes":
-                        jump EndC
+                        jump EndB
 
                     "No":
                         captain "No, I can't leave."
@@ -1187,7 +1190,7 @@ label start:
                         captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
                         captain "We’ll all make it home. We need to make it home."
 
-                        jump endDemo
+                        jump Map2
             
             "No, I can't leave.":
                 captain "No, I can't leave."
@@ -1198,9 +1201,60 @@ label start:
                 captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
                 captain "We’ll all make it home. We need to make it home."
 
-                jump endDemo
+                jump Map2
+
+    label Map2:
+
+    label S2:
+        $ seenE2 = False
+        $ seenS2 = True
+
+        if seenS1 is True:
+            # S2.A
+            medic "Captain! Oh my god. What is happening!"
+
+
+        else if seenS1 is False:
+            # S2.B
+
+    label E2:
+        $ seenE2 = True
+        $ seenS2 = False
+
+        if seenE1 is True:
+            # E2.A
+
+        else if seenE1 is False:
+            # E2.B
+
+    label M1O:
+        # M.1.O optional MAD1
+
+    label M3:
+        
+
+    label C2:
+        # Captain breakdown
+
+
+    label S3:
+        $ seenE3 = False
+        $ seenS3 = True
+
+
+    label E3:
+        $ seenE3 = True
+        $ seenS3 = False
+
+    label M2O:
+
+
+    # ENDINGS
+    label EndB:
+        # Bad ending: Captain abandons ship
 
     label EndC:
+        # Captain leaves with specimen 
         nvl clear
         
         init python:
@@ -1222,7 +1276,6 @@ label start:
 
         nvl clear
 
-        "Thank you for playing the demo"
         
         #show text "He rose the morrow morn." with dissolve
         #show text "A sadder and a wiser man." with dissolve
@@ -1232,7 +1285,31 @@ label start:
         #show text "Whose beard with age is hoar," with dissolve
         #show text "Is gone." with dissolve
 
-    label endDemo:
-        "Thank you for playing the demo"
+    label EndE:
+        # Eugen leaves with specimen 
+    
+    label EndS:
+        # Sara leaves with specimen 
+    
+    label EndG:
+        # Good ending
+        nvl clear
+        
+        init python:
+            config.window_hide_transition = dissolve
+            config.window_show_transition = dissolve
+
+        window hide
+        scene ending captain with fade
+        pause(0.5)
+        window show
+
+        nvlChar "The ship is anchor’d safe and sound, its voyage closed and done,{w=1}{nw}"
+        nvlChar "From fearful trip the victor ship comes in with object won.{w=1}{nw}"
+
+        nvl clear
+
+    label EndSec:
+        # Secret ending: Throw away the specimen
 
     return
