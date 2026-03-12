@@ -58,53 +58,43 @@ label start:
     
     play sound "captainslog_background.mp3"
 
-    voice "voice/captain/C1.001.mp3"
     captain "Captain’s Log — September 24th." 
-    voice "voice/captain/C1.002.mp3"
-    captain "We’ve successfully drilled through the ice layer of Europa and retrieved an 
-                artifact that resembles life."
-    voice "voice/captain/C1.003.mp3"
+    captain "Eugen Braun’s drill apparatus was successful in piercing through the ice 
+                layer of one of Jupiter’s moons, Europa."
+    captain "From its ocean, we’ve retrieved a specimen that resembles life."
     captain "Short on time, we’ve started the course back 
                 to Earth."
-    voice "voice/captain/C1.004.mp3"
-    captain "Dr. Fernando’s begun studying the specimen. I’ve ordered her to confirm the 
-                form of life." 
-    voice "voice/captain/C1.005.mp3"
-    captain "And Technician Braun’s been commanded to 
-                conduct maintenance on the equipment in the bio-lab." 
+    captain "Dr. Sara Fernando’s begun studying the specimen. I’ve ordered 
+                her to confirm the form of life." 
+    captain "Technician Braun’s been commanded to conduct maintenance on 
+                the equipment in the bio-lab." 
 
     play sound "m4d1_notification.mp3"
     show computer neutral-2
     show captain neutral-closed behind computer
 
-    voice "voice/madi/M1.001.mp3"
     computer "Message from Cosmotechnician Eugen Braun. Open message?"
 
     menu:
         "Open message":
             show captain neutral-open behind computer
-            voice "voice/captain/C1.006.mp3"
             captain "Open and read."
 
     play sound "m4d1_message_open.mp3" 
     show computer neutral-3
     show captain neutral-closed behind computer
 
-    voice "voice/madi/M1.002.1.mp3"
     computer "Engineer: Captain, I have been reviewing the bio lab’s system; the data does not align with standard 
                 operating parameters." 
-    voice "voice/madi/M1.002.2.mp3"
     computer "Engineer: This does not appear to be a malfunction or human error; there seems to be an 
-                interference with the processes. It will be best to address this immediately."
+                interference with the processes."
+    computer "It will be best to address this immediately."
 
     show captain frustrated behind computer
-    voice "voice/captain/C1.007.mp3"
     captain "..."
-    voice "voice/captain/C1.008.mp3"
     captain "MAD1, run ship diagnostics."
 
     show computer processing-1
-    voice "voice/madi/M1.003.mp3"
     computer "Initiating system diagnostics. Analyzing running operations."
 
     play sound "system_diagnostic_start.mp3"
@@ -117,17 +107,14 @@ label start:
 
     play sound "electric_oh_no.mp3"
     show computer error-1
-    voice "voice/madi/M1.004.1.mp3"
     computer "Error. Process failure.{w=0.5}" 
     show computer processing-1
     voice sustain
-    voice "voice/madi/M1.004.2.mp3"
     computer " Reinitiating process.{w=0.5}" 
     show computer processing-2
     show computer processing-3
     show computer error-1
     voice sustain
-    voice "voice/madi/M1.004.3.mp3"
     computer " Error. System failure.{w=0.5}"
     
     scene bg computer error
@@ -137,28 +124,22 @@ label start:
     stop music fadeout 1.0
     play sound "error_sound_1.mp3"
     voice sustain
-    voice "voice/madi/M1.004.4.mp3"
     computer " Error. Error. E̷̠̓r̷̖͆r̵̼͋o̷̳̔r{w=0.5}{nw}"
 
     show captain confusion-open with hpunch 
-    voice "voice/captain/C1.010.mp3"
     captain "What’s happening? MAD1, show me the error logs."
 
     scene bg computer error bad
     show computer error-1
     show captain confusion-closed behind computer
 
-    voice "voice/madi/M1.005.1.mp3"
     computer "Error. Unable to end process." 
     play sound "error_sound_2.mp3"
     voice sustain
-    voice "voice/madi/M1.005.2.mp3"
     computer "Pulling error log̶̕s.{nw}"
     voice sustain
-    voice "voice/madi/M1.005.3.mp3"
     computer "Ê̴̋͒͠r̵̛̈̏r̸̳̯͎͍̬̊̇̀o̵r̷͘. {nw}" 
     voice sustain
-    voice "voice/madi/M1.005.4.mp3"
     computer "Sys̷̖̏ṭ̷̋e̵̗̬͋m̵̩͋̕ṡ̴̨͎ dò̷̧͎͍͇̫͆̕ẃ̵̛̔n̶-{nw}"
 
     stop sound
@@ -171,16 +152,14 @@ label start:
     "The buzz and rumbles of the ship go deadly silent, and it’s as if time and space have frozen solid." 
     "Only one terminal blinks online."
 
-    voice "voice/madi/M1.006.mp3"
-    computer "But O heart! heart! H̷̢̚e̷a̵ŕ̶̤t̵͈́!̵̺̾
-                O the b̵̝̀l̷̨͠e̶̹̕ȩ̵̔d̴̲̅i̶n̵̕ġ̷͍ drops of red,
-                Where on the deck my Captain lies,
-                Fallen cold and d̸̻̈́e̵͉̋a̸̪̿d̸̙͆."
+    computer "But O heart! heart! H̷̢̚e̷a̵ŕ̶̤t̵͈́!̵̺̾"
+    computer "O the b̵̝̀l̷̨͠e̶̹̕ȩ̵̔d̴̲̅i̶n̵̕ġ̷͍ drops of red,"
+    computer "Where on the deck my Captain lies,"
+    computer "Fallen cold and d̸̻̈́e̵͉̋a̸̪̿d̸̙͆."
 
     "The terminal displays strange text. I’ve never seen MAD1 act this way before."
 
     show captainConfusedOpenDark behind computer
-    voice "voice/captain/C1.011.mp3"
     captain "What the hell?" 
     
     show captainConfusedClosedDark behind computer   
@@ -204,82 +183,69 @@ label start:
     show computer reboot-5
     "Sound returns as I presume the system reboots."
 
-    voice "voice/madi/M1.007.mp3"
     computer "System force restart. Diagnostics complete." 
     show computer neutral-1
-    voice "voice/madi/M1.008.mp3"
     computer "Power systems offline. Emergency power engaged." 
-    voice "voice/madi/M1.009.mp3"
     computer "Navigation systems paused." 
-    voice "voice/madi/M1.010.mp3"
     computer "Internal communications offline." 
     show computer neutral-2
-    voice "voice/madi/M1.011.mp3"
     computer "Satellite communication offline." 
-    voice "voice/madi/M1.012.mp3"
     computer "Data systems offline." 
-    voice "voice/madi/M1.013.mp3"
     computer "Thermal control offline." 
     show computer neutral-3
-    voice "voice/madi/M1.0014.mp3"
     computer "Oxygen system offline." 
-    voice "voice/madi/M1.015.mp3"
     computer "Emergency Life support protocol engaged."
+    computer "2 of 3 escape pods malfunctioning."
 
     show captain anger-open behind computer 
-    voice "voice/captain/C1.012.mp3"
+
     captain "MAD1, what the hell is going on?"
 
     show captain anger-closed behind computer 
 
-    voice "voice/madi/M1.016.mp3"
     computer "Mission status paused. To preserve power and life support, non-essential rooms have been sealed. Oxygen will be rerouted."
 
     play sound "captain_smack_2.mp3" 
 
     captain "(Slams fist on table)" with hpunch 
     show captain anger-open behind computer
-    voice "voice/captain/C1.013.mp3"
     captain "Right now? But we're so close..."
     
     show captain anger-closed behind computer 
 
-    voice "voice/madi/M1.017.mp3"
     computer "Captain, I recommend checking on the crew to maintain morale and investigate the cause of the system failure."
 
     show captain frustrated behind computer 
-    voice "voice/captain/C1.SIGH.mp3"
-    captain "(Sighs)" 
+    captain "..." 
     show captain neutral-open behind computer 
-    voice "voice/captain/C1.014.mp3"
     captain "I suppose you’re right. Give me periodic reports on the oxygen levels."
     show captain neutral-closed behind computer 
+    captain "And get me a physical copy of the latest readings on the specimen."
 
-    voice "voice/madi/M1.018.mp3"
-    computer "Aye, aye, Captain. Oxygen levels at 99%%."
+    computer "Aye, aye, Captain. Printing report. Oxygen levels at 99%%."
 
     show captain frustrated behind computer 
     captain "..." 
-    voice "voice/captain/C1.015.1.mp3"
     captain "Thanks..."
     show captain neutral-open behind computer 
-    voice "voice/captain/C1.015.2.mp3"
     captain "Let’s check on the crew."
     show captain thinking behind computer 
 
     $ seenSI = False
     $ seenEI = False
+    $ seenS1 = False
+    $ seenE1 = False
+    $ seenS2 = False
+    $ seenE2 = False
 
     menu:
         "Speak to Eugen":
             show captain neutral-open behind computer 
-            voice "voice/captain/C1.017.mp3"
             captain "I should speak to Eugen. He’ll probably know what’s happening."
             jump EI 
 
         "Speak to Sara":
             show captain neutral-open behind computer 
-            voice "voice/captain/C1.016.mp3"
             captain "I should speak to Sara. She’s probably freaking out right now."
             jump SI
         
@@ -291,62 +257,47 @@ label start:
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
-        voice "voice/sara/S1.001.mp3"
-        medic "Captain! W-what just happened! Thank goodness you arrived when you did. I was going to—" 
+        medic "Captain! W-what just happened! Thank goodness you arrived when you did. The alarms went off and I was getting worried!" 
         
         show captain neutral-open behind medic
-        voice "voice/captain/C1.018.mp3"
-        captain "Yes, quite unexpected. I’m sorting it out with Eugen." 
-        voice "voice/captain/C1.019.mp3"
+        captain "Yes, quite unexpected. I‘m checking in personally since comms are down."
+        captain "I'm sorting it out with Eugen." 
         captain "We’ve had good luck so far—we’ve achieved something no man has managed before. These things happen."
 
         show medic neutral
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.002.mp3"
         medic "Yes, yes, of course!" 
 
         show medic explaining
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.003.mp3"
         medic "I mean, this cargo—this discovery—would revolutionize everything." 
-        voice "voice/sara/S1.004.mp3"
         medic "Our very understanding of the universe. Extraterrestrial life! Aboard this ship." 
         show medic excited
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.005.mp3"
         medic "I still can’t believe it." 
         show medic neutral
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.006.mp3"
         medic "But this… development is most concerning." 
 
         show medic nervous
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.007.mp3"
         medic "What could possibly be happening, Captain?" 
-        voice "voice/sara/S1.008.mp3"
-        medic "Could it—could this result in some kind of irreparable, cascading failure?"
+        medic "Could this result in some kind of irreparable, cascading failure?"
 
         show captain neutral-open behind medic
-        voice "voice/captain/C1.020.mp3"
         captain "Like I said before, Sara, we’ll find out soon. There is no reason to assume the worst." 
 
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.009.mp3"
-        medic "I understand. I just—given what has happened before…"
+        medic "I understand. Just given what has happened before…"
 
         show captain anger-open behind medic
-        voice "voice/captain/C1.021.mp3"
         captain "What happened to the previous mission has nothing to do with what is happening now."
 
         # SI.1
         show medic stressed
         show captain anger-closed behind medic
-        voice "voice/sara/S1.010.mp3"
-        medic "I’m sorry. I-I guess I’ve always felt you were easier to talk to on this ship." 
-        voice "voice/sara/S1.011.mp3"
+        medic "I’m sorry. I-I guess I’ve always felt you were easier to talk to on this ship. You know, compared to Eugen." 
         medic "I admit this incident isn’t making me think straight. I shouldn’t have brought it up." 
-        voice "voice/sara/S1.012.mp3"
         medic "I understand it must be painful for you—"
 
         menu:
@@ -355,91 +306,71 @@ label start:
                 $ medApproval += 1
 
                 show captain concern-open behind medic
-                voice "voice/captain/C1.022.mp3"
                 captain "It’s okay, Sara. This is stressful for all of us."
 
                 show medic neutral
                 show captain concern-closed behind medic
-                voice "voice/sara/S1.013.mp3"
-                medic "This is true, I apologize for bringing it up."
+                medic "This is true. Still, I apologize for bringing it up."
 
             # SI.1.b
-            "It’s fine.":
+            "Don't do it again.":
                 $ medApproval -= 1
 
                 show captain anger-open behind medic
-                voice "voice/captain/C1.023.mp3"
                 captain "It’s fine. Just don’t do it again."
 
                 show medic stressed
                 show captain anger-closed behind medic
-                voice "voice/sara/S1.014.mp3"
                 medic "I’m sorry, Captain. I’ll just, um…"
 
         show captain neutral-open behind medic
-        voice "voice/captain/C1.024.mp3"
         captain "How about you go through your notes so far?"
-        voice "voice/captain/C1.025.mp3"
         captain "We could use any theories on what this specimen is and its properties."
 
         show medic excited
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.015.mp3"
-        medic "Yes, yes… I already have working hypotheses, though nothing exactly seems to work out perfectly at the moment."
+        medic "Yes, yes… I do have working hypotheses, though nothing exactly seems to work out perfectly at the moment. "
         
         show medic nervous
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.016.mp3"
-        medic "I should work harder…"
+        medic "I should be working harder…"
 
         show captain concern-open behind medic
-        voice "voice/captain/C1.026.mp3"
         captain "Sara, you’re already working very hard."
-        voice "voice/captain/C1.027.mp3"
         captain "You’re the best in the field. Remember; it’s why we have you on this mission."
 
         show medic neutral
         show captain concern-closed behind medic
-        voice "voice/sara/S1.017.mp3"
         medic "Thank you, Captain. I can’t overstate how much this mission means to me."
         show medic excited
         show captain concern-closed behind medic
-        voice "voice/sara/S1.018.mp3"
         medic "This—this specimen we’ve found is the holy grail of astrobiology."
 
         show captain neutral-open behind medic 
-        voice "voice/captain/C1.028.mp3"
-        captain "And that’s exactly why I need you to tell us what we’re dealing with here."
-        voice "voice/captain/C1.029.mp3"
-        captain "I’m counting on you Sarah."
-        voice "voice/captain/C1.030.mp3"
+        captain "And that’s exactly why you must continue your work."
+        captain "I’m counting on you Sara. Here, I’ve brought you the most recent readings on the specimen."
         captain "We’ll get the system back up one way or another."
 
         # SI.2
         show medic stressed
         show captain neutral-closed behind medic
-        voice "voice/sara/S1.019.mp3"
-        medic "But my research is in the system. How long will it take?" 
-        voice "voice/sara/S1.020.mp3"
-        medic "All I have to work with is my journal." 
-        voice "voice/sara/S1.021.mp3"
-        medic "I-if this takes a long time, what am I supposed to do?"
+        medic "Thank you for the report Captain, but the rest of my research and reference materials are in the system." 
+        medic "How long will it take?" 
+        medic "How am I supposed to keep working if it takes too long?"
         
         show medic nervous
         show captain neutral-closed behind medic
 
         menu:
             # SI.2.a
-            "You can figure it out.":
+            "Figure it out.":
                 $ medApproval -= 1
                 
                 show captain anger-open behind medic
-                voice "voice/captain/C1.031.mp3"
                 captain "Figure it out. That’s an order."
 
                 show medic stressed
                 show captain anger-closed behind medic
-                voice "voice/sara/S1.022.mp3"
                 medic "O-of course Captain."
 
             # SI.2.b
@@ -447,21 +378,20 @@ label start:
                 $ medApproval += 1
                 
                 show captain neutral-open behind medic
-                voice "voice/captain/C1.032.mp3"
                 captain "I can’t say for sure, but I’ve seen you work with less before."
-                voice "voice/captain/C1.033.mp3"
                 captain "I expect you’d gain more insight once you study your notes. I have faith in you."
 
                 show medic neutral
                 show captain neutral-closed behind medic
-                voice "voice/sara/S1.023.mp3"
                 medic "I won’t let you down!"
+        
+        captain "Try not to move around too much. Oxygen’s at a premium right now."
+        captain "I’ll be back to check in later."
 
         if seenEI is False:
             menu: 
                 "Speak to Eugen":
                     show captain neutral-closed behind medic
-                    voice "voice/captain/C1.017.mp3"
                     captain "I should speak to Eugen now. He’ll probably know what’s happening."
                     jump EI
 
@@ -477,41 +407,31 @@ label start:
         show captain neutral-closed behind engineer with dissolve
 
         show captain neutral-open behind engineer
-        voice "voice/captain/C1.034.mp3"
         captain "How’re you holding up Eugen?"
 
         show captain neutral-closed behind engineer
-        voice "voice/eugen/E1.003.mp3"
         engineer "As well as one can, given the circumstances." 
-        voice "voice/eugen/E1.004.mp3"
         show engineer thinking
         engineer "May we skip the pleasantries? I dislike small talk." 
-        voice "voice/eugen/E1.005.mp3"
         show engineer neutral
         engineer "I’m sure Sara would appreciate it more."
 
         show captain neutral-open behind engineer
-        voice "voice/captain/C1.035.mp3"
         captain "Got it... Straight to the point then. Report."
 
         show engineer thinking
         show captain neutral-closed behind engineer
-        voice "voice/eugen/E1.006.mp3"
         engineer "Captain, the situation is not ideal. There appears to be a system failure on a magnitude I’ve never seen."
-        voice "voice/eugen/E1.007.mp3"
         engineer "I am looking into it, however, little progress is being made."
-        voice "voice/eugen/E1.008.mp3"
         engineer "At the rate we’re losing oxygen, I estimate that we have approximately one hour."
         
         show engineer neutral
         show captain frustrated behind engineer
-        voice "voice/captain/C1.036.mp3"
-        captain "Shit… Well there goes my hope for any good news."
+        captain "Damn… Well there goes my hope for any good news."
 
         # EI.1
         show engineer thinking
         show captain neutral-closed behind engineer
-        voice "voice/eugen/E1.009.mp3"
         engineer "Is there any information you can provide? Do you know what might have caused this?"
 
         menu:
@@ -519,14 +439,12 @@ label start:
             "I’m not sure yet.":
                 $ engApproval -= 1
                 show captain thinking behind engineer
-                voice "voice/captain/C1.037.mp3"
                 captain "I’m not sure yet. I want to find out a bit more before I give any concrete answers."
 
                 # show engineer frustrated
                 # show captain thinking behind engineer
                 show engineer stressed
                 show captain thinking behind engineer
-                voice "voice/eugen/E1.010.mp3"
                 engineer "I urge you to produce any information as soon as possible. When you have something, please let me know."
 
             # EI.1b
@@ -534,39 +452,29 @@ label start:
                 $ engApproval += 1
 
                 show captain confusion-open behind engineer
-                voice "voice/captain/C1.038.mp3"
                 captain "The computer began to glitch after beginning a diagnostic."
-                voice "voice/captain/C1.039.mp3"
                 captain "It started reciting Walt Whitman before the entire system crashed."
 
                 show engineer neutral
                 show captain confusion-closed behind engineer
-                voice "voice/eugen/E1.011.mp3"
                 engineer "Can’t say I’ve ever heard of something like this; but, everything has a fix."
-                voice "voice/eugen/E1.012.mp3"
                 engineer "I’ll begin looking into this immediately."
         
         show engineer thinking
         show captain confusion-closed behind engineer    
 
-        voice "voice/eugen/E1.013.mp3"
         engineer "In the meantime, I’ve reviewed the oxygen depletion curve 3 times now."
-        voice "voice/eugen/E1.014.mp3"
         engineer "This is not a random failure. Something is interfering with the system's command execution."
 
-        show captain confusion-open behind engineer  
-        voice "voice/captain/C1.040.mp3"    
+        show captain confusion-open behind engineer   
         captain "What could possibly be interfering? Everything on this mission has been smooth thus far." 
-        voice "voice/captain/C1.041.mp3"
         captain "And why the whole system? A function or two, sure those might glitch and need maintenance." 
-        voice "voice/captain/C1.042.mp3"
         captain "But what the hell happened to MAD1?"
 
         # EI.2
         show engineer neutral
         show captain confusion-closed behind engineer
 
-        voice "voice/eugen/E1.015.mp3"
         engineer "We must stay focused, Captain. If we’re to correct this, we must proceed methodically."
 
         menu: 
@@ -574,35 +482,31 @@ label start:
             "Stand by.":
                 $ engApproval -= 1
                 show captain anger-open behind engineer
-                voice "voice/captain/C1.043.mp3"
                 captain "I am proceeding methodically... I need more information first."
-                voice "voice/captain/C1.044.mp3"
                 captain "Stand by for now."
 
                 show engineer stressed
                 show captain anger-closed behind engineer
-                voice "voice/eugen/E1.016.mp3"
                 engineer "As you wish, however, I urge you to think about this decision further."
             
             # EI.2b
             "Make haste.":
                 $ engApproval += 1
                 show captain confusion-open behind engineer
-                voice "voice/captain/C1.045.mp3"
                 captain "Make haste but proceed with caution." 
-                voice "voice/captain/C1.046.mp3"
                 captain "We don’t fully know yet what’s happening, but I trust you to make progress."
 
                 show engineer thinking
                 show captain confusion-closed behind engineer
-                voice "voice/eugen/E1.017.mp3"
                 engineer "Of course, the sooner we address this, the sooner the root of the problem will present itself."
+
+        captain "Work from your desk the best you can. I don't want us using more oxygen than we need to."
+        captain "I’ll be back when I have more to update."
 
         if seenSI is False:
             menu: 
                 "Speak to Sara":
                     show captain neutral-closed behind engineer
-                    voice "voice/captain/C1.016.mp3"
                     captain "I should speak to Sara. She’s probably freaking out right now."
                     jump SI
 
@@ -614,45 +518,36 @@ label start:
         show computer neutral-1 with dissolve
         show captain neutral-closed behind computer with dissolve
 
-        voice "voice/madi/M1.019.mp3"
         computer "Welcome back, Captain. Oxygen at 75%%."
 
         show captain neutral-open behind computer
-        voice "voice/captain/C1.047.mp3"
         captain "The Astrobiologist and Cosmotechnician both are on track now to find out what’s wrong with the ship."
         show captain frustrated behind computer
-        voice "voice/captain/C1.048.mp3"
         captain "And I guess you… Please don’t break on me again…"
         show captain concern-open behind computer
-        voice "voice/captain/C1.049.mp3"
         captain "How’s the ship doing MAD1?"
 
         show computer processing-1
         show captain concern-closed behind computer
-        voice "voice/madi/M1.020.mp3"
         computer "Assessing ship systems…"
         show computer processing-2
         show captain concern-closed behind computer
-        voice "voice/madi/M1.021.mp3"
         computer "Processi̶̒͜n̵͖̕ġ̷͍ġ̷͍ġ̷͍-"
 
         scene bg computer error
         show computer error-1
         show captain confusion-closed behind computer with hpunch 
-        voice "voice/madi/M1.022.mp3"
-        computer "Water, wả̵̳t̷̨̍e̴͚̔r̵̥̉, every where,
-                    And all the boards did shrink;
-                    Water, ẉ̸̢̟͑ͅą̷̓͝tĕ̵͈̗̆͒̚r̷̢̼͈͚̈́̐, eve̴̤̚r̷̈́y̴͉̌ ̵̦̈́ẁ̸̺h̵̻̿e̸͉̋ŗ̵̈́e̸̛̝,
-                    Nor a̴̞̓ǹ̷̢y̷̾ͅ ̵̡̐d̸̟̄ȓ̶̼o̷̻͒p̴̛̦ ̵̦̈́t̵̨͝ó̴̝ ̸̜͋d̸̝̑rī̶̻n̵̺̍ḱ̴͍."
+        computer "Water, wả̵̳t̷̨̍e̴͚̔r̵̥̉, every where,"
+        computer "And all the boards did shrink;"
+        computer "Water, ẉ̸̢̟͑ͅą̷̓͝tĕ̵͈̗̆͒̚r̷̢̼͈͚̈́̐, eve̴̤̚r̷̈́y̴͉̌ ̵̦̈́ẁ̸̺h̵̻̿e̸͉̋ŗ̵̈́e̸̛̝,"
+        computer "Nor a̴̞̓ǹ̷̢y̷̾ͅ ̵̡̐d̸̟̄ȓ̶̼o̷̻͒p̴̛̦ ̵̦̈́t̵̨͝ó̴̝ ̸̜͋d̸̝̑rī̶̻n̵̺̍ḱ̴͍."
         
         show captain confusion-open behind computer with hpunch 
-        voice "voice/captain/C1.050.mp3"
         captain "More poems? MAD1 I can’t lose you right now!"
 
         scene bg computer
         show computer reboot-1
         show captain confusion-closed behind computer
-        voice "voice/madi/M1.024.mp3"
         computer "Rebooting.{w=0.3}{nw}"
         show computer reboot-2
         computer "Rebooting.{w=0.3}{nw}"
@@ -663,43 +558,32 @@ label start:
         show computer reboot-5
         computer "Rebooting."
         show captain confusion-closed behind computer
-        voice "voice/madi/M1.023.mp3"
         show computer neutral-1
         computer "System functionality at 69%%." 
-        voice "voice/madi/M1.025.mp3"
         show computer neutral-2
         computer "Apologies, Captain. It seems my software is continuing to deteriorate." 
-        voice "voice/madi/M1.026.mp3"
         computer "Something is interfering with the ship systems and my code. I am unable to identify wha̸͇̋t̶̜̕" 
-        voice "voice/madi/M1.027.mp3"
         computer "Captain, I’m afraid my ability to assist you will be limited soon."
 
         show captain anger-open behind computer with hpunch
-        voice "voice/captain/C1.051.mp3"
         captain "Dammit! I can’t afford to have more things break down now."
-        voice "voice/captain/C1.052.mp3"
         captain "What am I supposed to do?"
 
         show computer neutral-3
         show captain anger-closed behind computer
-        voice "voice/madi/M1.028.mp3"
         computer "I suggest checking with the crew, Captain. 
             Perhaps they will have answers soon with your ss-ssupp̷̞̏-pǫ̸̊ȑ̸̨t̷͎̎t̷͎̎-t̷̠̆t̵̞̓t̴̘͑-"
 
         show computer error-1 with hpunch
         show captain anger-closed behind computer with hpunch 
 
-        voice "voice/madi/M1.029.mp3"
-        computer "The one by toi̷l̵, the other to comp̸̖̓l̴͎̀a̴̺͗ì̴̩n
-                    How far I t̴̡̃o̴̳͒i̶̥͋l̶̮̍, still farther ó̷̖ff f̵̲͒ȑ̷͉o̵̮̓m̴̮̌ ̶͓̈́t̷͎̑h̶̏e̶e̶̻̔."
+        computer "The one by toi̷l̵, the other to comp̸̖̓l̴͎̀a̴̺͗ì̴̩n"
+        computer "How far I t̴̡̃o̴̳͒i̶̥͋l̶̮̍, still farther ó̷̖ff f̵̲͒ȑ̷͉o̵̮̓m̴̮̌ ̶͓̈́t̷͎̑h̶̏e̶e̶̻̔."
 
         show computer error-2
         show captain concern-open behind computer
-        voice "voice/captain/C1.053.mp3"
         captain "... How far I toil, indeed."
-        voice "voice/captain/C1.054.mp3"
         captain "I hope one of them has found something."
-        voice "voice/captain/C1.055.mp3"
         captain "Hang in there MAD1."
 
         show captain thinking behind computer
@@ -720,7 +604,7 @@ label start:
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
-        medic "Captain, I have gone over my notes as requested. But first… can I know what is going on? What did Eugen say?"
+        medic "Captain! Any update on what’s going on? What did Eugen say?"
 
         # S.1.1
         show captain neutral-open behind medic
@@ -728,22 +612,24 @@ label start:
 
         menu: 
             # S.1.1a
-            "The situation is dire.":
+            "To be honest, the situation is dire.":
                 $ medApproval -= 1
                 show captain concern-open behind medic
                 captain "I have to be honest with you, Sara." 
                 captain "The situation is more dire than we thought. But I need you to remain calm."
+                medic "Oh my god… T-thank you for your honesty, Captain."
 
             # S.1.1b
-            "I have hopes we’d sort it out soon.":
+            "We'll sort it out soon.":
                 $ medApproval += 1
                 show captain neutral-open behind medic
                 captain "I have hopes that we will sort it out soon." 
-                captain "Thank you for fulfilling my request."
+                captain "Thanks for fulfilling my request."
+                medic "Okay, that’s good to hear! Yes, of course."
 
         show medic thinking
         show captain neutral-closed behind medic
-        medic "Yes, um, w-would you like to hear what my theory is?"
+        medic "Um, I’ve gone through my notes as requested, w-would you like to hear what my theory is?"
 
         show captain neutral-open behind medic
         captain "Enlighten me."
@@ -754,13 +640,13 @@ label start:
         medic "It’s uniquely adapted to the cold and dark of Europa’s ocean. "
         show medic excited
         show captain neutral-closed behind medic
-        medic "I’ve been thinking of life in Earth’s ocean, and the closest equivalent is a marine fungus. "
+        medic "I’ve been thinking of life in Earth’s oceans, and the closest equivalent is a marine fungus."
         show medic neutral
         show captain neutral-closed behind medic
         medic "However, the Earth's marine fungi are largely microscopic."
         
         show captain thinking behind medic
-        captain "It’s gotta be incredibly resilient to survive those conditions…"
+        captain "It’s got to be incredibly resilient to survive those conditions…"
 
         show medic explaining
         show captain thinking behind medic
@@ -778,6 +664,7 @@ label start:
         
         show captain neutral-open behind medic
         captain "He’s doing alright. He’s looking into the problem."
+        captain "And you? Are you holding up okay?"
 
         # S.1.2
         show medic nervous 
@@ -786,7 +673,7 @@ label start:
 
         menu: 
             # S.1.2a
-            "It’s a risk we signed up for.":
+            "This mission wasn't meant to be easy.":
                 $ medApproval -= 1
                 show medic thinking
                 show captain anger-open behind medic
@@ -811,7 +698,7 @@ label start:
                 show medic nervous     
                 show captain concern-closed behind medic                   
    
-        medic "Anyway, Now that we have this specimen, I absolutely must make it back home… I have to return to my family…" 
+        medic "Anyway, now that we have this specimen, I absolutely must make it back home… I have to return to my family…" 
 
         show captain neutral-open behind medic
         captain "What do you mean?"
@@ -829,7 +716,7 @@ label start:
         show captain concern-closed behind medic
         medic "I’m just a lone woman who’s devoted my life to the sciences." 
         medic "Not everyone views this life as ideal." 
-        medic "All the choices I’ve made and the work I’ve done… I’d be lying if I say that I hadn’t doubted it all."
+        medic "All the choices I’ve made and the work I’ve done… I’d be lying if I said that I hadn’t doubted it all."
         show medic thinking
         show captain concern-closed behind medic
         medic "But this discovery would change things. It’s worth everything, you know?"
@@ -845,39 +732,38 @@ label start:
 
         show medic nervous
         show captain neutral-closed behind medic
-        medic "But can MAD1 not figure out what is happening?"
+        medic "Doesn’t MAD1 usually deal with these kinds of issues? After all, she’s the reason we’re such a small team."
   
         show captain concern-open behind medic      
         captain "Actually… MAD1 is malfunctioning."
 
         show medic stressed
         show captain concern-closed behind medic
-        medic "Oh my god… It’s worse than I thought!"
+        medic "Oh my god… It’s worse than I thought…"
 
         show captain concern-open behind medic  
-        captain "Something is interfering with MAD1’s processes. We must keep focused."
+        captain "Something is interfering with MAD1’s processes. But we must keep focused."
         captain "I will let you know once we have something concrete."
 
         show captain concern-closed behind medic
-        medic "It’s just–two new crazy developments on this ship in such a short time!"
+        medic "It’s just… two new crazy developments on this ship in such a short time!"
 
         show medic thinking
         show captain concern-closed behind medic
-        medic "This amazing specimen and now this event...Everything is interconnected. I have a feeling we’re missing something."
+        medic "This amazing specimen and now this crisis… such a strange coincidence. I have a feeling we’re missing something."
 
         show captain thinking behind medic
-        captain "It is certainly interconnected. The survival of this specimen and our own are tied to the outcome of this crisis."
+        captain "I don’t generally trust coincidences. Not at a time like this."
 
         # S.1.3
-        medic "I-is there anything I can do to help?"
+        medic "I-is there anything else I can do to help?"
 
         menu: 
             # S.1.3a
             "Stay put while we sort this out.":
                 $ medApproval -= 1
                 show captain concern-open behind medic
-                captain "We’ll sort this out." 
-                captain "Stay calm and do whatever you can."
+                captain "Just stay put while we sort this out." 
 
                 show medic stressed
                 show captain concern-closed behind medic
@@ -910,7 +796,7 @@ label start:
         captain "Alright, shoot."
 
         show captain neutral-closed behind engineer
-        engineer "I’ve navigated through MAD1’s system to find the virus."
+        engineer "I have been navigating through MAD1’s system to find the interference."
         engineer "The core system architecture is… not a standard framework."
 
         show captain neutral-open behind engineer
@@ -923,8 +809,9 @@ label start:
 
         show captain confusion-open behind engineer
         captain "Can’t you normally manually bypass these things through administrative controls?"
-
-        engineer "This ship is not programmed to the industry standard."
+        engineer "Matthew built this differently"
+        captain "Isn’t there something in the programming language that you could find or use?"
+        engineer "This ship’s operating system has programming that is beyond the industry standard."
 
         show captain rememberance-open behind engineer
         captain "Right. He… liked things his own way."
@@ -946,7 +833,7 @@ label start:
                 engineer "I can’t say that's ideal; however, this does help with what needs to be looked into."
 
             # EI.1b
-            "I don’t know yet.":
+            "What are you implying?":
                 $ engApproval -= 1
 
                 show captain anger-open behind engineer 
@@ -955,7 +842,6 @@ label start:
                 show engineer stressed
                 show captain anger-closed behind engineer 
                 engineer "My only concern is accomplishing this mission with minimal complexities." 
-                engineer "If you have information, I’m only asking that you share."
 
         show engineer neutral
         engineer "Every time I attempt to reroute life support through the auxiliary control, the command is intercepted."
@@ -966,13 +852,14 @@ label start:
         show engineer thinking
         show captain concern-closed behind engineer
         engineer "There is a line of defence that, according to standard protocol, should not exist."
-        engineer "I’ve reviewed the ship's schematics. This layer of defence is handwritten."
+        engineer "I am aware that MAD1 was especially designed by Matthew to support a small crew."
+        engineer "But when I reviewed the ship's schematics, I noticed a layer of defence that is handwritten."
         engineer "Written in a way where the logic only makes sense to specific personnel."
 
         show captain thinking behind engineer 
         captain "… I see."
 
-        engineer "There is a lack of documentation, no engineering notes; it is the equivalent of a ghost layer in the system."
+        engineer "There is a lack of documentation, no engineering notes; it is the equivalent to a ghost layer in the system."
 
         show captain neutral-open behind engineer
         captain "Surely your — let’s say engineering intuition — can crack it though?"
@@ -998,6 +885,7 @@ label start:
                 show captain anger-open behind engineer
                 captain "Listen, I’m not a programmer." 
                 captain "He wouldn’t have shared anything like that with me."
+                engineer "As a Captain, I would have expected you to have more knowledge of your vessel's intricacies."
 
             # EI.2b
             "He really liked poetry.":
@@ -1006,6 +894,7 @@ label start:
                 show captain thinking behind engineer
                 captain "Matthew was a fan of poetry." 
                 captain "MAD1 recited another verse after I visited you last. There could be something in that."
+                engineer "That is very strange, but at least it is something."
 
         show engineer neutral
         engineer "I have been a part of many missions and projects where my life was on the line."
@@ -1026,7 +915,7 @@ label start:
         show engineer neutral
         show captain concern-closed behind engineer
         engineer "Under normal conditions, I could dismantle and rebuild any system on this vessel."
-        engineer "However, the only person who truly understood the depth of this architecture… was him."
+        engineer "However, the only person who truly understood the depth of MAD1’s architecture… was him."
 
         captain "…"
 
@@ -1037,7 +926,7 @@ label start:
 
         show engineer thinking
         show captain neutral-closed behind engineer
-        engineer "Eugen: Tell me something, Captain…"
+        engineer "Tell me something, Captain…"
         engineer "If Matthew were standing here instead of me… do you believe he would know what to do? "
         menu:
             # E1.3a
@@ -1049,6 +938,7 @@ label start:
                 captain "Just… figure something out."
                 
                 show captain anger-closed behind engineer
+                engineer "Not knowing if the designer himself could be able to solve this crisis is not a reassuring belief."
 
             # EI.3b
             "Yes.":
@@ -1060,6 +950,7 @@ label start:
                 captain "So get it together and figure it out." 
                 show captain neutral-closed behind engineer
                 captain "That’s an order."
+                emgomeer "That must mean there is a plausible solution. I will begin investigating."
 
         show engineer neutral
         show captain neutral-closed behind engineer
@@ -1077,7 +968,7 @@ label start:
         show computer neutral-1 with dissolve
         show captain frustrated behind computer with dissolve
 
-        captain "(sigh)"
+        captain "..."
 
         computer "Greetings, my̸̛̝̎ love̵̦͆͑̚ͅě̸̦͝͝e̸̘͋, Captain."
 
@@ -1125,7 +1016,7 @@ label start:
         computer "Oxygen at 50%%. Captain, it may be time to plan for the worst case scenario."
         show computer neutral-2
         show captain anger-closed behind computer
-        computer "You may want to consider who it would be best to give clearance for the escape pod."
+        computer "You may want to consider who it would be best to give clearance for the remaining escape pod."
         computer "The escape pod has capacity for only one person."
 
         show captain confusion-open behind computer
@@ -1146,10 +1037,11 @@ label start:
 
         show computer error-1 with hpunch
         show captain
-        computer "Ah! Well- a-day! what evil looks
-                Had thee from old and young!
-                Instead of the cross, the Albatross
-                About thy neck was hung."
+        computer "Ah! Well- a-day! what é̶̝v̵̬͋i̸͇͌l̷ looks"
+        computer "Had ẗ̵̯́hė̷̠e from o̴l̶d̶ ã̷̡n̷͎͛d̶̥̾ ̶̝̀y̷̫̓o̶͓̍ǔ̴͎n̵̞̾g̴̟͂!"
+        computer "Instead of the c̵̭̆r̷̫̃ó̶̩s̴͇̓ș̸̍, the A̷lb̴ã̵͓tŕ̵̫ó̴̞ss"
+        computer "About thy n̷ȅ̴̖ck̴ waŝ̸͎ ̶̥̇h̵̢̀u̶̧̓ǹ̶̼g̵͊ͅ."
+
         jump C1
 
     label C1:
@@ -1165,14 +1057,14 @@ label start:
             captain "Matthew died for this!"
 
         elif seenE1 is True:
-            captain "*sighs* Eugen’s right. Matthew would know what to do."
+            captain "... Eugen’s right. Matthew would know what to do."
             captain "If it wasn’t for that damn asteroid we wouldn’t even be here right now."
 
         captain "We can’t—I can’t fail now. Not when we’re so damn close."
         captain "God if I had him here with me this would—"
         captain "Matthew… What do I do..?"
         
-        captain "I… I could just leave right now… Be done with it… Be with him…"
+        captain "I… I could just leave right now… Be done with it…"
         menu:
             "Escape":
                 menu: 
@@ -1205,17 +1097,242 @@ label start:
 
     label Map2:
 
+    menu:
+            "Speak to Eugen":
+                jump E2 
+
+            "Speak to Sara":
+                jump S2
+
     label S2:
         $ seenE2 = False
         $ seenS2 = True
+        scene bg medic with fade
+        show medic neutral with dissolve
+        pause(0.5)
+        show captain neutral-closed behind medic with dissolve
+
+        show captain neutral-open behind medic
 
         if seenS1 is True:
             # S2.A
+            medic "Captain! Any update?"
+            captain "Still working on it."
+            medic "How much time do we really have? To solve this problem? T-the ship cannot possibly hold up this way for long?"
+
+            menu:
+                # S.2.1a
+                "It’s not looking good.":
+                    $ medApproval -= 1
+                    show captain concern-open behind medic
+                    captain "It’s not looking good at all, Sara. We might have to make difficult decisions… I want you to know that."   
+                    medic "I-I see…"
+
+                # S.2.1b
+                "There is always hope.":
+                    $ medApproval += 1
+                    show captain neutral-open behind medic
+                    captain "Things aren’t looking great at the moment. But there is always hope." 
+                    captain "We are all working hard to fix this. Let’s continue to do so."
+                    medic "Yes, yes, of course!"
+
+            show captain neutral-open behind medic    
+            captain "Sara, what have you found out about the specimen?"
+            medic "I-I have a theory. It’s exciting and concerning."
+            
+            menu: 
+                # S.2.2a
+                "Anything is better than nothing.":
+                    $ medApproval += 1
+                    show captain concern-open behind medic
+                    captain "Anything is better than nothing. I trust your judgment."
+                    medic "Thank you, Captain!"
+
+                # S.2.2b
+                "We need a little more than a theory.":
+                    $ medApproval -= 1
+                    show captain neutral-open behind medic
+                    captain "I was expecting a little more than a theory, to be honest…"
+                    medic "I-I’m sorry, but I’ve put quite a bit of thought into it."
+            
+            captain "Tell me your theory."
+
+            medic "I know I said this organism has similarities to a marine fungus, but it appears to be more complex."
+
+            captain "How do you mean?"
+
+            medic "You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
+
+            medic "My theory is that this organism may have a symbiosis with others in its ecosystem."
+
+            medic "This could be more developed than what we see on Earth, depending on hundreds of millions of years of evolution."
+
+            captain "Go on."
+
+            medic "This organism might have communication capabilities that we are unfamiliar with."
+
+            medic "I am not saying that this could be sentient, but Earth classifications can blur when we’re dealing with extraterrestrial life."
+
+            captain "A fungus on steroids? You were hoping for single-celled life in that ocean…"
+
+            captain "What kind of communication capabilities are we talking about here?"
+
+            medic "I mentioned this before–has it occurred to you that two incredible events have taken place in a short time span?"
+
+            medic "Us finding this specimen and now this crisis we’re facing!" 
+
+            medic "Hah, my family would associate something supernatural to this kind of coincidence…" 
+
+            captain "Sara, are you implying that this organism could have something to do with this?"
+
+            medic "Yes! That’s what I think we’ve been missing! This organism is probably emitting electromagnetic waves that are interfering with the computer!"
+
+            menu: 
+                # S.2.3a
+                "That does sounds far-fetched.":
+                    $ medApproval -= 1
+                    show captain concern-open behind medic
+                    captain "That does sound far-fetched. However, we must think of all possibilities."
+                    medic "Yes, indeed…" 
+
+                # S.2.3b
+                "There could be something there…":
+                    $ medApproval += 1
+                    show captain neutral-open behind medic
+                    captain "There could be something there… It could be the key to our survival. Find out all you can."
+                    medic "Yes, will do, Captain!"
+
+            captain "What do you think is the next step?"
+
+            medic "If my theory is right, then we need to think of containment."
+
+            captain "Work on it."
+
+            medic "Yes, Captain!"
+            jump M3
+
+        elif seenS1 is False:
+            # S2.B
             medic "Captain! Oh my god. What is happening!"
 
+            menu: 
+                # S.2.1a
+                "Sorry for not getting to you sooner.":
+                    $ medApproval += 1
+                    show captain concern-open behind medic
+                    captain "I’m sorry I couldn’t come talk to you sooner. I’ve been speaking with Eugen about this problem."
+                    medic "Oh, it’s okay. Good to hear you’re on top of it!"
 
-        else if seenS1 is False:
-            # S2.B
+                # S.2.1b
+                "Everything’s fine.":
+                    $ medApproval += 1
+                    show captain neutral-open behind medic
+                    captain "Everything’s fine. We’re sorting it out."
+                    medic "Okay then…"
+            
+            medic "What does Eugen say? Is he okay?!"
+
+            captain "Yes, he’s fine. He cannot offer anything concrete at the moment." 
+
+            captain "But I must tell you that MAD1 is malfunctioning. This complicates everything."
+
+            medic "Oh my god… Here I was thinking we would very much make it back home with this amazing discovery. And my family…"
+
+            captain "And we can! We still have hope." 
+
+            captain "I know you’re missing your family very much. We will get through this."
+
+            medic "It’s not just about that. It’s just… this is my one chance to prove that everything I’ve done– that it’s all worth it, you know?"
+            captain "Your previous achievements are more than average to say the least. Is that not enough?"
+            captain "Your family should be proud of you regardless of the outcome of this mission."
+
+            medic "I’m a lone woman who’s devoted my life to the sciences. Not everyone views that as ideal, to say the least."
+
+            captain "That’s not very fair."
+
+            medic "It's not, but taking this home would change my life in more ways than one… And now, I don’t know. We might not make it back."
+
+            captain "Focus Sara. Have you managed to come up with any theories about the specimen?"
+
+            medic "What? I-no, my research is in the computer! I’ve been reviewing my journal a-and the report you gave me but I’m losing my mind in here."
+
+            menu: 
+                # S.2.2a
+                "You know the drill.":
+                    $ medApproval -= 1
+                    show captain concern-open behind medic
+                    captain "You know the drill. Keep at it." 
+                    captain "Go through your notes and see what you can come up with."
+                    captain "I’m sure you’ll find something."
+                    medic "I-I’m sorry…"
+
+
+                # S.2.2b
+                "We’re counting on you.":
+                    $ medApproval += 1
+                    show captain neutral-open behind medic
+                    captain "Hey, we’re all losing our minds. It’s okay."
+                    captain "Please go through your notes and see what you can come up with." 
+                    captain "We’re counting on you."
+                    medic "Yes, yes, of course. T-thank you for believing in me, Captain."
+
+            captain "We’ve come this far. We cannot let everything go to waste."
+
+            medic "I know… I know it more than anyone. This mission is everything to me."
+
+            captain "It is to all three of us…"
+
+            medic "… I’ll do what I can… Would you like to hear what I’ve come up with so far?"
+
+            medic "Although it’s all based on the limited notes I have here."
+
+            captain "Anything would be useful at this point."
+
+            medic "Captain, this organism is very much extraterrestrial, but if we are to compare it to an Earth organism, it bears some resemblance to a marine fungus." 
+            medic "However…"
+
+            captain "Yes?"
+
+            medic "It appears to be more complex. You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
+
+            medic "My theory is that this organism may have a symbiosis with others in its ecosystem."
+
+            medic "This could be more developed than what we see on Earth, depending on hundreds of millions of years of evolution."
+
+            captain "Go on."
+
+            medic "This organism might have communication capabilities that we are unfamiliar with."
+
+            medic "I am not saying that it is sentient, but Earth classifications can blur when we’re dealing with extraterrestrial life."
+
+            captain "A fungus on steroids? And here we were hoping for single-celled life in that ocean…"
+
+            captain "What kind of communication capabilities are we talking about here?"
+
+            medic "I’m not sure, Captain… But has it occurred to you that two strange events have taken place in such a short period of time?"
+
+            medic "Hah, my family would associate something supernatural to this kind of coincidence…"
+
+            captain "Sara, are you implying that this organism could have something to do with this?"
+
+            medic "All I’m saying is anything is possible! But think about it! This may be the link we’re missing!"
+
+            menu: 
+                # S.2.3a
+                "That does sound far-fetched.":
+                    $ medApproval -= 1
+                    show captain concern-open behind medic
+                    captain "That does sound far-fetched. But investigate any and all possibilities."
+                    medic "Yes, of course."
+
+                # S.2.3b
+                "There could be something there…":
+                    $ medApproval += 1
+                    show captain neutral-open behind medic
+                    captain "There could be something there… It could be the key to our survival."
+                    captain "Find out all you can."
+                    medic "Will do, Captain!"
+            jump M3
 
     label E2:
         $ seenE2 = True
@@ -1223,19 +1340,278 @@ label start:
 
         if seenE1 is True:
             # E2.A
+            scene bg engineer with fade
+            show engineer neutral with dissolve
+            pause(0.5)
+            show captain neutral-closed behind engineer with dissolve
 
-        else if seenE1 is False:
+            captain "Eugen."
+            engineer "Good, I was about to come find you myself. The situation has reached far too unstable a state."
+            engineer "The defense layer I mentioned earlier, it has evolved."
+            captain "I- evolved..?"
+            engineer "Before, it was only intercepting my commands; now it seems to be anticipating them."
+            engineer "I have never seen this level of adaptation in a system, in a recursive structure."
+            engineer "I attempted the auxiliary reroute with more advanced methods; however, it locked me out of two additional subsystems in response."
+            captain "Eugen, you’re saying a lot of words and I’m following none of them."
+            engineer "Imagine trying to play a trick on someone reading your mind."
+            captain "So following that metaphor, it’s as though it’s seeing you trying to read it, so it’s trying to give you fake thoughts?"
+            engineer "Somewhat, yes."
+            engineer "I know I’ve asked you about Matthew’s work before; however, as of right now, there is no other outlet of information I could hope for."
+
+            engineer "Did he ever share any hypothetical situations about failing a mission and how he would respond, maybe about what the ship should protect first?"
+            engineer "Anything, Captain, anything."
+
+            menu: 
+                # E.2.1a
+                "He didn’t plan on failing.":
+                    $ engApproval += 1
+                    show captain concern-open behind engineer
+                    captain "He didn’t plan on failing. I’m sure you can understand that."
+                    captain "Even so, a failsafe wouldn’t be obvious or easy to access."
+                    engineer "I admire his confidence; however, planning for failure is almost as important as expecting to succeed."
+
+                # E.2.1b
+                "Your guess is as good as mine.":
+                    $ engApproval -= 1
+                    show captain neutral-open behind engineer
+                    captain "Your guess is as good as mine."
+                    engineer "I would like to believe that isn’t true, considering your role for this mission."
+            
+            engineer "I noticed poetry being produced by the computer at times."
+            captain "Yes, MAD1 has been reciting it since the initial crash."
+            engineer "Seeing as this is not even standard for a system error, I investigated it."
+            captain "And?"
+            engineer "It seems they are not decorative artifacts, fortunately."
+            engineer "They are actually embedded in conditional branches with certain verses correlating with security escalations."
+            captain "So there is something in the poetry after all?"
+            captain "... Unfortunately… My grasp of poetry isn’t as strong as his…"
+            engineer "I have to say, if I had known this was what was to be expected working with this ship, I would not have agreed to participate in this mission."
+            captain "It was either this or risking another massive crew like the last mission."
+            captain "MAD1 may be… experimental… but she passed all the necessary tests."
+            captain "None, and I mean none of us expected any of this."
+            engineer "Anyhow, this is not necessarily corruption; rather, it seems to be symbolic indexing."
+            engineer "Assuming this is how the ship is programmed, it is safe to assume Matthew preferred to do things his own way."
+            captain "Told you."
+
+            engineer "I need to ask you, was this really just an aesthetic deviation, or did he believe conventional protocol was fundamentally flawed?"
+            engineer "If the system is operating on his philosophy rather than industry standards, then I am troubleshooting a worldview, not a machine."
+
+            menu: 
+                # E.2.2a
+                "This OS was his baby.":
+                    $ engApproval += 1
+                    show captain concern-open behind engineer
+                    captain "This operating system was his baby, his pride and joy."
+                    captain "It was made perfectly - in his eyes, to his touch."
+                    engineer "So that means this could be beyond our understanding, and potentially, some ulterior methods must be considered."
+
+                # E.2.2b
+                "He was my husband, not my clone.":
+                    $ engApproval -= 1
+                    show captain neutral-open behind engineer
+                    captain "Matthew Pratchett was my husband, not my clone."
+                    captain "I don’t know every possible thought that was going through his head, Braun."
+                    engineer "Choosing to use his vessel for this mission was a decision you made; at the very least, I’d hope you knew enough about it to offer some insight."
+
+            captain "I don’t think he intended for it to be captained by anyone other than him."
+            captain "But no one else has programmed a system quite like his that’s necessary for a mission like this."
+            engineer "There is something else you need to understand."
+            captain "Enlighten me."
+            engineer "While I have been trying to stabilize our life support, the background processes have been reallocating power autonomously."  
+            captain "Reallocated where?"
+            engineer "Containment integrity is being reinforced, data preservation protocols are preserved, and the specimen’s environmental chamber has not dropped past optimal range even once."
+            engineer "All while our life support has been steadily dropping. This doesn’t appear to be a malfunction; this seems to be prioritization."
+
+            engineer "Let me ask you this very clearly, Captain, when Matthew designed this system, did he ever imply that the discovery outweighed the lives involved in its recovery?" 
+            engineer "If he did, then rest assured the ship is behaving exactly as it was programmed to."
+
+            menu: 
+                # E.2.3a
+                "Stop asking about him.":
+                    $ engApproval -= 1
+                    show captain concern-open behind engineer
+                    captain "Stop. Asking. About him."
+                    captain "He’s not- … He wasn’t an idiot."
+                    captain "He wouldn’t have prioritised the mission over the crew’s survival, not even his own."
+
+                # E.2.2b
+                "He was pragmatic.":
+                    $ engApproval += 1
+                    show captain neutral-open behind engineer
+                    captain "Matthew was certainly a creative idealist, but he was also very pragmatic."
+                    captain "He wouldn’t have prioritised the mission over the crew’s survival, not even his own."
+            
+            captain "Which means the ship is not supposed to act this way, something’s interfering."
+            captain "I’ll go see if MAD1 is still acting up or if I can glean anything from her."
+            engineer "It is worth noting that there is a way of overriding MAD1 completely; however, this will completely shut the system down, and you will have to take full control of the ship."
+            engineer "I discovered this failsafe while digging through the ship's schematics further."
+            engineer "I would consider this a last resort option, one that defies protocol entirely."
+            jump M3
+
+        elif seenE1 is False:
             # E2.B
+            scene bg engineer with fade
+            show engineer neutral with dissolve
+            pause(0.5)
+            show captain neutral-closed behind engineer with dissolve
+
+            engineer "Captain… you finally decide to pay a visit."
+            captain "Yes, I was speaking to Sara."
+            captain "Report."
+            engineer "I hope she was able to offer some valuable insight on the specimen."
+            engineer "I have been isolating the corrupted pathways since this whole mess started."
+            engineer "At 20%% deviation, it was manageable, nothing I haven’t dealt with before."
+            engineer "At 35, it became anomalous."
+            engineer "At 45, it became clear that what was happening was intentional with the programming of the ship."
+            engineer "I needed more information half an hour ago, so I can only hope you come to me with some information about the ship."
+
+            engineer "Were you gathering information, or were you hoping this would resolve itself without much involvement from you?"
+
+            menu: 
+                # E.2.1a
+                "I don’t have much…":
+                    $ engApproval -= 1
+                    show captain concern-open behind engineer
+                    captain "I don’t have much, but MAD1 is still reciting poetry. And incorrectly at that."
+                    captain "She keeps replacing words or misplacing lines."
+                    captain "I’m sorry I don’t have anything concrete."
+                    engineer "Hmm… Disappointing."
+
+                # E.2.1b
+                "For your information…":
+                    $ engApproval += 1
+                    show captain neutral-open behind engineer
+                    captain "For your information, Technician Braun, I have been conferring with MAD1 and Sara to find a solution."
+                    captain "Sara is investigating the specimen to see if it’s affecting anything."
+                    captain "And MAD1 is still reciting different poems."
+                    captain "And they’re not even correct! Sometimes the words are changed or lines are misplaced."
+                    captain "I hope you can forgive the lack of specificity when all I’m getting are damn riddles."
+                    engineer "Apologies Captain…"
+            
+            engineer "By my calculations, there is only 50%% of our oxygen supply remaining."
+            captain "Oh I am well aware…"
+            engineer "Only now do you decide to meet with the Engineer you have on board."
+            captain "I apologise for not being able to juggle with one hand tied behind my back."
+            engineer "... I have been trying to access the auxiliary core for the past half hour without any structural access provided to me."
+            engineer "Every override attempt is intercepted, every reroute collapses… The system doesn’t seem to be failing, rather the opposite - it’s seemingly defending itself."
+
+            engineer "The only reason I believe makes sense is that Matthew designed it this way on purpose."
+            engineer "Is there anything you know about Matthew’s work? Anything he trusted you with that could help me?"
+            engineer "If so, now is the time to share."
+
+            menu: 
+                # E.2.2a
+                "He was a fan of poetry.":
+                    $ engApproval += 1
+                    show captain concern-open behind engineer
+                    captain "Matt… was a fan of poetry. Given MAD1’s clearly also become a big fan, there’s definitely something in there."
+                    engineer "I appreciate your transparency. I’ll begin investigating possible patterns in the system."
+
+                # E.2.2b
+                "He was the programmer, not me.":
+                    $ engApproval -= 1
+                    show captain neutral-open behind engineer
+                    captain "If he had any programming secrets, he didn’t share them with me. I’m not exactly a programmer."
+                    engineer "I’d imagine, as the Captain and someone who knew Matthew closely, you’d have more to share. We’ll have to make-do I suppose."
+
+            engineer "I seldom thought a task could not be resolved through following protocol; however, it seems now my beliefs have been debunked."
+            engineer "While the auxiliary core is still responsive to a certain extent, there is not enough to be optimistic about."
+            engineer "Matthew embedded what seems to be decision filters that only respond to specific authority signatures."
+            engineer "Another example of not adhering to standard protocol."
+            captain "He absolutely liked things his own way, that’s for sure."
+
+            engineer "Given this, I want to ask you, Captain, in this chain of command we have, have we been operating on procedure, or his preference?"
+
+            menu: 
+                # E.2.3a
+                "To hell with your procedures.":
+                    $ engApproval += 1
+                    show captain concern-open behind engineer
+                    captain "To hell with your procedures and to hell with my dead husband’s preferences."
+                    captain "We’ve been dealt a shitty hand and we’re trying not to die."
+                    captain "So stop looking at it like a formula and start looking at it like a puzzle and crack it."
+                    captain "That’s an order, Braun."
+                    engineer "Although unconventional, you may be right. This mess should be viewed as a puzzle of some sort."
+                    engineer "Hmm…"
+
+                # E.2.3b
+                "I’m just as confused as you are.":
+                    $ engApproval -= 1
+                    show captain neutral-open behind engineer
+                    captain "Listen, I’m just as lost and confused as you are."
+                    captain "But if we want to figure this out, we have to do the best we can with the cards we are dealt."
+                    captain "I’ll return shortly."
+                    engineer "I’ve never been a gambling man, Captain. At this rate, I don’t suggest you return with high hopes."
+            
+            engineer "So long as my equipment is being used for this mission, I am determined to make it back in one piece."
+            engineer "We have seen it in action. My design is flawless and deserves recognition."
+            engineer "For the sake of my life’s work, this mission cannot fail."
+            engineer "I’ll investigate the unconventional options we have, considering the mess we are dealing with."
+            captain "Good, I’ll speak with you shortly."
+            jump M3
 
     label M1O:
         # M.1.O optional MAD1
 
     label M3:
-        
+        scene bg computer with fade
+
+        show computer neutral-1 with dissolve
+        show captain neutral-open behind computer with dissolve
+
+        computer "Cap̴-̶ ̵C̴͂͜ä̴͎́p̸̪͒-̵̺̀ ̷͇͐ Ċ̷̯a̶̭͊p̴̹̆t̶̡̐a̸̬̓ï̴̬n."
+
+        captain "… MAD1?"
+
+        computer "We meet in an e̷̯͂̉v̸̜͘ị̶̃l̵͕̆̾ land"
+        computer "That is near to the gates of h̵̫̃ẹ̶͑l̶͚̿l̵͍̀."
+        computer "And I guard thy g̷̺̏ā̸͜t̴̬͝ē̴̼ŝ̷͓ ̴̹̎i̷͒͜n̸̼̿ ̷̜̂f̵̰͝ē̵̟a̵͕̾r̷̯̃ "
+        computer "Of wȯ̵̰r̸̥̃d̴s thou cansť̷͔ n̵͉͐o̵̖͌t̸͈̀ ̵͔̎h̸͈͋ȩ̷̽a̸̙̚r̸̩̆,"
+        computer "Oh L̶o̸͈͌ve̸̤̽, the flower̴s̶͊s̵̠̀ô̸̼ r̸͖̂ȅ̶͉d̵͕̀ "
+        computer "Are only tongues of flame,"
+        computer "The eå̸͕rth̷͇̒ is full of the d̸é̵͚a̵d̸͎̀, "
+        computer "There is daǹ̶̳ger̷͉͌ beṅ̴eȁ̵͚th̷͖͆ ă̴ń̷̩d o'erh̴̗̔e̷͖͐ả̷̭d̶̢́."
+
+        captain "What? What other danger?"
+        captain "What are you trying to tell me?"
+
+        computer "There pă̸s̴͎̀sed̷͚̃ a weary time. Each t̵h̴r̶o̷a̷t̶ "
+        computer "Was parched, and glazed each eye."
+        computer "A ẃ̸̳e̴ary̷̙͑ time! a ẃ̸̳eary time!"
+        computer "How glazed each ẃ̸̳e̴ary̷̙͑ eye,"
+        computer "And may there be no s̸a̷d̶n̷e̴s̸s̴ ̴o̶f̵ ̸f̵a̶r̷e̵w̶e̴l̵l̷ "
+
+        captain "Farewell…"
+        captain "No…"
+        captain "Why…"
+
+        computer "Let the bell toll! — A sai̵n̶t̵̩̀ly̵ s̴ŏ̴̹ú̴̼l"
+        computer "Glides down the Sty̷g̴ian̷̩̊  ri̴v/er!"
+        computer "And let the burial rite be read —"
+        computer "The f̵ủ̵͇n̷̩̒e̸̗͑ř̵͍á̴̪l song be sung —"
+        computer "A d̵ȉ̴̦ŕ̵͙g̵̛͙e̶ for the most l̶o̸vely de̸̱̒a̶̧̔d̶̗̚ "
+        computer "That ever died so young!"
+        computer "And, C̸͈̊ā̷̧p̴̻͛t̷̬͐a̵̭̒i̷̞͒n̴̖͗ whom I revere,"
+        computer "H̷̢̽a̴̛̭s̷͓͂ť̷̻ ̶̯̂t̶̢̎ẖ̸͘o̴͈̎ù̵̹ ̴̣̒n̷͍͘o̸̬̓ ̴͚̚t̷͈̑e̶͔͘ă̴̲ȑ̷̜?̸̣̿ "
+        computer "Weep now or nev̵e̷r̷m̷õ̸̬re!"
+
+        captain "I… I uh…"
+        jump C2
 
     label C2:
         # Captain breakdown
 
+        scene bg escape pod with fade
+
+        captain "What the hell am I supposed to do…" 
+        captain "Matthew… I’m so sorry…"
+        captain "I promised! I promised you I’d finish this for you…"
+        captain "But I… I don’t know what to do!"
+        show bg escape pod with hpunch
+        captain "God damnit!"
+        captain "…"
+        captain "… I’m wasting oxygen with my outbursts…"
+        captain "I need to fix MAD1. Otherwise only one of us lives…"
 
     label S3:
         $ seenE3 = False

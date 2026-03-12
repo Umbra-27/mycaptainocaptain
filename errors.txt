@@ -2,9 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1182: expected 'label_name' not found.
-    jump "No, I can't leave."
-        ^
+File "game/script.rpy", line 1588: unterminated string literal
+    computer "Let the bell toll! — A sai̵n̶t̵̩̀ly̵ s̴ŏ̴̹ú̴̼l
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Mar  2 23:40:13 2026
+Thu Mar 12 14:44:41 2026
