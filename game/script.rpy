@@ -1226,7 +1226,7 @@ label start:
 
             captain "But I must tell you that MAD1 is malfunctioning. This complicates everything."
 
-            medic "Oh my god… Here I was thinking we would very much make it back home with this amazing discovery. And my family…"
+            medic "Oh my god… Here I was thinking we would very much make it back home with the specimen. And my family…"
 
             captain "And we can! We still have hope." 
 
@@ -1448,8 +1448,8 @@ label start:
             engineer "I have been isolating the corrupted pathways since this whole mess started."
             engineer "At 20%% deviation, it was manageable, nothing I haven’t dealt with before."
             engineer "At 35, it became anomalous."
-            engineer "At 45, it became clear that what was happening was intentional with the programming of the ship."
-            engineer "I needed more information half an hour ago, so I can only hope you come to me with some information about the ship."
+            engineer "At 45, it became clear that what was happening was intentionally programmed into the ship."
+            engineer "I needed more information half an hour ago, so I can only hope you come to me with an update about the ship."
 
             engineer "Were you gathering information, or were you hoping this would resolve itself without much involvement from you?"
 
@@ -1576,7 +1576,7 @@ label start:
         computer "How glazed each ẃ̸̳e̴ary̷̙͑ eye,"
         computer "And may there be no s̸a̷d̶n̷e̴s̸s̴ ̴o̶f̵ ̸f̵a̶r̷e̵w̶e̴l̵l̷ "
 
-        captain "Farewell…"
+        captain "Farewell..?"
         captain "No…"
         captain "Why…"
 
@@ -1626,7 +1626,79 @@ label start:
         show captain neutral-closed behind medic with dissolve
 
         medic "Captain! Oh my god, I can’t tell you how happy I am to see you!"
+        medic "What’s happening now? How much time do we have?"
 
+        menu:    
+            # S.3.1a
+            "Our survival rests on you, Sara.":
+                show captain neutral-open behind medic
+                captain "Not much time…"
+                captain "Our survival rests on you, Sara. Your solution."
+                medic "T-that’s a lot of pressure, Captain! I-I’ve done what I can…"
+
+            # S.3.1b
+            "No time. But first, how are you holding up?":
+                $ medApproval += 1
+                show captain concern-open behind medic
+                captain "There’s no time. But before I ask you what you’ve come up with, how are you doing?"
+                medic "T-that’s very nice of you to ask… Not good, but I’m doing my best!"
+                captain "Thank you for all you’ve done up to this point. Your work might save us all."
+                medic "Thank you, Captain…"
+
+        
+        if medApproval = <5:
+            #S.3.A: Low Approval/Failure
+            medic "I’m very certain now that it’s the specimen emitting electromagnetic waves that are interfering with our systems."
+            captain "How certain?"
+            medic "95%%? In fact, I’m about to confirm it with a VLF detector. My theory is that it is using low frequency bursts as a form of threat response."
+            medic "It makes sense for it to be low frequency, since this organism’s natural habitat is water."
+            medic "And lower frequencies transmit better in water."
+            captain "I see…"
+            medic "It’s ironic, isn’t it? That this incredible discovery might just be the death of us."
+            captain "Sara, can you come up with a containment plan?"
+            medic "I-I don’t know! I don’t think so. There’s no time!"
+
+            if seenE3 is False:
+                medic "Even if Eugen has a solution to fix MAD1, without a way to shield the specimen, it will continue to damage the ship."
+                captain "So even if he’s figured out how to bypass the computer, we’re still screwed…"
+                captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
+                medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
+                captain "None of us could’ve foreseen this would happen."
+                captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
+                medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
+                
+            elif seenE3 is True:
+                captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
+                medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
+                captain "None of us could’ve foreseen this would happen."
+                captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
+                medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
+    
+        elif medApproval = 5+:
+            #S.3.B: High Approval/Success
+            medic "I have used a VLF detector and confirmed that the specimen is emitting low frequency electromagnetic waves."
+            medic "Lower frequencies transmit better in water, which is, of course, its natural habitat."
+            captain "I see…"
+            medic "It’s ironic, isn’t it? That this incredible discovery might just be the death of us."
+            captain "You’ve done well, Sara."
+            medic "Thank you. It wouldn’t have been possible if you didn’t believe in me all this time… But I fear we’re too late."
+            captain "We can block these emissions. We can–"
+            medic "Yes, I have looked into containment! But it won’t be easy. I don’t know–we might not have time!"
+            captain "Let me worry about that. Tell me what sort of containment?"
+            medic "Low-frequency EM waves are highly penetrative. We need specialized shielding, such as heavy steel plates."
+            medic "There are Nu metal sheets in the cargo hold that the bots are using to run repairs. It’s essentially graphene-based nanocomposites."
+            captain "That’s promising. You think it’d work?"
+            medic "Pretty sure. The bots are down though. We’d have to go to the cargo hold and use a laser cutter on the sheets."
+            medic "Then you’d have to build something of a cocoon around the specimen."
+            captain "Good. Things are grim but we need to try."
+            medic "Yes, yes, we need to!"
+
+            if seenE3 is False:
+                medic "I just hope Eugen has a solution for MAD1 and the ship… The damage that has been done cannot be reversed."
+                medic "If he hasn’t found a way to bypass the OS, I’m afraid we’re still doomed."
+                captain "I’ll go speak with him now, hopefully he’s found something out."
 
     label E3:
         scene onlayer screens
@@ -1637,6 +1709,95 @@ label start:
         show captain neutral-closed behind engineer with dissolve
 
         engineer "Captain, it is safe to say we are in our final moments on this ship." 
+        engineer "After trying to combat the system and its programming, nothing seems to be working in our favour."
+        engineer "In terms of possible solutions, I don’t see many that I can confidently give precedence to."
+        engineer "I have to ask, after everything we went through to get the specimen, are you willing to lose it all to survive, knowing that there is no guarantee in that result as well?"
+
+        menu: 
+        # E.3.1a
+            "Whatever it takes.":
+                show captain neutral-open behind medic
+                captain "Whatever it takes."
+                engineer "I see."
+
+            # E.3.1b
+            "Not happy about it, but yes.":
+                $ engApproval += 1
+                show captain concern-open behind medic
+                captain "It feels like it was for nothing, like I’ve failed."
+                captain "But I’m not prepared to sacrifice my crew."
+                engineer "I share your frustrations, captain."
+
+        engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
+        engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
+
+        if engApproval = <5:
+            #E.3.A: Low Approval/Failure
+            engineer "10%% oxygen left. 10%%..."
+            captain "Please tell me you have good news."
+            engineer "The systems no longer resisting me… it doesn’t have a reason to."
+            engineer "Primary life support has entered terminal degradation."
+            captain "That’s not good news…"
+            engineer "The little power we had left, I rerouted."
+            captain "God damnit…"
+            engineer "Navigation is gone. Auxiliary is gone. Containment is still stable… Of course it is."
+            engineer "My entire career was spent believing that if something failed, it was because it was poorly built."
+            engineer "This system was built exceptionally well, regardless of its unorthodox methods; it just wasn’t built well for us."
+            captain "Any success overriding it?"
+            engineer "I cannot override anything anymore without triggering a complete system failure that would serve no purpose besides ending this immediately."
+            engineer "This system has bested me, nothing I tried worked, I did everything right… everything."
+
+            if seenS3 is False:
+                engineer "If Sara has managed to isolate the specimen, I am afraid it is still in vain."
+                engineer "I hope she is not too disappointed in my lack of contribution."
+                captain "At the moment you’re disappointing no one but yourself."
+                captain "You can’t blame yourself. Like you said, it wasn’t made for us."
+                engineer "So this is what remains, a final countdown."
+                captain "Thank you for your service, friend."
+                captain "As long as the specimen is brought home, this mission wouldn’t be for nothing."
+                captain "As for whether or not it’s a failure, you tell me, Eugen."
+                engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
+                engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
+                engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
+                captain "Your equipment and your work was flawless. All will see that."
+                engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
+
+            elif seenS3 is True:
+                captain "You can’t blame yourself. Like you said, it wasn’t made for us."
+                engineer "So this is what remains, a final countdown."
+                captain "Thank you for your service, friend."
+                captain "As long as the specimen is brought home, this mission wouldn’t be for nothing."
+                captain "As for whether or not it’s a failure, you tell me, Eugen."
+                engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
+                engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
+                engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
+                captain "Your equipment and your work was flawless. All will see that."
+                engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
+
+        elif medApproval = 5+:
+        #S.3.B: High Approval/Success
+            engineer "10% oxygen left. 10%..."
+            engineer "The system is no longer resisting me… it doesn’t have a reason to."
+            engineer "Primary life support has entered terminal degradation."
+            captain "Please tell me you have good news."
+            engineer "The little power we had left, I rerouted. We have roughly 3 minutes left."
+            captain "That’s not good news…"
+            captain "What’s the plan for protocol?"
+            engineer "To hell with protocol, this system is clearly beyond following traditional procedures."
+            engineer "We have to consider our last resort; we need to override MAD1 manually, and you need to take control of this ship."
+            captain "What?"
+            engineer "I’m sure Sara gave you enough information on the specimen for you to understand this is beyond conventional solutions."
+            engineer "I cannot override anything anymore without triggering a complete system failure that would serve no purpose besides ending this immediately."
+            engineer "To override MAD1 you have to go to the control room; there is a security door locked inside; only you can enter with your personnel badge."
+            engineer "In the room, you’ll find the system override lever. Once you pull that, you’ll have to take complete control of the ship and navigate us yourself." 
+            engineer "While you control the ship, I’ll work to reallocate power to our life support, enough to make it back."
+            engineer "If all goes well, which I have my doubts, we will make it back, and the specimen will be properly contained so long as Sara has that under control." 
+            engineer "I have to note this is highly risky as we are no longer following the book."
+            engineer "I can’t say I’m confident the outcome will be good, but it’s our only choice." 
+            captain "Eugen, I trust your judgement immensely."
+            captain "If this is our best last resort, so be it."
+            engineer "This is what remains, a final countdown. Please tell me you will make the right decision and save this mission."
+            captain "You have my word."
 
     label M2O:        
         # M.2.O optional MAD1
@@ -1657,6 +1818,7 @@ label start:
     # ENDINGS
     label EndB:
         # Bad ending: Captain abandons ship
+
 
     label EndC:
         # Captain leaves with specimen 
@@ -1690,11 +1852,97 @@ label start:
         #show text "Whose beard with age is hoar," with dissolve
         #show text "Is gone." with dissolve
 
+        captain "Captain’s log, September 27th."
+        captain "The specimen has safely returned with me to Earth."
+        captain "Further investigations will commence soon. I think… I uh… I…"
+        captain "I-I’ve failed…"
+        captain "I’ve killed my crew members…"
+        captain "What kind of Captain am I?"
+        captain "I’ve come home with the specimen… but at what cost..?"
+        captain "I’m sorry, Sara…"
+        captain "I’m sorry, Eugen…"
+        captain "I-I’m sorry, Matthew…"
+        captain "What have I done?"
+
+        # During credits
+
+        engineer "Father. It seems our name will no longer be held in esteem."
+        engineer "My design was flawless. Perfect. However, that fact will be cast aside."
+        engineer "To think this is how it ends. A failure I die for."
+        engineer "The Captain is gone with the specimen; he will likely be considered a hero, a visionary."
+        engineer "And the name Eugen Braun will be forgotten."
+
+        medic "You’ve been a brilliant captain and a friend. I may be no more, but I’m happy that you survive and my work survives."
+        medic "I wish I could see my family–their faces if I returned home successful. I never will see that."
+        medic "It’s painful…I never thought I’d go this way."
+
+        computer "Under the wide and starry sky,"
+        computer "Dig the grave and let me lie."
+        computer "Glad did I live and gladly die,"
+        computer "And I laid me down with a will."
+        computer "This be the verse you grave for me:"
+        computer "Here he lies where he longed to be;"
+        computer "Home is the captain, home from sea,"
+        computer "And the lover lost to the hill."
+
     label EndE:
         # Eugen leaves with specimen 
-    
+
+        engineer "All has come to an end, and the mission is behind me."
+        engineer "However, I can’t stop thinking if it was truly the best outcome for me being saved."
+        engineer "I accepted the mission to prove my drill; my design is flawless; however, I left it behind."
+        engineer "What does my future as an engineer entail? I will never be rid of the memory of my failure, my design being lost in space."
+        engineer "Getting in that return pod is just another addition to my list of regrets."
+        engineer "I hope Sara and Rudy can forgive me."
+
+        # During credits
+
+        captain "Eugen deserves to go home. His tech is invaluable."
+        captain "At least Sara isn’t alone during our last moments."
+        captain "Matthew… My love…"
+        captain "I’ll see you soon, amongst the stars…"
+
+        medic "It’s good that I die with a friend by my side."
+        medic "Looking back, it’s ironic that I found the validation I sought all my life not from my family but from a stranger amongst the stars."
+
+        computer "Exult O stars, and ring O bells!"
+        computer "But I with mournful tread,"
+        computer "Walk the deck my Captain lies,"
+        computer "Fallen cold and dead."
+        computer "Here Captain! dear father!"
+        computer "This arm beneath your head!"
+        computer "It is some dream that on the deck,"
+        computer "You’ve fallen cold and dead."
+
     label EndS:
         # Sara leaves with specimen 
+
+        medic "I made it back...I still can’t believe it. I found life out in space. I achieved my dream!"
+        medic "My family? They’re proud of me, but they still can’t fully accept my life. It’s not what I expected… But it doesn’t matter anymore."
+        medic "Captain, you believed in me. You gave me what I craved from my family all my life. And I left you to die in space."
+        medic "It’s hard to bear…I will keep going and do my best. I owe that to you."
+
+        # During credits
+
+        captain "Sara deserves to go home. Her research will be priceless."
+        captain "Eugen’s been rather silent… At least my last moments with him will be quiet."
+        captain "Matthew… My love…"
+        captain "I’ll see you soon, amongst the stars…"
+
+        engineer "Father. It seems our name will no longer be held in esteem."
+        engineer "My design was flawless. Perfect. However, that fact will be cast aside."
+        engineer "To think this is how it ends. A failure I die for."
+        engineer "Fortunately, Sara will return with the specimen, furthering our knowledge of the universe."
+
+        computer "Exult O stars, and ring O bells!"
+        computer "But I with mournful tread,"
+        computer "Walk the deck my Captain lies,"
+        computer "Fallen cold and dead."
+        computer "Here Captain! dear father!"
+        computer "This arm beneath your head!"
+        computer "It is some dream that on the deck,"
+        computer "You’ve fallen cold and dead."
+
     
     label EndG:
         # Good ending
@@ -1714,7 +1962,53 @@ label start:
 
         nvl clear
 
+        captain "Captain’s log, January 27th. A- a lot has happened since the last log."
+        captain "We’re all very shaken. But at least we’re home."
+        captain "Next log will be a recap of events."
+        captain "I… I did it Matthew…"
+        captain "I did it for you."
+
+        # During credits
+
+        engineer "A successful mission, I expected nothing less."
+        engineer "My design was flawless. Perfect, and now the world will know."
+        engineer "Though our methods were not to my standards, an engineer must know how to adapt to unorthodox situations."
+        engineer "Something I had refused to accept. Perhaps that was my lesson."
+
+        medic "We survived the impossible, and we did what no crew had done before."
+        medic "More than anything–more than this specimen–I found something more amongst the stars."
+        medic "There is now one person who knows me and truly believes in me. Captain, thank you for everything."
+        medic "It no longer matters what my family says. I am at peace."
+
     label EndSec:
         # Secret ending: Throw away the specimen
+
+        captain "Captain’s log, September 24th."
+        captain "The mission was unsuccessful. The specimen has been discarded to save the ship."
+        captain "I- …"
+        captain "I love you, Matthew."
+        captain "Goodbye, my love."
+
+        # During credits
+
+        engineer "A necessary sacrifice had to be made."
+        engineer "My design was flawless… Perfect, and I will make sure that fact is clear."
+        engineer "Returning with the specimen would have been ideal; however, its disposal was for the greater good."
+        engineer "I hope the rest of the crew understands this."
+
+        medic "That’s my life’s work! My dream. This is hard to bear."
+        medic "But we’re alive! And I have all of my notes. We have acquired knowledge that is priceless."
+        medic "Life exists in our solar system!"
+
+        # For now this will be computer, if we decide to add Matthew voice will change it.
+
+        computer "No longer mourn for me when I am dead"
+        computer "Then you shall hear the surly sullen bell"
+        computer "Give warning to the world that I am fled"
+        computer "From this vile world, with vilest worms to dwell:"
+        computer "Nay, if you read this line, remember not"
+        computer "The hand that writ it; for I love you so"
+        computer "That I in your sweet thoughts would be forgot"
+        computer "If thinking on me then should make you woe."
 
     return

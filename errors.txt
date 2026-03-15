@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1694: 'scene' is not a keyword argument or valid child of the screen statement.
-    scene onlayer screens
-         ^
+File "game/script.rpy", line 1632: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    "Our survival rests on you, Sara.":
+    ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Sun Mar 15 00:13:35 2026
+Sun Mar 15 18:56:00 2026
