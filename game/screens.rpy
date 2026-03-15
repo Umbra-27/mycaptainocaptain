@@ -135,7 +135,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox@4.png", xalign=0.5, yalign=0.5)
+    background Image("gui/textbox.png", xalign=0.5, yalign=0.5)
 
 style namebox:
     xpos gui.name_xpos
@@ -211,7 +211,6 @@ screen choice(items):
         for i in items:
             textbutton i.caption action i.action
 
-
 style choice_hbox is hbox
 style choice_button is button
 style choice_button_text is button_text
@@ -226,7 +225,6 @@ style choice_hbox:
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
-    background Image("images/menu_item_highlight.png", xalign=0.5, yalign=0.5)
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
@@ -717,7 +715,6 @@ screen file_slots(title):
                         textbutton _("Download Sync"):
                             action DownloadSync()
                             xalign 0.5
-
 
 style page_label is gui_label
 style page_label_text is gui_label_text
@@ -1660,3 +1657,327 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+# Map 0 %90
+screen MapUI0():
+    tag map
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-90.png"
+        hover "oxygen/oxygen-meter-90.png"
+        action NullAction()
+   
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        action Jump("pickMed")
+
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        action Jump("pickEng")
+
+# Map 0 from Engineer to Medic
+screen MapMed():
+    tag map
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-90.png"
+        hover "oxygen/oxygen-meter-90.png"
+        action NullAction()
+   
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        action Jump("SI")
+
+# Map 0 from Medic to Engineer
+screen MapEng():
+    tag map
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-90.png"
+        hover "oxygen/oxygen-meter-90.png"
+        action NullAction()
+
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        action Jump("EI")
+
+# Map 1
+screen MapUI1():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 80%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-80.png"
+        hover "oxygen/oxygen-meter-80.png"
+        action NullAction()
+
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        action Jump("S1")
+
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        action Jump("E1")
+
+# Map 1b transition to C1
+screen MapUIC1():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 55%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-50.png"
+        hover "oxygen/oxygen-meter-50.png"
+        action NullAction()
+
+    # storage
+    imagebutton:
+        xpos 1080
+        ypos 268
+        idle "map/storageidle.png"
+        hover "map/storagehover.png"
+        action Jump("C1")
+
+
+# Map 2
+screen MapUI2():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 50%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-50.png"
+        hover "oxygen/oxygen-meter-50.png"
+        action NullAction()
+
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        action Jump("S2")
+
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        action Jump("E2")
+
+    # computer
+    imagebutton:
+        xpos 180
+        ypos 480
+        idle "map/computeridle.png"
+        hover "map/computerhover.png"
+        action Jump("M1O")
+
+# Map 2b transition to C2
+screen MapUIC2():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 25%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-25.png"
+        hover "oxygen/oxygen-meter-25.png"
+        action NullAction()
+
+    # storage
+    imagebutton:
+        xpos 1080
+        ypos 268
+        idle "map/storageidle.png"
+        hover "map/storagehover.png"
+        action Jump("C2")
+
+# Map 3
+screen MapUI3():
+    tag map
+    #background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 10%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-10.png"
+        hover "oxygen/oxygen-meter-10.png"
+        action NullAction()
+        
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        action Jump("S3")
+
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        action Jump("E3")
+
+    if seenMO is False:
+        # computer
+        imagebutton:
+            xpos 180
+            ypos 480
+            idle "map/computeridle.png"
+            hover "map/computerhover.png"
+            action Jump("M2O")
+
+# Map 3 (seenMO is ture)
+screen MapUI3b():
+    tag map
+    #background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 10%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-10.png"
+        hover "oxygen/oxygen-meter-10.png"
+        action NullAction()
+        
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        action Jump("S3")
+
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        action Jump("E3")
+
+# # MapUI base
+# screen MapUI():
+#     tag map
+#    # background
+#     imagebutton:
+#         idle "map/bg spaceship.png"
+#         hover "map/bg spaceship.png"
+#         action NullAction()
+
+#    # oxygen
+#     imagebutton:
+#         xalign 1.0
+#         idle "oxygen/oxygen-meter-90.png"
+#         hover "oxygen/oxygen-meter-90.png"
+#         action NullAction()
+
+#     # captain
+#     imagebutton:
+#         xpos 725
+#         ypos 580
+#         idle "map/captainidle.png"
+#         hover "map/captainhover.png"
+#         action NullAction()
+        
+#     # storage
+#     imagebutton:
+#         xpos 1080
+#         ypos 268
+#         idle "map/storageidle.png"
+#         hover "map/storagehover.png"
+#         action NullAction()
+
+#     # medic
+#     imagebutton:
+#         xpos 725
+#         ypos 422
+#         idle "map/medicidle.png"
+#         hover "map/medichover.png"
+#         action NullAction()
+
+#     # engineer
+#     imagebutton:
+#         xpos 1080
+#         ypos 615
+#         idle "map/engineeridle.png"
+#         hover "map/engineerhover.png"
+#         action NullAction()
+
+#     # computer
+#     imagebutton:
+#         xpos 180
+#         ypos 480
+#         idle "map/computeridle.png"
+#         hover "map/computerhover.png"
+#         action NullAction()

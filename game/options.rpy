@@ -157,7 +157,7 @@ define config.save_directory = "DG8010OhCaptainMyCaptain-1769463044"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/game-icon.png"
 
 
 ## Build configuration #########################################################

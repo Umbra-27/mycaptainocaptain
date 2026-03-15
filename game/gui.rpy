@@ -173,6 +173,8 @@ define gui.button_text_insensitive_color = gui.insensitive_color
 ## is right).
 define gui.button_text_xalign = 0.0
 
+define gui.medium_button = "gui/BTN_Overlay_Highlight.png"
+
 
 ## These variables override settings for different kinds of buttons. Please see
 ## the gui documentation for the kinds of buttons available, and what each is
@@ -207,11 +209,12 @@ define gui.quick_button_text_selected_color = gui.accent_color
 define gui.choice_button_width = 400
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(30, 5, 30, 5)
+define gui.choice_button_borders = Borders(30, 50, 30, 50)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = '#454545'
+define gui.choice_button_text_idle_color = '#777777'
+define gui.choice_button_text_hover_color = "#ffffff"
 define gui.choice_button_text_hover_color = "#ffffff"
 define gui.choice_button_text_insensitive_color = '#8888887f'
 
@@ -287,7 +290,7 @@ define gui.main_menu_text_xalign = 1.0
 define gui.frame_borders = Borders(6, 6, 6, 6)
 
 ## The frame that is used as part of the confirm screen.
-define gui.confirm_frame_borders = Borders(60, 60, 60, 60)
+define gui.confirm_frame_borders = Borders(100, 200, 100, 200)
 
 ## The frame that is used as part of the skip screen.
 define gui.skip_frame_borders = Borders(24, 8, 75, 8)

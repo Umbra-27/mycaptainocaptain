@@ -4,7 +4,7 @@
 # name of the character.
 
 define captain = Character("Captain", image="captain@3.5/captain", kind=bubble)
-define engineer = Character("Eugen", image="engineer placeholder", kind=bubble)
+define engineer = Character("Eugen", image="engineer/engineer", kind=bubble)
 define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
 
@@ -22,6 +22,16 @@ init python:
     config.window_hide_transition = None
     config.window_show_transition = None
     config.empty_window = nvl_show_core
+
+    seenSI = False
+    seenEI = False
+    seenS1 = False
+    seenE1 = False
+    seenS2 = False
+    seenE2 = False
+    seenS3 = False
+    seenE3 = False
+    seenMO = False
 
 # dark ver
 image bgCompDark = im.MatrixColor(
@@ -59,6 +69,7 @@ label start:
     play sound "captainslog_background.mp3"
 
     captain "Captain’s Log — September 24th." 
+
     captain "Eugen Braun’s drill apparatus was successful in piercing through the ice 
                 layer of one of Jupiter’s moons, Europa."
     captain "From its ocean, we’ve retrieved a specimen that resembles life."
@@ -231,26 +242,27 @@ label start:
     captain "Let’s check on the crew."
     show captain thinking behind computer 
 
-    $ seenSI = False
-    $ seenEI = False
-    $ seenS1 = False
-    $ seenE1 = False
-    $ seenS2 = False
-    $ seenE2 = False
+    jump map0
 
-    menu:
-        "Speak to Eugen":
+    label map0:
+        show screen MapUI0 with fade
+        pause
+
+        label pickEng:
+            hide screen MapUI0
             show captain neutral-open behind computer 
             captain "I should speak to Eugen. He’ll probably know what’s happening."
             jump EI 
-
-        "Speak to Sara":
+        
+        label pickMed:
+            hide screen MapUI0
             show captain neutral-open behind computer 
             captain "I should speak to Sara. She’s probably freaking out right now."
             jump SI
         
-    
+
     label SI:
+        scene onlayer screens
         $ seenSI = True
         scene bg medic with fade
         show medic nervous with dissolve 
@@ -314,8 +326,6 @@ label start:
 
             # SI.1.b
             "Don't do it again.":
-                $ medApproval -= 1
-
                 show captain anger-open behind medic
                 captain "It’s fine. Just don’t do it again."
 
@@ -363,9 +373,7 @@ label start:
 
         menu:
             # SI.2.a
-            "Figure it out.":
-                $ medApproval -= 1
-                
+            "Figure it out.":                
                 show captain anger-open behind medic
                 captain "Figure it out. That’s an order."
 
@@ -389,17 +397,15 @@ label start:
         captain "I’ll be back to check in later."
 
         if seenEI is False:
-            menu: 
-                "Speak to Eugen":
-                    show captain neutral-closed behind medic
-                    captain "I should speak to Eugen now. He’ll probably know what’s happening."
-                    jump EI
+            show screen MapEng with fade
+            pause
 
         else:
             jump M1
 
 
     label EI:
+        scene onlayer screens
         $ seenEI = True
         scene bg engineer with fade
         show engineer neutral with dissolve
@@ -437,13 +443,12 @@ label start:
         menu:
             # EI.1a
             "I’m not sure yet.":
-                $ engApproval -= 1
                 show captain thinking behind engineer
                 captain "I’m not sure yet. I want to find out a bit more before I give any concrete answers."
 
                 # show engineer frustrated
                 # show captain thinking behind engineer
-                show engineer stressed
+                show engineer frustration
                 show captain thinking behind engineer
                 engineer "I urge you to produce any information as soon as possible. When you have something, please let me know."
 
@@ -480,12 +485,11 @@ label start:
         menu: 
             # EI.2a
             "Stand by.":
-                $ engApproval -= 1
                 show captain anger-open behind engineer
                 captain "I am proceeding methodically... I need more information first."
                 captain "Stand by for now."
 
-                show engineer stressed
+                show engineer frustration
                 show captain anger-closed behind engineer
                 engineer "As you wish, however, I urge you to think about this decision further."
             
@@ -504,11 +508,8 @@ label start:
         captain "I’ll be back when I have more to update."
 
         if seenSI is False:
-            menu: 
-                "Speak to Sara":
-                    show captain neutral-closed behind engineer
-                    captain "I should speak to Sara. She’s probably freaking out right now."
-                    jump SI
+            show screen MapMed with fade
+            pause
 
         else:
             jump M1
@@ -589,14 +590,15 @@ label start:
         show captain thinking behind computer
         $ seenS1 = False
         $ seenE1 = False
-        menu:
-            "Speak to Eugen":
-                jump E1 
+        
+        jump Map1
 
-            "Speak to Sara":
-                jump S1
+    label Map1:
+        show screen MapUI1 with fade        
+        pause
 
     label S1:
+        scene onlayer screens
         $ seenS1 = True
         $ seenE1 = False
         scene bg medic with fade
@@ -613,7 +615,6 @@ label start:
         menu: 
             # S.1.1a
             "To be honest, the situation is dire.":
-                $ medApproval -= 1
                 show captain concern-open behind medic
                 captain "I have to be honest with you, Sara." 
                 captain "The situation is more dire than we thought. But I need you to remain calm."
@@ -674,7 +675,6 @@ label start:
         menu: 
             # S.1.2a
             "This mission wasn't meant to be easy.":
-                $ medApproval -= 1
                 show medic thinking
                 show captain anger-open behind medic
                 captain "That risk is always there. Part of the job." 
@@ -783,6 +783,7 @@ label start:
         jump M2
 
     label E1:
+        scene onlayer screens
         $ seenE1 = True
         $ seenS1 = False
         scene bg engineer with fade
@@ -834,8 +835,6 @@ label start:
 
             # EI.1b
             "What are you implying?":
-                $ engApproval -= 1
-
                 show captain anger-open behind engineer 
                 captain "Are you implying I’m hiding things from you? Sabotaging the mission?"
                 
@@ -880,8 +879,6 @@ label start:
         menu:
             # E1.2a
             "He was the programmer, not me.":
-                $ engApproval -= 1
-
                 show captain anger-open behind engineer
                 captain "Listen, I’m not a programmer." 
                 captain "He wouldn’t have shared anything like that with me."
@@ -931,8 +928,6 @@ label start:
         menu:
             # E1.3a
             "That doesn’t matter right now.":
-                $ engApproval -= 1
-
                 show captain anger-open behind engineer
                 captain "That does not matter right now. Why would you ask me that?!"
                 captain "Just… figure something out."
@@ -950,7 +945,7 @@ label start:
                 captain "So get it together and figure it out." 
                 show captain neutral-closed behind engineer
                 captain "That’s an order."
-                emgomeer "That must mean there is a plausible solution. I will begin investigating."
+                engineer "That must mean there is a plausible solution. I will begin investigating."
 
         show engineer neutral
         show captain neutral-closed behind engineer
@@ -959,9 +954,6 @@ label start:
         engineer "If this mission fails, just know it wasn’t from my contribution."
 
         jump M2
-
-    label Map1:
-
 
     label M2:
         scene bg computer with fade
@@ -1042,9 +1034,15 @@ label start:
         computer "Instead of the c̵̭̆r̷̫̃ó̶̩s̴͇̓ș̸̍, the A̷lb̴ã̵͓tŕ̵̫ó̴̞ss"
         computer "About thy n̷ȅ̴̖ck̴ waŝ̸͎ ̶̥̇h̵̢̀u̶̧̓ǹ̶̼g̵͊ͅ."
 
-        jump C1
+        hide captain with dissolve
+        jump MapC1
+
+    label MapC1:
+        show screen MapUIC1 with fade
+        pause
 
     label C1:
+        scene onlayer screens
         scene bg escape pod with fade
 
         captain "No. No…"
@@ -1096,15 +1094,11 @@ label start:
                 jump Map2
 
     label Map2:
-
-    menu:
-            "Speak to Eugen":
-                jump E2 
-
-            "Speak to Sara":
-                jump S2
+        show screen MapUI2 with fade
+        pause
 
     label S2:
+        scene onlayer screens
         $ seenE2 = False
         $ seenS2 = True
         scene bg medic with fade
@@ -1123,7 +1117,6 @@ label start:
             menu:
                 # S.2.1a
                 "It’s not looking good.":
-                    $ medApproval -= 1
                     show captain concern-open behind medic
                     captain "It’s not looking good at all, Sara. We might have to make difficult decisions… I want you to know that."   
                     medic "I-I see…"
@@ -1150,7 +1143,6 @@ label start:
 
                 # S.2.2b
                 "We need a little more than a theory.":
-                    $ medApproval -= 1
                     show captain neutral-open behind medic
                     captain "I was expecting a little more than a theory, to be honest…"
                     medic "I-I’m sorry, but I’ve put quite a bit of thought into it."
@@ -1190,7 +1182,6 @@ label start:
             menu: 
                 # S.2.3a
                 "That does sounds far-fetched.":
-                    $ medApproval -= 1
                     show captain concern-open behind medic
                     captain "That does sound far-fetched. However, we must think of all possibilities."
                     medic "Yes, indeed…" 
@@ -1225,7 +1216,6 @@ label start:
 
                 # S.2.1b
                 "Everything’s fine.":
-                    $ medApproval += 1
                     show captain neutral-open behind medic
                     captain "Everything’s fine. We’re sorting it out."
                     medic "Okay then…"
@@ -1259,7 +1249,6 @@ label start:
             menu: 
                 # S.2.2a
                 "You know the drill.":
-                    $ medApproval -= 1
                     show captain concern-open behind medic
                     captain "You know the drill. Keep at it." 
                     captain "Go through your notes and see what you can come up with."
@@ -1320,7 +1309,6 @@ label start:
             menu: 
                 # S.2.3a
                 "That does sound far-fetched.":
-                    $ medApproval -= 1
                     show captain concern-open behind medic
                     captain "That does sound far-fetched. But investigate any and all possibilities."
                     medic "Yes, of course."
@@ -1335,6 +1323,7 @@ label start:
             jump M3
 
     label E2:
+        scene onlayer screens
         $ seenE2 = True
         $ seenS2 = False
 
@@ -1372,7 +1361,6 @@ label start:
 
                 # E.2.1b
                 "Your guess is as good as mine.":
-                    $ engApproval -= 1
                     show captain neutral-open behind engineer
                     captain "Your guess is as good as mine."
                     engineer "I would like to believe that isn’t true, considering your role for this mission."
@@ -1407,7 +1395,6 @@ label start:
 
                 # E.2.2b
                 "He was my husband, not my clone.":
-                    $ engApproval -= 1
                     show captain neutral-open behind engineer
                     captain "Matthew Pratchett was my husband, not my clone."
                     captain "I don’t know every possible thought that was going through his head, Braun."
@@ -1428,7 +1415,6 @@ label start:
             menu: 
                 # E.2.3a
                 "Stop asking about him.":
-                    $ engApproval -= 1
                     show captain concern-open behind engineer
                     captain "Stop. Asking. About him."
                     captain "He’s not- … He wasn’t an idiot."
@@ -1470,7 +1456,6 @@ label start:
             menu: 
                 # E.2.1a
                 "I don’t have much…":
-                    $ engApproval -= 1
                     show captain concern-open behind engineer
                     captain "I don’t have much, but MAD1 is still reciting poetry. And incorrectly at that."
                     captain "She keeps replacing words or misplacing lines."
@@ -1509,7 +1494,6 @@ label start:
 
                 # E.2.2b
                 "He was the programmer, not me.":
-                    $ engApproval -= 1
                     show captain neutral-open behind engineer
                     captain "If he had any programming secrets, he didn’t share them with me. I’m not exactly a programmer."
                     engineer "I’d imagine, as the Captain and someone who knew Matthew closely, you’d have more to share. We’ll have to make-do I suppose."
@@ -1536,7 +1520,6 @@ label start:
 
                 # E.2.3b
                 "I’m just as confused as you are.":
-                    $ engApproval -= 1
                     show captain neutral-open behind engineer
                     captain "Listen, I’m just as lost and confused as you are."
                     captain "But if we want to figure this out, we have to do the best we can with the cards we are dealt."
@@ -1552,8 +1535,20 @@ label start:
 
     label M1O:
         # M.1.O optional MAD1
+        scene onlayer screens
+        $ seenMO = True
+        scene bg computer with fade
+
+        show computer neutral-1 with dissolve
+        show captain neutral-open behind computer with dissolve
+
+        computer "hehehe captain"
+        captain ":("
+
+        jump M3
 
     label M3:
+        scene onlayer screens
         scene bg computer with fade
 
         show computer neutral-1 with dissolve
@@ -1596,9 +1591,14 @@ label start:
         computer "Weep now or nev̵e̷r̷m̷õ̸̬re!"
 
         captain "I… I uh…"
-        jump C2
+        jump MapC2
+
+    label MapC2: 
+        show screen MapUIC2 with fade
+        pause
 
     label C2:
+        scene onlayer screens
         # Captain breakdown
 
         scene bg escape pod with fade
@@ -1613,17 +1613,46 @@ label start:
         captain "… I’m wasting oxygen with my outbursts…"
         captain "I need to fix MAD1. Otherwise only one of us lives…"
 
+    label Map3:
+        show screen MapUI3 with fade
+        pause
+
     label S3:
-        $ seenE3 = False
+        scene onlayer screens
         $ seenS3 = True
+        scene bg medic with fade
+        show medic worried with dissolve
+        pause(0.5)
+        show captain neutral-closed behind medic with dissolve
+
+        medic "Captain! Oh my god, I can’t tell you how happy I am to see you!"
 
 
     label E3:
+        scene onlayer screens
         $ seenE3 = True
-        $ seenS3 = False
+        scene bg engineer with fade
+        show engineer neutral with dissolve
+        pause(0.5)
+        show captain neutral-closed behind engineer with dissolve
 
-    label M2O:
+        engineer "Captain, it is safe to say we are in our final moments on this ship." 
 
+    label M2O:        
+        # M.2.O optional MAD1
+        # Same as M1O
+        scene onlayer screens
+        $ seenMO = True
+        scene bg computer with fade
+
+        show computer neutral-1 with dissolve
+        show captain neutral-open behind computer with dissolve
+
+        computer "hehehe captain"
+        captain ":("
+
+    label Final:
+        captain "immabout to lock tf in"
 
     # ENDINGS
     label EndB:
