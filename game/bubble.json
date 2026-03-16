@@ -676,6 +676,14 @@
         ],
         "properties": "computer"
     },
+    "M2_294b7d04": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
     "M2_3887191f": {
         "properties": "computer"
     },
@@ -707,6 +715,14 @@
         "properties": "computer"
     },
     "M2_75db710b": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "M2_7ecc9f6e": {
         "area": [
             400,
             540,

@@ -177,7 +177,7 @@ label start:
     
     show captainConfusedClosedDark behind computer   
     play sound "captain_smack_1.mp3" 
-    captain "(Smacks terminal)" with hpunch 
+    captain "*Smacks terminal*" with hpunch 
 
     scene bg computer
     play sound "systems_back_online.mp3" volume 0.8
@@ -220,7 +220,7 @@ label start:
 
     play sound "captain_smack_2.mp3" 
 
-    captain "(Slams fist on table)" with hpunch 
+    captain "*Slams fist on table*" with hpunch 
     show captain anger-open behind computer
     captain "Right now? But we're so close..."
     
@@ -569,8 +569,7 @@ label start:
         computer "Something is interfering with the ship systems and my code. I am unable to identify wha̸͇̋t̶̜̕" 
         computer "Captain, I’m afraid my ability to assist you will be limited soon."
 
-        show captain anger-open behind computer with hpunch
-        play sound "Metallic_Hit.mp3" volume 0.8
+        show captain anger-open behind computer
         captain "Dammit! I can’t afford to have more things break down now."
         captain "What am I supposed to do?"
 
@@ -996,8 +995,8 @@ label start:
                 When the night had veiled the pole.
                 My friend, lost beneath the tree."
 
-        show captain anger-open behind computer with hpunch
-        captain "Another one?! God damnmit! (Slams terminal)"
+        show captain anger-open behind computer
+        captain "Another one?! God damnmit!"
 
         scene bg computer
         show computer reboot-1
@@ -1031,7 +1030,7 @@ label start:
         captain "NO I HEARD YOU THE FIRST TIME!"
 
         show captain frustrated behind computer
-        captain "(Laboured breathing)"
+        captain "..."
 
         show computer neutral-1
         computer "Apologies, Captain. But you mustttt-"
@@ -1088,8 +1087,8 @@ label start:
                         captain "…"
                         play sound "Metallic_Hit.mp3" volume 0.5
                         show bg escape pod with hpunch
-                        captain "(slams fist on escape pod)"
-                        captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
+                        captain "*Slams fist on escape pod*"
+                        captain "... Get it together Rudy. Your crew needs you to focus up and get us out of here."
                         captain "We’ll all make it home. We need to make it home."
 
                         jump Map2
@@ -1843,7 +1842,7 @@ label start:
 
         captain "The thought of choosing someone makes me sick…"
         captain "I could skip the charade and just leave."
-        captain "*Stares down the specimen as tears roll down your face*"
+        "*Stares down the specimen as tears roll down your face*"
 
         captain "Should I escape?"
         menu:
