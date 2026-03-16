@@ -1834,7 +1834,7 @@ label start:
         scene onlayer screens
         # Captain breakdown
 
-        scene bg escape pod with fade
+        scene bg artifact with fade
 
         captain "What the hell am I supposed to do…" 
         captain "Matthew… I’m so sorry…"
@@ -2258,9 +2258,7 @@ label start:
         label SaraSolution:
             scene onlayer screens
             $ seenSaraSolution = True        
-            scene bg artifact covered with fade
-            pause(1)
-            scene bg artifact with dissolve
+            scene bg artifact with fade
             pause(1)
 
             captain "Okay I need to remember Sara’s instructions."
@@ -2292,6 +2290,7 @@ label start:
                     scene bg artifact with hpunch
                     jump Failure
                 "Wrap the sheets around the container.":
+                    scene bg artifact covered with dissolve
                     captain "Oh my god."
                     captain "I think it worked."
                     captain "Now to manually control the ship."
