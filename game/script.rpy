@@ -157,9 +157,9 @@ label start:
     stop sound
     play sound "systems_off.mp3"
     scene bgCompDark
-    pause(1)
     show computer error-2
     show captainConfusedClosedDark behind computer
+    pause(1)
 
     "The lights go out. Everything stops." 
     "The buzz and rumbles of the ship go deadly silent, and it’s as if time and space have frozen solid." 
@@ -844,7 +844,7 @@ label start:
                 show captain anger-open behind engineer 
                 captain "Are you implying I’m hiding things from you? Sabotaging the mission?"
                 
-                show engineer stressed
+                show engineer frustration
                 show captain anger-closed behind engineer 
                 engineer "My only concern is accomplishing this mission with minimal complexities." 
 
@@ -2266,8 +2266,10 @@ label start:
                 "Scrap some bots for the Nu Metal sheets.":
                     scene bg artifact with hpunch
                     jump Failure
+
                 "Find the Nu Metal sheets in the cargo hold.":
                     captain "Okay."
+
                 "Ask Eugen for the Nu Metal sheets.":
                     scene bg artifact with hpunch
                     jump Failure
@@ -2276,9 +2278,11 @@ label start:
             menu:
                 "Use the laser cutter to get them in the right shape.":                    
                     captain "Okay."
+
                 "Bend them into the right shape by hand.":
                     scene bg artifact with hpunch
                     jump Failure
+
                 "Cut them with a saw.":
                     scene bg artifact with hpunch
                     jump Failure
@@ -2288,40 +2292,18 @@ label start:
                 "Remove the specimen and wrap it in the metal sheet.":
                     scene bg artifact with hpunch
                     jump Failure
+
                 "Wrap the sheets around the container.":
                     scene bg artifact covered with dissolve
                     captain "Oh my god."
                     captain "I think it worked."
                     captain "Now to manually control the ship."
+                    show screen MapUIFin with dissolve
+
                 "Bring the sheets and the metal to Sara.":
                     scene bg artifact with hpunch
                     jump Failure
             
-
-            play sound "Footsteps.mp3" volume 0.8
-            play music "Microbiology.mp3" volume 0.8
-            scene onlayer screens
-            $ seenS3 = True
-            scene bg medic with fade
-            show medic worried with dissolve
-            pause(0.5)
-            show captain neutral-closed behind medic with dissolve
-
-            medic "What happened? Did it work?"
-
-            show captain determined-open behind medic
-            captain "It did. Once Eugen can reroute life support I need you to monitor the specimen at all times."
-            captain "We’re going home."
-            
-            show medic excited
-            show captain determined-closed behind medic
-            medic "Yes! Will be on it ASAP!"
-
-            if seenEugenSolution is True:
-                jump EndG
-            else:
-                show screen MapUIFin with fade
-                pause
 
         label EugenSolution:
             scene onlayer screens
@@ -2342,8 +2324,10 @@ label start:
                 "Speak with MAD1.":
                     show captain anger-open behind computer with hpunch
                     jump Failure
+
                 "Scan your badge.":                
                     captain "Okay."
+
                 "Scan the systems.":
                     show captain anger-open behind computer with hpunch
                     jump Failure
@@ -2352,10 +2336,11 @@ label start:
             menu:
                 "Pull the system override lever.":                
                     captain "Okay."
+
                 "Shut down MAD1.":
                     show captain anger-open behind computer with hpunch
-
                     jump Failure
+
                 "Record a captain’s log.":
                     show captain anger-open behind computer with hpunch
                     jump Failure
@@ -2365,10 +2350,8 @@ label start:
                 "Turn the system back on again.":
                     show captain anger-open behind computer with hpunch
                     jump Failure
-                "Man full control of the ship.":
-                    show captain anger-open behind computer with hpunch
-                    jump Failure
-                "Hold the lever down while Eugen controls the ship.":        
+
+                "Man full control of the ship.":                    
                     show computer neutral-1
                     show captain determined-closed behind computer        
                     computer "System override initiated."
@@ -2378,6 +2361,43 @@ label start:
                     captain "It worked…"
                     captain "I need to let the others know."
 
+                    jump TheEnd
+
+                "Hold the lever down while Eugen controls the ship.":        
+                    show captain anger-open behind computer with hpunch
+                    jump Failure
+
+
+        label Failure:
+            captain "No, no no!"
+            captain "..."
+            captain "… Dammit… "
+
+            show screen MapUIEnd with fade
+
+        label TheEnd:
+            # Sara Scene
+            play sound "Footsteps.mp3" volume 0.8
+            play music "Microbiology.mp3" volume 0.8
+            scene onlayer screens
+            $ seenS3 = True
+            scene bg medic with fade
+            show medic worried with dissolve
+            pause(0.5)
+            show captain neutral-closed behind medic with dissolve
+
+            medic "What happened? Did it work?"
+
+            show captain determined-open behind medic
+            captain "It did. Once Eugen can reroute life support I need you to monitor the specimen at all times."
+            captain "We’re going home."
+            
+            show medic excited
+            show captain determined-closed behind medic
+            medic "Yes! Will be on it ASAP!"
+
+            
+            # Eugen Scene
             play sound "Footsteps.mp3" volume 0.8
             play music "Microbiology.mp3" volume 0.8
             scene bg engineer with fade
@@ -2398,18 +2418,7 @@ label start:
             show captain determined-open behind engineer
             captain "Thank you, Eugen. You as well."
 
-            if seenSaraSolution is True:
-                jump EndG
-            else:
-                show screen MapUIFin with fade
-                pause
-
-        label Failure:
-            captain "No, no no!"
-            captain "..."
-            captain "… Dammit… "
-
-            show MapUIEnd with fade
+            jump EndG
 
     label Choice:
         scene onlayer screens

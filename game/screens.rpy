@@ -1820,7 +1820,7 @@ screen MapUIFin():
             action Jump("SaraSolution")
 
     # computer
-    if seenEugenSolution is False:
+    if seenSaraSolution is True:
         imagebutton:
             xpos 180
             ypos 480
@@ -1963,6 +1963,8 @@ screen EndSECPoem():
         poem
         """
 
+## Credits ######
+
 screen Credits1():
     vbox:
         ypos 80
@@ -1986,7 +1988,7 @@ screen Credits1():
 
             Art - Lindsay Buckingham
             Programming - Carine Ho
-            Sound - Jason Bryne
+            Sound - Jason Byrne
             UI/UX - Karina Bittencourt
             Writing - Mariya Mubeen
             Voice - Feodor Romanenkov
