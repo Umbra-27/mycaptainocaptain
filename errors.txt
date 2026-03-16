@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1632: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
+File "game/screens.rpy", line 314: keyword argument 'xpos' is incompatible with 'xalign'.
+    xpos 919
+        ^
+
+File "game/screens.rpy", line 315: keyword argument 'ypos' is incompatible with 'yalign'.
+    ypos 1759
+        ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Sun Mar 15 18:56:00 2026
+Mon Mar 16 06:09:13 2026

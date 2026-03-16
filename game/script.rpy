@@ -8,8 +8,6 @@ define engineer = Character("Eugen", image="engineer/engineer", kind=bubble)
 define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
 
-define nvlChar = Character(None, kind=nvl)
-
 # Sound Settings
 default preferences.volume.music = 0.8
 default preferences.volume.sfx = 0.5
@@ -32,6 +30,8 @@ init python:
     seenS3 = False
     seenE3 = False
     seenMO = False
+    seenSaraSolution = False
+    seenEugenSolution = False
 
 # dark ver
 image bgCompDark = im.MatrixColor(
@@ -148,11 +148,11 @@ label start:
     computer "Error. Unable to end process." 
     play sound "error_sound_2.mp3"
     voice sustain
-    computer "Pulling error log̶̕s.{nw}"
+    computer "Pulling error log̶̕s.{w=0.5}{nw}"
     voice sustain
-    computer "Ê̴̋͒͠r̵̛̈̏r̸̳̯͎͍̬̊̇̀o̵r̷͘. {nw}" 
+    computer "Ê̴̋͒͠r̵̛̈̏r̸̳̯͎͍̬̊̇̀o̵r̷͘. {w=0.2}{nw}" 
     voice sustain
-    computer "Sys̷̖̏ṭ̷̋e̵̗̬͋m̵̩͋̕ṡ̴̨͎ dò̷̧͎͍͇̫͆̕ẃ̵̛̔n̶-{nw}"
+    computer "Sys̷̖̏ṭ̷̋e̵̗̬͋m̵̩͋̕ṡ̴̨͎ dò̷̧͎͍͇̫͆̕ẃ̵̛̔n̶-{w=0.2}{nw}"
 
     stop sound
     play sound "systems_off.mp3"
@@ -248,25 +248,12 @@ label start:
     label map0:
         show screen MapUI0 with fade
         pause
-
-        label pickEng:
-            play sound "audio/Button_Select.mp3" volume 0.8
-            hide screen MapUI0
-            
-            show captain neutral-open behind computer 
-            captain "I should speak to Eugen. He’ll probably know what’s happening."
-            play sound "Footsteps.mp3" volume 0.8
-            jump EI 
         
-        label pickMed:
-            hide screen MapUI0
-            play sound "audio/Button_Select.mp3" volume 0.8
-            show captain neutral-open behind computer 
-            captain "I should speak to Sara. She’s probably freaking out right now."
-            jump SI
-            
-
     label SI:
+        hide screen MapUI0 with dissolve
+        show captain neutral-open behind computer 
+        captain "I should speak to Sara. She’s probably freaking out right now."
+
         play sound "Footsteps.mp3" volume 0.8
         play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
@@ -404,7 +391,7 @@ label start:
         captain "I’ll be back to check in later."
 
         if seenEI is False:
-            show screen MapEng with fade
+            show screen MapUI0 with fade
             pause
 
         else:
@@ -412,6 +399,10 @@ label start:
 
 
     label EI:
+        hide screen MapUI0 with dissolve
+        show captain neutral-open behind computer 
+        captain "I should speak to Eugen. He’ll probably know what’s happening."
+
         play sound "Footsteps.mp3" volume 0.8
         play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
@@ -517,7 +508,7 @@ label start:
         captain "I’ll be back when I have more to update."
 
         if seenSI is False:
-            show screen MapMed with fade
+            show screen MapUI0 with fade
             pause
 
         else:
@@ -530,7 +521,7 @@ label start:
         show computer neutral-1 with dissolve
         show captain neutral-closed behind computer with dissolve
 
-        computer "Welcome back, Captain. Oxygen at 75%%."
+        computer "Welcome back, Captain. Oxygen at 80%%."
 
         show captain neutral-open behind computer
         captain "The Astrobiologist and Cosmotechnician both are on track now to find out what’s wrong with the ship."
@@ -683,14 +674,13 @@ label start:
         captain "And you? Are you holding up okay?"
 
         # S.1.2
-        show medic nervous 
+        show medic nostalgic
         show captain neutral-closed behind medic
         medic "I just… I wonder if I’d get to see my family again."
 
         menu: 
             # S.1.2a
             "This mission wasn't meant to be easy.":
-                show medic thinking
                 show captain anger-open behind medic
                 captain "That risk is always there. Part of the job." 
                 captain "This mission was never meant to be easy."
@@ -702,7 +692,6 @@ label start:
             # S.1.2b
             "I will do my best to get us home.":
                 $ medApproval += 1
-                show medic thinking
                 show captain concern-open behind medic
                 captain "I will do my best to make sure that this mission is successful and everyone gets home."
 
@@ -1127,16 +1116,18 @@ label start:
         $ seenE2 = False
         $ seenS2 = True
         scene bg medic with fade
-        show medic neutral with dissolve
+        show medic worried with dissolve
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
-
-        show captain neutral-open behind medic
 
         if seenS1 is True:
             # S2.A
             medic "Captain! Any update?"
+
+            show captain neutral-open behind medic
             captain "Still working on it."
+
+            show captain neutral-closed behind medic
             medic "How much time do we really have? To solve this problem? T-the ship cannot possibly hold up this way for long?"
 
             menu:
@@ -1144,6 +1135,9 @@ label start:
                 "It’s not looking good.":
                     show captain concern-open behind medic
                     captain "It’s not looking good at all, Sara. We might have to make difficult decisions… I want you to know that."   
+
+                    show medic anxious
+                    show captain concern-closed behind medic
                     medic "I-I see…"
 
                 # S.2.1b
@@ -1152,10 +1146,16 @@ label start:
                     show captain neutral-open behind medic
                     captain "Things aren’t looking great at the moment. But there is always hope." 
                     captain "We are all working hard to fix this. Let’s continue to do so."
+
+                    show medic neutral
+                    show captain neutral-closed behind medic
                     medic "Yes, yes, of course!"
 
             show captain neutral-open behind medic    
             captain "Sara, what have you found out about the specimen?"
+
+            show medic explaining
+            show captain neutral-closed behind medic    
             medic "I-I have a theory. It’s exciting and concerning."
             
             menu: 
@@ -1164,44 +1164,61 @@ label start:
                     $ medApproval += 1
                     show captain concern-open behind medic
                     captain "Anything is better than nothing. I trust your judgment."
+
+                    show medic neutral
+                    show captain concern-closed behind medic
                     medic "Thank you, Captain!"
 
                 # S.2.2b
                 "We need a little more than a theory.":
                     show captain neutral-open behind medic
                     captain "I was expecting a little more than a theory, to be honest…"
+                    
+                    show medic nervous
+                    show captain neutral-closed behind medic
                     medic "I-I’m sorry, but I’ve put quite a bit of thought into it."
             
+            show captain neutral-open behind medic
             captain "Tell me your theory."
 
+            show medic explaining
+            show captain neutral-closed behind medic
             medic "I know I said this organism has similarities to a marine fungus, but it appears to be more complex."
 
+            show captain neutral-open behind medic
             captain "How do you mean?"
 
+            show medic excited
+            show captain neutral-closed behind medic
             medic "You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
-
             medic "My theory is that this organism may have a symbiosis with others in its ecosystem."
-
             medic "This could be more developed than what we see on Earth, depending on hundreds of millions of years of evolution."
-
+            
+            show captain neutral-open behind medic
             captain "Go on."
 
+            show medic suggesting
+            show captain neutral-closed behind medic
             medic "This organism might have communication capabilities that we are unfamiliar with."
-
             medic "I am not saying that this could be sentient, but Earth classifications can blur when we’re dealing with extraterrestrial life."
 
+            show captain confusion-open behind medic
             captain "A fungus on steroids? You were hoping for single-celled life in that ocean…"
-
             captain "What kind of communication capabilities are we talking about here?"
 
+            show medic thinking
+            show captain confusion-closed behind medic
             medic "I mentioned this before–has it occurred to you that two incredible events have taken place in a short time span?"
-
+            show medic excited
             medic "Us finding this specimen and now this crisis we’re facing!" 
-
+            show medic nostalgic
             medic "Hah, my family would associate something supernatural to this kind of coincidence…" 
 
+            show captain concern-open behind medic
             captain "Sara, are you implying that this organism could have something to do with this?"
 
+            show medic excited
+            show captain concern-closed behind medic
             medic "Yes! That’s what I think we’ve been missing! This organism is probably emitting electromagnetic waves that are interfering with the computer!"
 
             menu: 
@@ -1209,6 +1226,9 @@ label start:
                 "That does sounds far-fetched.":
                     show captain concern-open behind medic
                     captain "That does sound far-fetched. However, we must think of all possibilities."
+
+                    show medic nervous
+                    show captain concern-closed behind medic
                     medic "Yes, indeed…" 
 
                 # S.2.3b
@@ -1216,14 +1236,22 @@ label start:
                     $ medApproval += 1
                     show captain neutral-open behind medic
                     captain "There could be something there… It could be the key to our survival. Find out all you can."
+
+                    show medic neutral
+                    show captain neutral-closed behind medic
                     medic "Yes, will do, Captain!"
 
+            show captain thinking behind medic
             captain "What do you think is the next step?"
 
+            show medic suggesting
             medic "If my theory is right, then we need to think of containment."
 
+            show captain neutral-open behind medic
             captain "Work on it."
-
+            
+            show medic neutral
+            show captain neutral-closed behind medic
             medic "Yes, Captain!"
             jump M3
 
@@ -1237,38 +1265,58 @@ label start:
                     $ medApproval += 1
                     show captain concern-open behind medic
                     captain "I’m sorry I couldn’t come talk to you sooner. I’ve been speaking with Eugen about this problem."
+
+                    show medic neutral
+                    show captain concern-closed behind medic
                     medic "Oh, it’s okay. Good to hear you’re on top of it!"
 
                 # S.2.1b
                 "Everything’s fine.":
                     show captain neutral-open behind medic
                     captain "Everything’s fine. We’re sorting it out."
+
+                    show medic nervous
+                    show captain neutral-closed behind medic
                     medic "Okay then…"
             
+            show medic stressed
             medic "What does Eugen say? Is he okay?!"
 
+            show captain neutral-open behind medic
             captain "Yes, he’s fine. He cannot offer anything concrete at the moment." 
-
             captain "But I must tell you that MAD1 is malfunctioning. This complicates everything."
 
+            show medic thinking
+            show captain neutral-closed behind medic
             medic "Oh my god… Here I was thinking we would very much make it back home with the specimen. And my family…"
 
+            show captain concern-open behind medic
             captain "And we can! We still have hope." 
-
             captain "I know you’re missing your family very much. We will get through this."
 
+            show medic nervous
+            show captain concern-closed behind medic
             medic "It’s not just about that. It’s just… this is my one chance to prove that everything I’ve done– that it’s all worth it, you know?"
+
+            show captain concern-open behind medic
             captain "Your previous achievements are more than average to say the least. Is that not enough?"
             captain "Your family should be proud of you regardless of the outcome of this mission."
 
+            show medic neutral
+            show captain concern-closed behind medic
             medic "I’m a lone woman who’s devoted my life to the sciences. Not everyone views that as ideal, to say the least."
 
+            show captain concern-open behind medic
             captain "That’s not very fair."
 
+            show captain concern-closed behind medic
             medic "It's not, but taking this home would change my life in more ways than one… And now, I don’t know. We might not make it back."
 
+            show captain neutral-open behind medic
             captain "Focus Sara. Have you managed to come up with any theories about the specimen?"
 
+            show medic stressed
+            show captain neutral-closed behind medic
             medic "What? I-no, my research is in the computer! I’ve been reviewing my journal a-and the report you gave me but I’m losing my mind in here."
 
             menu: 
@@ -1278,8 +1326,10 @@ label start:
                     captain "You know the drill. Keep at it." 
                     captain "Go through your notes and see what you can come up with."
                     captain "I’m sure you’ll find something."
-                    medic "I-I’m sorry…"
 
+                    show medic worried
+                    show captain concern-closed behind medic
+                    medic "I-I’m sorry…"
 
                 # S.2.2b
                 "We’re counting on you.":
@@ -1288,47 +1338,66 @@ label start:
                     captain "Hey, we’re all losing our minds. It’s okay."
                     captain "Please go through your notes and see what you can come up with." 
                     captain "We’re counting on you."
+                    
+                    show medic neutral
+                    show captain neutral-closed behind medic
                     medic "Yes, yes, of course. T-thank you for believing in me, Captain."
 
+            show captain determined-open behind medic
             captain "We’ve come this far. We cannot let everything go to waste."
 
+            show medic nervous
+            show captain determined-closed behind medic
             medic "I know… I know it more than anyone. This mission is everything to me."
 
+            show captain concern-open behind medic
             captain "It is to all three of us…"
 
+            show medic neutral
+            show captain concern-closed behind medic
             medic "… I’ll do what I can… Would you like to hear what I’ve come up with so far?"
-
             medic "Although it’s all based on the limited notes I have here."
 
+            show captain neutral-open behind medic
             captain "Anything would be useful at this point."
 
+            show medic suggesting
+            show captain neutral-closed behind medic
             medic "Captain, this organism is very much extraterrestrial, but if we are to compare it to an Earth organism, it bears some resemblance to a marine fungus." 
             medic "However…"
 
+            show captain neutral-open behind medic
             captain "Yes?"
 
+            show medic explaining
+            show captain neutral-closed behind medic
             medic "It appears to be more complex. You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
-
             medic "My theory is that this organism may have a symbiosis with others in its ecosystem."
-
             medic "This could be more developed than what we see on Earth, depending on hundreds of millions of years of evolution."
 
+            show captain neutral-open behind medic
             captain "Go on."
 
+            show medic excited
+            show captain neutral-closed behind medic
             medic "This organism might have communication capabilities that we are unfamiliar with."
-
             medic "I am not saying that it is sentient, but Earth classifications can blur when we’re dealing with extraterrestrial life."
-
-            captain "A fungus on steroids? And here we were hoping for single-celled life in that ocean…"
-
+            
+            show captain confusion-open behind medic
+            captain "A fungus on steroids? You were hoping for single-celled life in that ocean…"
             captain "What kind of communication capabilities are we talking about here?"
 
+            show medic thinking
+            show captain confusion-closed behind medic
             medic "I’m not sure, Captain… But has it occurred to you that two strange events have taken place in such a short period of time?"
-
+            show medic nostalgic
             medic "Hah, my family would associate something supernatural to this kind of coincidence…"
 
+            show captain concern-open behind medic
             captain "Sara, are you implying that this organism could have something to do with this?"
 
+            show medic excited
+            show captain concern-closed behind medic
             medic "All I’m saying is anything is possible! But think about it! This may be the link we’re missing!"
 
             menu: 
@@ -1336,6 +1405,9 @@ label start:
                 "That does sound far-fetched.":
                     show captain concern-open behind medic
                     captain "That does sound far-fetched. But investigate any and all possibilities."
+
+                    show medic nervous
+                    show captain concern-closed behind medic
                     medic "Yes, of course."
 
                 # S.2.3b
@@ -1344,7 +1416,11 @@ label start:
                     show captain neutral-open behind medic
                     captain "There could be something there… It could be the key to our survival."
                     captain "Find out all you can."
+
+                    show medic neutral
+                    show captain neutral-closed behind medic
                     medic "Will do, Captain!"
+
             jump M3
 
     label E2:
@@ -1359,21 +1435,39 @@ label start:
             scene bg engineer with fade
             show engineer neutral with dissolve
             pause(0.5)
-            show captain neutral-closed behind engineer with dissolve
+            show captain neutral-open behind engineer with dissolve
 
             captain "Eugen."
+
+            show captain neutral-closed behind engineer
             engineer "Good, I was about to come find you myself. The situation has reached far too unstable a state."
+            show engineer shock
             engineer "The defense layer I mentioned earlier, it has evolved."
+
+            show captain confusion-open behind engineer
             captain "I- evolved..?"
+
+            show engineer frustration
+            show captain  confusion-closed behind engineer
             engineer "Before, it was only intercepting my commands; now it seems to be anticipating them."
             engineer "I have never seen this level of adaptation in a system, in a recursive structure."
             engineer "I attempted the auxiliary reroute with more advanced methods; however, it locked me out of two additional subsystems in response."
+            
+            show captain confusion-open behind engineer
             captain "Eugen, you’re saying a lot of words and I’m following none of them."
+            
+            show engineer neutral
+            show captain confusion-closed behind engineer
             engineer "Imagine trying to play a trick on someone reading your mind."
+            
+            show captain neutral-open behind engineer
             captain "So following that metaphor, it’s as though it’s seeing you trying to read it, so it’s trying to give you fake thoughts?"
+
+            show engineer frustration
+            show captain neutral-closed behind engineer
             engineer "Somewhat, yes."
             engineer "I know I’ve asked you about Matthew’s work before; however, as of right now, there is no other outlet of information I could hope for."
-
+            show engineer shock
             engineer "Did he ever share any hypothetical situations about failing a mission and how he would respond, maybe about what the ship should protect first?"
             engineer "Anything, Captain, anything."
 
@@ -1384,30 +1478,61 @@ label start:
                     show captain concern-open behind engineer
                     captain "He didn’t plan on failing. I’m sure you can understand that."
                     captain "Even so, a failsafe wouldn’t be obvious or easy to access."
+
+                    show engineer thinking
+                    show captain concern-closed behind engineer
                     engineer "I admire his confidence; however, planning for failure is almost as important as expecting to succeed."
 
                 # E.2.1b
                 "Your guess is as good as mine.":
                     show captain neutral-open behind engineer
                     captain "Your guess is as good as mine."
+
+                    show engineer anger
+                    show captain neutral-closed behind engineer
                     engineer "I would like to believe that isn’t true, considering your role for this mission."
             
+            show engineer thinking
             engineer "I noticed poetry being produced by the computer at times."
+
+            show captain neutral-open behind engineer
             captain "Yes, MAD1 has been reciting it since the initial crash."
+
+            show engineer neutral
+            show captain neutral-closed behind engineer
             engineer "Seeing as this is not even standard for a system error, I investigated it."
+
+            show captain neutral-open behind engineer
             captain "And?"
+
+            show engineer shock
+            show captain neutral-closed behind engineer
             engineer "It seems they are not decorative artifacts, fortunately."
             engineer "They are actually embedded in conditional branches with certain verses correlating with security escalations."
+            
+            show captain confusion-open behind engineer
             captain "So there is something in the poetry after all?"
+            show captain frustrated behind engineer
             captain "... Unfortunately… My grasp of poetry isn’t as strong as his…"
+
+            show engineer frustration
             engineer "I have to say, if I had known this was what was to be expected working with this ship, I would not have agreed to participate in this mission."
+            
+            show captain anger-open behind engineer
             captain "It was either this or risking another massive crew like the last mission."
             captain "MAD1 may be… experimental… but she passed all the necessary tests."
             captain "None, and I mean none of us expected any of this."
+            
+            show engineer thinking
+            show captain anger-closed behind engineer
             engineer "Anyhow, this is not necessarily corruption; rather, it seems to be symbolic indexing."
             engineer "Assuming this is how the ship is programmed, it is safe to assume Matthew preferred to do things his own way."
+
+            show captain neutral-open behind engineer
             captain "Told you."
 
+            show engineer resolve
+            show captain neutral-closed behind engineer
             engineer "I need to ask you, was this really just an aesthetic deviation, or did he believe conventional protocol was fundamentally flawed?"
             engineer "If the system is operating on his philosophy rather than industry standards, then I am troubleshooting a worldview, not a machine."
 
@@ -1418,31 +1543,51 @@ label start:
                     show captain concern-open behind engineer
                     captain "This operating system was his baby, his pride and joy."
                     captain "It was made perfectly - in his eyes, to his touch."
+
+                    show engineer thinking
+                    show captain concern-closed behind engineer
                     engineer "So that means this could be beyond our understanding, and potentially, some ulterior methods must be considered."
 
                 # E.2.2b
                 "He was my husband, not my clone.":
-                    show captain neutral-open behind engineer
+                    show captain anger-open behind engineer
                     captain "Matthew Pratchett was my husband, not my clone."
                     captain "I don’t know every possible thought that was going through his head, Braun."
+
+                    show engineer anger
+                    show captain anger-closed behind engineer
                     engineer "Choosing to use his vessel for this mission was a decision you made; at the very least, I’d hope you knew enough about it to offer some insight."
 
+            show captain neutral-open behind engineer
             captain "I don’t think he intended for it to be captained by anyone other than him."
             captain "But no one else has programmed a system quite like his that’s necessary for a mission like this."
+            
+            show engineer neutral
+            show captain neutral-closed behind engineer
             engineer "There is something else you need to understand."
+
+            show captain neutral-open behind engineer
             captain "Enlighten me."
+
+            show engineer shock
+            show captain neutral-closed behind engineer
             engineer "While I have been trying to stabilize our life support, the background processes have been reallocating power autonomously."  
+            
+            show captain confusion-open behind engineer
             captain "Reallocated where?"
+            
+            show engineer thinking
+            show captain confusion-open behind engineer
             engineer "Containment integrity is being reinforced, data preservation protocols are preserved, and the specimen’s environmental chamber has not dropped past optimal range even once."
             engineer "All while our life support has been steadily dropping. This doesn’t appear to be a malfunction; this seems to be prioritization."
-
+            show engineer frustration
             engineer "Let me ask you this very clearly, Captain, when Matthew designed this system, did he ever imply that the discovery outweighed the lives involved in its recovery?" 
             engineer "If he did, then rest assured the ship is behaving exactly as it was programmed to."
 
             menu: 
                 # E.2.3a
                 "Stop asking about him.":
-                    show captain concern-open behind engineer
+                    show captain anger-open behind engineer
                     captain "Stop. Asking. About him."
                     captain "He’s not- … He wasn’t an idiot."
                     captain "He wouldn’t have prioritised the mission over the crew’s survival, not even his own."
@@ -1450,15 +1595,21 @@ label start:
                 # E.2.2b
                 "He was pragmatic.":
                     $ engApproval += 1
-                    show captain neutral-open behind engineer
+                    show captain concern-open behind engineer
                     captain "Matthew was certainly a creative idealist, but he was also very pragmatic."
                     captain "He wouldn’t have prioritised the mission over the crew’s survival, not even his own."
             
             captain "Which means the ship is not supposed to act this way, something’s interfering."
             captain "I’ll go see if MAD1 is still acting up or if I can glean anything from her."
+            
+            show engineer resolve
+            show captain neutral-closed behind engineer
             engineer "It is worth noting that there is a way of overriding MAD1 completely; however, this will completely shut the system down, and you will have to take full control of the ship."
             engineer "I discovered this failsafe while digging through the ship's schematics further."
             engineer "I would consider this a last resort option, one that defies protocol entirely."
+
+            show captain neutral-open behind captain
+            captain "That’s a good lead. Follow it."
             jump M3
 
         elif seenE1 is False:
@@ -1469,8 +1620,13 @@ label start:
             show captain neutral-closed behind engineer with dissolve
 
             engineer "Captain… you finally decide to pay a visit."
+
+            show captain neutral-open behind engineer
             captain "Yes, I was speaking to Sara."
             captain "Report."
+
+            show engineer resolve
+            show captain neutral-closed behind engineer 
             engineer "I hope she was able to offer some valuable insight on the specimen."
             engineer "I have been isolating the corrupted pathways since this whole mess started."
             engineer "At 20%% deviation, it was manageable, nothing I haven’t dealt with before."
@@ -1478,6 +1634,7 @@ label start:
             engineer "At 45, it became clear that what was happening was intentionally programmed into the ship."
             engineer "I needed more information half an hour ago, so I can only hope you come to me with an update about the ship."
 
+            show engineer frustration
             engineer "Were you gathering information, or were you hoping this would resolve itself without much involvement from you?"
 
             menu: 
@@ -1487,26 +1644,41 @@ label start:
                     captain "I don’t have much, but MAD1 is still reciting poetry. And incorrectly at that."
                     captain "She keeps replacing words or misplacing lines."
                     captain "I’m sorry I don’t have anything concrete."
+
+                    show captain concern-closed behind engineer
                     engineer "Hmm… Disappointing."
 
                 # E.2.1b
                 "For your information…":
                     $ engApproval += 1
-                    show captain neutral-open behind engineer
+                    show captain anger-open behind engineer
                     captain "For your information, Technician Braun, I have been conferring with MAD1 and Sara to find a solution."
                     captain "Sara is investigating the specimen to see if it’s affecting anything."
                     captain "And MAD1 is still reciting different poems."
                     captain "And they’re not even correct! Sometimes the words are changed or lines are misplaced."
                     captain "I hope you can forgive the lack of specificity when all I’m getting are damn riddles."
+
+                    show engineer neutral
+                    show captain neutral-closed behind engineer
                     engineer "Apologies Captain…"
             
+            show engineer thinking
             engineer "By my calculations, there is only 50%% of our oxygen supply remaining."
+
+            show captain frustrated behind engineer
             captain "Oh I am well aware…"
+
+            show engineer frustration
             engineer "Only now do you decide to meet with the Engineer you have on board."
+    
             captain "I apologise for not being able to juggle with one hand tied behind my back."
+
+            show engineer anger
             engineer "... I have been trying to access the auxiliary core for the past half hour without any structural access provided to me."
             engineer "Every override attempt is intercepted, every reroute collapses… The system doesn’t seem to be failing, rather the opposite - it’s seemingly defending itself."
 
+            show engineer shock
+            show captain neutral-closed behind engineer
             engineer "The only reason I believe makes sense is that Matthew designed it this way on purpose."
             engineer "Is there anything you know about Matthew’s work? Anything he trusted you with that could help me?"
             engineer "If so, now is the time to share."
@@ -1517,78 +1689,102 @@ label start:
                     $ engApproval += 1
                     show captain concern-open behind engineer
                     captain "Matt… was a fan of poetry. Given MAD1’s clearly also become a big fan, there’s definitely something in there."
+
+                    show engineer neutral
+                    show captain concern-closed behind engineer
                     engineer "I appreciate your transparency. I’ll begin investigating possible patterns in the system."
 
                 # E.2.2b
                 "He was the programmer, not me.":
                     show captain neutral-open behind engineer
                     captain "If he had any programming secrets, he didn’t share them with me. I’m not exactly a programmer."
+
+                    show engineer frustration
+                    show captain neutral-closed behind engineer
                     engineer "I’d imagine, as the Captain and someone who knew Matthew closely, you’d have more to share. We’ll have to make-do I suppose."
 
+            show engineer anger
             engineer "I seldom thought a task could not be resolved through following protocol; however, it seems now my beliefs have been debunked."
             engineer "While the auxiliary core is still responsive to a certain extent, there is not enough to be optimistic about."
             engineer "Matthew embedded what seems to be decision filters that only respond to specific authority signatures."
             engineer "Another example of not adhering to standard protocol."
+
+            show captain rememberance-open behind engineer
             captain "He absolutely liked things his own way, that’s for sure."
 
+            show engineer shock
+            show captain rememberance-closed behind engineer
             engineer "Given this, I want to ask you, Captain, in this chain of command we have, have we been operating on procedure, or his preference?"
 
             menu: 
                 # E.2.3a
                 "To hell with your procedures.":
                     $ engApproval += 1
-                    show captain concern-open behind engineer
+                    show captain anger-open behind engineer
                     captain "To hell with your procedures and to hell with my dead husband’s preferences."
                     captain "We’ve been dealt a shitty hand and we’re trying not to die."
                     captain "So stop looking at it like a formula and start looking at it like a puzzle and crack it."
                     captain "That’s an order, Braun."
+
+                    show engineer thinking
+                    show captain neutral-closed behind engineer
                     engineer "Although unconventional, you may be right. This mess should be viewed as a puzzle of some sort."
                     engineer "Hmm…"
 
                 # E.2.3b
                 "I’m just as confused as you are.":
-                    show captain neutral-open behind engineer
+                    show captain frustrated behind engineer
                     captain "Listen, I’m just as lost and confused as you are."
+                    show captain neutral-open behind engineer
                     captain "But if we want to figure this out, we have to do the best we can with the cards we are dealt."
                     captain "I’ll return shortly."
+
+                    show engineer frustration
+                    show captain neutral-closed behind engineer
                     engineer "I’ve never been a gambling man, Captain. At this rate, I don’t suggest you return with high hopes."
             
+            show engineer resolve
             engineer "So long as my equipment is being used for this mission, I am determined to make it back in one piece."
             engineer "We have seen it in action. My design is flawless and deserves recognition."
             engineer "For the sake of my life’s work, this mission cannot fail."
             engineer "I’ll investigate the unconventional options we have, considering the mess we are dealing with."
+
+            show captain neutral-open behind engineer
             captain "Good, I’ll speak with you shortly."
+            show captain neutral-closed behind engineer
             jump M3
 
-    label M1O:
-        play sound "Footsteps.mp3" volume 0.8
-        play music "Electric_Dawn.mp3" volume 0.8
-        # M.1.O optional MAD1
-        scene onlayer screens
-        $ seenMO = True
-        scene bg computer with fade
+    # label M1O:
+    #     play sound "Footsteps.mp3" volume 0.8
+    #     play music "Electric_Dawn.mp3" volume 0.8
+    #     # M.1.O optional MAD1
+    #     scene onlayer screens
+    #     $ seenMO = True
+    #     scene bg computer with fade
 
-        show computer neutral-1 with dissolve
-        show captain neutral-open behind computer with dissolve
+    #     show computer neutral-1 with dissolve
+    #     show captain neutral-open behind computer with dissolve
 
-        computer "hehehe captain"
-        captain ":("
+    #     computer "hehehe captain"
+    #     captain ":("
 
-        jump M3
+    #     jump M3
 
     label M3:
         play sound "Footsteps.mp3" volume 0.8
         play music "Electric_Dawn.mp3" volume 0.8
         scene onlayer screens
-        scene bg computer with fade
+        scene bg computer error with fade
 
-        show computer neutral-1 with dissolve
-        show captain neutral-open behind computer with dissolve
+        show computer error-1 with dissolve
+        show captain neutral-closed behind computer with dissolve
 
         computer "Cap̴-̶ ̵C̴͂͜ä̴͎́p̸̪͒-̵̺̀ ̷͇͐ Ċ̷̯a̶̭͊p̴̹̆t̶̡̐a̸̬̓ï̴̬n."
 
+        show captain concern-open behind computer 
         captain "… MAD1?"
 
+        show captain concern-closed behind computer 
         computer "We meet in an e̷̯͂̉v̸̜͘ị̶̃l̵͕̆̾ land"
         computer "That is near to the gates of h̵̫̃ẹ̶͑l̶͚̿l̵͍̀."
         computer "And I guard thy g̷̺̏ā̸͜t̴̬͝ē̴̼ŝ̷͓ ̴̹̎i̷͒͜n̸̼̿ ̷̜̂f̵̰͝ē̵̟a̵͕̾r̷̯̃ "
@@ -1598,16 +1794,20 @@ label start:
         computer "The eå̸͕rth̷͇̒ is full of the d̸é̵͚a̵d̸͎̀, "
         computer "There is daǹ̶̳ger̷͉͌ beṅ̴eȁ̵͚th̷͖͆ ă̴ń̷̩d o'erh̴̗̔e̷͖͐ả̷̭d̶̢́."
 
+        show captain confusion-open behind computer 
         captain "What? What other danger?"
         captain "What are you trying to tell me?"
 
+        show captain confusion-closed behind computer 
         computer "There pă̸s̴͎̀sed̷͚̃ a weary time. Each t̵h̴r̶o̷a̷t̶ "
         computer "Was parched, and glazed each eye."
         computer "A ẃ̸̳e̴ary̷̙͑ time! a ẃ̸̳eary time!"
         computer "How glazed each ẃ̸̳e̴ary̷̙͑ eye,"
         computer "And may there be no s̸a̷d̶n̷e̴s̸s̴ ̴o̶f̵ ̸f̵a̶r̷e̵w̶e̴l̵l̷ "
 
+        show captain confusion-open behind computer 
         captain "Farewell..?"
+        show captain distress behind computer 
         captain "No…"
         captain "Why…"
 
@@ -1639,6 +1839,41 @@ label start:
         captain "Matthew… I’m so sorry…"
         captain "I promised! I promised you I’d finish this for you…"
         captain "But I… I don’t know what to do!"
+
+        captain "The thought of choosing someone makes me sick…"
+        captain "I could skip the charade and just leave."
+        captain "*Stares down the specimen as tears roll down your face*"
+
+        captain "Should I escape?"
+        menu:
+            "Escape":
+                menu: 
+                    "Are you sure, captain?"
+
+                    "Yes":
+                        captain "God damnit!"
+                        captain "*coughing fit*"
+                        captain "… I’m wasting oxygen with my outbursts…"
+                        captain "I’m just wasting time. I should just bring it with me on the escape pod. Be done with it."
+
+                        jump EndB
+
+                    "No":
+                        captain "God damnit!"
+                        captain "*coughing fit*"
+                        captain "… I’m wasting oxygen with my outbursts…"
+                        captain "I need to fix MAD1. Otherwise only one of us lives…"
+
+                        jump Map3
+
+            "Stay":
+                captain "God damnit!"
+                captain "*coughing fit*"
+                captain "… I’m wasting oxygen with my outbursts…"
+                captain "I need to fix MAD1. Otherwise only one of us lives…"
+
+                jump Map3
+
         play sound "Metallic_Hit.mp3" volume 0.5
         show bg escape pod with hpunch
         captain "God damnit!"
@@ -1669,6 +1904,9 @@ label start:
                 show captain neutral-open behind medic
                 captain "Not much time…"
                 captain "Our survival rests on you, Sara. Your solution."
+
+                show medic anxious
+                show captain neutral-closed behind medic
                 medic "T-that’s a lot of pressure, Captain! I-I’ve done what I can…"
 
             # S.3.1b
@@ -1676,64 +1914,140 @@ label start:
                 $ medApproval += 1
                 show captain concern-open behind medic
                 captain "There’s no time. But before I ask you what you’ve come up with, how are you doing?"
+
+                show medic nervous
+                show captain concern-closed behind medic
                 medic "T-that’s very nice of you to ask… Not good, but I’m doing my best!"
+
+                show captain concern-open behind medic
                 captain "Thank you for all you’ve done up to this point. Your work might save us all."
+
+                show medic neutral
+                show captain concern-closed behind medic
                 medic "Thank you, Captain…"
 
-        
-        if medApproval <=5:
+        if medApproval <= 5:
             #S.3.A: Low Approval/Failure
+            show medic suggesting
             medic "I’m very certain now that it’s the specimen emitting electromagnetic waves that are interfering with our systems."
+            
+            show captain confusion-open behind medic
             captain "How certain?"
+
+            show medic thinking
+            show captain confusion-closed behind medic
             medic "95%%? In fact, I’m about to confirm it with a VLF detector. My theory is that it is using low frequency bursts as a form of threat response."
             medic "It makes sense for it to be low frequency, since this organism’s natural habitat is water."
             medic "And lower frequencies transmit better in water."
+
+            show captain thinking behind medic
             captain "I see…"
+
+            show medic nervous
             medic "It’s ironic, isn’t it? That this incredible discovery might just be the death of us."
+
+            show captain neutral-open behind medic
             captain "Sara, can you come up with a containment plan?"
+
+            show medic stressed
+            show captain neutral-closed behind medic
             medic "I-I don’t know! I don’t think so. There’s no time!"
 
             if seenE3 is False:
                 medic "Even if Eugen has a solution to fix MAD1, without a way to shield the specimen, it will continue to damage the ship."
+
+                show captain frustrated behind medic
                 captain "So even if he’s figured out how to bypass the computer, we’re still screwed…"
                 captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
+
+                show medic anxious
                 medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
+
+                show captain concern-open behind medic
                 captain "None of us could’ve foreseen this would happen."
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
+                
+                show medic thinking
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                show medic anxious
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
                 
             elif seenE3 is True:
+                show captain frustrated behind medic
                 captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
+
+                show medic anxious
                 medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
+
+                show captain concern-open behind medic
                 captain "None of us could’ve foreseen this would happen."
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
+
+                show medic thinking
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                show medic anxious
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
     
-        elif medApproval >5:
+        elif medApproval > 5:
             #S.3.B: High Approval/Success
+            show medic explaining
             medic "I have used a VLF detector and confirmed that the specimen is emitting low frequency electromagnetic waves."
             medic "Lower frequencies transmit better in water, which is, of course, its natural habitat."
+
+            show captain thinking behind medic
             captain "I see…"
+            
+            show medic nervous
             medic "It’s ironic, isn’t it? That this incredible discovery might just be the death of us."
+            
+            show captain concern-open behind medic
             captain "You’ve done well, Sara."
+            
+            show medic neutral
+            show captain concern-closed behind medic
             medic "Thank you. It wouldn’t have been possible if you didn’t believe in me all this time… But I fear we’re too late."
+            
+            show captain determined-open behind medic
             captain "We can block these emissions. We can–"
+
+            show medic worried
+            show captain determined-closed behind medic
             medic "Yes, I have looked into containment! But it won’t be easy. I don’t know–we might not have time!"
+
+            show captain neutral-open behind medic
             captain "Let me worry about that. Tell me what sort of containment?"
+
+            show medic explaining
+            show captain neutral-closed behind medic
             medic "Low-frequency EM waves are highly penetrative. We need specialized shielding, such as heavy steel plates."
             medic "There are Nu metal sheets in the cargo hold that the bots are using to run repairs. It’s essentially graphene-based nanocomposites."
+            
+            show captain determined-open behind medic
             captain "That’s promising. You think it’d work?"
+
+            show medic thinking
+            show captain determined-closed behind medic
             medic "Pretty sure. The bots are down though. We’d have to go to the cargo hold and use a laser cutter on the sheets."
             medic "Then you’d have to build something of a cocoon around the specimen."
+            
+            show captain determined-open behind medic
             captain "Good. Things are grim but we need to try."
+
+            show medic excited
+            show captain determined-closed behind medic
             medic "Yes, yes, we need to!"
 
             if seenE3 is False:
+                show medic worried
                 medic "I just hope Eugen has a solution for MAD1 and the ship… The damage that has been done cannot be reversed."
                 medic "If he hasn’t found a way to bypass the OS, I’m afraid we’re still doomed."
+
+                show captain neutral-open behind medic
                 captain "I’ll go speak with him now, hopefully he’s found something out."
+
+                jump Map3
+
+        jump Final
 
     label E3:
         play sound "Footsteps.mp3" volume 0.8
@@ -1741,7 +2055,7 @@ label start:
         scene onlayer screens
         $ seenE3 = True
         scene bg engineer with fade
-        show engineer neutral with dissolve
+        show engineer thinking with dissolve
         pause(0.5)
         show captain neutral-closed behind engineer with dissolve
 
@@ -1753,147 +2067,447 @@ label start:
         menu: 
         # E.3.1a
             "Whatever it takes.":
-                show captain neutral-open behind medic
+                show captain neutral-open behind engineer
                 captain "Whatever it takes."
+
+                show engineer neutral
+                show captain neutral-closed behind engineer
                 engineer "I see."
 
             # E.3.1b
             "Not happy about it, but yes.":
                 $ engApproval += 1
-                show captain concern-open behind medic
+                show captain concern-open behind engineer
                 captain "It feels like it was for nothing, like I’ve failed."
                 captain "But I’m not prepared to sacrifice my crew."
+
+                show engineer resolve
+                show captain concern-closed behind engineer
                 engineer "I share your frustrations, captain."
 
         engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
+        show engineer anger
         engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
 
-        if engApproval <=5:
+        if engApproval <= 5:
             #E.3.A: Low Approval/Failure
+            show engineer neutral
             engineer "10%% oxygen left. 10%%..."
+            
+            show captain concern-open behind engineer
             captain "Please tell me you have good news."
+
+            show captain concern-closed behind engineer
             engineer "The systems no longer resisting me… it doesn’t have a reason to."
             engineer "Primary life support has entered terminal degradation."
+
+            show captain concern-open behind engineer
             captain "That’s not good news…"
+
+            show captain concern-closed behind engineer
             engineer "The little power we had left, I rerouted."
+
+            show captain distress behind engineer
             captain "God damnit…"
+
+            show engineer frustration
             engineer "Navigation is gone. Auxiliary is gone. Containment is still stable… Of course it is."
             engineer "My entire career was spent believing that if something failed, it was because it was poorly built."
             engineer "This system was built exceptionally well, regardless of its unorthodox methods; it just wasn’t built well for us."
+            
+            show captain concern-open behind engineer
             captain "Any success overriding it?"
+            
+            show engineer resolve
+            show captain concern-closed behind engineer
             engineer "I cannot override anything anymore without triggering a complete system failure that would serve no purpose besides ending this immediately."
             engineer "This system has bested me, nothing I tried worked, I did everything right… everything."
 
             if seenS3 is False:
+                show engineer shock
                 engineer "If Sara has managed to isolate the specimen, I am afraid it is still in vain."
                 engineer "I hope she is not too disappointed in my lack of contribution."
+                
+                show captain concern-open behind engineer
                 captain "At the moment you’re disappointing no one but yourself."
                 captain "You can’t blame yourself. Like you said, it wasn’t made for us."
+                
+                show engineer resolve
+                show captain concern-closed behind engineer
                 engineer "So this is what remains, a final countdown."
+                
+                show captain concern-open behind engineer
                 captain "Thank you for your service, friend."
                 captain "As long as the specimen is brought home, this mission wouldn’t be for nothing."
                 captain "As for whether or not it’s a failure, you tell me, Eugen."
+                
+                show captain concern-closed behind engineer
                 engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
                 engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
                 engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
+                
+                show captain concern-open behind engineer
                 captain "Your equipment and your work was flawless. All will see that."
+                
+                show captain concern-closed behind engineer
                 engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
 
             elif seenS3 is True:
+                show captain concern-open behind engineer
                 captain "You can’t blame yourself. Like you said, it wasn’t made for us."
+                
+                show engineer resolve
+                show captain concern-closed behind engineer
                 engineer "So this is what remains, a final countdown."
+                
+                show captain concern-open behind engineer
                 captain "Thank you for your service, friend."
                 captain "As long as the specimen is brought home, this mission wouldn’t be for nothing."
                 captain "As for whether or not it’s a failure, you tell me, Eugen."
+                
+                show captain concern-closed behind engineer
                 engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
                 engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
                 engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
+                
+                show captain concern-open behind engineer
                 captain "Your equipment and your work was flawless. All will see that."
+                
+                show captain concern-closed behind engineer
                 engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
 
-        elif medApproval >5:
+        elif engApproval > 5:
         #S.3.B: High Approval/Success
-            engineer "10% oxygen left. 10%..."
+            show engineer neutral
+            engineer "10%% oxygen left. 10%%…"
             engineer "The system is no longer resisting me… it doesn’t have a reason to."
             engineer "Primary life support has entered terminal degradation."
+            
+            show captain concern-open behind engineer
             captain "Please tell me you have good news."
+            
+            show engineer shock
+            show captain concern-closed behind engineer
             engineer "The little power we had left, I rerouted. We have roughly 3 minutes left."
+            
+            show captain concern-open behind engineer
             captain "That’s not good news…"
             captain "What’s the plan for protocol?"
+            
+            show engineer resolve
+            show captain concern-closed behind engineer
             engineer "To hell with protocol, this system is clearly beyond following traditional procedures."
             engineer "We have to consider our last resort; we need to override MAD1 manually, and you need to take control of this ship."
+            
+            show captain confusion-open behind engineer
             captain "What?"
+            
+            show engineer shock
+            show captain confusion-closed behind engineer
             engineer "I’m sure Sara gave you enough information on the specimen for you to understand this is beyond conventional solutions."
             engineer "I cannot override anything anymore without triggering a complete system failure that would serve no purpose besides ending this immediately."
             engineer "To override MAD1 you have to go to the control room; there is a security door locked inside; only you can enter with your personnel badge."
             engineer "In the room, you’ll find the system override lever. Once you pull that, you’ll have to take complete control of the ship and navigate us yourself." 
             engineer "While you control the ship, I’ll work to reallocate power to our life support, enough to make it back."
+            show engineer thinking
             engineer "If all goes well, which I have my doubts, we will make it back, and the specimen will be properly contained so long as Sara has that under control." 
             engineer "I have to note this is highly risky as we are no longer following the book."
+            show engineer shock
             engineer "I can’t say I’m confident the outcome will be good, but it’s our only choice." 
+            
+            show captain determined-open behind engineer
             captain "Eugen, I trust your judgement immensely."
             captain "If this is our best last resort, so be it."
+            
+            show engineer resolve
+            show captain determined-closed behind engineer
             engineer "This is what remains, a final countdown. Please tell me you will make the right decision and save this mission."
+            
+            show captain determined-open behind engineer
             captain "You have my word."
+            
+        if seenS3 is False:
+            jump Map3
+        else:
+            jump Final
 
-    label M2O:     
-        play sound "Footsteps.mp3" volume 0.8
-        play music "Electric_Dawn.mp3" volume 0.8        
-        # M.2.O optional MAD1
-        # Same as M1O
-        scene onlayer screens
-        $ seenMO = True
-        scene bg computer with fade
+    # label M2O:     
+    #     play sound "Footsteps.mp3" volume 0.8
+    #     play music "Electric_Dawn.mp3" volume 0.8        
+    #     # M.2.O optional MAD1
+    #     # Same as M1O
+    #     scene onlayer screens
+    #     $ seenMO = True
+    #     scene bg computer with fade
 
-        show computer neutral-1 with dissolve
-        show captain neutral-open behind computer with dissolve
+    #     show computer neutral-1 with dissolve
+    #     show captain neutral-open behind computer with dissolve
 
-        computer "hehehe captain"
-        captain ":("
+    #     computer "hehehe captain"
+    #     captain ":("
 
     label Final:
-        captain "immabout to lock tf in"
+        if medApproval > 5 and engApproval > 5:
+            show screen MapUIFin with dissolve
+            pause
+
+        else:
+            jump Choice
+        
+        label SaraSolution:
+            scene onlayer screens
+            $ seenSaraSolution = True        
+            scene bg artifact covered with fade
+            pause(1)
+            scene bg artifact with dissolve
+            pause(1)
+
+            captain "Okay I need to remember Sara’s instructions."
+            captain "First I need to…"
+            menu:
+                "Scrap some bots for the Nu Metal sheets.":
+                    scene bg artifact with hpunch
+                    jump Failure
+                "Find the Nu Metal sheets in the cargo hold.":
+                    captain "Okay."
+                "Ask Eugen for the Nu Metal sheets.":
+                    scene bg artifact with hpunch
+                    jump Failure
+            
+            captain "Then, I need to…"
+            menu:
+                "Use the laser cutter to get them in the right shape.":                    
+                    captain "Okay."
+                "Bend them into the right shape by hand.":
+                    scene bg artifact with hpunch
+                    jump Failure
+                "Cut them with a saw.":
+                    scene bg artifact with hpunch
+                    jump Failure
+            
+            captain "Finally…"
+            menu:
+                "Remove the specimen and wrap it in the metal sheet.":
+                    scene bg artifact with hpunch
+                    jump Failure
+                "Wrap the sheets around the container.":
+                    captain "Oh my god."
+                    captain "I think it worked."
+                    captain "Now to manually control the ship."
+                "Bring the sheets and the metal to Sara.":
+                    scene bg artifact with hpunch
+                    jump Failure
+            
+
+            play sound "Footsteps.mp3" volume 0.8
+            play music "Microbiology.mp3" volume 0.8
+            scene onlayer screens
+            $ seenS3 = True
+            scene bg medic with fade
+            show medic worried with dissolve
+            pause(0.5)
+            show captain neutral-closed behind medic with dissolve
+
+            medic "What happened? Did it work?"
+
+            show captain determined-open behind medic
+            captain "It did. Once Eugen can reroute life support I need you to monitor the specimen at all times."
+            captain "We’re going home."
+            
+            show medic excited
+            show captain determined-closed behind medic
+            medic "Yes! Will be on it ASAP!"
+
+            if seenEugenSolution is True:
+                jump EndG
+            else:
+                show screen MapUIFin with fade
+                pause
+
+        label EugenSolution:
+            scene onlayer screens
+            $ seenEugenSolution = True
+            
+            play sound "Footsteps.mp3" volume 0.8
+            play music "Microbiology.mp3" volume 0.8
+            scene bg computer with fade
+            show computer error-1 with dissolve
+            show captain neutral-open behind computer with dissolve
+
+            captain "Okay I need to follow Eugen’s instructions exactly."
+
+            show captain thinking behind computer
+
+            captain "First I need to…"
+            menu:
+                "Speak with MAD1.":
+                    show captain anger-open behind computer with hpunch
+                    jump Failure
+                "Scan your badge.":                
+                    captain "Okay."
+                "Scan the systems.":
+                    show captain anger-open behind computer with hpunch
+                    jump Failure
+            
+            captain "Then, I need to…"
+            menu:
+                "Pull the system override lever.":                
+                    captain "Okay."
+                "Shut down MAD1.":
+                    show captain anger-open behind computer with hpunch
+
+                    jump Failure
+                "Record a captain’s log.":
+                    show captain anger-open behind computer with hpunch
+                    jump Failure
+
+            captain "Finally…"
+            menu:
+                "Turn the system back on again.":
+                    show captain anger-open behind computer with hpunch
+                    jump Failure
+                "Man full control of the ship.":
+                    show captain anger-open behind computer with hpunch
+                    jump Failure
+                "Hold the lever down while Eugen controls the ship.":        
+                    show computer neutral-1
+                    show captain determined-closed behind computer        
+                    computer "System override initiated."
+                    computer "Manual controls enabled."
+
+                    show captain determined-open behind computer        
+                    captain "It worked…"
+                    captain "I need to let the others know."
+
+            play sound "Footsteps.mp3" volume 0.8
+            play music "Microbiology.mp3" volume 0.8
+            scene bg engineer with fade
+            show engineer neutral with dissolve
+            pause(0.5)
+            show captain neutral-closed behind engineer with dissolve
+
+            engineer "I see the system override must have succeeded."
+
+            show captain determined-open behind engineer
+            captain "Yes it did."
+
+            show engineer resolve
+            show captain determined-closed behind engineer
+            engineer "I will begin rerouting life support immediately."
+            engineer "Good work, Captain."
+            
+            show captain determined-open behind engineer
+            captain "Thank you, Eugen. You as well."
+
+            if seenSaraSolution is True:
+                jump EndG
+            else:
+                show screen MapUIFin with fade
+                pause
+
+        label Failure:
+            captain "No, no no!"
+            captain "..."
+            captain "… Dammit… "
+
+            show MapUIEnd with fade
+
+    label Choice:
+        scene onlayer screens
+        play sound "Footsteps.mp3" volume 0.8
+        scene bg escape pod with fade
+
+        captain "So… It’s come to this…"
+        captain "Only one of us is going home…"
+        captain "…" 
+
+        menu:
+            "Sara":
+                captain "Sara’s research is too important."
+                captain "And she’s the youngest of all of us."
+                captain "She deserves to go home."
+                captain "Make her family proud."
+                captain "I’m sorry, Eugen."
+
+                jump EndS
+
+            "Eugen":
+                captain "Eugen’s technological feats are too valuable."
+                captain "He has so much wisdom and experience."
+                captain "He deserves to go home."
+                captain "Keep making amazing advancements."
+                captain "I’m sorry, Sara."
+
+                jump EndE
+
+            "Yourself":
+                captain "I can’t choose one of them over the other."
+                captain "I’d rather have them thinking I was selfish than valued less than the other."
+                captain "I’m sorry, Sara and Eugen."
+                
+                jump EndC
 
     # ENDINGS
     label EndB:
+        $ quick_menu = False
         play music "Goosebumps.mp3" volume 0.8
         # Bad ending: Captain abandons ship
-
-
-    label EndC:
-        play music "Goosebumps.mp3" volume 0.8
-        # Captain leaves with specimen 
-        nvl clear
-        
-        init python:
-            config.window_hide_transition = dissolve
-            config.window_show_transition = dissolve
-
-        window hide
         scene ending captain with fade
         pause(0.5)
-        window show
 
-        nvlChar "He rose the morrow morn.{w=1}{nw}"
-        nvlChar "A sadder and a wiser man.{w=1}{nw}"
-        nvlChar "He went like one that hath been stunned,{w=1}{nw}"
-        nvlChar "And is of sense forlorn:{w=1}{nw}"
-        nvlChar "The Captain, whose eye is dark,{w=1}{nw}"
-        nvlChar "Whose beard with age is hoar,{w=1}{nw}"
-        nvlChar "Is gone."
+        # show screen EndBPoem with dissolve
+        # pause(2)
 
-        nvl clear
+        captain "Captain: Matthew… We fai- I failed the mission… I failed you." 
+        captain "I told myself I would complete the mission whether or not it kills me, and I guess part of me hoped I would join you amongst the stars." 
+        captain "But I’m a coward… I failed the CSA, I failed my crew, I failed you."
+        captain "What have I done?"
 
-        
-        #show text "He rose the morrow morn." with dissolve
-        #show text "A sadder and a wiser man." with dissolve
-        #show text "He went like one that hath been stunned," with dissolve
-        #show text "And is of sense forlorn:" with dissolve
-        #show text "The Captain, whose eye is dark," with dissolve
-        #show text "Whose beard with age is hoar," with dissolve
-        #show text "Is gone." with dissolve
+        # During credits
+        show screen Credits1 with dissolve
+        pause(0.5)
 
-        captain "Captain’s log, September 27th."
+        engineer "An absolute failure.{w=2}{nw}"
+        engineer "My design was flawless. Perfect. However, that fact will be cast aside.{w=5}{nw}"
+        engineer "To think this is how it ends. A failure I die for.{w=4}{nw}"
+        engineer "A program bested me, blinded me to the point of perpetual arrogance.{w=5}{nw}"
+        hide screen Credits1 with dissolve
+        show screen Credits2 with dissolve
+        engineer "Regardless of how I will be remembered by others, I die now knowing I was a fool.{w=7}{nw}"
+
+        medic "It’s almost poetic that my life’s greatest achievement would kill me.{w=5}{nw}"
+        medic "And I’m a failure that never saw it coming. Completely at its mercy.{w=5}{nw}"
+        medic "I failed Captain and Eugen. Death is fitting…{w=6}{nw}"
+
+        hide screen Credits2 with dissolve
+        show screen Credits3 with dissolve
+        computer "Under the wide and starry sky,{w=4}{nw}"
+        computer "Dig the grave and let me lie.{w=4}{nw}"
+        computer "Glad did I live and gladly die,{w=4}{nw}"
+        computer "And I laid me down with a will.{w=4}{nw}"
+
+        hide screen Credits3 with dissolve
+        show screen Credits4 with dissolve
+        computer "This be the verse you grave for me:{w=4}{nw}"
+        computer "Here he lies where he longed to be;{w=4}{nw}"
+        computer "Home is the captain, home from sea,{w=4}{nw}"
+        computer "And the lover lost to the hill.{w=6}{nw}"
+
+        hide screen Credits4 with dissolve
+        scene black with dissolve
+        return
+
+    label EndC:
+        $ quick_menu = False
+        play music "Goosebumps.mp3" volume 0.8
+        # Captain leaves with specimen 
+        scene ending captain with fade
+        pause(0.5)
+
+        show screen EndCPoem with dissolve
+        pause(2)
+
+        captain "Captain’s log, January 27th."
         captain "The specimen has safely returned with me to Earth."
         captain "Further investigations will commence soon. I think… I uh… I…"
         captain "I-I’ve failed…"
@@ -1906,29 +2520,51 @@ label start:
         captain "What have I done?"
 
         # During credits
+        hide screen EndCPoem with dissolve
+        show screen Credits1 with dissolve
+        pause(0.5)
 
-        engineer "Father. It seems our name will no longer be held in esteem."
-        engineer "My design was flawless. Perfect. However, that fact will be cast aside."
-        engineer "To think this is how it ends. A failure I die for."
-        engineer "The Captain is gone with the specimen; he will likely be considered a hero, a visionary."
-        engineer "And the name Eugen Braun will be forgotten."
+        engineer "Father. It seems our name will no longer be held in esteem.{w=4}{nw}"
+        engineer "My design was flawless. Perfect. However, that fact will be cast aside.{w=4}{nw}"
+        engineer "To think this is how it ends. A failure I die for.{w=3}{nw}"
+        engineer "The Captain is gone with the specimen; he will likely be considered a hero, a visionary.{w=5}{nw}"
+        engineer "And the name Eugen Braun will be forgotten.{w=6}{nw}"
 
-        medic "You’ve been a brilliant captain and a friend. I may be no more, but I’m happy that you survive and my work survives."
-        medic "I wish I could see my family–their faces if I returned home successful. I never will see that."
-        medic "It’s painful…I never thought I’d go this way."
+        hide screen Credits1 with dissolve
+        show screen Credits2 with dissolve
 
-        computer "Under the wide and starry sky,"
-        computer "Dig the grave and let me lie."
-        computer "Glad did I live and gladly die,"
-        computer "And I laid me down with a will."
-        computer "This be the verse you grave for me:"
-        computer "Here he lies where he longed to be;"
-        computer "Home is the captain, home from sea,"
-        computer "And the lover lost to the hill."
+        medic "You’ve been a brilliant captain and a friend. {w=3}{nw}" 
+        medic "I may be no more, but I’m happy that you survive and my work survives.{w=5}{nw}"
+        medic "I wish I could see my family–their faces if I returned home successful. I never will see that.{w=5}{nw}"
+        medic "It’s painful…I never thought I’d go this way.{w=6}{nw}"
+
+        hide screen Credits2 with dissolve
+        show screen Credits3 with dissolve
+        computer "Under the wide and starry sky,{w=4}{nw}"
+        computer "Dig the grave and let me lie.{w=4}{nw}"
+        computer "Glad did I live and gladly die,{w=4}{nw}"
+        computer "And I laid me down with a will.{w=4}{nw}"
+
+        hide screen Credits3 with dissolve
+        show screen Credits4 with dissolve
+        computer "This be the verse you grave for me:{w=4}{nw}"
+        computer "Here he lies where he longed to be;{w=4}{nw}"
+        computer "Home is the captain, home from sea,{w=4}{nw}"
+        computer "And the lover lost to the hill.{w=6}{nw}"
+
+        hide screen Credits4 with dissolve
+        scene black with dissolve
+        return
 
     label EndE:
+        $ quick_menu = False
         play music "Goosebumps.mp3" volume 0.8
         # Eugen leaves with specimen 
+        scene ending engineer with fade
+        pause(0.5)
+        
+        # show screen EndEPoem with dissolve
+        # pause(2)
 
         engineer "All has come to an end, and the mission is behind me."
         engineer "However, I can’t stop thinking if it was truly the best outcome for me being saved."
@@ -1938,27 +2574,48 @@ label start:
         engineer "I hope Sara and Rudy can forgive me."
 
         # During credits
+        show screen Credits1 with dissolve
+        pause(0.5)
 
-        captain "Eugen deserves to go home. His tech is invaluable."
-        captain "At least Sara isn’t alone during our last moments."
-        captain "Matthew… My love…"
-        captain "I’ll see you soon, amongst the stars…"
+        captain "Eugen deserves to go home. His tech is invaluable.{w=4}{nw}"
+        captain "At least Sara isn’t alone during our last moments.{w=4}{nw}"
+        captain "Matthew… My love…{w=3}{nw}"
+        captain "I’ll see you soon, amongst the stars…{w=6}{nw}"
 
-        medic "It’s good that I die with a friend by my side."
-        medic "Looking back, it’s ironic that I found the validation I sought all my life not from my family but from a stranger amongst the stars."
+        hide screen Credits1 with dissolve
+        show screen Credits2 with dissolve
 
-        computer "Exult O stars, and ring O bells!"
-        computer "But I with mournful tread,"
-        computer "Walk the deck my Captain lies,"
-        computer "Fallen cold and dead."
-        computer "Here Captain! dear father!"
-        computer "This arm beneath your head!"
-        computer "It is some dream that on the deck,"
-        computer "You’ve fallen cold and dead."
+        medic "It’s good that I die with a friend by my side.{w=5}{nw}"
+        medic "Looking back, it’s ironic that I found the validation I sought all my life not from my family but from a stranger amongst the stars.{w=9}{nw}"
+
+        hide screen Credits2 with dissolve
+        show screen Credits3 with dissolve
+
+        computer "Exult O stars, and ring O bells!{w=4}{nw}"
+        computer "But I with mournful tread,{w=4}{nw}"
+        computer "Walk the deck my Captain lies,{w=4}{nw}"
+        computer "Fallen cold and dead.{w=4}{nw}"
+        
+        hide screen Credits3 with dissolve
+        show screen Credits4 with dissolve
+        computer "Here Captain! dear father!{w=4}{nw}"
+        computer "This arm beneath your head!{w=4}{nw}"
+        computer "It is some dream that on the deck,{w=4}{nw}"
+        computer "You’ve fallen cold and dead.{w=6}{nw}"
+    
+        hide screen Credits4 with dissolve
+        scene black with dissolve
+        return
 
     label EndS:
+        $ quick_menu = False
         play music "Goosebumps.mp3" volume 0.8
         # Sara leaves with specimen 
+        scene ending medic with fade
+        pause(0.5)
+        
+        # show screen EndSPoem with dissolve
+        # pause(2)
 
         medic "I made it back...I still can’t believe it. I found life out in space. I achieved my dream!"
         medic "My family? They’re proud of me, but they still can’t fully accept my life. It’s not what I expected… But it doesn’t matter anymore."
@@ -1966,45 +2623,51 @@ label start:
         medic "It’s hard to bear…I will keep going and do my best. I owe that to you."
 
         # During credits
+        show screen Credits1 with dissolve
+        pause(0.5)
 
-        captain "Sara deserves to go home. Her research will be priceless."
-        captain "Eugen’s been rather silent… At least my last moments with him will be quiet."
-        captain "Matthew… My love…"
-        captain "I’ll see you soon, amongst the stars…"
+        captain "Sara deserves to go home. Her research will be priceless.{w=4}{nw}"
+        captain "Eugen’s been rather silent… At least my last moments with him will be quiet.{w=4}{nw}"
+        captain "Matthew… My love…{w=3}{nw}"
+        captain "I’ll see you soon, amongst the stars…{w=6}{nw}"
 
-        engineer "Father. It seems our name will no longer be held in esteem."
-        engineer "My design was flawless. Perfect. However, that fact will be cast aside."
-        engineer "To think this is how it ends. A failure I die for."
-        engineer "Fortunately, Sara will return with the specimen, furthering our knowledge of the universe."
+        hide screen Credits1 with dissolve
+        show screen Credits2 with dissolve
 
-        computer "Exult O stars, and ring O bells!"
-        computer "But I with mournful tread,"
-        computer "Walk the deck my Captain lies,"
-        computer "Fallen cold and dead."
-        computer "Here Captain! dear father!"
-        computer "This arm beneath your head!"
-        computer "It is some dream that on the deck,"
-        computer "You’ve fallen cold and dead."
+        engineer "Father. It seems our name will no longer be held in esteem.{w=4}{nw}"
+        engineer "My design was flawless. Perfect. However, that fact will be cast aside.{w=4}{nw}"
+        engineer "To think this is how it ends. A failure I die for.{w=4}{nw}"
+        engineer "Fortunately, Sara will return with the specimen, furthering our knowledge of the universe.{w=7}{nw}"
 
-    
+        hide screen Credits2 with dissolve
+        show screen Credits3 with dissolve
+
+        computer "Exult O stars, and ring O bells!{w=4}{nw}"
+        computer "But I with mournful tread,{w=4}{nw}"
+        computer "Walk the deck my Captain lies,{w=4}{nw}"
+        computer "Fallen cold and dead.{w=4}{nw}"
+        
+        hide screen Credits3 with dissolve
+        show screen Credits4 with dissolve
+
+        computer "Here Captain! dear father!{w=4}{nw}"
+        computer "This arm beneath your head!{w=4}{nw}"
+        computer "It is some dream that on the deck,{w=4}{nw}"
+        computer "You’ve fallen cold and dead.{w=4}{nw}"
+        
+        hide screen Credits4 with dissolve
+        scene black with dissolve
+        return
+
     label EndG:
+        $ quick_menu = False
         # Good ending
         play music "Future Utopia.mp3" volume 0.8
-        nvl clear
-        
-        init python:
-            config.window_hide_transition = dissolve
-            config.window_show_transition = dissolve
-
-        window hide
         scene ending captain with fade
         pause(0.5)
-        window show
-
-        nvlChar "The ship is anchor’d safe and sound, its voyage closed and done,{w=1}{nw}"
-        nvlChar "From fearful trip the victor ship comes in with object won.{w=1}{nw}"
-
-        nvl clear
+        
+        show screen EndGPoem with dissolve
+        pause(2)
 
         captain "Captain’s log, January 27th. A- a lot has happened since the last log."
         captain "We’re all very shaken. But at least we’re home."
@@ -2013,18 +2676,40 @@ label start:
         captain "I did it for you."
 
         # During credits
+        hide screen EndGPoem with dissolve
+        show screen Credits1 with dissolve
+        pause(7)
+        
+        hide screen Credits1 with dissolve
+        show screen Credits2 with dissolve
 
-        engineer "A successful mission, I expected nothing less."
-        engineer "My design was flawless. Perfect, and now the world will know."
-        engineer "Though our methods were not to my standards, an engineer must know how to adapt to unorthodox situations."
-        engineer "Something I had refused to accept. Perhaps that was my lesson."
+        engineer "A successful mission, I expected nothing less.{w=4}{nw}"
+        engineer "My design was flawless. Perfect, and now the world will know.{w=4}{nw}"
+        engineer "Though our methods were not to my standards, an engineer must know how to adapt to unorthodox situations.{w=6}{nw}"
+        engineer "Something I had refused to accept. Perhaps that was my lesson.{w=6}{nw}"
 
-        medic "We survived the impossible, and we did what no crew had done before."
-        medic "More than anything–more than this specimen–I found something more amongst the stars."
-        medic "There is now one person who knows me and truly believes in me. Captain, thank you for everything."
-        medic "It no longer matters what my family says. I am at peace."
+        hide screen Credits2 with dissolve
+        show screen Credits3 with dissolve
+
+        medic "We survived the impossible, and we did what no crew had done before.{w=5}{nw}"
+        medic "More than anything–more than this specimen–I found something more amongst the stars.{w=5}{nw}"
+        medic "There is now one person who knows me and truly believes in me. Captain, thank you for everything.{w=5}{nw}"
+        medic "It no longer matters what my family says. I am at peace.{w=5}{nw}"
+
+        hide screen Credits3 with dissolve
+        show screen Credits4 with dissolve
+
+        computer "O Captain! my Captain! our fearful trip is done,{w=5}{nw}"
+        computer "The ship has weather’d every rack, the prize we sought is won,{w=5}{nw}"
+        computer "The port is near, the bells I hear, the people all exulting,{w=5}{nw}"
+        computer "While follow eyes the steady keel, the vessel grim and daring{w=5}{nw}"
+
+        hide screen Credits4 with dissolve
+        scene black with dissolve
+        return
 
     label EndSec:
+        $ quick_menu is False
         play music "Future Utopia.mp3" volume 0.8
         # Secret ending: Throw away the specimen
 
@@ -2035,25 +2720,41 @@ label start:
         captain "Goodbye, my love."
 
         # During credits
+        show screen Credits1 with dissolve
+        pause(0.5)
 
-        engineer "A necessary sacrifice had to be made."
-        engineer "My design was flawless… Perfect, and I will make sure that fact is clear."
-        engineer "Returning with the specimen would have been ideal; however, its disposal was for the greater good."
-        engineer "I hope the rest of the crew understands this."
+        engineer "A necessary sacrifice had to be made.{w=3}{nw}"
+        engineer "My design was flawless… Perfect, and I will make sure that fact is clear.{w=4}{nw}"
+        engineer "Returning with the specimen would have been ideal; however, its disposal was for the greater good.{w=5}{nw}"
+        engineer "I hope the rest of the crew understands this.{w=6}{nw}"
 
-        medic "That’s my life’s work! My dream. This is hard to bear."
-        medic "But we’re alive! And I have all of my notes. We have acquired knowledge that is priceless."
-        medic "Life exists in our solar system!"
+        hide screen Credits1 with dissolve
+        show screen Credits2 with dissolve
+        
+        medic "That’s my life’s work! My dream. This is hard to bear.{w=5}{nw}"
+        medic "But we’re alive! And I have all of my notes. We have acquired knowledge that is priceless.{w=7}{nw}"
+        medic "Life exists in our solar system!{w=5}{nw}"
+
+        hide screen Credits2 with dissolve
+        show screen Credits3 with dissolve
 
         # For now this will be computer, if we decide to add Matthew voice will change it.
 
-        computer "No longer mourn for me when I am dead"
-        computer "Then you shall hear the surly sullen bell"
-        computer "Give warning to the world that I am fled"
-        computer "From this vile world, with vilest worms to dwell:"
-        computer "Nay, if you read this line, remember not"
-        computer "The hand that writ it; for I love you so"
-        computer "That I in your sweet thoughts would be forgot"
-        computer "If thinking on me then should make you woe."
+        computer "No longer mourn for me when I am dead{w=4}{nw}"
+        computer "Then you shall hear the surly sullen bell{w=4}{nw}"
+        computer "Give warning to the world that I am fled{w=4}{nw}"
+        computer "From this vile world, with vilest worms to dwell:{w=4}{nw}"
+        
+        hide screen Credits3 with dissolve
+        show screen Credits4 with dissolve
+
+        computer "Nay, if you read this line, remember not{w=4}{nw}"
+        computer "The hand that writ it; for I love you so{w=4}{nw}"
+        computer "That I in your sweet thoughts would be forgot{w=4}{nw}"
+        computer "If thinking on me then should make you woe.{w=6}{nw}"
+
+        hide screen Credits4 with dissolve
+        scene black with dissolve
+        return
 
     return

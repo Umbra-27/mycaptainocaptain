@@ -1,329 +1,1234 @@
-2026-03-15 22:51:07 UTC
-Windows-10-10.0.19045-SP0
+2026-03-16 10:02:33 UTC
+Windows-11-10.0.26200-SP0
 Ren'Py 8.5.2.26010301
 
-Early init took 48 ms
-Loading error handling took 55 ms
-Loading script took 864 ms
-Loading save slot metadata took 126 ms
+Early init took 31 ms
+Loading error handling took 26 ms
+Loading script took 466 ms
+Loading save slot metadata took 20 ms
 Loading persistent took 0 ms
-
-File "game/script.rpy", line 1631: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-
-File "game/script.rpy", line 1645: reached end of line when expecting ':'.
-    if medApproval = <5
-                       ^
-
-File "game/script.rpy", line 1658: if statement expects a non-empty block.
-    if seenE3 is False:
-                       ^
-
-File "game/script.rpy", line 1668: expected statement.
-    elif seenE3 is True:
-                       ^
-
-File "game/script.rpy", line 1676: expected statement.
-    elif medApproval = 5+
-                     ^
-
-File "game/script.rpy", line 1696: if statement expects a non-empty block.
-    if seenE3 is False:
-                       ^
-DPI scale factor: 1.000000
+Running init code took 46 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 9 ms
+Dump and make backups took 24 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 23 ms
+DPI scale factor: 2.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 92 ms
+Creating interface object took 2 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 11 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 17 ms
+Running _start took 0 ms
+Interface start took 225 ms
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
+primary display bounds: (0, 0, 2880, 1620)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 9 ms
-Loading error handling took 10 ms
-Loading script took 156 ms
-Loading save slot metadata took 14 ms
+Early init took 6 ms
+Loading error handling took 14 ms
+Loading script took 113 ms
+Loading save slot metadata took 13 ms
 Loading persistent took 0 ms
 
-File "game/script.rpy", line 1631: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-
-File "game/script.rpy", line 1658: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-
-File "game/script.rpy", line 1695: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 71 ms
+File "game/screens.rpy", line 311: '_' is not a keyword argument or valid child of the imagebutton statement.
+    imagebutton _("gui/information-button.png") action ShowMenu("help")
+                 ^
+DPI scale factor: 2.000000
+Interface start took 132 ms
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
+primary display bounds: (0, 0, 2880, 1620)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
 Maximum texture size: 4096x4096
 Resetting cache.
-Early init took 9 ms
-Loading error handling took 10 ms
-Loading script took 155 ms
-Loading save slot metadata took 14 ms
+Early init took 5 ms
+Loading error handling took 15 ms
+Loading script took 213 ms
+Loading save slot metadata took 12 ms
 Loading persistent took 0 ms
-
-File "game/script.rpy", line 1631: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-
-File "game/script.rpy", line 1658: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-
-File "game/script.rpy", line 1695: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 72 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 9 ms
-Loading error handling took 10 ms
-Loading script took 157 ms
-Loading save slot metadata took 14 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 1631: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-
-File "game/script.rpy", line 1658: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-
-File "game/script.rpy", line 1695: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 73 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 9 ms
-Loading error handling took 10 ms
-Loading script took 156 ms
-Loading save slot metadata took 14 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 1631: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-
-File "game/script.rpy", line 1658: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-
-File "game/script.rpy", line 1695: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 74 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 8 ms
-Loading error handling took 10 ms
-Loading script took 145 ms
-Loading save slot metadata took 14 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 1631: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-
-File "game/script.rpy", line 1658: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-
-File "game/script.rpy", line 1695: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    if seenE3 is False:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 69 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 9 ms
-Loading error handling took 10 ms
-Loading script took 157 ms
-Loading save slot metadata took 14 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 1631: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 75 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 8 ms
-Loading error handling took 10 ms
-Loading script took 157 ms
-Loading save slot metadata took 14 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 1632: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Our survival rests on you, Sara.":
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Interface start took 75 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 8 ms
-Loading error handling took 11 ms
-Loading script took 358 ms
-Loading save slot metadata took 14 ms
-Loading persistent took 0 ms
-Running init code took 108 ms
+Running init code took 22 ms
 Loading analysis data took 5 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 93 ms
-Backing up script files to 'C:\\Users\\feodo\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 48 ms
+Reloading save slot metadata took 9 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 26 ms
 Cleaning cache took 0 ms
-Making clean stores took 1 ms
-Initial gc took 39 ms
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 1 ms
+Making clean stores took 0 ms
+Initial gc took 27 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
 Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 2 ms
+Analyze screens took 7 ms
+Save screen analysis took 9 ms
+Save pyanalysis took 2 ms
+Save bytecode took 1 ms
+Running _start took 2 ms
+Interface start took 211 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 9 ms
+Loading script took 244 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 1 ms
+Running init code took 22 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 28 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 47 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 1 ms
 Cleaning stores took 0 ms
 Load screen analysis took 0 ms
 Analyze screens took 9 ms
 Save screen analysis took 10 ms
-Save pyanalysis took 0 ms
-Save bytecode took 2 ms
-Running _start took 1 ms
-Interface start took 200 ms
+Save pyanalysis took 3 ms
+Save bytecode took 1 ms
+Running _start took 0 ms
+Interface start took 202 ms
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1080)
+primary display bounds: (0, 0, 2880, 1620)
 swap interval: 1 frames
 Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon RX 580 2048SP'
-Version: '4.6.0 Compatibility Profile Context 26.1.1.251211'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2560, 'current_h': 1080, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
 Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 8 ms
+Loading script took 66 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 1 ms
+Running init code took 26 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Dump and make backups took 23 ms
+Cleaning cache took 1 ms
+Making clean stores took 0 ms
+Initial gc took 38 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 11 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 214 ms
 
-Full traceback:
-  File "game/script.rpy", line 1649, in script
-    if medApproval = <5:
-  File "renpy/ast.py", line 2079, in execute
-    if renpy.python.py_eval(condition):
-       ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^ 
-  File "renpy/python.py", line 1303, in py_eval
-    code = py_compile(code, "eval")
-           ~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1260, in py_compile
-    raise e
-  File "renpy/python.py", line 1190, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, True)
-           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 1649
-    medApproval = <5
-                ^^^^
-SyntaxError: invalid syntax
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 5 ms
+Loading error handling took 7 ms
+Loading script took 57 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 0 ms
+Running init code took 24 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Dump and make backups took 23 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 32 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 10 ms
+Analyze screens took 0 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 201 ms
 
-While running game code:
-  File "game/script.rpy", line 1649, in script
-    if medApproval = <5:
-  File "game/script.rpy", line 1649
-    medApproval = <5
-                ^^^^
-SyntaxError: invalid syntax
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 9 ms
+Loading script took 202 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 0 ms
+Running init code took 29 ms
+Loading analysis data took 5 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 24 ms
+Cleaning cache took 0 ms
+Making clean stores took 1 ms
+Initial gc took 40 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 1 ms
+Analyze screens took 5 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 221 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 7 ms
+Loading script took 63 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 0 ms
+Running init code took 28 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Dump and make backups took 24 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 37 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 11 ms
+Analyze screens took 0 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 207 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 8 ms
+Loading script took 212 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 0 ms
+
+File "game/screens.rpy", line 314: keyword argument 'xpos' is incompatible with 'xalign'.
+    xpos 919
+        ^
+
+File "game/screens.rpy", line 315: keyword argument 'ypos' is incompatible with 'yalign'.
+    ypos 1759
+        ^
+DPI scale factor: 2.000000
+Interface start took 139 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 7 ms
+Loading script took 194 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 40 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 24 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 30 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 5 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 2 ms
+Running _start took 0 ms
+Interface start took 203 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 9 ms
+Loading script took 209 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 0 ms
+Running init code took 23 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 9 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 1 ms
+Initial gc took 38 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 9 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 202 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 9 ms
+Loading script took 203 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 1 ms
+Running init code took 25 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 11 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 26 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 51 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 1 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 230 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 8 ms
+Loading script took 214 ms
+Loading save slot metadata took 11 ms
+Loading persistent took 2 ms
+Running init code took 21 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 40 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 1 ms
+Running _start took 0 ms
+Interface start took 219 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 9 ms
+Loading script took 206 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 22 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 50 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 240 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 9 ms
+Loading script took 211 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 0 ms
+Running init code took 22 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 9 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 1 ms
+Initial gc took 47 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 1 ms
+Analyze screens took 5 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 240 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 8 ms
+Loading script took 60 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 1 ms
+Running init code took 26 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Dump and make backups took 23 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 44 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 11 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 229 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 8 ms
+Loading script took 213 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 1 ms
+Running init code took 22 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 2 ms
+Reloading save slot metadata took 6 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 26 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 52 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 242 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 8 ms
+Loading script took 213 ms
+Loading save slot metadata took 15 ms
+Loading persistent took 0 ms
+Running init code took 22 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 26 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 49 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 9 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 269 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 8 ms
+Loading script took 193 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 1 ms
+Running init code took 20 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 24 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 50 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 1 ms
+Analyze screens took 6 ms
+Save screen analysis took 9 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 231 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 8 ms
+Loading error handling took 9 ms
+Loading script took 197 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 22 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 24 ms
+Cleaning cache took 0 ms
+Making clean stores took 1 ms
+Initial gc took 45 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 1 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 10 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 215 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 7 ms
+Loading script took 189 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 1 ms
+Running init code took 21 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 43 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 5 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 219 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 7 ms
+Loading script took 206 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 0 ms
+Running init code took 21 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 27 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 55 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 10 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 240 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 5 ms
+Loading error handling took 7 ms
+Loading script took 193 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 22 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 50 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 250 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 8 ms
+Loading script took 203 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 0 ms
+Running init code took 21 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 58 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 7 ms
+Save screen analysis took 10 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 246 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 8 ms
+Loading script took 215 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 24 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 1 ms
+Initial gc took 61 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 9 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 259 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 8 ms
+Loading script took 216 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 22 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 9 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 27 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 63 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 1 ms
+Analyze screens took 5 ms
+Save screen analysis took 9 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 261 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 6 ms
+Loading script took 197 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 21 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 26 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 61 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 9 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 252 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 7 ms
+Loading script took 196 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 0 ms
+Running init code took 24 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 58 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 7 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 2 ms
+Interface start took 252 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 6 ms
+Loading error handling took 7 ms
+Loading script took 205 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 0 ms
+Running init code took 20 ms
+Loading analysis data took 1 ms
+Analyze and compile ATL took 2 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 22 ms
+Cleaning cache took 0 ms
+Making clean stores took 1 ms
+Initial gc took 50 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 5 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 1 ms
+Running _start took 0 ms
+Interface start took 254 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 5 ms
+Loading error handling took 7 ms
+Loading script took 194 ms
+Loading save slot metadata took 12 ms
+Loading persistent took 0 ms
+Running init code took 21 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 23 ms
+Cleaning cache took 0 ms
+Making clean stores took 1 ms
+Initial gc took 53 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 7 ms
+Save screen analysis took 7 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 233 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 8 ms
+Loading error handling took 8 ms
+Loading script took 201 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 21 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 0 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 24 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 62 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 1 ms
+Analyze screens took 5 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 1 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 267 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 8 ms
+Loading script took 209 ms
+Loading save slot metadata took 14 ms
+Loading persistent took 0 ms
+Running init code took 22 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 26 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 64 ms
+DPI scale factor: 2.000000
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 7 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 0 ms
+Interface start took 279 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 7 ms
+Loading script took 203 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 21 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 2 ms
+Reloading save slot metadata took 6 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 25 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 65 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 0 ms
+Cleaning stores took 2 ms
+Load screen analysis took 0 ms
+Analyze screens took 7 ms
+Save screen analysis took 8 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 278 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 7 ms
+Loading error handling took 7 ms
+Loading script took 190 ms
+Loading save slot metadata took 13 ms
+Loading persistent took 0 ms
+Running init code took 20 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 7 ms
+Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
+Dump and make backups took 23 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 54 ms
+DPI scale factor: 2.000000
+Creating interface object took 0 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 6 ms
+Save screen analysis took 7 ms
+Save pyanalysis took 0 ms
+Save bytecode took 0 ms
+Running _start took 1 ms
+Interface start took 238 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2880, 1620)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
+Maximum texture size: 4096x4096

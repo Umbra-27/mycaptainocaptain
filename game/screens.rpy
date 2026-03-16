@@ -58,8 +58,8 @@ style scrollbar:
 
 style vscrollbar:
     xsize gui.scrollbar_size
-    base_bar Frame("gui/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
+    base_bar Frame("gui/scrollbar/scroll-bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
+    thumb Frame("gui/scrollbar/vertical_idle_thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
 
 style slider:
     ysize gui.slider_size
@@ -249,7 +249,7 @@ screen quick_menu():
 
             textbutton _("Back") action Rollback()
             # textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            # textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Q.Save") action QuickSave()
@@ -308,12 +308,21 @@ screen navigation():
                 textbutton _("QUIT") action Quit(confirm=not main_menu):
                     pos (935, 475)
 
+            imagebutton:
+                xpos 1770
+                ypos 600
+                idle "gui/information-button.png" 
+                hover "gui/information-button.png" 
+                action ShowMenu("help")
+
+
         else:
             # FIX: These buttons must be indented 4 spaces further than the 'else:'
             textbutton _("Resume") action Return()
             textbutton _("Save Game") action ShowMenu("save")
             textbutton _("Settings") action ShowMenu("preferences")
             textbutton _("Exit Game") action Quit(confirm=True)
+        
 
 screen pause():
     tag menu
@@ -352,7 +361,7 @@ style navigation_button:
     # 3. Center the button and its contents
     xalign 0.5
     
-    hover_background Transform("images/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.99)
+    hover_background Transform("gui/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.99)
     
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
@@ -379,10 +388,10 @@ screen main_menu():
     tag menu
 
     add "images/bg menu.png"
-    add "images/abstract_details_layer.png"
+    add "gui/abstract_details_layer.png"
     # Add your logo here
-    add "images/logo_placeholder.png":
-        pos (110,450)
+    add "images/logo.png":
+        pos (25,400)
     ## This empty frame darkens the main menu.
     ##frame:
     ## style "main_menu_frame"
@@ -1013,7 +1022,7 @@ screen help():
 
     default device = "keyboard"
 
-    use game_menu(_("Help"), scroll="viewport"):
+    use game_menu(_("Information"), scroll="viewport"):
 
         style_prefix "help"
 
@@ -1054,13 +1063,13 @@ screen keyboard_help():
         label _("Escape")
         text _("Accesses the game menu.")
 
-    hbox:
-        label _("Ctrl")
-        text _("Skips dialogue while held down.")
+    # hbox:
+    #     label _("Ctrl")
+    #     text _("Skips dialogue while held down.")
 
-    hbox:
-        label _("Tab")
-        text _("Toggles dialogue skipping.")
+    # hbox:
+    #     label _("Tab")
+    #     text _("Toggles dialogue skipping.")
 
     hbox:
         label _("Page Up")
@@ -1211,7 +1220,7 @@ screen confirm(message, yes_action, no_action):
 style confirm_frame is gui_frame
 style confirm_prompt is gui_prompt
 style confirm_prompt_text is gui_prompt_text
-style confirm_button is gui_medium_button
+style confirm_button is navigation_button
 style confirm_button_text is gui_medium_button_text
 
 style confirm_frame:
@@ -1225,7 +1234,14 @@ style confirm_prompt_text:
     layout "subtitle"
 
 style confirm_button:
-    properties gui.button_properties("confirm_button")
+    properties gui.button_properties("confirm_button")    
+
+    activate_sound "audio/Button_Select.mp3"
+
+    # 3. Center the button and its contents
+    xalign 0.5
+    
+    hover_background Transform("gui/button/BTN_Overlay_Highlight.png", xalign=0.5, yalign=0.5, zoom=0.70)
 
 style confirm_button_text:
     properties gui.text_properties("confirm_button")
@@ -1549,6 +1565,486 @@ define bubble.expand_area = {
 }
 
 
+# Map 0 %90
+screen MapUI0():
+    tag map
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-90.png"
+        hover "oxygen/oxygen-meter-90.png"
+        action NullAction()
+   
+    # medic
+    if seenSI is False:
+        imagebutton:
+            xpos 725
+            ypos 422
+            idle "map/medicidle.png"
+            hover "map/medichover.png"
+            activate_sound "audio/Button_Select.mp3"
+            action Jump("SI")
+
+    # engineer
+    if seenEI is False:
+        imagebutton:
+            xpos 1080
+            ypos 615
+            idle "map/engineeridle.png"
+            hover "map/engineerhover.png"
+            activate_sound "audio/Button_Select.mp3"
+            action Jump("EI")
+
+# Map 1
+screen MapUI1():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+        activate_sound "audio/Button_Select.mp3"
+
+    # oxygen at 80%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-80.png"
+        hover "oxygen/oxygen-meter-80.png"
+        action NullAction()
+        
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
+        action Jump("S1")
+         
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
+        action Jump("E1")
+        
+# Map 1b transition to C1
+screen MapUIC1():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 55%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-50.png"
+        hover "oxygen/oxygen-meter-50.png"
+        action NullAction()
+
+    # storage
+    imagebutton:
+        xpos 1080
+        ypos 268
+        idle "map/storageidle.png"
+        hover "map/storagehover.png"
+        action Jump("C1")
+
+
+# Map 2
+screen MapUI2():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 50%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-50.png"
+        hover "oxygen/oxygen-meter-50.png"
+        action NullAction()
+
+    # medic
+    imagebutton:
+        xpos 725
+        ypos 422
+        idle "map/medicidle.png"
+        hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
+        action Jump("S2")
+
+    # engineer
+    imagebutton:
+        xpos 1080
+        ypos 615
+        idle "map/engineeridle.png"
+        hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
+        action Jump("E2")
+
+    # # computer
+    # imagebutton:
+    #     xpos 180
+    #     ypos 480
+    #     idle "map/computeridle.png"
+    #     hover "map/computerhover.png"
+    #     activate_sound "audio/Button_Select.mp3"
+    #     action Jump("M1O")
+
+# Map 2b transition to C2
+screen MapUIC2():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 25%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-25.png"
+        hover "oxygen/oxygen-meter-25.png"
+        action NullAction()
+
+    # storage
+    imagebutton:
+        xpos 1080
+        ypos 268
+        idle "map/storageidle.png"
+        hover "map/storagehover.png"
+        action Jump("C2")
+
+# Map 3
+screen MapUI3():
+    tag map
+    #background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 10%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-10.png"
+        hover "oxygen/oxygen-meter-10.png"
+        action NullAction()
+        
+    # medic
+    if seenS3 is False:
+        imagebutton:
+            xpos 725
+            ypos 422
+            idle "map/medicidle.png"
+            hover "map/medichover.png"
+            activate_sound "audio/Button_Select.mp3"
+            action Jump("S3")
+
+    # engineer
+    if seenE3 is False:
+        imagebutton:
+            xpos 1080
+            ypos 615
+            idle "map/engineeridle.png"
+            hover "map/engineerhover.png"
+            activate_sound "audio/Button_Select.mp3"
+            action Jump("E3")
+
+    # if seenMO is False:
+    #     # computer
+    #     imagebutton:
+    #         xpos 180
+    #         ypos 480
+    #         idle "map/computeridle.png"
+    #         hover "map/computerhover.png"
+    #         action Jump("M2O")
+
+screen MapUIFin():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen at 10%
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-10.png"
+        hover "oxygen/oxygen-meter-10.png"
+        action NullAction()
+        
+    # storage
+    if seenSaraSolution is False:
+        imagebutton:
+            xpos 1080
+            ypos 268
+            idle "map/storageidle.png"
+            hover "map/storagehover.png"
+            action Jump("SaraSolution")
+
+    # computer
+    if seenEugenSolution is False:
+        imagebutton:
+            xpos 180
+            ypos 480
+            idle "map/computeridle.png"
+            hover "map/computerhover.png"
+            action Jump("EugenSolution")
+    
+screen MapUIEnd():
+    tag map
+    # background
+    imagebutton:
+        idle "map/bg spaceship.png"
+        hover "map/bg spaceship.png"
+        action NullAction()
+
+    # oxygen
+    imagebutton:
+        xalign 1.0
+        idle "oxygen/oxygen-meter-10.png"
+        hover "oxygen/oxygen-meter-10.png"
+        action NullAction()
+
+    # storage
+    imagebutton:
+        xpos 1080
+        ypos 268
+        idle "map/storageidle.png"
+        hover "map/storagehover.png"
+        action Jump("Choice")
+
+
+# # MapUI base
+# screen MapUI():
+#     tag map
+#    # background
+#     imagebutton:
+#         idle "map/bg spaceship.png"
+#         hover "map/bg spaceship.png"
+#         action NullAction()
+
+#    # oxygen
+#     imagebutton:
+#         xalign 1.0
+#         idle "oxygen/oxygen-meter-90.png"
+#         hover "oxygen/oxygen-meter-90.png"
+#         action NullAction()
+
+#     # captain
+#     imagebutton:
+#         xpos 725
+#         ypos 580
+#         idle "map/captainidle.png"
+#         hover "map/captainhover.png"
+#         action NullAction()
+        
+#     # storage
+#     imagebutton:
+#         xpos 1080
+#         ypos 268
+#         idle "map/storageidle.png"
+#         hover "map/storagehover.png"
+#         action NullAction()
+
+#     # medic
+#     imagebutton:
+#         xpos 725
+#         ypos 422
+#         idle "map/medicidle.png"
+#         hover "map/medichover.png"
+#         action NullAction()
+
+#     # engineer
+#     imagebutton:
+#         xpos 1080
+#         ypos 615
+#         idle "map/engineeridle.png"
+#         hover "map/engineerhover.png"
+#         action NullAction()
+
+#     # computer
+#     imagebutton:
+#         xpos 180
+#         ypos 480
+#         idle "map/computeridle.png"
+#         hover "map/computerhover.png"
+#         action NullAction()
+
+screen EndCPoem():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        He rose the morrow morn.
+        A sadder and a wiser man.
+        He went like one that hath been stunned,
+        And is of sense forlorn:
+        The Captain, whose eye is dark,
+        Whose beard with age is hoar
+        Is gone.
+        """
+
+screen EndEPoem():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        poem
+        """
+
+screen EndSPoem():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        poem
+        """
+
+screen EndGPoem():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        The ship is anchor’d safe and sound, its voyage closed and done,
+        From fearful trip the victor ship comes in with object won.
+        """
+
+screen EndBPoem():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        poem
+        """
+
+screen EndSECPoem():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        poem
+        """
+
+screen Credits1():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        Created By
+            Lindsay Buckingham & Mariya Mubeen
+
+        Art Director
+            Lindsay Buckingham
+
+        Game Producer
+            Mariya Mubeen
+        """
+
+    vbox:
+        ypos 80
+        xpos 0.5
+        text """
+        Team Captains
+
+            Art - Lindsay Buckingham
+            Programming - Carine Ho
+            Sound - Jason Bryne
+            UI/UX - Karina
+            Writing - Mariya Mubeen
+            Voice - Feodor Romanenkov
+        """
+
+screen Credits2():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        Art
+
+        Captain Rudy - Lindsay Buckingham
+        MAD1 - Alex Kurina
+        Cosmotechnician Eugen - Muhammad Nafeh Masood
+        Astrobiologist Sara - Leah Tran
+        Map and console design - Ling Yang
+        """ 
+
+    vbox:
+        ypos 80
+        xpos 0.5
+        text """
+        Writing
+
+        Captain Rudy - Feodor Romanenkov
+        MAD1 - Carine Ho
+        Cosmotechnician Eugen - Omar Shahin
+        Astrobiologist Sara - Suprabha Irugalratne
+        Final Editing - Mariya Mubeen
+        """ 
+
+screen Credits3():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        Programming
+
+        Feodor Romanenkov
+        Jason Byrne
+
+        User Experience/Interface Design
+
+        Karina
+        Lucie Hunter
+        Jamie Choi
+        Ling Yang 
+        """ 
+
+    vbox:
+        ypos 80
+        xpos 0.5
+        text """
+        Sound Design
+
+        Jason Byrne
+        Feodor Romanenkov
+
+        Game Design
+
+        Mariya Mubeen 
+        Omar Shahin
+        """ 
+
+
+screen Credits4():
+    vbox:
+        ypos 80
+        xpos 80
+        text """
+        Voice Talent
+
+        Performance Director - Feodor Romanenkov
+
+        Captain Rudy - Feodor Romanenkov
+        MAD1 - Carine Ho
+        Cosmotechnician Eugen - Jason Byrne
+        Astrobiologist Sara - Mariya Mubeen
+        """ 
+
+
 
 ################################################################################
 ## Mobile Variants
@@ -1660,341 +2156,3 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
-
-# Map 0 %90
-screen MapUI0():
-    tag map
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-90.png"
-        hover "oxygen/oxygen-meter-90.png"
-        action NullAction()
-   
-    # medic
-    imagebutton:
-        xpos 725
-        ypos 422
-        idle "map/medicidle.png"
-        hover "map/medichover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("pickMed")
-
-    # engineer
-    imagebutton:
-        xpos 1080
-        ypos 615
-        idle "map/engineeridle.png"
-        hover "map/engineerhover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("pickEng")
-
-# Map 0 from Engineer to Medic
-screen MapMed():
-    tag map
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-90.png"
-        hover "oxygen/oxygen-meter-90.png"
-        action NullAction()
-   
-    # medic
-    imagebutton:
-        xpos 725
-        ypos 422
-        idle "map/medicidle.png"
-        hover "map/medichover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("SI")
-
-# Map 0 from Medic to Engineer
-screen MapEng():
-    tag map
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-90.png"
-        hover "oxygen/oxygen-meter-90.png"
-        action NullAction()
-
-    # engineer
-    imagebutton:
-        xpos 1080
-        ypos 615
-        idle "map/engineeridle.png"
-        hover "map/engineerhover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("EI")
-
-# Map 1
-screen MapUI1():
-    tag map
-    # background
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-        activate_sound "audio/Button_Select.mp3"
-
-    # oxygen at 80%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-80.png"
-        hover "oxygen/oxygen-meter-80.png"
-        action NullAction()
-        
-    # medic
-    imagebutton:
-        xpos 725
-        ypos 422
-        idle "map/medicidle.png"
-        hover "map/medichover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("S1")
-         
-    # engineer
-    imagebutton:
-        xpos 1080
-        ypos 615
-        idle "map/engineeridle.png"
-        hover "map/engineerhover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("E1")
-        
-# Map 1b transition to C1
-screen MapUIC1():
-    tag map
-    # background
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    # oxygen at 55%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-50.png"
-        hover "oxygen/oxygen-meter-50.png"
-        action NullAction()
-
-    # storage
-    imagebutton:
-        xpos 1080
-        ypos 268
-        idle "map/storageidle.png"
-        hover "map/storagehover.png"
-        action Jump("C1")
-
-
-# Map 2
-screen MapUI2():
-    tag map
-    # background
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    # oxygen at 50%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-50.png"
-        hover "oxygen/oxygen-meter-50.png"
-        action NullAction()
-
-    # medic
-    imagebutton:
-        xpos 725
-        ypos 422
-        idle "map/medicidle.png"
-        hover "map/medichover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("S2")
-
-    # engineer
-    imagebutton:
-        xpos 1080
-        ypos 615
-        idle "map/engineeridle.png"
-        hover "map/engineerhover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("E2")
-
-    # computer
-    imagebutton:
-        xpos 180
-        ypos 480
-        idle "map/computeridle.png"
-        hover "map/computerhover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("M1O")
-
-# Map 2b transition to C2
-screen MapUIC2():
-    tag map
-    # background
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    # oxygen at 25%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-25.png"
-        hover "oxygen/oxygen-meter-25.png"
-        action NullAction()
-
-    # storage
-    imagebutton:
-        xpos 1080
-        ypos 268
-        idle "map/storageidle.png"
-        hover "map/storagehover.png"
-        action Jump("C2")
-
-# Map 3
-screen MapUI3():
-    tag map
-    #background
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    # oxygen at 10%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-10.png"
-        hover "oxygen/oxygen-meter-10.png"
-        action NullAction()
-        
-    # medic
-    imagebutton:
-        xpos 725
-        ypos 422
-        idle "map/medicidle.png"
-        hover "map/medichover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("S3")
-
-    # engineer
-    imagebutton:
-        xpos 1080
-        ypos 615
-        idle "map/engineeridle.png"
-        hover "map/engineerhover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("E3")
-
-    if seenMO is False:
-        # computer
-        imagebutton:
-            xpos 180
-            ypos 480
-            idle "map/computeridle.png"
-            hover "map/computerhover.png"
-            action Jump("M2O")
-
-# Map 3 (seenMO is ture)
-screen MapUI3b():
-    tag map
-    #background
-    imagebutton:
-        idle "map/bg spaceship.png"
-        hover "map/bg spaceship.png"
-        action NullAction()
-
-    # oxygen at 10%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-10.png"
-        hover "oxygen/oxygen-meter-10.png"
-        action NullAction()
-        
-    # medic
-    imagebutton:
-        xpos 725
-        ypos 422
-        idle "map/medicidle.png"
-        hover "map/medichover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("S3")
-
-    # engineer
-    imagebutton:
-        xpos 1080
-        ypos 615
-        idle "map/engineeridle.png"
-        hover "map/engineerhover.png"
-        activate_sound "audio/Button_Select.mp3"
-        action Jump("E3")
-
-# # MapUI base
-# screen MapUI():
-#     tag map
-#    # background
-#     imagebutton:
-#         idle "map/bg spaceship.png"
-#         hover "map/bg spaceship.png"
-#         action NullAction()
-
-#    # oxygen
-#     imagebutton:
-#         xalign 1.0
-#         idle "oxygen/oxygen-meter-90.png"
-#         hover "oxygen/oxygen-meter-90.png"
-#         action NullAction()
-
-#     # captain
-#     imagebutton:
-#         xpos 725
-#         ypos 580
-#         idle "map/captainidle.png"
-#         hover "map/captainhover.png"
-#         action NullAction()
-        
-#     # storage
-#     imagebutton:
-#         xpos 1080
-#         ypos 268
-#         idle "map/storageidle.png"
-#         hover "map/storagehover.png"
-#         action NullAction()
-
-#     # medic
-#     imagebutton:
-#         xpos 725
-#         ypos 422
-#         idle "map/medicidle.png"
-#         hover "map/medichover.png"
-#         action NullAction()
-
-#     # engineer
-#     imagebutton:
-#         xpos 1080
-#         ypos 615
-#         idle "map/engineeridle.png"
-#         hover "map/engineerhover.png"
-#         action NullAction()
-
-#     # computer
-#     imagebutton:
-#         xpos 180
-#         ypos 480
-#         idle "map/computeridle.png"
-#         hover "map/computerhover.png"
-#         action NullAction()
