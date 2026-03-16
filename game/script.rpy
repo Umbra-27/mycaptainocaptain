@@ -157,6 +157,7 @@ label start:
     stop sound
     play sound "systems_off.mp3"
     scene bgCompDark
+    pause(1)
     show computer error-2
     show captainConfusedClosedDark behind computer
 

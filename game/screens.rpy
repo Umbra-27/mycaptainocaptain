@@ -63,13 +63,13 @@ style vscrollbar:
 
 style slider:
     ysize gui.slider_size
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/horizontal_[prefix_]thumb.png"
+    base_bar Frame("gui/slider/PreferencePage-Option2-SliderContainer.png", gui.slider_borders, tile=gui.slider_tile)
+    thumb Frame("gui/slider/PreferencePage-Option2-Slider.png", gui.slider_borders, tile=gui.scrollbar_tile)
 
 style vslider:
     xsize gui.slider_size
-    base_bar Frame("gui/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/vertical_[prefix_]thumb.png"
+    base_bar Frame("gui/slider/PreferencePage-Option2-SliderContainer.png", gui.vslider_borders, tile=gui.slider_tile)
+    thumb Frame("gui/slider/PreferencePage-Option2-Slider.png", gui.slider_borders, tile=gui.scrollbar_tile)
 
 
 style frame:
@@ -529,7 +529,7 @@ style game_menu_label_text:
 style return_button is default:
     properties gui.button_properties("return_button")
     # Add subpixel=True to stop the graphic from snapping to pixels
-    hover_background Transform("images/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.99, subpixel=True)
+    hover_background Transform("gui/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.99, subpixel=True)
     xoffset 60
     
 style return_button_text is navigation_button_text:
