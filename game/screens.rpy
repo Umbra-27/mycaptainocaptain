@@ -465,6 +465,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     # not indented inside the 'hbox' or 'frame' blocks.
     if title == _("Pause") or title == _("Game Paused"):
         use pause_navigation
+        
     
     # 2. Show the content frame for EVERY screen EXCEPT the Pause screens
     else:
@@ -539,9 +540,10 @@ style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
     bottom_padding 45
-    top_padding 180
+    top_padding 300
 
     background None
+    
 
 style game_menu_navigation_frame:
     xsize 420
@@ -1027,25 +1029,31 @@ screen help():
         style_prefix "help"
 
         vbox:
-            xpos -20
             spacing 20
-
-            vbox:
-                xpos -90
-                ypos 120
-
-                textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
-                textbutton _("Mouse") action SetScreenVariable("device", "mouse")
-
-                # if GamepadExists():
-                #     textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
-
+            
             if device == "keyboard":
                 use keyboard_help
             elif device == "mouse":
                 use mouse_help
-            # elif device == "gamepad":
-            #     use gamepad_help
+
+ 
+    vbox:
+        xpos 80        # Far left of the screen
+        ypos 280       # Use this to move them up or down
+        spacing 25
+        style_prefix "help"
+
+        textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
+        textbutton _("Mouse") action SetScreenVariable("device", "mouse")
+
+    # 3. The Exit Button
+    # Positioned at 1600 (far right) as per your previous code
+    imagebutton:
+        xpos 1600      # Change this to 80 if you want it on the left too
+        ypos 880
+        idle "gui/exit-button.png" 
+        hover "gui/exit-button.png" 
+        action Return()
 
     imagebutton:
         xpos 1600
@@ -2112,6 +2120,7 @@ style main_menu_frame:
 style game_menu_outer_frame:
     variant "small"
     background "gui/phone/overlay/game_menu.png"
+    
 
 style game_menu_navigation_frame:
     variant "small"
