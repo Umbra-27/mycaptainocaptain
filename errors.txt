@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 314: keyword argument 'xpos' is incompatible with 'xalign'.
-    xpos 919
-        ^
+File "game/screens.rpy", line 1022: 'xfill' is not a keyword argument or valid child of the screen statement.
+    xfill True
+         ^
 
-File "game/screens.rpy", line 315: keyword argument 'ypos' is incompatible with 'yalign'.
-    ypos 1759
-        ^
-
-Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Mar 16 06:09:13 2026
+Ren'Py Version: Ren'Py 8.3.7.25031702
+Mon Mar 16 14:16:41 2026

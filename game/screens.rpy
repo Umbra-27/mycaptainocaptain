@@ -329,9 +329,9 @@ screen pause():
     
     # ADD BACKGROUNDS HERE
     
-    add "images/pause_overlay.png" alpha 1.00
-    add "images/pause_abstract_background.png"
-    add "images/pause_abstract_background.png"
+    add "gui/pause_overlay.png" alpha 1.00
+    add "gui/pause_abstract_background.png"
+    add "gui/pause_abstract_background.png"
     use game_menu(_("Game Paused"))
     
 screen pause_navigation():
@@ -457,9 +457,9 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     if main_menu:
         add gui.main_menu_background
     else:
-        add "images/pause_abstract_background.png"
-        add "images/pause_overlay.png" alpha 0.85
-        add "images/pause_abstract_background.png"
+        add "gui/pause_abstract_background.png"
+        add "gui/pause_overlay.png" alpha 0.85
+        add "gui/pause_abstract_background.png"
 
 # This should be at the bottom of the game_menu screen, 
     # not indented inside the 'hbox' or 'frame' blocks.
@@ -1032,6 +1032,7 @@ screen help():
 
             vbox:
                 xpos -90
+                ypos 120
 
                 textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
                 textbutton _("Mouse") action SetScreenVariable("device", "mouse")
@@ -1163,6 +1164,7 @@ style help_button_text is gui_button_text
 style help_label is gui_label
 style help_label_text is gui_label_text
 style help_text is gui_text
+style help_content_frame is game_menu_content_frame
 
 style help_button:
     properties gui.button_properties("help_button")
@@ -1180,7 +1182,11 @@ style help_label_text:
     xalign 1.0
     textalign 1.0
 
-
+style help_content_frame:
+    xfill True
+    left_margin 30
+    right_margin 30
+    top_margin 15
 
 ################################################################################
 ## Additional screens
