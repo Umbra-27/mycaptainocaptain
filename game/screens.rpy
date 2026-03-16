@@ -310,7 +310,7 @@ screen navigation():
 
             imagebutton:
                 xpos 1770
-                ypos 600
+                ypos 620
                 idle "gui/information-button.png" 
                 hover "gui/information-button.png" 
                 action ShowMenu("help")
@@ -1027,22 +1027,32 @@ screen help():
         style_prefix "help"
 
         vbox:
-            spacing 23
+            xpos -20
+            spacing 20
 
-            hbox:
+            vbox:
+                xpos -90
 
                 textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
                 textbutton _("Mouse") action SetScreenVariable("device", "mouse")
 
-                if GamepadExists():
-                    textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
+                # if GamepadExists():
+                #     textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
 
             if device == "keyboard":
                 use keyboard_help
             elif device == "mouse":
                 use mouse_help
-            elif device == "gamepad":
-                use gamepad_help
+            # elif device == "gamepad":
+            #     use gamepad_help
+
+    imagebutton:
+        xpos 1600
+        ypos 880
+        idle "gui/exit-button.png" 
+        hover "gui/exit-button.png" 
+        action Return()
+
 
 
 screen keyboard_help():
