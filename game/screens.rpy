@@ -1987,7 +1987,7 @@ screen Credits1():
             Art - Lindsay Buckingham
             Programming - Carine Ho
             Sound - Jason Bryne
-            UI/UX - Karina
+            UI/UX - Karina Bittencourt
             Writing - Mariya Mubeen
             Voice - Feodor Romanenkov
         """
@@ -2026,12 +2026,13 @@ screen Credits3():
         text """
         Programming
 
+        Carine Ho
         Feodor Romanenkov
         Jason Byrne
 
         User Experience/Interface Design
 
-        Karina
+        Karina Bittencourt
         Lucie Hunter
         Jamie Choi
         Ling Yang 
