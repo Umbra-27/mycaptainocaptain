@@ -580,7 +580,7 @@ label start:
             Perhaps they will have answers soon with your ss-ssupp̷̞̏-pǫ̸̊ȑ̸̨t̷͎̎t̷͎̎-t̷̠̆t̵̞̓t̴̘͑-"
 
         show computer error-1 with hpunch
-        play sound "Footsteps.mp3" volume 0.8
+        play sound "Metallic_Hit.mp3" volume 0.8
         show captain anger-closed behind computer with hpunch 
 
         computer "The one by toi̷l̵, the other to comp̸̖̓l̴͎̀a̴̺͗ì̴̩n"
