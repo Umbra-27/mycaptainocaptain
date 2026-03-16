@@ -11,7 +11,7 @@ define computer = Character("MAD1", image="computer/computer", kind=bubble)
 define nvlChar = Character(None, kind=nvl)
 
 # Sound Settings
-default preferences.volume.music = 0.3
+default preferences.volume.music = 0.8
 default preferences.volume.sfx = 0.5
 
 # Setting base approval scores
@@ -59,7 +59,7 @@ image captainConfusedClosedDark = im.MatrixColor(
 
 label start:
     
-    play music "Electric_Dawn.mp3" volume 0.3
+    play music "Electric_Dawn.mp3" volume 0.8
 
     scene bg computer with fade
 
@@ -88,6 +88,7 @@ label start:
 
     menu:
         "Open message":
+            play sound "audio/Button_Select.mp3" volume 0.8
             show captain neutral-open behind computer
             captain "Open and read."
 
@@ -178,7 +179,7 @@ label start:
     captain "(Smacks terminal)" with hpunch 
 
     scene bg computer
-    play sound "systems_back_online.mp3" volume 0.3
+    play sound "systems_back_online.mp3" volume 0.8
     play music "Ice_Cold.mp3"
 
     show computer reboot-1
@@ -249,19 +250,25 @@ label start:
         pause
 
         label pickEng:
+            play sound "audio/Button_Select.mp3" volume 0.8
             hide screen MapUI0
+            
             show captain neutral-open behind computer 
             captain "I should speak to Eugen. He’ll probably know what’s happening."
+            play sound "Footsteps.mp3" volume 0.8
             jump EI 
         
         label pickMed:
             hide screen MapUI0
+            play sound "audio/Button_Select.mp3" volume 0.8
             show captain neutral-open behind computer 
             captain "I should speak to Sara. She’s probably freaking out right now."
             jump SI
-        
+            
 
     label SI:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
         $ seenSI = True
         scene bg medic with fade
@@ -405,6 +412,8 @@ label start:
 
 
     label EI:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
         $ seenEI = True
         scene bg engineer with fade
@@ -515,6 +524,8 @@ label start:
             jump M1
 
     label M1:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Electric_Dawn.mp3" volume 0.8
         scene bg computer with fade
         show computer neutral-1 with dissolve
         show captain neutral-closed behind computer with dissolve
@@ -567,6 +578,7 @@ label start:
         computer "Captain, I’m afraid my ability to assist you will be limited soon."
 
         show captain anger-open behind computer with hpunch
+        play sound "Metallic_Hit.mp3" volume 0.8
         captain "Dammit! I can’t afford to have more things break down now."
         captain "What am I supposed to do?"
 
@@ -576,6 +588,7 @@ label start:
             Perhaps they will have answers soon with your ss-ssupp̷̞̏-pǫ̸̊ȑ̸̨t̷͎̎t̷͎̎-t̷̠̆t̵̞̓t̴̘͑-"
 
         show computer error-1 with hpunch
+        play sound "Footsteps.mp3" volume 0.8
         show captain anger-closed behind computer with hpunch 
 
         computer "The one by toi̷l̵, the other to comp̸̖̓l̴͎̀a̴̺͗ì̴̩n"
@@ -598,6 +611,8 @@ label start:
         pause
 
     label S1:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
         $ seenS1 = True
         $ seenE1 = False
@@ -783,6 +798,8 @@ label start:
         jump M2
 
     label E1:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
         $ seenE1 = True
         $ seenS1 = False
@@ -956,6 +973,8 @@ label start:
         jump M2
 
     label M2:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Electric_Dawn.mp3" volume 0.8
         scene bg computer with fade
         show computer neutral-1 with dissolve
         show captain frustrated behind computer with dissolve
@@ -1042,11 +1061,14 @@ label start:
         pause
 
     label C1:
+        play sound "Footsteps.mp3" volume 0.8
         scene onlayer screens
         scene bg escape pod with fade
 
         captain "No. No…"
+        play sound "Metallic_Hit.mp3" volume 0.5
         show bg escape pod with hpunch
+        
         captain "How the hell am I meant to choose one life over another?! How am I supposed to decipher all of this… poetry?"
 
         if seenS1 is True:
@@ -1074,7 +1096,7 @@ label start:
                     "No":
                         captain "No, I can't leave."
                         captain "…"
-                        
+                        play sound "Metallic_Hit.mp3" volume 0.5
                         show bg escape pod with hpunch
                         captain "(slams fist on escape pod)"
                         captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
@@ -1087,6 +1109,7 @@ label start:
                 captain "…"
                 
                 show bg escape pod with hpunch
+                play sound "Metallic_Hit.mp3" volume 0.5
                 captain "(slams fist on escape pod)"
                 captain "(sharp inhale) Get it together Rudy. Your crew needs you to focus up and get us out of here."
                 captain "We’ll all make it home. We need to make it home."
@@ -1098,6 +1121,8 @@ label start:
         pause
 
     label S2:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
         $ seenE2 = False
         $ seenS2 = True
@@ -1323,6 +1348,8 @@ label start:
             jump M3
 
     label E2:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
         $ seenE2 = True
         $ seenS2 = False
@@ -1534,6 +1561,8 @@ label start:
             jump M3
 
     label M1O:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Electric_Dawn.mp3" volume 0.8
         # M.1.O optional MAD1
         scene onlayer screens
         $ seenMO = True
@@ -1548,6 +1577,8 @@ label start:
         jump M3
 
     label M3:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Electric_Dawn.mp3" volume 0.8
         scene onlayer screens
         scene bg computer with fade
 
@@ -1598,6 +1629,7 @@ label start:
         pause
 
     label C2:
+        play sound "Footsteps.mp3" volume 0.8
         scene onlayer screens
         # Captain breakdown
 
@@ -1607,6 +1639,7 @@ label start:
         captain "Matthew… I’m so sorry…"
         captain "I promised! I promised you I’d finish this for you…"
         captain "But I… I don’t know what to do!"
+        play sound "Metallic_Hit.mp3" volume 0.5
         show bg escape pod with hpunch
         captain "God damnit!"
         captain "…"
@@ -1618,6 +1651,8 @@ label start:
         pause
 
     label S3:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
         $ seenS3 = True
         scene bg medic with fade
@@ -1646,7 +1681,7 @@ label start:
                 medic "Thank you, Captain…"
 
         
-        if medApproval = <5:
+        if medApproval <=5:
             #S.3.A: Low Approval/Failure
             medic "I’m very certain now that it’s the specimen emitting electromagnetic waves that are interfering with our systems."
             captain "How certain?"
@@ -1676,7 +1711,7 @@ label start:
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
     
-        elif medApproval = 5+:
+        elif medApproval >5:
             #S.3.B: High Approval/Success
             medic "I have used a VLF detector and confirmed that the specimen is emitting low frequency electromagnetic waves."
             medic "Lower frequencies transmit better in water, which is, of course, its natural habitat."
@@ -1701,6 +1736,8 @@ label start:
                 captain "I’ll go speak with him now, hopefully he’s found something out."
 
     label E3:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
         $ seenE3 = True
         scene bg engineer with fade
@@ -1731,7 +1768,7 @@ label start:
         engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
         engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
 
-        if engApproval = <5:
+        if engApproval <=5:
             #E.3.A: Low Approval/Failure
             engineer "10%% oxygen left. 10%%..."
             captain "Please tell me you have good news."
@@ -1774,7 +1811,7 @@ label start:
                 captain "Your equipment and your work was flawless. All will see that."
                 engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
 
-        elif medApproval = 5+:
+        elif medApproval >5:
         #S.3.B: High Approval/Success
             engineer "10% oxygen left. 10%..."
             engineer "The system is no longer resisting me… it doesn’t have a reason to."
@@ -1799,7 +1836,9 @@ label start:
             engineer "This is what remains, a final countdown. Please tell me you will make the right decision and save this mission."
             captain "You have my word."
 
-    label M2O:        
+    label M2O:     
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Electric_Dawn.mp3" volume 0.8        
         # M.2.O optional MAD1
         # Same as M1O
         scene onlayer screens
@@ -1817,10 +1856,12 @@ label start:
 
     # ENDINGS
     label EndB:
+        play music "Goosebumps.mp3" volume 0.8
         # Bad ending: Captain abandons ship
 
 
     label EndC:
+        play music "Goosebumps.mp3" volume 0.8
         # Captain leaves with specimen 
         nvl clear
         
@@ -1886,6 +1927,7 @@ label start:
         computer "And the lover lost to the hill."
 
     label EndE:
+        play music "Goosebumps.mp3" volume 0.8
         # Eugen leaves with specimen 
 
         engineer "All has come to an end, and the mission is behind me."
@@ -1915,6 +1957,7 @@ label start:
         computer "You’ve fallen cold and dead."
 
     label EndS:
+        play music "Goosebumps.mp3" volume 0.8
         # Sara leaves with specimen 
 
         medic "I made it back...I still can’t believe it. I found life out in space. I achieved my dream!"
@@ -1946,6 +1989,7 @@ label start:
     
     label EndG:
         # Good ending
+        play music "Future Utopia.mp3" volume 0.8
         nvl clear
         
         init python:
@@ -1981,6 +2025,7 @@ label start:
         medic "It no longer matters what my family says. I am at peace."
 
     label EndSec:
+        play music "Future Utopia.mp3" volume 0.8
         # Secret ending: Throw away the specimen
 
         captain "Captain’s log, September 24th."

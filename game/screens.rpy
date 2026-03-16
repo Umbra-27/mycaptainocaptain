@@ -27,7 +27,8 @@ style gui_text:
 
 style button:
     properties gui.button_properties("button")
-
+    activate_sound "audio/Button_Select.mp3"
+    
 style button_text is gui_text:
     properties gui.text_properties("button")
     yalign 0.5
@@ -225,7 +226,7 @@ style choice_hbox:
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
-
+    activate_sound "audio/Button_Select.mp3"
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
@@ -346,6 +347,8 @@ style navigation_button:
     # 2. REMOVE size_group "navigation"
     properties gui.button_properties("navigation_button")
     
+    activate_sound "audio/Button_Select.mp3"
+
     # 3. Center the button and its contents
     xalign 0.5
     
@@ -1678,6 +1681,7 @@ screen MapUI0():
         ypos 422
         idle "map/medicidle.png"
         hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("pickMed")
 
     # engineer
@@ -1686,6 +1690,7 @@ screen MapUI0():
         ypos 615
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("pickEng")
 
 # Map 0 from Engineer to Medic
@@ -1708,6 +1713,7 @@ screen MapMed():
         ypos 422
         idle "map/medicidle.png"
         hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("SI")
 
 # Map 0 from Medic to Engineer
@@ -1730,6 +1736,7 @@ screen MapEng():
         ypos 615
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("EI")
 
 # Map 1
@@ -1740,6 +1747,7 @@ screen MapUI1():
         idle "map/bg spaceship.png"
         hover "map/bg spaceship.png"
         action NullAction()
+        activate_sound "audio/Button_Select.mp3"
 
     # oxygen at 80%
     imagebutton:
@@ -1747,23 +1755,25 @@ screen MapUI1():
         idle "oxygen/oxygen-meter-80.png"
         hover "oxygen/oxygen-meter-80.png"
         action NullAction()
-
+        
     # medic
     imagebutton:
         xpos 725
         ypos 422
         idle "map/medicidle.png"
         hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("S1")
-
+         
     # engineer
     imagebutton:
         xpos 1080
         ypos 615
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("E1")
-
+        
 # Map 1b transition to C1
 screen MapUIC1():
     tag map
@@ -1811,6 +1821,7 @@ screen MapUI2():
         ypos 422
         idle "map/medicidle.png"
         hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("S2")
 
     # engineer
@@ -1819,6 +1830,7 @@ screen MapUI2():
         ypos 615
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("E2")
 
     # computer
@@ -1827,6 +1839,7 @@ screen MapUI2():
         ypos 480
         idle "map/computeridle.png"
         hover "map/computerhover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("M1O")
 
 # Map 2b transition to C2
@@ -1875,6 +1888,7 @@ screen MapUI3():
         ypos 422
         idle "map/medicidle.png"
         hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("S3")
 
     # engineer
@@ -1883,6 +1897,7 @@ screen MapUI3():
         ypos 615
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("E3")
 
     if seenMO is False:
@@ -1916,6 +1931,7 @@ screen MapUI3b():
         ypos 422
         idle "map/medicidle.png"
         hover "map/medichover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("S3")
 
     # engineer
@@ -1924,6 +1940,7 @@ screen MapUI3b():
         ypos 615
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
+        activate_sound "audio/Button_Select.mp3"
         action Jump("E3")
 
 # # MapUI base
