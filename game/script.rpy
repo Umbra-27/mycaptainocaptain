@@ -1971,6 +1971,8 @@ label start:
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
                 show medic anxious
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
+
+                jump Map3
                 
             elif seenE3 is True:
                 show captain frustrated behind medic

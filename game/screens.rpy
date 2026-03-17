@@ -1820,7 +1820,7 @@ screen MapUIFin():
             action Jump("SaraSolution")
 
     # computer
-    if seenSaraSolution is True:
+    if seenSaraSolution is True and seenEugenSolution is False:
         imagebutton:
             xpos 180
             ypos 480
