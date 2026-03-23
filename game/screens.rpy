@@ -387,7 +387,7 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add "images/bg menu.png"
+    add "gui/main_menu.png"
     add "gui/abstract_details_layer.png"
     # Add your logo here
     add "images/logo.png":
@@ -1021,6 +1021,8 @@ style history_label_text:
 screen help():
 
     tag menu
+
+    add "gui/help_page.jpg"    
 
     default device = "keyboard"
 

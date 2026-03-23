@@ -1116,7 +1116,7 @@ label start:
         $ seenE2 = False
         $ seenS2 = True
         scene bg medic with fade
-        show medic worried with dissolve
+        show medic worried messy with dissolve
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
@@ -1136,7 +1136,7 @@ label start:
                     show captain concern-open behind medic
                     captain "It’s not looking good at all, Sara. We might have to make difficult decisions… I want you to know that."   
 
-                    show medic anxious
+                    show medic anxious messy
                     show captain concern-closed behind medic
                     medic "I-I see…"
 
@@ -1147,14 +1147,14 @@ label start:
                     captain "Things aren’t looking great at the moment. But there is always hope." 
                     captain "We are all working hard to fix this. Let’s continue to do so."
 
-                    show medic neutral
+                    show medic neutral messy
                     show captain neutral-closed behind medic
                     medic "Yes, yes, of course!"
 
             show captain neutral-open behind medic    
             captain "Sara, what have you found out about the specimen?"
 
-            show medic explaining
+            show medic explaining messy
             show captain neutral-closed behind medic    
             medic "I-I have a theory. It’s exciting and concerning."
             
@@ -1165,7 +1165,7 @@ label start:
                     show captain concern-open behind medic
                     captain "Anything is better than nothing. I trust your judgment."
 
-                    show medic neutral
+                    show medic neutral messy
                     show captain concern-closed behind medic
                     medic "Thank you, Captain!"
 
@@ -1174,21 +1174,21 @@ label start:
                     show captain neutral-open behind medic
                     captain "I was expecting a little more than a theory, to be honest…"
                     
-                    show medic nervous
+                    show medic nervous messy
                     show captain neutral-closed behind medic
                     medic "I-I’m sorry, but I’ve put quite a bit of thought into it."
             
             show captain neutral-open behind medic
             captain "Tell me your theory."
 
-            show medic explaining
+            show medic explaining messy
             show captain neutral-closed behind medic
             medic "I know I said this organism has similarities to a marine fungus, but it appears to be more complex."
 
             show captain neutral-open behind medic
             captain "How do you mean?"
 
-            show medic excited
+            show medic excited messy
             show captain neutral-closed behind medic
             medic "You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
             medic "My theory is that this organism may have a symbiosis with others in its ecosystem."
@@ -1197,7 +1197,7 @@ label start:
             show captain neutral-open behind medic
             captain "Go on."
 
-            show medic suggesting
+            show medic suggesting messy
             show captain neutral-closed behind medic
             medic "This organism might have communication capabilities that we are unfamiliar with."
             medic "I am not saying that this could be sentient, but Earth classifications can blur when we’re dealing with extraterrestrial life."
@@ -1206,18 +1206,18 @@ label start:
             captain "A fungus on steroids? You were hoping for single-celled life in that ocean…"
             captain "What kind of communication capabilities are we talking about here?"
 
-            show medic thinking
+            show medic thinking messy
             show captain confusion-closed behind medic
             medic "I mentioned this before–has it occurred to you that two incredible events have taken place in a short time span?"
-            show medic excited
+            show medic excited messy
             medic "Us finding this specimen and now this crisis we’re facing!" 
-            show medic nostalgic
+            show medic nostalgic messy
             medic "Hah, my family would associate something supernatural to this kind of coincidence…" 
 
             show captain concern-open behind medic
             captain "Sara, are you implying that this organism could have something to do with this?"
 
-            show medic excited
+            show medic excited messy
             show captain concern-closed behind medic
             medic "Yes! That’s what I think we’ve been missing! This organism is probably emitting electromagnetic waves that are interfering with the computer!"
 
@@ -1227,7 +1227,7 @@ label start:
                     show captain concern-open behind medic
                     captain "That does sound far-fetched. However, we must think of all possibilities."
 
-                    show medic nervous
+                    show medic nervous messy
                     show captain concern-closed behind medic
                     medic "Yes, indeed…" 
 
@@ -1237,20 +1237,20 @@ label start:
                     show captain neutral-open behind medic
                     captain "There could be something there… It could be the key to our survival. Find out all you can."
 
-                    show medic neutral
+                    show medic neutral messy
                     show captain neutral-closed behind medic
                     medic "Yes, will do, Captain!"
 
             show captain thinking behind medic
             captain "What do you think is the next step?"
 
-            show medic suggesting
+            show medic suggesting messy
             medic "If my theory is right, then we need to think of containment."
 
             show captain neutral-open behind medic
             captain "Work on it."
             
-            show medic neutral
+            show medic neutral messy
             show captain neutral-closed behind medic
             medic "Yes, Captain!"
             jump M3
@@ -1266,7 +1266,7 @@ label start:
                     show captain concern-open behind medic
                     captain "I’m sorry I couldn’t come talk to you sooner. I’ve been speaking with Eugen about this problem."
 
-                    show medic neutral
+                    show medic neutral messy
                     show captain concern-closed behind medic
                     medic "Oh, it’s okay. Good to hear you’re on top of it!"
 
@@ -1275,18 +1275,18 @@ label start:
                     show captain neutral-open behind medic
                     captain "Everything’s fine. We’re sorting it out."
 
-                    show medic nervous
+                    show medic nervous messy
                     show captain neutral-closed behind medic
                     medic "Okay then…"
             
-            show medic stressed
+            show medic stressed messy
             medic "What does Eugen say? Is he okay?!"
 
             show captain neutral-open behind medic
             captain "Yes, he’s fine. He cannot offer anything concrete at the moment." 
             captain "But I must tell you that MAD1 is malfunctioning. This complicates everything."
 
-            show medic thinking
+            show medic thinking messy
             show captain neutral-closed behind medic
             medic "Oh my god… Here I was thinking we would very much make it back home with the specimen. And my family…"
 
@@ -1294,7 +1294,7 @@ label start:
             captain "And we can! We still have hope." 
             captain "I know you’re missing your family very much. We will get through this."
 
-            show medic nervous
+            show medic nervous messy
             show captain concern-closed behind medic
             medic "It’s not just about that. It’s just… this is my one chance to prove that everything I’ve done– that it’s all worth it, you know?"
 
@@ -1302,7 +1302,7 @@ label start:
             captain "Your previous achievements are more than average to say the least. Is that not enough?"
             captain "Your family should be proud of you regardless of the outcome of this mission."
 
-            show medic neutral
+            show medic neutral messy
             show captain concern-closed behind medic
             medic "I’m a lone woman who’s devoted my life to the sciences. Not everyone views that as ideal, to say the least."
 
@@ -1315,7 +1315,7 @@ label start:
             show captain neutral-open behind medic
             captain "Focus Sara. Have you managed to come up with any theories about the specimen?"
 
-            show medic stressed
+            show medic stressed messy
             show captain neutral-closed behind medic
             medic "What? I-no, my research is in the computer! I’ve been reviewing my journal a-and the report you gave me but I’m losing my mind in here."
 
@@ -1327,7 +1327,7 @@ label start:
                     captain "Go through your notes and see what you can come up with."
                     captain "I’m sure you’ll find something."
 
-                    show medic worried
+                    show medic worried messy
                     show captain concern-closed behind medic
                     medic "I-I’m sorry…"
 
@@ -1339,21 +1339,21 @@ label start:
                     captain "Please go through your notes and see what you can come up with." 
                     captain "We’re counting on you."
                     
-                    show medic neutral
+                    show medic neutral messy
                     show captain neutral-closed behind medic
                     medic "Yes, yes, of course. T-thank you for believing in me, Captain."
 
             show captain determined-open behind medic
             captain "We’ve come this far. We cannot let everything go to waste."
 
-            show medic nervous
+            show medic nervous messy
             show captain determined-closed behind medic
             medic "I know… I know it more than anyone. This mission is everything to me."
 
             show captain concern-open behind medic
             captain "It is to all three of us…"
 
-            show medic neutral
+            show medic neutral messy
             show captain concern-closed behind medic
             medic "… I’ll do what I can… Would you like to hear what I’ve come up with so far?"
             medic "Although it’s all based on the limited notes I have here."
@@ -1361,7 +1361,7 @@ label start:
             show captain neutral-open behind medic
             captain "Anything would be useful at this point."
 
-            show medic suggesting
+            show medic suggesting messy
             show captain neutral-closed behind medic
             medic "Captain, this organism is very much extraterrestrial, but if we are to compare it to an Earth organism, it bears some resemblance to a marine fungus." 
             medic "However…"
@@ -1369,7 +1369,7 @@ label start:
             show captain neutral-open behind medic
             captain "Yes?"
 
-            show medic explaining
+            show medic explaining messy
             show captain neutral-closed behind medic
             medic "It appears to be more complex. You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
             medic "My theory is that this organism may have a symbiosis with others in its ecosystem."
@@ -1378,7 +1378,7 @@ label start:
             show captain neutral-open behind medic
             captain "Go on."
 
-            show medic excited
+            show medic excited messy
             show captain neutral-closed behind medic
             medic "This organism might have communication capabilities that we are unfamiliar with."
             medic "I am not saying that it is sentient, but Earth classifications can blur when we’re dealing with extraterrestrial life."
@@ -1387,7 +1387,7 @@ label start:
             captain "A fungus on steroids? You were hoping for single-celled life in that ocean…"
             captain "What kind of communication capabilities are we talking about here?"
 
-            show medic thinking
+            show medic thinking messy
             show captain confusion-closed behind medic
             medic "I’m not sure, Captain… But has it occurred to you that two strange events have taken place in such a short period of time?"
             show medic nostalgic
@@ -1396,7 +1396,7 @@ label start:
             show captain concern-open behind medic
             captain "Sara, are you implying that this organism could have something to do with this?"
 
-            show medic excited
+            show medic excited messy
             show captain concern-closed behind medic
             medic "All I’m saying is anything is possible! But think about it! This may be the link we’re missing!"
 
@@ -1406,7 +1406,7 @@ label start:
                     show captain concern-open behind medic
                     captain "That does sound far-fetched. But investigate any and all possibilities."
 
-                    show medic nervous
+                    show medic nervous messy
                     show captain concern-closed behind medic
                     medic "Yes, of course."
 
@@ -1417,7 +1417,7 @@ label start:
                     captain "There could be something there… It could be the key to our survival."
                     captain "Find out all you can."
 
-                    show medic neutral
+                    show medic neutral messy
                     show captain neutral-closed behind medic
                     medic "Will do, Captain!"
 
@@ -1891,7 +1891,7 @@ label start:
         scene onlayer screens
         $ seenS3 = True
         scene bg medic with fade
-        show medic worried with dissolve
+        show medic worried messy with dissolve
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
@@ -1905,7 +1905,7 @@ label start:
                 captain "Not much time…"
                 captain "Our survival rests on you, Sara. Your solution."
 
-                show medic anxious
+                show medic anxious messy
                 show captain neutral-closed behind medic
                 medic "T-that’s a lot of pressure, Captain! I-I’ve done what I can…"
 
@@ -1915,26 +1915,26 @@ label start:
                 show captain concern-open behind medic
                 captain "There’s no time. But before I ask you what you’ve come up with, how are you doing?"
 
-                show medic nervous
+                show medic nervous messy
                 show captain concern-closed behind medic
                 medic "T-that’s very nice of you to ask… Not good, but I’m doing my best!"
 
                 show captain concern-open behind medic
                 captain "Thank you for all you’ve done up to this point. Your work might save us all."
 
-                show medic neutral
+                show medic neutral messy
                 show captain concern-closed behind medic
                 medic "Thank you, Captain…"
 
         if medApproval <= 5:
             #S.3.A: Low Approval/Failure
-            show medic suggesting
+            show medic suggesting messy
             medic "I’m very certain now that it’s the specimen emitting electromagnetic waves that are interfering with our systems."
             
             show captain confusion-open behind medic
             captain "How certain?"
 
-            show medic thinking
+            show medic thinking messy
             show captain confusion-closed behind medic
             medic "95%%? In fact, I’m about to confirm it with a VLF detector. My theory is that it is using low frequency bursts as a form of threat response."
             medic "It makes sense for it to be low frequency, since this organism’s natural habitat is water."
@@ -1943,13 +1943,13 @@ label start:
             show captain thinking behind medic
             captain "I see…"
 
-            show medic nervous
+            show medic nervous messy
             medic "It’s ironic, isn’t it? That this incredible discovery might just be the death of us."
 
             show captain neutral-open behind medic
             captain "Sara, can you come up with a containment plan?"
 
-            show medic stressed
+            show medic stressed messy
             show captain neutral-closed behind medic
             medic "I-I don’t know! I don’t think so. There’s no time!"
 
@@ -1960,16 +1960,16 @@ label start:
                 captain "So even if he’s figured out how to bypass the computer, we’re still screwed…"
                 captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
 
-                show medic anxious
+                show medic anxious messy
                 medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
 
                 show captain concern-open behind medic
                 captain "None of us could’ve foreseen this would happen."
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
                 
-                show medic thinking
+                show medic thinking messy
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
-                show medic anxious
+                show medic anxious messy
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
 
                 jump Map3
@@ -1978,48 +1978,48 @@ label start:
                 show captain frustrated behind medic
                 captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
 
-                show medic anxious
+                show medic anxious messy
                 medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
 
                 show captain concern-open behind medic
                 captain "None of us could’ve foreseen this would happen."
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
 
-                show medic thinking
+                show medic thinking messy
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
-                show medic anxious
+                show medic anxious messy
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
     
         elif medApproval > 5:
             #S.3.B: High Approval/Success
-            show medic explaining
+            show medic explaining messy
             medic "I have used a VLF detector and confirmed that the specimen is emitting low frequency electromagnetic waves."
             medic "Lower frequencies transmit better in water, which is, of course, its natural habitat."
 
             show captain thinking behind medic
             captain "I see…"
             
-            show medic nervous
+            show medic nervous messy
             medic "It’s ironic, isn’t it? That this incredible discovery might just be the death of us."
             
             show captain concern-open behind medic
             captain "You’ve done well, Sara."
             
-            show medic neutral
+            show medic neutral messy
             show captain concern-closed behind medic
             medic "Thank you. It wouldn’t have been possible if you didn’t believe in me all this time… But I fear we’re too late."
             
             show captain determined-open behind medic
             captain "We can block these emissions. We can–"
 
-            show medic worried
+            show medic worried messy
             show captain determined-closed behind medic
             medic "Yes, I have looked into containment! But it won’t be easy. I don’t know–we might not have time!"
 
             show captain neutral-open behind medic
             captain "Let me worry about that. Tell me what sort of containment?"
 
-            show medic explaining
+            show medic explaining messy
             show captain neutral-closed behind medic
             medic "Low-frequency EM waves are highly penetrative. We need specialized shielding, such as heavy steel plates."
             medic "There are Nu metal sheets in the cargo hold that the bots are using to run repairs. It’s essentially graphene-based nanocomposites."
@@ -2027,7 +2027,7 @@ label start:
             show captain determined-open behind medic
             captain "That’s promising. You think it’d work?"
 
-            show medic thinking
+            show medic thinking messy
             show captain determined-closed behind medic
             medic "Pretty sure. The bots are down though. We’d have to go to the cargo hold and use a laser cutter on the sheets."
             medic "Then you’d have to build something of a cocoon around the specimen."
@@ -2035,12 +2035,12 @@ label start:
             show captain determined-open behind medic
             captain "Good. Things are grim but we need to try."
 
-            show medic excited
+            show medic excited messy
             show captain determined-closed behind medic
             medic "Yes, yes, we need to!"
 
             if seenE3 is False:
-                show medic worried
+                show medic worried messy
                 medic "I just hope Eugen has a solution for MAD1 and the ship… The damage that has been done cannot be reversed."
                 medic "If he hasn’t found a way to bypass the OS, I’m afraid we’re still doomed."
 
@@ -2313,60 +2313,55 @@ label start:
             
             play sound "Footsteps.mp3" volume 0.8
             play music "Microbiology.mp3" volume 0.8
-            scene bg computer with fade
-            show computer error-1 with dissolve
-            show captain neutral-open behind computer with dissolve
+            scene bg control panel 1 with fade
 
             captain "Okay I need to follow Eugen’s instructions exactly."
-
-            show captain thinking behind computer
 
             captain "First I need to…"
             menu:
                 "Speak with MAD1.":
-                    show captain anger-open behind computer with hpunch
+                    scene bg control panel 1 with hpunch
                     jump Failure
 
                 "Scan your badge.":                
                     captain "Okay."
 
                 "Scan the systems.":
-                    show captain anger-open behind computer with hpunch
+                    scene bg control panel 1 with hpunch
                     jump Failure
             
             captain "Then, I need to…"
             menu:
-                "Pull the system override lever.":                
+                "Pull the system override lever.":     
+                    scene bg control panel 2 with dissolve
+                    pause(1.5)           
+                    scene bg control panel 3 with dissolve
                     captain "Okay."
 
                 "Shut down MAD1.":
-                    show captain anger-open behind computer with hpunch
+                    scene bg control panel 1 with hpunch
                     jump Failure
 
                 "Record a captain’s log.":
-                    show captain anger-open behind computer with hpunch
+                    scene bg control panel 1 with hpunch
                     jump Failure
 
             captain "Finally…"
             menu:
                 "Turn the system back on again.":
-                    show captain anger-open behind computer with hpunch
+                    scene bg control panel 3 with hpunch
                     jump Failure
 
-                "Man full control of the ship.":                    
-                    show computer neutral-1
-                    show captain determined-closed behind computer        
+                "Man full control of the ship.":                          
                     computer "System override initiated."
-                    computer "Manual controls enabled."
-
-                    show captain determined-open behind computer        
+                    computer "Manual controls enabled."     
                     captain "It worked…"
                     captain "I need to let the others know."
 
                     jump TheEnd
 
-                "Hold the lever down while Eugen controls the ship.":        
-                    show captain anger-open behind computer with hpunch
+                "Hold the lever down while Eugen controls the ship.":    
+                    scene bg control panel 3 with hpunch
                     jump Failure
 
 
@@ -2384,7 +2379,7 @@ label start:
             scene onlayer screens
             $ seenS3 = True
             scene bg medic with fade
-            show medic worried with dissolve
+            show medic worried messy with dissolve
             pause(0.5)
             show captain neutral-closed behind medic with dissolve
 
@@ -2394,7 +2389,7 @@ label start:
             captain "It did. Once Eugen can reroute life support I need you to monitor the specimen at all times."
             captain "We’re going home."
             
-            show medic excited
+            show medic excited messy
             show captain determined-closed behind medic
             medic "Yes! Will be on it ASAP!"
 
