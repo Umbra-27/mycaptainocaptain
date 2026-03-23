@@ -516,8 +516,9 @@ style game_menu_scrollbar is gui_vscrollbar
 
 style game_menu_label:
     xalign 0.5        # Change from xpos 75 to xalign 0.5
-    ypos 50           # Adjust this to move the title up or down
-    ysize 180
+    #ypos 20           # Adjust this to move the title up or down
+    yalign 0.06
+    ysize 400
 
 style game_menu_label_text:
     font "fonts/Orbitron-VariableFont_wght.ttf" # Use your custom font
@@ -652,25 +653,15 @@ screen file_slots(title):
             ## This ensures the input will get the enter event before any of the
             ## buttons do.
             order_reverse True
-
-            ## The page name, which can be edited by clicking on a button.
-            button:
-                style "page_label"
-
-                key_events True
-                xalign 0.5
-                action page_name_value.Toggle()
-
-                input:
-                    style "page_label_text"
-                    value page_name_value
+       
 
             ## The grid of file slots.
             grid gui.file_slot_cols gui.file_slot_rows:
                 style_prefix "slot"
 
-                xalign 0.5
-                yalign 0.5
+                xalign 0.3
+                yalign 0.000002
+                yoffset -20
 
                 spacing gui.slot_spacing
 
@@ -745,6 +736,7 @@ style page_label:
     xpadding 75
     ypadding 5
     xalign 0.5
+    yoffset -90
 
 style page_label_text:
     textalign 0.5
