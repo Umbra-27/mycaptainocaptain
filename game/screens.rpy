@@ -228,6 +228,7 @@ style choice_button is default:
     properties gui.button_properties("choice_button")
     activate_sound "audio/Button_Select.mp3"
 style choice_button_text is default:
+    hover_bold True
     properties gui.text_properties("choice_button")
 
 
@@ -306,7 +307,7 @@ screen navigation():
                 pos (962, 418)
 
             if renpy.variant("pc"):
-                textbutton _("QUIT") action Quit(confirm=not main_menu):
+                textbutton _("QUIT") action Quit(confirm=True):
                     pos (935, 475)
 
             imagebutton:
@@ -322,8 +323,7 @@ screen navigation():
             textbutton _("Resume") action Return()
             textbutton _("Save Game") action ShowMenu("save")
             textbutton _("Settings") action ShowMenu("preferences")
-            textbutton _("Exit Game") action Quit(confirm=True)
-        
+            textbutton _("Exit Game") action MainMenu(False)
 
 screen pause():
     tag menu
@@ -348,7 +348,7 @@ screen pause_navigation():
         textbutton _("Resume") action Return()
         textbutton _("Save Game") action ShowMenu("save") 
         textbutton _("Settings") action ShowMenu("preferences")
-        textbutton _("Exit Game") action Quit(confirm=True)
+        textbutton _("Exit Game") action MainMenu(confirm=True)
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -1330,7 +1330,7 @@ style skip_text:
 style skip_triangle:
     ## We have to use a font that has the BLACK RIGHT-POINTING SMALL TRIANGLE
     ## glyph in it.
-    font "DejaVuSans.ttf"
+    font "cuyabra.otf"
 
 
 ## Notify screen ###############################################################

@@ -5,45 +5,7 @@ While running game code:
     $ ui.interact()
   File "renpy/common/00gamemenu.rpy", line 174, in <module>
     $ ui.interact()
-  File "game/screens.rpy", line 630, in execute
-    screen save():
-  File "game/screens.rpy", line 630, in execute
-    screen save():
-  File "game/screens.rpy", line 634, in execute
-    use file_slots(_("Save"))
-  File "game/screens.rpy", line 644, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 644, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 648, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 454, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 454, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 467, in execute
-    if title == _("Pause") or title == _("Game Paused"):
-  File "game/screens.rpy", line 473, in execute
-    frame:
-  File "game/screens.rpy", line 475, in execute
-    hbox:
-  File "game/screens.rpy", line 480, in execute
-    frame:
-  File "game/screens.rpy", line 482, in execute
-    if scroll == "viewport":
-  File "game/screens.rpy", line 494, in execute
-    transclude
-  File "game/screens.rpy", line 648, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 650, in execute
-    fixed:
-  File "game/screens.rpy", line 657, in execute
-    button:
-  File "game/screens.rpy", line 657, in keywords
-    button:
-  File "game/screens.rpy", line 662, in <module>
-    action page_name_value.Toggle()
-NameError: name 'page_name_value' is not defined
+TypeError: got an unexpected keyword argument 'confirm'
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -68,6 +30,7 @@ Full traceback:
     d.visit_all(callback, seen)
   File "D:\Program Files\renpy-8.3.7-sdk\renpy\display\displayable.py", line 434, in visit_all
     d.visit_all(callback, seen)
+  [Previous line repeated 1 more time]
   File "D:\Program Files\renpy-8.3.7-sdk\renpy\display\screen.py", line 480, in visit_all
     callback(self)
   File "D:\Program Files\renpy-8.3.7-sdk\renpy\display\core.py", line 2748, in <lambda>
@@ -76,47 +39,13 @@ Full traceback:
     self.update()
   File "D:\Program Files\renpy-8.3.7-sdk\renpy\display\screen.py", line 700, in update
     self.screen.function(**self.scope)
-  File "game/screens.rpy", line 630, in execute
-    screen save():
-  File "game/screens.rpy", line 630, in execute
-    screen save():
-  File "game/screens.rpy", line 634, in execute
-    use file_slots(_("Save"))
-  File "game/screens.rpy", line 644, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 644, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 648, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 454, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 454, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 467, in execute
-    if title == _("Pause") or title == _("Game Paused"):
-  File "game/screens.rpy", line 473, in execute
-    frame:
-  File "game/screens.rpy", line 475, in execute
-    hbox:
-  File "game/screens.rpy", line 480, in execute
-    frame:
-  File "game/screens.rpy", line 482, in execute
-    if scroll == "viewport":
-  File "game/screens.rpy", line 494, in execute
-    transclude
-  File "game/screens.rpy", line 648, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 650, in execute
-    fixed:
-  File "game/screens.rpy", line 657, in execute
-    button:
-  File "game/screens.rpy", line 657, in keywords
-    button:
-  File "game/screens.rpy", line 662, in <module>
-    action page_name_value.Toggle()
-NameError: name 'page_name_value' is not defined
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\parameter.py", line 455, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+  File "D:\Program Files\renpy-8.3.7-sdk\renpy\parameter.py", line 384, in apply
+    raise TypeError(
+TypeError: got an unexpected keyword argument 'confirm'
 
 Windows-10-10.0.26200 AMD64
 Ren'Py 8.3.7.25031702
 My Captain, O' Captain 1.0
-Mon Mar 23 13:03:31 2026
+Mon Mar 23 17:29:23 2026

@@ -1913,6 +1913,7 @@ label start:
         medic "Captain! Oh my god, I can’t tell you how happy I am to see you!"
         medic "What’s happening now? How much time do we have?"
 
+
         menu:    
             # S.3.1a
             "Our survival rests on you, Sara.":
@@ -1940,6 +1941,27 @@ label start:
                 show medic neutral messy
                 show captain concern-closed behind medic
                 medic "Thank you, Captain…"
+
+            # S.3.1c IF SEEN MO SECRET
+            "We’re ejecting the specimen." if seenMO is True and medApproval >= 3:
+                show captain rememberance-open behind medic 
+                captain "I’ve made a decision regarding the specimen."
+                captain "Clearly it’s interfering with the ship in some way."
+                captain "So… I’m going to eject it."
+
+                show medic stressed messy
+                show captain rememberance-closed behind medic 
+                medic "What?! But the research, the possibilities-"
+
+                show captain rememberance-open behind medic 
+                captain "Aren’t worth our lives. We have enough to go off of."
+                show captain distress behind medic
+                captain "It’s… It’s time to let go."
+
+                medic "I- oh… I understand…"
+
+                jump Map3
+
 
         if medApproval <= 5:
             #S.3.A: Low Approval/Failure
