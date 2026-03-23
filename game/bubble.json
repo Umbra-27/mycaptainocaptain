@@ -413,6 +413,18 @@
             495
         ]
     },
+    "EugenSolution_185eb711": {
+        "properties": "captainbreakdown"
+    },
+    "EugenSolution_185eb711_1": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "captainbreakdown"
+    },
     "EugenSolution_550c89d4": {
         "area": [
             400,
@@ -447,6 +459,15 @@
             495
         ],
         "properties": "captainbreakdown"
+    },
+    "M1O_196055cf": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
     },
     "M1_0105fd82": {
         "area": [
@@ -978,6 +999,15 @@
             495
         ]
     },
+    "SaraSolution_daea2781": {
+        "area": [
+            320,
+            540,
+            1280,
+            495
+        ],
+        "properties": "captainbreakdown"
+    },
     "SaraSolution_ee86b67c": {
         "area": [
             320,
@@ -995,6 +1025,40 @@
             495
         ],
         "properties": "medic"
+    },
+    "TheEnd_53aa35e9": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "TheEnd_550c89d4": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "TheEnd_f5f9634e": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "medic"
+    },
+    "TheEnd_fdfef89e": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "engineer"
     },
     "start_07d41ce3": {
         "area": [

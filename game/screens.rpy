@@ -252,6 +252,7 @@ screen quick_menu():
             # textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
+            textbutton _("Load") action ShowMenu('load')
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             # textbutton _("Prefs") action ShowMenu('preferences')
@@ -309,8 +310,8 @@ screen navigation():
                     pos (935, 475)
 
             imagebutton:
-                xpos 1770
-                ypos 620
+                xpos 1750    
+                ypos -185
                 idle "gui/information-button.png" 
                 hover "gui/information-button.png" 
                 action ShowMenu("help")
@@ -758,6 +759,8 @@ style page_button_text:
 
 style slot_button:
     properties gui.button_properties("slot_button")
+    xpadding 15
+    ypadding 15
 
 style slot_button_text:
     properties gui.text_properties("slot_button")
@@ -1022,48 +1025,46 @@ screen help():
 
     tag menu
 
-    add "gui/help_page.jpg"    
+    add "gui/help_page@2.08.jpg"    
 
     default device = "keyboard"
 
-    use game_menu(_("Information"), scroll="viewport"):
+    # use game_menu(_("Information"), scroll="viewport"):
 
-        style_prefix "help"
+    style_prefix "help"
 
-        vbox:
-            spacing 20
+    vbox:
+        xpos 525       
+        ypos 280
+        spacing 20
             
-            if device == "keyboard":
-                use keyboard_help
-            elif device == "mouse":
-                use mouse_help
+        if device == "keyboard":
+            use keyboard_help
+        elif device == "mouse":
+            use mouse_help
 
  
     vbox:
-        xpos 80        # Far left of the screen
+        xpos 250        # Far left of the screen
         ypos 280       # Use this to move them up or down
         spacing 25
         style_prefix "help"
 
-        textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
-        textbutton _("Mouse") action SetScreenVariable("device", "mouse")
+        textbutton _("Keyboard"):
+            style "help_side_button"
+            action SetScreenVariable("device", "keyboard")
+        textbutton _("Mouse"):
+            style "help_side_button"
+            action SetScreenVariable("device", "mouse")
 
     # 3. The Exit Button
     # Positioned at 1600 (far right) as per your previous code
     imagebutton:
-        xpos 1600      # Change this to 80 if you want it on the left too
-        ypos 880
+        xpos 1595      # Change this to 80 if you want it on the left too
+        ypos 120
         idle "gui/exit-button.png" 
         hover "gui/exit-button.png" 
         action Return()
-
-    imagebutton:
-        xpos 1600
-        ypos 880
-        idle "gui/exit-button.png" 
-        hover "gui/exit-button.png" 
-        action Return()
-
 
 
 screen keyboard_help():
@@ -1108,9 +1109,9 @@ screen keyboard_help():
         label "S"
         text _("Takes a screenshot.")
 
-    hbox:
-        label "V"
-        text _("Toggles assistive {a=https://www.renpy.org/l/voicing}self-voicing{/a}.")
+    # hbox:
+    #     label "V"
+    #     text _("Toggles assistive {a=https://www.renpy.org/l/voicing}self-voicing{/a}.")
 
     hbox:
         label "Shift+A"
@@ -1185,18 +1186,29 @@ style help_button_text:
 
 style help_label:
     xsize 375
-    right_padding 30
+    right_padding 10
 
 style help_label_text:
     size gui.text_size
-    xalign 1.0
+    xalign 0.0
     textalign 1.0
 
 style help_content_frame:
     xfill True
-    left_margin 30
+    left_margin 10
     right_margin 30
     top_margin 15
+
+style help_side_button:
+    properties gui.button_properties("confirm_button")    
+
+    activate_sound "audio/Button_Select.mp3"
+
+    # 3. Center the button and its contents
+    xalign 0.5
+    
+    hover_background Transform("gui/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.70)
+    selected_background Transform("gui/menu_item_highlight.png", xalign=0.5, yalign=0.5, zoom=0.70)
 
 ################################################################################
 ## Additional screens
@@ -1719,14 +1731,15 @@ screen MapUI2():
         activate_sound "audio/Button_Select.mp3"
         action Jump("E2")
 
-    # # computer
-    # imagebutton:
-    #     xpos 180
-    #     ypos 480
-    #     idle "map/computeridle.png"
-    #     hover "map/computerhover.png"
-    #     activate_sound "audio/Button_Select.mp3"
-    #     action Jump("M1O")
+    # computer
+    if seenMO is False:
+        imagebutton:
+            xpos 180
+            ypos 480
+            idle "map/computeridle.png"
+            hover "map/computerhover.png"
+            activate_sound "audio/Button_Select.mp3"
+            action Jump("M1O")
 
 # Map 2b transition to C2
 screen MapUIC2():
@@ -1788,14 +1801,14 @@ screen MapUI3():
             activate_sound "audio/Button_Select.mp3"
             action Jump("E3")
 
-    # if seenMO is False:
-    #     # computer
-    #     imagebutton:
-    #         xpos 180
-    #         ypos 480
-    #         idle "map/computeridle.png"
-    #         hover "map/computerhover.png"
-    #         action Jump("M2O")
+    if seenMO is False:
+        # computer
+        imagebutton:
+            xpos 180
+            ypos 480
+            idle "map/computeridle.png"
+            hover "map/computerhover.png"
+            action Jump("M2O")
 
 screen MapUIFin():
     tag map

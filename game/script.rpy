@@ -8,6 +8,8 @@ define engineer = Character("Eugen", image="engineer/engineer", kind=bubble)
 define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
 
+default persistent.secret_unlocked = False
+
 # Sound Settings
 default preferences.volume.music = 0.8
 default preferences.volume.sfx = 0.5
@@ -55,10 +57,9 @@ image captainConfusedClosedDark = im.MatrixColor(
     "captain@3.5/captain confusion-closed.png", 
     im.matrix.brightness(-0.2))
 
-# The game starts here.
 
-label start:
-    
+# The game starts here.
+label start:    
     play music "Electric_Dawn.mp3" volume 0.8
 
     scene bg computer with fade
@@ -386,7 +387,7 @@ label start:
 
                 show medic neutral
                 show captain neutral-closed behind medic
-                medic "I won’t let you down!"
+                medic "I won’t let you down Captain."
         
         captain "Try not to move around too much. Oxygen’s at a premium right now."
         captain "I’ll be back to check in later."
@@ -612,11 +613,11 @@ label start:
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
-        medic "Captain! Any update on what’s going on? What did Eugen say?"
+        medic "Captain, any update on what’s going on? What did Eugen say?"
 
         # S.1.1
         show captain neutral-open behind medic
-        captain "We are looking into it."
+        captain "We’re looking into it."
 
         menu: 
             # S.1.1a
@@ -630,7 +631,7 @@ label start:
             "We'll sort it out soon.":
                 $ medApproval += 1
                 show captain neutral-open behind medic
-                captain "I have hopes that we will sort it out soon." 
+                captain "I have hopes that we’ll sort it out soon." 
                 captain "Thanks for fulfilling my request."
                 medic "Okay, that’s good to hear! Yes, of course."
 
@@ -650,14 +651,14 @@ label start:
         medic "I’ve been thinking of life in Earth’s oceans, and the closest equivalent is a marine fungus."
         show medic neutral
         show captain neutral-closed behind medic
-        medic "However, the Earth's marine fungi are largely microscopic."
+        medic "However, Earth's marine fungi are largely microscopic."
         
         show captain thinking behind medic
         captain "It’s got to be incredibly resilient to survive those conditions…"
 
         show medic explaining
         show captain thinking behind medic
-        medic "Indeed. Even on Earth, we have extremophiles. The tardigrade is a good example. "
+        medic "Indeed. Even on Earth, we have creatures called extremophiles. The tardigrade is a good example."
         show medic nervous 
         show captain thinking behind medic
         medic "As exciting and era-defining as this discovery is, I must say… I’m worried for our survival. "
@@ -765,7 +766,6 @@ label start:
         menu: 
             # S.1.3a
             "Stay put while we sort this out.":
-                $ medApproval -= 1
                 show captain concern-open behind medic
                 captain "Just stay put while we sort this out." 
 
@@ -1120,9 +1120,10 @@ label start:
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
+        # Spoken to Sara in S1
         if seenS1 is True:
             # S2.A
-            medic "Captain! Any update?"
+            medic "Any update on the ship Captain?"
 
             show captain neutral-open behind medic
             captain "Still working on it."
@@ -1156,7 +1157,7 @@ label start:
 
             show medic explaining messy
             show captain neutral-closed behind medic    
-            medic "I-I have a theory. It’s exciting and concerning."
+            medic "I-I have a theory. It’s exciting… and concerning…"
             
             menu: 
                 # S.2.2a
@@ -1219,7 +1220,8 @@ label start:
 
             show medic excited messy
             show captain concern-closed behind medic
-            medic "Yes! That’s what I think we’ve been missing! This organism is probably emitting electromagnetic waves that are interfering with the computer!"
+            medic "Yes! That’s what I think we’ve been missing!"
+            medic "This organism is probably emitting electromagnetic waves that are interfering with the computer and other systems on the ship!"
 
             menu: 
                 # S.2.3a
@@ -1239,7 +1241,7 @@ label start:
 
                     show medic neutral messy
                     show captain neutral-closed behind medic
-                    medic "Yes, will do, Captain!"
+                    medic "I’ll keep working on it, Captain."
 
             show captain thinking behind medic
             captain "What do you think is the next step?"
@@ -1255,6 +1257,7 @@ label start:
             medic "Yes, Captain!"
             jump M3
 
+        # Did not speak to Sara in S1
         elif seenS1 is False:
             # S2.B
             medic "Captain! Oh my god. What is happening!"
@@ -1288,7 +1291,10 @@ label start:
 
             show medic thinking messy
             show captain neutral-closed behind medic
-            medic "Oh my god… Here I was thinking we would very much make it back home with the specimen. And my family…"
+            medic "Oh my god… Here I was thinking we would very much make it back home with the specimen."
+            show medic nostalgic messy
+            show captain neutral-closed behind medic
+            medic "And my family…"
 
             show captain concern-open behind medic
             captain "And we can! We still have hope." 
@@ -1754,21 +1760,30 @@ label start:
             show captain neutral-closed behind engineer
             jump M3
 
-    # label M1O:
-    #     play sound "Footsteps.mp3" volume 0.8
-    #     play music "Electric_Dawn.mp3" volume 0.8
-    #     # M.1.O optional MAD1
-    #     scene onlayer screens
-    #     $ seenMO = True
-    #     scene bg computer with fade
+    label M1O:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Electric_Dawn.mp3" volume 0.8
+        # M.1.O optional MAD1
+        scene onlayer screens
+        $ seenMO = True
+        scene bg computer with fade
 
-    #     show computer neutral-1 with dissolve
-    #     show captain neutral-open behind computer with dissolve
+        show computer neutral-1 with dissolve
+        show captain neutral-open behind computer with dissolve
 
-    #     computer "hehehe captain"
-    #     captain ":("
+        if persistent.secret_unlocked is False:
+            # First time playthrough. Basic hint
+            
+            computer "I got a funny little poem to tell you captain"
+            computer "pls be nice to your crew"
+        
+        else:
+            # Post first playthrough. Secret Ending hints
+            $ optionalPoem = renpy.random.choice(['A', 'B', 'C'])
 
-    #     jump M3
+            computer "it's the fucking plant sir"
+
+        jump M3
 
     label M3:
         play sound "Footsteps.mp3" volume 0.8
@@ -2087,10 +2102,6 @@ label start:
                 show captain concern-closed behind engineer
                 engineer "I share your frustrations, captain."
 
-        engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
-        show engineer anger
-        engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
-
         if engApproval <= 5:
             #E.3.A: Low Approval/Failure
             show engineer neutral
@@ -2169,7 +2180,7 @@ label start:
                 
                 show captain concern-closed behind engineer
                 engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
-                engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
+                engineer "In the end, all I’m thinking about is my work. My equipment, specifically designed for this mission."
                 engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
                 
                 show captain concern-open behind engineer
@@ -2232,21 +2243,34 @@ label start:
             jump Map3
         else:
             jump Final
+    
+    label M2O:
+        play sound "Footsteps.mp3" volume 0.8
+        play music "Electric_Dawn.mp3" volume 0.8
+        # M.1.O optional MAD1
+        scene onlayer screens
+        $ seenMO = True
+        scene bg computer with fade
 
-    # label M2O:     
-    #     play sound "Footsteps.mp3" volume 0.8
-    #     play music "Electric_Dawn.mp3" volume 0.8        
-    #     # M.2.O optional MAD1
-    #     # Same as M1O
-    #     scene onlayer screens
-    #     $ seenMO = True
-    #     scene bg computer with fade
+        show computer neutral-1 with dissolve
+        show captain neutral-open behind computer with dissolve
 
-    #     show computer neutral-1 with dissolve
-    #     show captain neutral-open behind computer with dissolve
+        if persistent.secret_unlocked is False:
+            # First time playthrough. Basic hint
+            
+            computer "I got a funny little poem to tell you captain"
+            computer "pls be nice to your crew"
+        
+        else:
+            # Post first playthrough. Secret Ending hints
+            $ optionalPoem = renpy.random.choice(['A', 'B', 'C'])
 
-    #     computer "hehehe captain"
-    #     captain ":("
+            computer "it's the fucking plant sir"
+
+        if seenS3 is False and seendE3 is False:
+            jump Map3
+        else:
+            jump Final
 
     label Final:
         if medApproval > 5 and engApproval > 5:
@@ -2301,6 +2325,7 @@ label start:
                     captain "I think it worked."
                     captain "Now to manually control the ship."
                     show screen MapUIFin with dissolve
+                    pause
 
                 "Bring the sheets and the metal to Sara.":
                     scene bg artifact with hpunch
@@ -2334,7 +2359,7 @@ label start:
             menu:
                 "Pull the system override lever.":     
                     scene bg control panel 2 with dissolve
-                    pause(1.5)           
+                    pause(0.1)           
                     scene bg control panel 3 with dissolve
                     captain "Okay."
 
@@ -2482,7 +2507,7 @@ label start:
 
         medic "It’s almost poetic that my life’s greatest achievement would kill me.{w=5}{nw}"
         medic "And I’m a failure that never saw it coming. Completely at its mercy.{w=5}{nw}"
-        medic "I failed Captain and Eugen. Death is fitting…{w=6}{nw}"
+        medic "I failed the Captain and Eugen. Death is fitting…{w=6}{nw}"
 
         hide screen Credits2 with dissolve
         show screen Credits3 with dissolve
@@ -2498,6 +2523,8 @@ label start:
         computer "Home is the captain, home from sea,{w=4}{nw}"
         computer "And the lover lost to the hill.{w=6}{nw}"
 
+        $ persistent.secret_unlocked = True
+        
         hide screen Credits4 with dissolve
         scene black with dissolve
         return
@@ -2557,6 +2584,8 @@ label start:
         computer "Home is the captain, home from sea,{w=4}{nw}"
         computer "And the lover lost to the hill.{w=6}{nw}"
 
+        $ persistent.secret_unlocked = True
+        
         hide screen Credits4 with dissolve
         scene black with dissolve
         return
@@ -2608,6 +2637,8 @@ label start:
         computer "It is some dream that on the deck,{w=4}{nw}"
         computer "You’ve fallen cold and dead.{w=6}{nw}"
     
+        $ persistent.secret_unlocked = True
+
         hide screen Credits4 with dissolve
         scene black with dissolve
         return
@@ -2642,7 +2673,8 @@ label start:
         engineer "Father. It seems our name will no longer be held in esteem.{w=4}{nw}"
         engineer "My design was flawless. Perfect. However, that fact will be cast aside.{w=4}{nw}"
         engineer "To think this is how it ends. A failure I die for.{w=4}{nw}"
-        engineer "Fortunately, Sara will return with the specimen, furthering our knowledge of the universe.{w=7}{nw}"
+        engineer "Fortunately, Sara will return with the specimen, furthering our knowledge of the universe.{w=6}{nw}"
+        engineer "At least there will be some success to come from this mission.{w=7}{nw}"
 
         hide screen Credits2 with dissolve
         show screen Credits3 with dissolve
@@ -2660,6 +2692,8 @@ label start:
         computer "It is some dream that on the deck,{w=4}{nw}"
         computer "You’ve fallen cold and dead.{w=4}{nw}"
         
+        $ persistent.secret_unlocked = True
+
         hide screen Credits4 with dissolve
         scene black with dissolve
         return
@@ -2709,6 +2743,8 @@ label start:
         computer "The port is near, the bells I hear, the people all exulting,{w=5}{nw}"
         computer "While follow eyes the steady keel, the vessel grim and daring{w=5}{nw}"
 
+        $ persistent.secret_unlocked = True
+
         hide screen Credits4 with dissolve
         scene black with dissolve
         return
@@ -2737,7 +2773,7 @@ label start:
         show screen Credits2 with dissolve
         
         medic "That’s my life’s work! My dream. This is hard to bear.{w=5}{nw}"
-        medic "But we’re alive! And I have all of my notes. We have acquired knowledge that is priceless.{w=7}{nw}"
+        medic "But we’re alive! And I have all of my notes. We have acquired knowledge, and that's priceless.{w=7}{nw}"
         medic "Life exists in our solar system!{w=5}{nw}"
 
         hide screen Credits2 with dissolve
@@ -2757,6 +2793,8 @@ label start:
         computer "The hand that writ it; for I love you so{w=4}{nw}"
         computer "That I in your sweet thoughts would be forgot{w=4}{nw}"
         computer "If thinking on me then should make you woe.{w=6}{nw}"
+
+        $ persistent.secret_unlocked = True
 
         hide screen Credits4 with dissolve
         scene black with dissolve
