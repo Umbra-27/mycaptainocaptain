@@ -1396,7 +1396,7 @@ label start:
             show medic thinking messy
             show captain confusion-closed behind medic
             medic "I’m not sure, Captain… But has it occurred to you that two strange events have taken place in such a short period of time?"
-            show medic nostalgic
+            show medic nostalgic messy
             medic "Hah, my family would associate something supernatural to this kind of coincidence…"
 
             show captain concern-open behind medic
@@ -1913,7 +1913,6 @@ label start:
         medic "Captain! Oh my god, I can’t tell you how happy I am to see you!"
         medic "What’s happening now? How much time do we have?"
 
-
         menu:    
             # S.3.1a
             "Our survival rests on you, Sara.":
@@ -1959,12 +1958,14 @@ label start:
                 captain "It’s… It’s time to let go."
 
                 medic "I- oh… I understand…"
+                
+                if seenE3 is False:
+                    jump Map3
+                elif seenE3 is True:
+                    jump Final
 
-                jump Map3
-
-
-        if medApproval <= 5:
-            #S.3.A: Low Approval/Failure
+        #S.3.A: Low Approval/Failure
+        if medApproval < 5:
             show medic suggesting messy
             medic "I’m very certain now that it’s the specimen emitting electromagnetic waves that are interfering with our systems."
             
@@ -1983,52 +1984,62 @@ label start:
             show medic nervous messy
             medic "It’s ironic, isn’t it? That this incredible discovery might just be the death of us."
 
-            show captain neutral-open behind medic
-            captain "Sara, can you come up with a containment plan?"
+            # IF SPOKEN TO Act 3 LOW APPROVAL EUGEN
+            if seenE3 is True and engApproval < 5:
+                captain "About that…"
+                captain "Eugen couldn’t find a solution for MAD1. We couldn’t intercept the interference in time."
+                medic "Oh my god…  "
+                medic "I’m sorry that I couldn’t locate the cause sooner. We could’ve averted this disaster–"
+                captain "None of us could’ve foreseen this would happen."
+                captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
+                medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
+                
+                jump Final
 
-            show medic stressed messy
-            show captain neutral-closed behind medic
-            medic "I-I don’t know! I don’t think so. There’s no time!"
+            else:
+                show captain neutral-open behind medic
+                captain "Sara, can you come up with a containment plan?"
+
+                show medic stressed messy
+                show captain neutral-closed behind medic
+                medic "I-I don’t know! I don’t think so. There’s no time!"
+
+                # IF NOT SPOKEN TO Act 3 EUGEN
+                if seenE3 is False:
+                    medic "Even if Eugen has a solution to fix MAD1, without a way to shield the specimen, it will continue to damage the ship."
+
+                    show captain frustrated behind medic
+                    captain "So even if he’s figured out how to bypass the computer, we’re still screwed…"
+
+                # IF SPOKEN TO Act 3 HIGH APPROVAL EUGEN
+                elif seenE3 is True and engApproval >= 5:
+                    captain "Eugen’s found a solution for MAD1, we just need you to tell us what to do about the specimen’s interception."
+                    medic "I-it’s too late… Any solution we think of now can’t be done in time."
+                    captain "So we’re doomed…"
+
+                show captain distress behind medic
+                captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
+
+                show medic anxious messy
+                medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
+
+                show captain concern-open behind medic
+                captain "None of us could’ve foreseen this would happen."
+                captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
+                    
+                show medic thinking messy
+                medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                show medic anxious messy
+                medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
 
             if seenE3 is False:
-                medic "Even if Eugen has a solution to fix MAD1, without a way to shield the specimen, it will continue to damage the ship."
-
-                show captain frustrated behind medic
-                captain "So even if he’s figured out how to bypass the computer, we’re still screwed…"
-                captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
-
-                show medic anxious messy
-                medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
-
-                show captain concern-open behind medic
-                captain "None of us could’ve foreseen this would happen."
-                captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
-                
-                show medic thinking messy
-                medic "We manipulate “luck” with science, with probability. I could’ve done better…"
-                show medic anxious messy
-                medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
-
                 jump Map3
-                
             elif seenE3 is True:
-                show captain frustrated behind medic
-                captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
-
-                show medic anxious messy
-                medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
-
-                show captain concern-open behind medic
-                captain "None of us could’ve foreseen this would happen."
-                captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
-
-                show medic thinking messy
-                medic "We manipulate “luck” with science, with probability. I could’ve done better…"
-                show medic anxious messy
-                medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
+                jump Final
     
-        elif medApproval > 5:
-            #S.3.B: High Approval/Success
+        #S.3.B: High Approval/Success
+        elif medApproval >= 5:
             show medic explaining messy
             medic "I have used a VLF detector and confirmed that the specimen is emitting low frequency electromagnetic waves."
             medic "Lower frequencies transmit better in water, which is, of course, its natural habitat."
@@ -2053,40 +2064,64 @@ label start:
             show captain determined-closed behind medic
             medic "Yes, I have looked into containment! But it won’t be easy. I don’t know–we might not have time!"
 
-            show captain neutral-open behind medic
-            captain "Let me worry about that. Tell me what sort of containment?"
+            # IF SPOKEN TO Act 3 LOW APPROVAL EUGEN
+            if seenE3 is True and engApproval < 5:
+                captain "Even if we did… There’s no point."
+                captain "Eugen couldn’t find a solution for MAD1. We couldn’t intercept the interference in time."
 
-            show medic explaining messy
-            show captain neutral-closed behind medic
-            medic "Low-frequency EM waves are highly penetrative. We need specialized shielding, such as heavy steel plates."
-            medic "There are Nu metal sheets in the cargo hold that the bots are using to run repairs. It’s essentially graphene-based nanocomposites."
-            
-            show captain determined-open behind medic
-            captain "That’s promising. You think it’d work?"
+                medic "Oh my god…  "
+                medic "I’m sorry that I couldn’t locate the cause sooner. We could’ve averted this disaster–"
 
-            show medic thinking messy
-            show captain determined-closed behind medic
-            medic "Pretty sure. The bots are down though. We’d have to go to the cargo hold and use a laser cutter on the sheets."
-            medic "Then you’d have to build something of a cocoon around the specimen."
-            
-            show captain determined-open behind medic
-            captain "Good. Things are grim but we need to try."
+                captain "None of us could’ve foreseen this would happen."
+                captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
 
-            show medic excited messy
-            show captain determined-closed behind medic
-            medic "Yes, yes, we need to!"
+                medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
 
-            if seenE3 is False:
-                show medic worried messy
-                medic "I just hope Eugen has a solution for MAD1 and the ship… The damage that has been done cannot be reversed."
-                medic "If he hasn’t found a way to bypass the OS, I’m afraid we’re still doomed."
+                jump Final
 
+            else:
                 show captain neutral-open behind medic
-                captain "I’ll go speak with him now, hopefully he’s found something out."
+                captain "Let me worry about that. Tell me what sort of containment?"
 
-                jump Map3
+                show medic explaining messy
+                show captain neutral-closed behind medic
+                medic "Low-frequency EM waves are highly penetrative. We need specialized shielding, such as heavy steel plates."
+                medic "There are Nu metal sheets in the cargo hold that the bots are using to run repairs. It’s essentially graphene-based nanocomposites."
+                
+                show captain determined-open behind medic
+                captain "That’s promising. You think it’d work?"
 
-        jump Final
+                show medic thinking messy
+                show captain determined-closed behind medic
+                medic "Pretty sure. The bots are down though. We’d have to go to the cargo hold and use a laser cutter on the sheets."
+                medic "Then you’d have to build something of a cocoon around the specimen."
+                
+                show captain determined-open behind medic
+                captain "Good. Things are grim but we need to try."
+
+                show medic excited messy
+                show captain determined-closed behind medic
+                medic "Yes, yes, we need to!"
+
+                # IF NOT SPOKEN TO Act 3 EUGEN
+                if seenE3 is False:
+                    show medic worried messy
+                    medic "I just hope Eugen has a solution for MAD1 and the ship… The damage that has been done cannot be reversed."
+                    medic "If he hasn’t found a way to bypass the OS, I’m afraid we’re still doomed."
+
+                    show captain neutral-open behind medic
+                    captain "I’ll go speak with him now, hopefully he’s found something out."
+
+                    jump Map3
+                # IF SPOKEN TO Act 3 HIGH APPROVAL EUGEN
+                elif seenE3 is True and engApproval >= 5:
+                    captain "Eugen has a solution for MAD1. Once I contain the specimen I need to manually control the ship."
+                    captain "Once I do I’ll return with further instructions."
+
+                    medic "Good luck Captain! I believe in you!"
+
+                    jump Final
 
     label E3:
         play sound "Footsteps.mp3" volume 0.8
@@ -2104,7 +2139,7 @@ label start:
         engineer "I have to ask, after everything we went through to get the specimen, are you willing to lose it all to survive, knowing that there is no guarantee in that result as well?"
 
         menu: 
-        # E.3.1a
+            # E.3.1a
             "Whatever it takes.":
                 show captain neutral-open behind engineer
                 captain "Whatever it takes."
@@ -2124,8 +2159,29 @@ label start:
                 show captain concern-closed behind engineer
                 engineer "I share your frustrations, captain."
 
-        if engApproval <= 5:
-            #E.3.A: Low Approval/Failure
+            # E.3.1c IF SEEN MO.1 and Approval = 3+
+            "We’re ejecting the specimen." if seenMO is True and engApproval >= 3:
+                captain "About that…"
+                captain "I’ve made the executive decision to eject the specimen."
+
+                engineer "What?"
+
+                captain "We have to stop the interference with the ship, and this is the safest way to do so."
+                captain "I am prepared to lose it all… To save my crew."
+
+                engineer "."
+                engineer "This is a difficult decision you’ve made."
+
+                captain "…"
+                engineer "… My condolences, Captain…"
+                
+                if seenS3 is False:
+                    jump Map3
+                elif seenS3 is True:
+                    jump Final
+
+        #E.3.A: Low Approval/Failure
+        if engApproval < 5:
             show engineer neutral
             engineer "10%% oxygen left. 10%%..."
             
@@ -2158,61 +2214,63 @@ label start:
             engineer "I cannot override anything anymore without triggering a complete system failure that would serve no purpose besides ending this immediately."
             engineer "This system has bested me, nothing I tried worked, I did everything right… everything."
 
+            # IF NOT SPOKEN TO Act 3 SARA
             if seenS3 is False:
-                show engineer shock
                 engineer "If Sara has managed to isolate the specimen, I am afraid it is still in vain."
                 engineer "I hope she is not too disappointed in my lack of contribution."
-                
-                show captain concern-open behind engineer
+
                 captain "At the moment you’re disappointing no one but yourself."
-                captain "You can’t blame yourself. Like you said, it wasn’t made for us."
-                
-                show engineer resolve
-                show captain concern-closed behind engineer
-                engineer "So this is what remains, a final countdown."
-                
-                show captain concern-open behind engineer
-                captain "Thank you for your service, friend."
-                captain "As long as the specimen is brought home, this mission wouldn’t be for nothing."
-                captain "As for whether or not it’s a failure, you tell me, Eugen."
-                
-                show captain concern-closed behind engineer
-                engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
-                engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
-                engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
-                
-                show captain concern-open behind engineer
-                captain "Your equipment and your work was flawless. All will see that."
-                
-                show captain concern-closed behind engineer
-                engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
+            
+            # IF SPOKEN TO Act 3 LOW APPROVAL SARA
+            elif seenS3 is True and medApproval < 5:
+                captain "We’re screwed then. The specimen has been emitting electromagnetic waves that interfere with the ship."
+                captain "Even if you had a solution, we’d still be facing imminent death."
 
+                engineer "Maybe if I was able to intercept it faster, we could’ve had time."
+            
+            # IF SPOKEN TO Act 3 HIGH APPROVAL SARA
+            elif seenS3 is True and medApproval >= 5:
+                captain "… "
+                captain "We were so close…"
+                captain "Sara came up with a solution to contain the specimen’s interference with the ship."
+                captain "But it seems we’re too late."
+
+                engineer "Maybe if I was able to intercept it faster, we could’ve had time."
+                engineer "I hope she is not too disappointed in my lack of contribution."
+
+                captain "At the moment you’re disappointing no one but yourself."
+                
+            show captain concern-open behind engineer
+            captain "At the moment you’re disappointing no one but yourself."
+            captain "You can’t blame yourself. Like you said, it wasn’t made for us."
+                
+            show engineer resolve
+            show captain concern-closed behind engineer
+            engineer "So this is what remains, a final countdown."
+                
+            show captain concern-open behind engineer
+            captain "Thank you for your service, friend."
+            captain "As long as the specimen is brought home, this mission wouldn’t be for nothing."
+            captain "As for whether or not it’s a failure, you tell me, Eugen."
+                
+            show captain concern-closed behind engineer
+            engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
+            engineer "In the end, all I’m thinking about is my work, my equipment, specially designed for this mission."
+            engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
+                
+            show captain concern-open behind engineer
+            captain "Your equipment and your work was flawless. All will see that."
+                
+            show captain concern-closed behind engineer
+            engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
+
+            if seenS3 is False:
+                jump Map3
             elif seenS3 is True:
-                show captain concern-open behind engineer
-                captain "You can’t blame yourself. Like you said, it wasn’t made for us."
-                
-                show engineer resolve
-                show captain concern-closed behind engineer
-                engineer "So this is what remains, a final countdown."
-                
-                show captain concern-open behind engineer
-                captain "Thank you for your service, friend."
-                captain "As long as the specimen is brought home, this mission wouldn’t be for nothing."
-                captain "As for whether or not it’s a failure, you tell me, Eugen."
-                
-                show captain concern-closed behind engineer
-                engineer "Seeing as everything else has failed, at the very least, we’ll have something to show for it."
-                engineer "In the end, all I’m thinking about is my work. My equipment, specifically designed for this mission."
-                engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
-                
-                show captain concern-open behind engineer
-                captain "Your equipment and your work was flawless. All will see that."
-                
-                show captain concern-closed behind engineer
-                engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
+                jump Final
 
-        elif engApproval > 5:
         #S.3.B: High Approval/Success
+        elif engApproval >= 5:
             show engineer neutral
             engineer "10%% oxygen left. 10%%…"
             engineer "The system is no longer resisting me… it doesn’t have a reason to."
@@ -2233,13 +2291,42 @@ label start:
             show captain concern-closed behind engineer
             engineer "To hell with protocol, this system is clearly beyond following traditional procedures."
             engineer "We have to consider our last resort; we need to override MAD1 manually, and you need to take control of this ship."
+
+            # IF SPOKEN TO Act 3 LOW APPROVAL SARA
+            if seenS3 is True and medApproval < 5:
+                captain "I’m sorry Eugen, but Sara’s made a grim discovery regarding the specimen."
+                captain "It’s emitting electromagnetic waves that are interfering with the ship."
+                captain "Even if we manually control the ship, we still wouldn’t be able to do anything with the interference."
+
+                engineer "So this is what remains, a final countdown."
+                engineer "In the end, all I’m thinking about is my work. My equipment, specifically designed for this mission."
+                engineer "Although perfect, it will potentially be seen as flawed, and my legacy, my work, will become a mockery."
+
+                captain "Your equipment and your work was flawless. All will see that."
+
+                engineer "Despite everything, it has been an honor. I do not envy the decision you must make."
+
+                jump Final
             
             show captain confusion-open behind engineer
             captain "What?"
             
             show engineer shock
             show captain confusion-closed behind engineer
+            engineer "I’ve traced the source of MAD1’s corruption."
             engineer "I’m sure Sara gave you enough information on the specimen for you to understand this is beyond conventional solutions."
+
+            # IF SPOKEN TO Act 3 HIGH APPROVAL SARA
+            if seenS3 is True and medApproval >= 5:
+                captain "Captain: Yes, the specimen has been interfering with the ship."
+                captain "However, she’s come up with a containment solution to stop this interference."
+
+                engineer "Good, there’s a chance then."
+
+            # IF NOT SPOKEN TO Act 3 SARA
+            elif seenS3 is False:
+                captain "I’ll have to speak with her to confirm."
+
             engineer "I cannot override anything anymore without triggering a complete system failure that would serve no purpose besides ending this immediately."
             engineer "To override MAD1 you have to go to the control room; there is a security door locked inside; only you can enter with your personnel badge."
             engineer "In the room, you’ll find the system override lever. Once you pull that, you’ll have to take complete control of the ship and navigate us yourself." 
@@ -2261,10 +2348,13 @@ label start:
             show captain determined-open behind engineer
             captain "You have my word."
             
-        if seenS3 is False:
-            jump Map3
-        else:
-            jump Final
+            if seenS3 is False:
+                captain "I’ll go see what information Sara has for me."
+                captain "If we’re lucky, we’re all going home."
+
+                jump Map3
+            else:
+                jump Final
     
     label M2O:
         play sound "Footsteps.mp3" volume 0.8
@@ -2289,13 +2379,13 @@ label start:
 
             computer "it's the fucking plant sir"
 
-        if seenS3 is False and seendE3 is False:
+        if seenS3 is False and seenE3 is False:
             jump Map3
         else:
             jump Final
 
     label Final:
-        if medApproval > 5 and engApproval > 5:
+        if medApproval >= 5 and engApproval >= 5:
             show screen MapUIFin with dissolve
             pause
 

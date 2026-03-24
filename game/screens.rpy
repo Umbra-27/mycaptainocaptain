@@ -1680,12 +1680,12 @@ screen MapUIC1():
         hover "oxygen/oxygen-meter-50.png"
         action NullAction()
 
-    # storage
+    # escape
     imagebutton:
-        xpos 1080
-        ypos 268
-        idle "map/storageidle.png"
-        hover "map/storagehover.png"
+        xpos 1405
+        ypos 513
+        idle "map/escapeidle.png"
+        hover "map/escapehover.png"
         action Jump("C1")
 
 
@@ -1889,6 +1889,14 @@ screen MapUIEnd():
 #         ypos 268
 #         idle "map/storageidle.png"
 #         hover "map/storagehover.png"
+#         action NullAction()
+
+#     # escape
+#     imagebutton:
+#         xpos 1405
+#         ypos 513
+#         idle "map/escapeidle.png"
+#         hover "map/escapehover.png"
 #         action NullAction()
 
 #     # medic

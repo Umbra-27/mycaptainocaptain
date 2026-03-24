@@ -2,9 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1035: keyword argument 'xalign' is incompatible with 'xpos'.
-    xalign 0.0
-          ^
+File "game/script.rpy", line 2269: Indentation mismatch.
+    elif seenS3 is True:
 
-Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Mar 23 12:33:50 2026
+Ren'Py Version: Ren'Py 8.5.2.26010301
+Mon Mar 23 20:30:13 2026
