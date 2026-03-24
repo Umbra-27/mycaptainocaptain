@@ -8,7 +8,16 @@ define engineer = Character("Eugen", image="engineer/engineer", kind=bubble)
 define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
 
-default persistent.secret_unlocked = False
+# persistent data variables for endings
+default persistent.secret_unlocked = False # if at least one ending has been unlocked
+
+default persistent.endB_unlocked = False # bad ending achieved
+default persistent.endC_unlocked = False # Captain ending achieved
+default persistent.endE_unlocked = False # Eugen ending achieved
+default persistent.endS_unlocked = False # Sara ending achieved
+default persistent.endG_unlocked = False # good ending achieved
+
+default persistent.endSEC_unlocked = False # secret ending achieved
 
 # Sound Settings
 default preferences.volume.music = 0.8
@@ -2636,6 +2645,7 @@ label start:
         computer "And the lover lost to the hill.{w=6}{nw}"
 
         $ persistent.secret_unlocked = True
+        $ persistent.endB_unlocked = True
         
         hide screen Credits4 with dissolve
         scene black with dissolve
@@ -2697,6 +2707,7 @@ label start:
         computer "And the lover lost to the hill.{w=6}{nw}"
 
         $ persistent.secret_unlocked = True
+        $ persistent.endC_unlocked = True
         
         hide screen Credits4 with dissolve
         scene black with dissolve
@@ -2750,6 +2761,7 @@ label start:
         computer "You’ve fallen cold and dead.{w=6}{nw}"
     
         $ persistent.secret_unlocked = True
+        $ persistent.endE_unlocked = True
 
         hide screen Credits4 with dissolve
         scene black with dissolve
@@ -2805,6 +2817,7 @@ label start:
         computer "You’ve fallen cold and dead.{w=4}{nw}"
         
         $ persistent.secret_unlocked = True
+        $ persistent.endS_unlocked = True
 
         hide screen Credits4 with dissolve
         scene black with dissolve
@@ -2856,6 +2869,7 @@ label start:
         computer "While follow eyes the steady keel, the vessel grim and daring{w=5}{nw}"
 
         $ persistent.secret_unlocked = True
+        $ persistent.endG_unlocked = True
 
         hide screen Credits4 with dissolve
         scene black with dissolve
@@ -2907,6 +2921,7 @@ label start:
         computer "If thinking on me then should make you woe.{w=6}{nw}"
 
         $ persistent.secret_unlocked = True
+        $ persistent.endSEC_unlocked = True
 
         hide screen Credits4 with dissolve
         scene black with dissolve

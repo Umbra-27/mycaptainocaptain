@@ -312,11 +312,91 @@ screen navigation():
 
             imagebutton:
                 xpos 1750    
-                ypos -185
+                ypos 630
                 idle "gui/information-button.png" 
                 hover "gui/information-button.png" 
                 action ShowMenu("help")
 
+            imagebutton:
+                xpos 1750    
+                ypos 450
+                idle "gui/gallery-icon.png" 
+                hover "gui/gallery-icon.png" 
+                action NullAction()
+
+            # Ending Stars
+            hbox:
+                # Bad End Star
+                imagebutton:
+                    xpos 0
+                    ypos 450
+                    if persistent.endB_unlocked is True:
+                        idle "images/End Stars@15/endB.PNG"                    
+                        hover "images/End Stars@15/endB.PNG"
+                    else:
+                        idle "images/End Stars@15/empty star.PNG"                    
+                        hover "images/End Stars@15/empty star.PNG"
+                    action NullAction()
+                
+                # Sara Star
+                imagebutton:
+                    xpos 0
+                    ypos 450
+                    if persistent.endS_unlocked is True:
+                        idle "images/End Stars@15/endS.PNG"                    
+                        hover "images/End Stars@15/endS.PNG"
+                    else:
+                        idle "images/End Stars@15/empty star.PNG"                    
+                        hover "images/End Stars@15/empty star.PNG"
+                    action NullAction()
+
+                # Eugen Star
+                imagebutton:
+                    xpos 0
+                    ypos 450
+                    if persistent.endE_unlocked is True:
+                        idle "images/End Stars@15/endE.PNG"                    
+                        hover "images/End Stars@15/endE.PNG"
+                    else:
+                        idle "images/End Stars@15/empty star.PNG"                    
+                        hover "images/End Stars@15/empty star.PNG"
+                    action NullAction()
+
+                # Captain Star
+                imagebutton:
+                    xpos 0
+                    ypos 450
+                    if persistent.endC_unlocked is True:
+                        idle "images/End Stars@15/endC.PNG"                    
+                        hover "images/End Stars@15/endC.PNG"
+                    else:
+                        idle "images/End Stars@15/empty star.PNG"                    
+                        hover "images/End Stars@15/empty star.PNG"
+                    action NullAction()
+
+                # Good End Star
+                imagebutton:
+                    xpos 0
+                    ypos 450
+                    if persistent.endG_unlocked is True:
+                        idle "images/End Stars@15/endG.PNG"                    
+                        hover "images/End Stars@15/endG.PNG"
+                    else:
+                        idle "images/End Stars@15/empty star.PNG"                    
+                        hover "images/End Stars@15/empty star.PNG"
+                    action NullAction()
+
+                # Secret Star
+                imagebutton:
+                    xpos 0
+                    ypos 450
+                    if persistent.endSEC_unlocked is True:
+                        idle "images/End Stars@15/endSEC.PNG"                    
+                        hover "images/End Stars@15/endSEC.PNG"
+                    else:
+                        idle "images/End Stars@15/empty star.PNG"                    
+                        hover "images/End Stars@15/empty star.PNG"
+                    action NullAction()
 
         else:
             # FIX: These buttons must be indented 4 spaces further than the 'else:'
@@ -1005,6 +1085,17 @@ style history_label:
 
 style history_label_text:
     xalign 0.5
+
+## Gallery screen #######################################################
+##
+## Screen for ending CGs to be accessed after the player has seen them.
+##
+
+screen galler():
+    tag menu
+
+    style_prefix "gallery"
+
 
 
 ## Help screen #################################################################

@@ -1,29 +1,44 @@
-2026-03-24 00:48:24 UTC
-Windows-11-10.0.26200-SP0
-Ren'Py 8.5.2.26010301
+2026-03-24 16:22:58 UTC
+Windows-10-10.0.26100
+Ren'Py 8.3.7.25031702
 
-Early init took 34 ms
-Loading error handling took 84 ms
-Loading script took 836 ms
-Loading save slot metadata took 20 ms
-Loading persistent took 0 ms
-Running init code took 73 ms
-Loading analysis data took 0 ms
-Analyze and compile ATL took 2 ms
-Reloading save slot metadata took 9 ms
-Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 24 ms
-Cleaning cache took 0 ms
-Making clean stores took 0 ms
-Initial gc took 26 ms
-DPI scale factor: 2.000000
+Early init took 0.06s
+Loading error handling took 0.02s
+Loading script took 0.10s
+Loading save slot metadata took 0.02s
+Loading persistent took 0.00s
+Running init code took 0.04s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.01s
+Index archives took 0.00s
+Dump and make backups took 0.03s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.02s
+DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 1 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 14 ms
-Save screen analysis took 9 ms
-Save pyanalysis took 2 ms
-Save bytecode took 0 ms
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.04s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Interface start took 0.77s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon RX 6950 XT'
+Version: b'4.6.0 Compatibility Profile Context 26.3.1.260303'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Maximum texture size: 4096x4096
