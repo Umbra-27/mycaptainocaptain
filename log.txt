@@ -1,44 +1,41 @@
-2026-03-24 16:22:58 UTC
-Windows-10-10.0.26100
-Ren'Py 8.3.7.25031702
+2026-03-25 03:16:52 UTC
+Windows-11-10.0.26200-SP0
+Ren'Py 8.5.2.26010301
 
-Early init took 0.06s
-Loading error handling took 0.02s
-Loading script took 0.10s
-Loading save slot metadata took 0.02s
-Loading persistent took 0.00s
-Running init code took 0.04s
-Loading analysis data took 0.01s
-Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.01s
-Index archives took 0.00s
-Dump and make backups took 0.03s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc took 0.02s
-DPI scale factor: 1.000000
+Early init took 32 ms
+Loading error handling took 26 ms
+Loading script took 459 ms
+Loading save slot metadata took 20 ms
+Loading persistent took 1 ms
+Running init code took 44 ms
+Loading analysis data took 2 ms
+Analyze and compile ATL took 1 ms
+Reloading save slot metadata took 8 ms
+Dump and make backups took 23 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 23 ms
+DPI scale factor: 2.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.04s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
-Running _start took 0.00s
-Interface start took 0.77s
+Creating interface object took 1 ms
+Init translation took 0 ms
+Cleaning stores took 0 ms
+Load screen analysis took 11 ms
+Analyze screens took 2 ms
+Save screen analysis took 0 ms
+Save pyanalysis took 0 ms
+Save bytecode took 16 ms
+Running _start took 0 ms
+Interface start took 210 ms
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
+primary display bounds: (0, 0, 2880, 1620)
 swap interval: 1 frames
 Windowed mode.
-Vendor: "b'ATI Technologies Inc.'"
-Renderer: b'AMD Radeon RX 6950 XT'
-Version: b'4.6.0 Compatibility Profile Context 26.3.1.260303'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
+Vendor: 'Intel'
+Renderer: 'Intel(R) Iris(R) Xe Graphics'
+Version: '4.6.0 - Build 32.0.101.7076'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 2880, 'current_h': 1620, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(2602, 1464) drawable=(2602, 1464)
 Maximum texture size: 4096x4096

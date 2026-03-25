@@ -10,6 +10,7 @@ define computer = Character("MAD1", image="computer/computer", kind=bubble)
 
 # persistent data variables for endings
 default persistent.secret_unlocked = False # if at least one ending has been unlocked
+default persistent.matthew_unlocked = False # seen Matt log in MO
 
 default persistent.endB_unlocked = False # bad ending achieved
 default persistent.endC_unlocked = False # Captain ending achieved
@@ -43,6 +44,8 @@ init python:
     seenMO = False
     seenSaraSolution = False
     seenEugenSolution = False
+
+    secretChoice = False # Choose to chuck the specimen in C2 to unlock S/E 3.1.c choice
 
 # dark ver
 image bgCompDark = im.MatrixColor(
@@ -988,12 +991,14 @@ label start:
         show computer error-1
         show captain concern-closed behind computer
         computer "Errorr. Error. Errorrrr."
+        show computer error-2
+        show captain concern-closed behind computer
         computer "langu̴̢͘age e̶̯̓r̴̺̀r̶̙̀o̶̖̚r"
         computer "S̵p̶̳͘ē̵̝e̴̼̓c̷̫̎ḧ̴̫́ ̷̗̀e̵̗̋rr̸̦̀o̶̳͑ṙ̸͇rr"
         computer "P̸͇̓r̶̲̳̣̈o̷͎̬͂̋c̸͈̠̤̓̅̓é̷͚̦̳̠s̵͚̐s̴̡͍̟̈́̊̌i̶̲̟̎̀̂͠ng E̷r̸r̸o̶r̸.̶—"
 
         scene bg computer error bad
-        show computer error-2
+        show computer error-3
         show captain concern-closed behind computer
         computer "I watered it in fears,
                 Night and morning with my tears.
@@ -1044,7 +1049,7 @@ label start:
         show computer neutral-1
         computer "Apologies, Captain. But you mustttt-"
 
-        show computer error-1 with hpunch
+        show computer error-3 with hpunch
         show captain
         computer "Ah! Well- a-day! what é̶̝v̵̬͋i̸͇͌l̷ looks"
         computer "Had ẗ̵̯́hė̷̠e from o̴l̶d̶ ã̷̡n̷͎͛d̶̥̾ ̶̝̀y̷̫̓o̶͓̍ǔ̴͎n̵̞̾g̴̟͂!"
@@ -1769,7 +1774,7 @@ label start:
             show captain neutral-closed behind engineer
             jump M3
 
-    label M1O:
+    label MO:
         play sound "Footsteps.mp3" volume 0.8
         play music "Electric_Dawn.mp3" volume 0.8
         # M.1.O optional MAD1
@@ -1777,28 +1782,65 @@ label start:
         $ seenMO = True
         scene bg computer with fade
 
-        show computer neutral-1 with dissolve
+        show computer error-4 with dissolve
         show captain neutral-open behind computer with dissolve
 
-        if persistent.secret_unlocked is False:
-            # First time playthrough. Basic hint
+        if persistent.matthew_unlocked is False:
+            # Matt log
             
-            computer "I got a funny little poem to tell you captain"
-            computer "pls be nice to your crew"
+            computer "MAD1: No longer mourn for me when I am dead"
+            computer "Then you shall hear the surly sullen bell"
+            computer "Give warning to the world that I am fled"
+            computer "From this vile world, with vilest worms to dwell:"
+
+            show computer error-5 with hpunch
+
+            computer "..."
+            computer "Captain’s log, August 16th."
+            computer "We’ve collided with an asteroid. The impact has shut off primary communications, and all escape pods are malfunctioning."
+            computer "Oxygen is at 17%. Death is imminent. "
+            computer "MAD1 has saved all information prior to this moment to her copy on Earth."
+            computer "I don’t know if this log will be saved to her system or not."
+            computer "Rudy, if you’re hearing this…"
+            computer "..." # chuckling
+            computer "Do you remember our first mission together?"
+            computer "We were stationed on the ISS and were so worried about the others finding out we were engaged."
+            computer "I always fell asleep in your arms…"
+            computer "We were so young…"
+            computer "God. I miss you Pumpkin…"
+            computer "I always hoped I’d get to fall asleep in your arms, one last time, before passing."
+            computer "I l̵o̸v̷e̵ y̷̛̭̳̜̙̪̠͚̙̻̮̥̳̖͉͎̹̿̏̾͑̄͒̊́̋́̂̃̒̕ͅͅo-"
+
+            $ persistent.matthew_unlocked = True
         
         else:
-            # Post first playthrough. Secret Ending hints
-            $ optionalPoem = renpy.random.choice(['A', 'B', 'C'])
+            # Cycle random poems
+            $ optionalPoem = renpy.random.choice(['MO.1', 'MO.2', 'MO.3', 'MO.4', 'MO.5'])
 
-            computer "it's the fucking plant sir"
+            if optionalPoem is 'MO.1':
+                computer "insert MO.1 poem"
+
+            elif optionalPoem is 'MO.2':
+                computer "insert MO.2 poem"
+
+            elif optionalPoem is 'MO.3':
+                computer "insert MO.3 poem"
+
+            elif optionalPoem is 'MO.4':
+                computer "insert MO.4 poem"
+
+            elif optionalPoem is 'MO.5':
+                computer "insert MO.5 poem"
+
 
         jump M3
 
     label M3:
-        play sound "Footsteps.mp3" volume 0.8
-        play music "Electric_Dawn.mp3" volume 0.8
-        scene onlayer screens
-        scene bg computer error with fade
+        if seenE2 is True or seenS2 is True:
+            play sound "Footsteps.mp3" volume 0.8
+            play music "Electric_Dawn.mp3" volume 0.8
+            scene onlayer screens
+            scene bg computer error with fade
 
         show computer error-1 with dissolve
         show captain neutral-closed behind computer with dissolve
@@ -1866,7 +1908,8 @@ label start:
 
         captain "The thought of choosing someone makes me sick…"
         captain "I could skip the charade and just leave."
-        "*Stares down the specimen as tears roll down your face*"
+
+        "(You stare at the specimen as tears roll down your face)"
 
         captain "Should I escape?"
         menu:
@@ -1891,19 +1934,40 @@ label start:
                         jump Map3
 
             "Stay":
+                play sound "Metallic_Hit.mp3" volume 0.5
+                show bg escape pod with hpunch
+
                 captain "God damnit!"
                 captain "*coughing fit*"
                 captain "… I’m wasting oxygen with my outbursts…"
-                captain "I need to fix MAD1. Otherwise only one of us lives…"
+
+                captain "…"
+                captain "Should I just eject the specimen?"
+
+                # Chuck specimen option
+                menu:
+                    "Yes":
+                        # Must have seen MO Matthew log and gained half approval to succeed
+                        if persistent.matthew_unlocked is True and medApproval >3 and engApproval >3:
+                            captain "… I should let the others know."
+                            captain "They’ll agree with me… I-It’s for the best."
+
+                            $ secretChoice = True
+
+                        # Seen MO Matthew log but failed approval check
+                        elif persistent.matthew_unlocked is True and medApproval <=3 and engApproval <=3:
+                            captain "There’s no way I’ll be able to convince the others to agree to this."
+                            captain "I need to fix MAD1. Otherwise only one of us lives…"
+                        
+                        else:
+                            captain "No. I can’t. I need to finish this. For Matthew."
+                            captain "I need to fix MAD1. Otherwise only one of us lives…"
+                    "No":
+                        captain "No. I need to finish this. For Matthew."
+                        captain "I need to fix MAD1. Otherwise only one of us lives…"
 
                 jump Map3
 
-        play sound "Metallic_Hit.mp3" volume 0.5
-        show bg escape pod with hpunch
-        captain "God damnit!"
-        captain "…"
-        captain "… I’m wasting oxygen with my outbursts…"
-        captain "I need to fix MAD1. Otherwise only one of us lives…"
 
     label Map3:
         show screen MapUI3 with fade
@@ -1951,7 +2015,7 @@ label start:
                 medic "Thank you, Captain…"
 
             # S.3.1c IF SEEN MO SECRET
-            "We’re ejecting the specimen." if seenMO is True and medApproval >= 3:
+            "We’re ejecting the specimen." if secretChoice is True and medApproval >= 3:
                 show captain rememberance-open behind medic 
                 captain "I’ve made a decision regarding the specimen."
                 captain "Clearly it’s interfering with the ship in some way."
@@ -2064,14 +2128,10 @@ label start:
             
             show medic neutral messy
             show captain concern-closed behind medic
-            medic "Thank you. It wouldn’t have been possible if you didn’t believe in me all this time… But I fear we’re too late."
+            medic "Thank you. It wouldn’t have been possible if you didn’t believe in me all this time…"
+            medic "I’ve even looked into containment. But it won’t be easy. I don’t know–we might not have time!"
             
             show captain determined-open behind medic
-            captain "We can block these emissions. We can–"
-
-            show medic worried messy
-            show captain determined-closed behind medic
-            medic "Yes, I have looked into containment! But it won’t be easy. I don’t know–we might not have time!"
 
             # IF SPOKEN TO Act 3 LOW APPROVAL EUGEN
             if seenE3 is True and engApproval < 5:
@@ -2169,7 +2229,7 @@ label start:
                 engineer "I share your frustrations, captain."
 
             # E.3.1c IF SEEN MO.1 and Approval = 3+
-            "We’re ejecting the specimen." if seenMO is True and engApproval >= 3:
+            "We’re ejecting the specimen." if secretChoice is True and engApproval >= 3:
                 captain "About that…"
                 captain "I’ve made the executive decision to eject the specimen."
 
@@ -2192,7 +2252,10 @@ label start:
         #E.3.A: Low Approval/Failure
         if engApproval < 5:
             show engineer neutral
-            engineer "10%% oxygen left. 10%%..."
+            if seenS3 is True:
+                engineer "10%% oxygen left. 10%%..."
+            else: 
+                engineer "15%% oxygen left. 15%%..."
             
             show captain concern-open behind engineer
             captain "Please tell me you have good news."
@@ -2281,7 +2344,10 @@ label start:
         #S.3.B: High Approval/Success
         elif engApproval >= 5:
             show engineer neutral
-            engineer "10%% oxygen left. 10%%…"
+            if seenS3 is True:
+                engineer "10%% oxygen left. 10%%..."
+            else: 
+                engineer "15%% oxygen left. 15%%..."
             engineer "The system is no longer resisting me… it doesn’t have a reason to."
             engineer "Primary life support has entered terminal degradation."
             
@@ -2364,34 +2430,6 @@ label start:
                 jump Map3
             else:
                 jump Final
-    
-    label M2O:
-        play sound "Footsteps.mp3" volume 0.8
-        play music "Electric_Dawn.mp3" volume 0.8
-        # M.1.O optional MAD1
-        scene onlayer screens
-        $ seenMO = True
-        scene bg computer with fade
-
-        show computer neutral-1 with dissolve
-        show captain neutral-open behind computer with dissolve
-
-        if persistent.secret_unlocked is False:
-            # First time playthrough. Basic hint
-            
-            computer "I got a funny little poem to tell you captain"
-            computer "pls be nice to your crew"
-        
-        else:
-            # Post first playthrough. Secret Ending hints
-            $ optionalPoem = renpy.random.choice(['A', 'B', 'C'])
-
-            computer "it's the fucking plant sir"
-
-        if seenS3 is False and seenE3 is False:
-            jump Map3
-        else:
-            jump Final
 
     label Final:
         if medApproval >= 5 and engApproval >= 5:
@@ -2572,6 +2610,8 @@ label start:
         captain "Only one of us is going home…"
         captain "…" 
 
+        "You were unable to bring everyone together. Now you must choose."
+
         menu:
             "Sara":
                 captain "Sara’s research is too important."
@@ -2639,16 +2679,22 @@ label start:
 
         hide screen Credits3 with dissolve
         show screen Credits4 with dissolve
-        computer "This be the verse you grave for me:{w=4}{nw}"
-        computer "Here he lies where he longed to be;{w=4}{nw}"
-        computer "Home is the captain, home from sea,{w=4}{nw}"
-        computer "And the lover lost to the hill.{w=6}{nw}"
+        computer "Grave men, near death, who see with blinding sight:{w=5}{nw}"
+        computer "Blind eyes could blaze like meteors and be gay,{w=4}{nw}"
+        computer "Rage, rage against the dying of the light.{w=4}{nw}"
+        computer "And you, my father, there on the sad height,{w=4}{nw}"
+        computer "Curse, bless, me now with your fierce tears, I pray.{w=4}{nw}"
+        computer "Do not go gentle into that good night.{w=6}{nw}"
 
         $ persistent.secret_unlocked = True
         $ persistent.endB_unlocked = True
         
         hide screen Credits4 with dissolve
         scene black with dissolve
+        
+        show screen TryAgain
+        pause 
+
         return
 
     label EndC:
@@ -2670,7 +2716,6 @@ label start:
         captain "I’ve come home with the specimen… but at what cost..?"
         captain "I’m sorry, Sara…"
         captain "I’m sorry, Eugen…"
-        captain "I-I’m sorry, Matthew…"
         captain "What have I done?"
 
         # During credits
@@ -2711,6 +2756,10 @@ label start:
         
         hide screen Credits4 with dissolve
         scene black with dissolve
+        
+        show screen TryAgain
+        pause 
+
         return
 
     label EndE:
@@ -2765,6 +2814,10 @@ label start:
 
         hide screen Credits4 with dissolve
         scene black with dissolve
+        
+        show screen TryAgain
+        pause 
+
         return
 
     label EndS:
@@ -2821,6 +2874,10 @@ label start:
 
         hide screen Credits4 with dissolve
         scene black with dissolve
+        
+        show screen TryAgain
+        pause 
+        
         return
 
     label EndG:
@@ -2873,6 +2930,10 @@ label start:
 
         hide screen Credits4 with dissolve
         scene black with dissolve
+        
+        show screen TryAgain
+        pause 
+
         return
 
     label EndSec:
@@ -2923,7 +2984,9 @@ label start:
         $ persistent.secret_unlocked = True
         $ persistent.endSEC_unlocked = True
 
-        hide screen Credits4 with dissolve
+        hide screen Credits4 with fade
+        scene SE-artifact with fadeout
+        pause
         scene black with dissolve
         return
 

@@ -320,9 +320,14 @@ screen navigation():
             imagebutton:
                 xpos 1750    
                 ypos 450
-                idle "gui/gallery-icon.png" 
-                hover "gui/gallery-icon.png" 
-                action NullAction()
+                if persistent.secret_unlocked is True:
+                    idle "gui/gallery-icon.png" 
+                    hover "gui/gallery-icon.png"  
+                    action NullAction()
+                else: 
+                    idle "gui/gallery-icon-expanded.png" 
+                    hover "gui/gallery-icon-expanded.png" 
+                    action ShowMenu("gallery") 
 
             # Ending Stars
             hbox:
@@ -1091,10 +1096,11 @@ style history_label_text:
 ## Screen for ending CGs to be accessed after the player has seen them.
 ##
 
-screen galler():
+screen gallery():
     tag menu
 
     style_prefix "gallery"
+
 
 
 
@@ -1117,7 +1123,7 @@ screen help():
     style_prefix "help"
 
     vbox:
-        xpos 525       
+        xpos 700      
         ypos 280
         spacing 20
             
@@ -1272,7 +1278,12 @@ style help_label:
     right_padding 10
 
 style help_label_text:
-    size gui.text_size
+    size 25
+    xalign 0.0
+    textalign 1.0
+
+style help_text:
+    size 25
     xalign 0.0
     textalign 1.0
 
@@ -1822,7 +1833,7 @@ screen MapUI2():
             idle "map/computeridle.png"
             hover "map/computerhover.png"
             activate_sound "audio/Button_Select.mp3"
-            action Jump("M1O")
+            action Jump("MO")
 
 # Map 2b transition to C2
 screen MapUIC2():
@@ -1883,15 +1894,6 @@ screen MapUI3():
             hover "map/engineerhover.png"
             activate_sound "audio/Button_Select.mp3"
             action Jump("E3")
-
-    if seenMO is False:
-        # computer
-        imagebutton:
-            xpos 180
-            ypos 480
-            idle "map/computeridle.png"
-            hover "map/computerhover.png"
-            action Jump("M2O")
 
 screen MapUIFin():
     tag map
@@ -2033,7 +2035,10 @@ screen EndEPoem():
         ypos 80
         xpos 80
         text """
-        poem
+        We are the hard-luck folk, who strove
+        Zealously, but in vain;
+        We lost and lost, while our comrades throve,
+        And still we lost again.
         """
 
 screen EndSPoem():
@@ -2041,7 +2046,10 @@ screen EndSPoem():
         ypos 80
         xpos 80
         text """
-        poem
+        When I compare
+        What I have lost with what I have gained,
+        What I have missed with what attained,
+        Little room do I find for pride
         """
 
 screen EndGPoem():
@@ -2058,7 +2066,8 @@ screen EndBPoem():
         ypos 80
         xpos 80
         text """
-        poem
+        Not every man knows what is waiting for him, or what he shall sing
+        When the ship he is on slips into darkness, there at the end.
         """
 
 screen EndSECPoem():
@@ -2066,7 +2075,20 @@ screen EndSECPoem():
         ypos 80
         xpos 80
         text """
-        poem
+        I love thee freely, as men strive for right.
+        I love thee purely, as they turn from praise.
+        I love thee with the passion put to use.
+        """
+
+screen TryAgain():
+    vbox :
+        ypos 80
+        xpos 80
+        text """
+        Death is nothing at all.
+        I have only slipped away to the next room.
+        Play, smile, think of me. Pray for me.
+        I am but waiting for you.
         """
 
 ## Credits ######
@@ -2161,7 +2183,6 @@ screen Credits3():
         Omar Shahin
         """ 
 
-
 screen Credits4():
     vbox:
         ypos 80
@@ -2176,7 +2197,6 @@ screen Credits4():
         Cosmotechnician Eugen - Jason Byrne
         Astrobiologist Sara - Mariya Mubeen
         """ 
-
 
 
 ################################################################################
