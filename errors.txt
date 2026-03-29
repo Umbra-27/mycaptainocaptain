@@ -2,8 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2269: Indentation mismatch.
-    elif seenS3 is True:
+File "game/script.rpy", line 3501: Line is indented, but the preceding return statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    captain "Captain’s log. January 27th."
+    ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Mar 23 20:30:13 2026
+Sat Mar 28 13:23:19 2026

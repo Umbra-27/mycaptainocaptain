@@ -344,9 +344,9 @@
     },
     "EndG_55a3d0f2": {
         "area": [
-            320,
-            585,
-            1280,
+            400,
+            540,
+            1120,
             495
         ],
         "properties": "medic"
@@ -356,6 +356,15 @@
             320,
             585,
             1280,
+            495
+        ],
+        "properties": "engineer"
+    },
+    "EndG_cd2adb62": {
+        "area": [
+            400,
+            540,
+            1120,
             495
         ],
         "properties": "engineer"
@@ -441,6 +450,24 @@
             495
         ],
         "properties": "computer"
+    },
+    "EugenSolution_cc53e4b8": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "captainbreakdown"
+    },
+    "EugenSolution_eb54a04b_1": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "captainbreakdown"
     },
     "EugenSolution_fdfef89e": {
         "area": [
@@ -735,6 +762,14 @@
         ],
         "properties": "computer"
     },
+    "M2_5b024230": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
     "M2_6e20ab28": {
         "area": [
             400,
@@ -793,6 +828,15 @@
             1120,
             495
         ]
+    },
+    "M2_ea87221c": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
     },
     "M2_eb54a04b": {
         "area": [
@@ -950,6 +994,15 @@
             495
         ]
     },
+    "S3_c03119eb": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "medic"
+    },
     "S3_cf3d7e83": {
         "area": [
             400,
@@ -1025,6 +1078,18 @@
             495
         ]
     },
+    "SaraSolution_ac862f13": {
+        "properties": "captainbreakdown"
+    },
+    "SaraSolution_cc53e4b8": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "captainbreakdown"
+    },
     "SaraSolution_daea2781": {
         "area": [
             320,
@@ -1032,6 +1097,9 @@
             1280,
             495
         ],
+        "properties": "captainbreakdown"
+    },
+    "SaraSolution_eb54a04b_1": {
         "properties": "captainbreakdown"
     },
     "SaraSolution_ee86b67c": {
@@ -1067,6 +1135,15 @@
             1120,
             495
         ]
+    },
+    "TheEnd_a7a7643d": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "medic"
     },
     "TheEnd_f5f9634e": {
         "area": [
