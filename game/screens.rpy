@@ -311,10 +311,10 @@ screen navigation():
                     pos (935, 475)
 
             imagebutton:
-                xpos 1750    
+                xpos 1439    
                 ypos 630
-                idle "gui/information-button.png" 
-                hover "gui/information-button.png" 
+                idle "gui/information-button-hover.png" 
+                hover "gui/information-button-hover.png" 
                 action ShowMenu("help")
 
             imagebutton:
@@ -2629,6 +2629,8 @@ screen Credits3():
 
             Mariya Mubeen 
             Omar Shahin
+            Carine Ho
+            Feodor Romanenkov
             """ 
 
 screen Credits4():
