@@ -1897,14 +1897,14 @@ screen MapUI0():
     if seenSI is True or seenEI is True:
         imagebutton:
             xalign 1.0
-            idle "oxygen/oxygen-meter-99.png"
-            hover "oxygen/oxygen-meter-99.png"
+            idle "oxygen/oxygen-meter-90.png"
+            hover "oxygen/oxygen-meter-90.png"
             action NullAction()
     else:
         imagebutton:
             xalign 1.0
-            idle "oxygen/oxygen-meter-90.png"
-            hover "oxygen/oxygen-meter-90.png"
+            idle "oxygen/oxygen-meter-99.png"
+            hover "oxygen/oxygen-meter-99.png"
             action NullAction()
    
     # medic
@@ -1998,6 +1998,7 @@ screen MapUI2():
     # oxygen at 50% (if seen MO, 30%)
     if seenMO is True:
         imagebutton:
+            xalign 1.0
             idle "oxygen/oxygen-meter-30.png"
             hover "oxygen/oxygen-meter-30.png"
             action NullAction()
@@ -2070,12 +2071,19 @@ screen MapUI3():
         action NullAction()
 
     # oxygen at 10%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-10.png"
-        hover "oxygen/oxygen-meter-10.png"
-        action NullAction()
-        
+    if seenS3 is True or seenE3 is True:
+        imagebutton:
+            xalign 1.0
+            idle "oxygen/oxygen-meter-10.png"
+            hover "oxygen/oxygen-meter-10.png"
+            action NullAction()
+    else:
+        imagebutton:
+            xalign 1.0
+            idle "oxygen/oxygen-meter-15.png"
+            hover "oxygen/oxygen-meter-15.png"
+            action NullAction()
+
     # medic
     if seenS3 is False:
         imagebutton:
@@ -2660,6 +2668,38 @@ screen Credits4():
             """ 
 
 screen Credits5():
+
+    style_prefix "credits"
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            ypos 80
+            xpos 80
+            text """
+            Poems Referenced
+
+            O Captain! My Captain! by Walt Whitman
+            The Rime of the Ancient Mariner by Samuel Taylor Coleridge
+            Sonnet 28 by Shakespeare
+            A Poison Tree by William Blake
+            Evil Land by Ruyard Kipling
+            Crossing the Bar by Alfred Tennyson
+            Lenore by Edgar Allan Poe
+            The Old Astronomer to his Pupil by Sarah Williams 
+            The Cry of the Dreamer by John Boyle O Reilly
+            The Love-Talker By Ethna Carbery 
+            The Song Of The Unsuccessful by Richard Burton   
+            Loss and Gain by Henry Wadsworth Longfellow
+            The End by Mark Strand
+            Sonnet 43 By Elizabeth Barrett Browning
+            Death Is Nothing At All by Henry Scott Holland
+            Requiem by Robert Louis Stevenson
+            Do Not Go Gentle Into That Good Night by Dylan Thomas
+            Sonnet 71 by Shakespeare
+            """
+
+screen Credits6():
 
     style_prefix "credits"
     frame:

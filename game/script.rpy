@@ -46,6 +46,7 @@ init python:
     seenS3 = False
     seenE3 = False
     seenMO = False
+    optionalPoem = renpy.random.choice(['MO1', 'MO2', 'MO3', 'MO4', 'MO5'])
     seenMattLog = False
     seenSaraSolution = False
     seenEugenSolution = False
@@ -1611,12 +1612,12 @@ label start:
             medic "This could be more developed than what we see on Earth, depending on hundreds of millions of years of evolution."
             
             show medic neutral messy
-            show captain confused-open behind medic
+            show captain confusion-open behind medic
             voice "audio/voice/captain/C2-106.mp3"
             captain "Go on."
 
-            show medic suggestion messy
-            show captain confused-closed behind medic
+            show medic suggesting messy
+            show captain confusion-closed behind medic
             voice "audio/voice/sara/S2-069.mp3"
             medic "This organism might have communication capabilities that we are unfamiliar with."
             show medic explaining messy
@@ -1891,7 +1892,7 @@ label start:
             show captain thinking behind medic
             voice "audio/voice/captain/C2-091.mp3"
             captain "A fungus on steroids? You were hoping for single-celled life in that ocean…"
-            show captian neutral-open behind medic
+            show captain neutral-open behind medic
             voice "audio/voice/captain/C2-092.mp3"
             captain "What kind of communication capabilities are we talking about here?"
 
@@ -1975,7 +1976,7 @@ label start:
             captain "I- evolved..?"
 
             show engineer frustration
-            show captain  confusion-closed behind engineer
+            show captain confusion-closed behind engineer
             voice "audio/voice/eugen/E2-072.mp3"
             engineer "Before, it was only intercepting my commands; now it seems to be anticipating them."
             voice "audio/voice/eugen/E2-073.mp3"
@@ -2468,9 +2469,9 @@ label start:
             computer "From this vile world, w̶ǐ̶͇t̸͈͋ḣ̷͜ ̶͔͑v̴̨̄i̵͙͒l̴͔͋e̷̹̐s̶͚̈́t̸̗̚ ̶̡̒w̶̜̚ő̴̬r̷͎̊m̷̳͒s̸̻̈́ ̷͇͒ṭ̸̾ǫ̸͗ ̴̰̉ḑ̷͆w̵͝ͅè̸̯l̴̡͒l̶̳͂:"
 
             scene bg computer error bad
-            show computer error-5 with hpunch
+            show computer error-5 
+            show captain rememberance-closed behind computer with hpunch
 
-            show captain rememberance-closed
             computer "..."
             voice "audio/voice/matthew/W2-001.mp3"
             mattputer "Captain’s log, August 16th."
@@ -2503,11 +2504,11 @@ label start:
 
             $ persistent.matthew_unlocked = True
         
+            jump Map2
+
         else:
             # Cycle random poems
-            $ optionalPoem = renpy.random.choice(['MO.1', 'MO.2', 'MO.3', 'MO.4', 'MO.5'])
-
-            if optionalPoem is 'MO.1':
+            if optionalPoem is 'MO1':
                 voice "audio/voice/madi/M4-001.mp3"
                 computer "Pray r̸̼͂e̴̗͐m̶̬͂e̸̬̓m̴͉͘b̴̹̀e̷͍̋ṛ̵̂ that I leave you all my theory complete,"
                 voice "audio/voice/madi/M4-002.mp3"
@@ -2533,7 +2534,7 @@ label start:
                 voice "audio/voice/madi/M4-012.mp3"
                 computer "I have loved the stars too fondly to be f̷̣̅e̴̡̽ạ̴̅r̵̦̕f̷̟̔u̸͚͊l̴̜̉ of the night."
 
-            elif optionalPoem is 'MO.2':
+            elif optionalPoem is 'MO2':
                 voice "audio/voice/madi/M4-013.mp3"
                 computer "I can feel no pride, but pity"
                 voice "audio/voice/madi/M4-014.mp3"
@@ -2567,7 +2568,7 @@ label start:
                 voice "audio/voice/madi/M4-028.mp3"
                 computer "And a toiler dies in a day."
 
-            elif optionalPoem is 'MO.3':
+            elif optionalPoem is 'MO3':
                 voice "audio/voice/madi/M4-029.mp3"
                 computer "I met the L̴͖̉o̸̦̾v̷̘͛e̶͖̚-̶̠̍T̶̡̿a̵̲͘l̷̯̄ḵ̵͊ę̷̆r̶̳̅ one eve in the glen,"
                 voice "audio/voice/madi/M4-030.mp3"
@@ -2593,7 +2594,7 @@ label start:
                 voice "audio/voice/madi/M4-040.mp3"
                 computer "We two clung together—with the world ş̴̚h̵̩͠u̷̢͝ṯ̴̈́ ̴̲̓ö̴̪́u̸͖͠t̸̟́."
 
-            elif optionalPoem is 'MO.4':
+            elif optionalPoem is 'MO4':
                 voice "audio/voice/madi/M4-041.mp3"
                 computer "And I had done a h̸̓ͅe̵̯͐l̵̨͋l̵͕̃ỉ̴̱s̷̞̕h̴͈͂ thing,"
                 voice "audio/voice/madi/M4-042.mp3"
@@ -2627,7 +2628,7 @@ label start:
                 voice "audio/voice/madi/M4-056.mp3"
                 computer "The s̶̰̏i̴̤̓l̵̖͌e̴͇̊n̷͖͝c̶̩̓e̶̮̿ of the sea!"
 
-            elif optionalPoem is 'MO.5':
+            else:
                 voice "audio/voice/madi/M4-057.mp3"
                 computer "Alone, alone, all, all a̴̲͝ļ̸̐o̵̹͘n̶̖͆e̴̗͆,"
                 voice "audio/voice/madi/M4-058.mp3"
@@ -2652,8 +2653,9 @@ label start:
                 computer "I looked upon the ř̶̫o̷̧̿t̵͊ͅt̵̰̒i̶̢͒n̴̛͖g̴̬̾ deck,"
                 voice "audio/voice/madi/M4-068.mp3"
                 computer "And there the d̴̉ͅẻ̵͉a̵͔͘d̶̼̕ ̴̨̀m̷̱͑ê̴͓n̵̹̈́ lay."
-
-        jump M3
+            
+            jump Map2
+        jump Map2
 
     label M3:
         if seenE2 is True or seenS2 is True:
@@ -2664,7 +2666,7 @@ label start:
 
         show computer error-1 with dissolve
         if seenMattLog is True:
-            show show captain distress behind computer with dissolve
+            show captain distress behind computer with dissolve
         else:
             show captain neutral-closed behind computer with dissolve
         
@@ -2980,7 +2982,7 @@ label start:
             voice "audio/voice/sara/S3-008.mp3"
             medic "I’m very certain now that it’s the specimen emitting electromagnetic waves that are interfering with our systems."
             
-            show captain conerned-open behind medic
+            show captain concern-open behind medic
             voice "audio/voice/captain/C3-028.mp3"
             captain "How certain?"
 
@@ -3143,7 +3145,7 @@ label start:
                 voice "audio/voice/captain/C3-033.mp3"
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
 
-                show medic anxious
+                show medic anxious messy
                 show captain concern-closed behind medic
                 voice "audio/voice/sara/S3-015.mp3"
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
@@ -3205,7 +3207,7 @@ label start:
                     voice "audio/voice/captain/C3-048.mp3"
                     captain "Once I do I’ll return with further instructions."
 
-                    show medic neutral
+                    show medic neutral messy
                     show captain determined-closed
                     voice "audio/voice/sara/S3-033.mp3"
                     medic "Good luck Captain! I believe in you!"
@@ -3330,7 +3332,7 @@ label start:
             voice "audio/voice/captain/C3-058.mp3"
             captain "That’s not good news…"
 
-            show resolve
+            show engineer resolve
             voice "audio/voice/eugen/E3-015.mp3"
             engineer "The little power we had left, I rerouted."
 
@@ -3902,7 +3904,11 @@ label start:
         $ persistent.secret_unlocked = True
         $ persistent.endB_unlocked = True
         
+        show screen Credits6 with dissolve
         hide screen Credits5 with dissolve
+        pause(5)
+
+        hide screen Credits6 with dissolve
         scene black with dissolve
         pause(1)
         
@@ -3956,7 +3962,11 @@ label start:
         $ persistent.secret_unlocked = True
         $ persistent.endC_unlocked = True
         
+        show screen Credits6 with dissolve
         hide screen Credits5 with dissolve
+        pause(5)
+        
+        hide screen Credits6 with dissolve
         scene black with dissolve
         pause(1)
         
@@ -4010,7 +4020,11 @@ label start:
         $ persistent.secret_unlocked = True
         $ persistent.endE_unlocked = True
 
+        show screen Credits6 with dissolve
         hide screen Credits5 with dissolve
+        pause(5)
+
+        hide screen Credits6 with dissolve
         scene black with dissolve
         pause(1)
         
@@ -4064,7 +4078,11 @@ label start:
         $ persistent.secret_unlocked = True
         $ persistent.endS_unlocked = True
 
+        show screen Credits6 with dissolve
         hide screen Credits5 with dissolve
+        pause(5)
+
+        hide screen Credits6 with dissolve
         scene black with dissolve
         pause(1)
         
@@ -4118,7 +4136,11 @@ label start:
         $ persistent.secret_unlocked = True
         $ persistent.endG_unlocked = True
 
+        show screen Credits6 with dissolve
         hide screen Credits5 with dissolve
+        pause(5)
+
+        hide screen Credits6 with dissolve
         scene black with dissolve
         pause(1)
         
@@ -4174,7 +4196,11 @@ label start:
         $ persistent.secret_unlocked = True
         $ persistent.endSEC_unlocked = True
 
+        show screen Credits6 with dissolve
         hide screen Credits5 with dissolve
+        pause(5)
+
+        hide screen Credits6 with dissolve
         scene black with dissolve
         pause
         scene secret ending with fade
@@ -4186,158 +4212,158 @@ label start:
 
 
 # Star Logs (putting in the script and lines, don't know how to program them actually working :p)
-label StarLogs:
-    label EndBLog:
-        $ quick_menu = False
-        scene black with dissolve
-        voice "audio/voice/captain/C4-001.mp3"
-        captain "Captain’s log. January 27th.{w=3}{nw}"
-        voice "audio/voice/captain/C4-002.mp3"
-        captain "My position at the CSA is being terminated. Effective immediately.{w=5}{nw}"
-        voice "audio/voice/captain/C4-003.mp3"
-        captain "I’m sorry…{w=2}{nw}"
-        voice "audio/voice/captain/C4-004.mp3"
-        captain "I’m sorry Sara…{w=4}{nw}"
-        voice "audio/voice/captain/C4-005.mp3"
-        captain "I’m sorry Eugen…{w=4}{nw}"
-        voice "audio/voice/captain/C4-006.mp3"
-        captain "I’m sorry Matthew…{w=5}{nw}"
-        $ renpy.end_replay()
-        
-    label EndSLog:
-        $ quick_menu = False
-        scene black with dissolve
-        voice "audio/voice/matthew/W4-001.mp3"
-        matthew "Captain’s log. 4 months until Expedition Europa 1 launches.{w=4}{nw}"
-        voice "audio/voice/matthew/W4-002.mp3"
-        matthew "Unfortunately, Dr. Sara Fernando’s current mission is taking longer than expected.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-003.mp3"
-        matthew "She will not be able to join us to Europa. There won’t be enough prep time for her.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-004.mp3"
-        matthew "Thankfully, I know other astrobiologists who can take her place.{w=4}{nw}"
-        voice "audio/voice/matthew/W4-005.mp3"
-        matthew "Hopefully, she’ll join the research team if we successfully bring home a specimen.{w=6}{nw}"
-        $ renpy.end_replay()
+# label StarLogs:
+label EndBLog:
+    $ quick_menu = False
+    scene black with dissolve
+    voice "audio/voice/captain/C4-001.mp3"
+    captain "Captain’s log. January 27th.{w=3}{nw}"
+    voice "audio/voice/captain/C4-002.mp3"
+    captain "My position at the CSA is being terminated. Effective immediately.{w=5}{nw}"
+    voice "audio/voice/captain/C4-003.mp3"
+    captain "I’m sorry…{w=2}{nw}"
+    voice "audio/voice/captain/C4-004.mp3"
+    captain "I’m sorry Sara…{w=4}{nw}"
+    voice "audio/voice/captain/C4-005.mp3"
+    captain "I’m sorry Eugen…{w=4}{nw}"
+    voice "audio/voice/captain/C4-006.mp3"
+    captain "I’m sorry Matthew…{w=5}{nw}"
+    $ renpy.end_replay()
+    
+label EndSLog:
+    $ quick_menu = False
+    scene black with dissolve
+    voice "audio/voice/matthew/W4-001.mp3"
+    matthew "Captain’s log. 4 months until Expedition Europa 1 launches.{w=4}{nw}"
+    voice "audio/voice/matthew/W4-002.mp3"
+    matthew "Unfortunately, Dr. Sara Fernando’s current mission is taking longer than expected.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-003.mp3"
+    matthew "She will not be able to join us to Europa. There won’t be enough prep time for her.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-004.mp3"
+    matthew "Thankfully, I know other astrobiologists who can take her place.{w=4}{nw}"
+    voice "audio/voice/matthew/W4-005.mp3"
+    matthew "Hopefully, she’ll join the research team if we successfully bring home a specimen.{w=6}{nw}"
+    $ renpy.end_replay()
 
-    label EndELog:
-        $ quick_menu = False
-        scene black with dissolve
-        voice "audio/voice/matthew/W4-006.mp3"
-        matthew "Captain’s log. 6 months until Expedition Europa 1 launches.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-007.mp3"
-        matthew "Eugen Braun’s ice drill has completed the prototyping stage and is ready to be tested in the field.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-008.mp3"
-        matthew "Unfortunately, the crew only has space for eight people, and all eight positions have been filled.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-009.mp3"
-        matthew "Braun is unable to join us for this mission.{w=3}{nw}"
-        voice "audio/voice/matthew/W4-010.mp3"
-        matthew "A shame. I’m more than sure he would’ve liked to see it in action.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-011.mp3"
-        matthew "I’ll be sure to log its success for him.{w=5}{nw}"
-        $ renpy.end_replay()
+label EndELog:
+    $ quick_menu = False
+    scene black with dissolve
+    voice "audio/voice/matthew/W4-006.mp3"
+    matthew "Captain’s log. 6 months until Expedition Europa 1 launches.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-007.mp3"
+    matthew "Eugen Braun’s ice drill has completed the prototyping stage and is ready to be tested in the field.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-008.mp3"
+    matthew "Unfortunately, the crew only has space for eight people, and all eight positions have been filled.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-009.mp3"
+    matthew "Braun is unable to join us for this mission.{w=3}{nw}"
+    voice "audio/voice/matthew/W4-010.mp3"
+    matthew "A shame. I’m more than sure he would’ve liked to see it in action.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-011.mp3"
+    matthew "I’ll be sure to log its success for him.{w=5}{nw}"
+    $ renpy.end_replay()
 
-    label EndCLog:
-        $ quick_menu = False
-        scene black with dissolve
-        voice "audio/voice/captain/C4-007.mp3"
-        captain "Captain’s log. February 2nd.{w=3}{nw}"
-        voice "audio/voice/captain/C4-008.mp3"
-        captain "I’m resigning from my position at the CSA.{w=5}{nw}"
-        voice "audio/voice/captain/C4-009.mp3"
-        captain "I’m no longer fit to be an astronaut, let alone a captain.{w=5}{nw}"
-        voice "audio/voice/captain/C4-010.mp3"
-        captain "I’m… I’m sorry, Sara and Eugen.{w=6}{nw}"
-        voice "audio/voice/captain/C4-011.mp3"
-        captain "I’m sorry I couldn’t save you.{w=5}{nw}"
-        $ renpy.end_replay()
+label EndCLog:
+    $ quick_menu = False
+    scene black with dissolve
+    voice "audio/voice/captain/C4-007.mp3"
+    captain "Captain’s log. February 2nd.{w=3}{nw}"
+    voice "audio/voice/captain/C4-008.mp3"
+    captain "I’m resigning from my position at the CSA.{w=5}{nw}"
+    voice "audio/voice/captain/C4-009.mp3"
+    captain "I’m no longer fit to be an astronaut, let alone a captain.{w=5}{nw}"
+    voice "audio/voice/captain/C4-010.mp3"
+    captain "I’m… I’m sorry, Sara and Eugen.{w=6}{nw}"
+    voice "audio/voice/captain/C4-011.mp3"
+    captain "I’m sorry I couldn’t save you.{w=5}{nw}"
+    $ renpy.end_replay()
 
-    label EndGLog:
-        $ quick_menu = False
-        scene black with dissolve
-        voice "audio/voice/captain/C4-012.mp3"
-        captain "Captain’s log, I guess…{w=3}{nw}"
-        voice "audio/voice/captain/C4-013.mp3"
-        captain "10 months until Expedition Europa 2 launches.{w=3}{nw}"
-        voice "audio/voice/captain/C4-014.mp3"
-        captain "It took weeks of convincing, but the CSA has agreed to allow me, Rudy Jensen, to captain this mission.{w=9}{nw}"
-        voice "audio/voice/captain/C4-015.mp3"
-        captain "They weren’t sure if having a grieving captain would be appropriate.{w=3}{nw}"
-        voice "audio/voice/captain/C4-016.mp3"
-        captain "But I need to helm this expedition. For Matthew. To finish what he started.{w=7}{nw}"
-        voice "audio/voice/captain/C4-017.mp3"
-        captain "What kind of husband would I be otherwise?{w=3}{nw}"
-        voice "audio/voice/captain/C4-018.mp3"
-        captain "...{w=4}{nw}"
-        voice "audio/voice/captain/C4-019.mp3"
-        captain "In any case, all information we have from Expedition Europa 1 has been saved on MAD1.{w=5}{nw}"
-        voice "audio/voice/captain/C4-020.mp3"
-        captain "We’ll be using her for this mission.{w=3}{nw}"
-        $ renpy.end_replay()
+label EndGLog:
+    $ quick_menu = False
+    scene black with dissolve
+    voice "audio/voice/captain/C4-012.mp3"
+    captain "Captain’s log, I guess…{w=3}{nw}"
+    voice "audio/voice/captain/C4-013.mp3"
+    captain "10 months until Expedition Europa 2 launches.{w=3}{nw}"
+    voice "audio/voice/captain/C4-014.mp3"
+    captain "It took weeks of convincing, but the CSA has agreed to allow me, Rudy Jensen, to captain this mission.{w=9}{nw}"
+    voice "audio/voice/captain/C4-015.mp3"
+    captain "They weren’t sure if having a grieving captain would be appropriate.{w=3}{nw}"
+    voice "audio/voice/captain/C4-016.mp3"
+    captain "But I need to helm this expedition. For Matthew. To finish what he started.{w=7}{nw}"
+    voice "audio/voice/captain/C4-017.mp3"
+    captain "What kind of husband would I be otherwise?{w=3}{nw}"
+    voice "audio/voice/captain/C4-018.mp3"
+    captain "...{w=4}{nw}"
+    voice "audio/voice/captain/C4-019.mp3"
+    captain "In any case, all information we have from Expedition Europa 1 has been saved on MAD1.{w=5}{nw}"
+    voice "audio/voice/captain/C4-020.mp3"
+    captain "We’ll be using her for this mission.{w=3}{nw}"
+    $ renpy.end_replay()
 
-    label EndSECLog:
-        $ quick_menu = False
-        scene black with dissolve
-        voice "audio/voice/matthew/W4-012.mp3"
-        matthew "Ready to meet our baby?{w=3}{nw}"
-        voice "audio/voice/captain/C4-021.mp3"
-        captain "Please don’t call the OS our “baby,” Matthew…{w=3}{nw}"
-        voice "audio/voice/matthew/W4-014.mp3"
-        matthew "Fine. My baby. So… Wuddya think?{w=7}{nw}"
-        voice "audio/voice/captain/C4-022.mp3"
-        captain "You built all of this… Yourself?{w=3}{nw}"
-        voice "audio/voice/matthew/W4-015.mp3"
-        matthew "Yyyuuuuppp. The operating system had to be designed from the ground up.{w=4}{nw}" 
-        voice "audio/voice/captain/C4-023.mp3"
-        captain "Jesus, you didn’t wanna use an existing one to start with?{w=3}{nw}"
-        voice "audio/voice/matthew/W4-016.mp3"
-        matthew "If we’re taking this thing all the way to Jupiter’s orbit we need something powerful.{w=4}{nw}"
-        voice "audio/voice/matthew/W4-017.mp3"
-        matthew "Plus, this way I know every little detail about it.{w=4}{nw}"
-        voice "audio/voice/matthew/W4-018.mp3"
-        matthew "So if anything needs fixing, I can handle it right away.{w=3}{nw}"
-        voice "audio/voice/captain/C4-024.mp3"
-        captain "Oh my god. That’s amazing, Hun!{w=3}{nw}"
-        voice "audio/voice/matthew/W4-019.mp3"
-        matthew "Thank you, Pumpkin!{w=2}{nw}"
-        voice "audio/voice/matthew/W4-020.mp3"
-        matthew "Wanna guess what I named her?{w=2}{nw}"
-        voice "audio/voice/captain/C4-025.mp3"
-        captain "Her?{w=1}{nw}"
-        voice "audio/voice/matthew/W4-021.mp3"
-        matthew "What’s wrong with that?{w=2}{nw}"
-        voice "audio/voice/captain/C4-026.mp3"
-        captain "Don’t know, seems a little sexist. Having your servant robot be a woman and all that.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-022.mp3"
-        matthew "Well it’ll make more sense once you know what I named her!{w=3}{nw}"
-        voice "audio/voice/captain/C4-027.mp3"
-        captain "Alright alright, what’s her name?{w=3}{nw}"
-        voice "audio/voice/matthew/W4-023.mp3"
-        matthew "MAD1!{w=2}{nw}"
-        voice "audio/voice/captain/C4-028.mp3"
-        captain "Why Maddy? Is it an acronym?{w=3}{nw}"
-        voice "audio/voice/matthew/W4-024.mp3"
-        matthew "Well technically, it stands for Manager of Astral Devices 1.0.{w=5}{nw}"
-        voice "audio/voice/matthew/W4-025.mp3"
-        matthew "But between us… Matthew… Matt… Rudy… -dy…{w=7}{nw}"
-        voice "audio/voice/captain/C4-029.mp3"
-        captain "Oh my god you combined our names.{w=2}{nw}"
-        voice "audio/voice/captain/C4-030.mp3"
-        captain "You’re such a dork!{w=2}{nw}"
-        voice "audio/voice/matthew/W4-026.mp3"
-        matthew "Hahahaha!{w=2}{nw}"
-        voice "audio/voice/captain/C4-031.mp3"
-        captain "I love you… so much, hun.{w=2}{nw}"
-        voice "audio/voice/matthew/W4-027.mp3"
-        matthew "I love you too, Pumpkin!{w=2}{nw}"
-        voice "audio/voice/captain/C4-032.mp3"
-        captain "Wait, are you recording this?{w=2}{nw}"
-        voice "audio/voice/matthew/W4-028.mp3"
-        matthew "It’s my first captain’s log!{w=2}{nw}"
-        voice "audio/voice/captain/C4-033.mp3"
-        captain "You’re supposed to start the recording by saying “Captain’s Log”.{w=4}{nw}"
-        voice "audio/voice/matthew/W4-029.mp3"
-        matthew "Well thankfully no one else is gonna hear this.{w=3}{nw}"
-        voice "audio/voice/captain/C4-034.mp3"
-        captain "Tsk. Dork.{w=4}{nw}"
-        $ renpy.end_replay()
+label EndSECLog:
+    $ quick_menu = False
+    scene black with dissolve
+    voice "audio/voice/matthew/W4-012.mp3"
+    matthew "Ready to meet our baby?{w=3}{nw}"
+    voice "audio/voice/captain/C4-021.mp3"
+    captain "Please don’t call the OS our “baby,” Matthew…{w=3}{nw}"
+    voice "audio/voice/matthew/W4-014.mp3"
+    matthew "Fine. My baby. So… Wuddya think?{w=7}{nw}"
+    voice "audio/voice/captain/C4-022.mp3"
+    captain "You built all of this… Yourself?{w=3}{nw}"
+    voice "audio/voice/matthew/W4-015.mp3"
+    matthew "Yyyuuuuppp. The operating system had to be designed from the ground up.{w=4}{nw}" 
+    voice "audio/voice/captain/C4-023.mp3"
+    captain "Jesus, you didn’t wanna use an existing one to start with?{w=3}{nw}"
+    voice "audio/voice/matthew/W4-016.mp3"
+    matthew "If we’re taking this thing all the way to Jupiter’s orbit we need something powerful.{w=4}{nw}"
+    voice "audio/voice/matthew/W4-017.mp3"
+    matthew "Plus, this way I know every little detail about it.{w=4}{nw}"
+    voice "audio/voice/matthew/W4-018.mp3"
+    matthew "So if anything needs fixing, I can handle it right away.{w=3}{nw}"
+    voice "audio/voice/captain/C4-024.mp3"
+    captain "Oh my god. That’s amazing, Hun!{w=3}{nw}"
+    voice "audio/voice/matthew/W4-019.mp3"
+    matthew "Thank you, Pumpkin!{w=2}{nw}"
+    voice "audio/voice/matthew/W4-020.mp3"
+    matthew "Wanna guess what I named her?{w=2}{nw}"
+    voice "audio/voice/captain/C4-025.mp3"
+    captain "Her?{w=1}{nw}"
+    voice "audio/voice/matthew/W4-021.mp3"
+    matthew "What’s wrong with that?{w=2}{nw}"
+    voice "audio/voice/captain/C4-026.mp3"
+    captain "Don’t know, seems a little sexist. Having your servant robot be a woman and all that.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-022.mp3"
+    matthew "Well it’ll make more sense once you know what I named her!{w=3}{nw}"
+    voice "audio/voice/captain/C4-027.mp3"
+    captain "Alright alright, what’s her name?{w=3}{nw}"
+    voice "audio/voice/matthew/W4-023.mp3"
+    matthew "MAD1!{w=2}{nw}"
+    voice "audio/voice/captain/C4-028.mp3"
+    captain "Why Maddy? Is it an acronym?{w=3}{nw}"
+    voice "audio/voice/matthew/W4-024.mp3"
+    matthew "Well technically, it stands for Manager of Astral Devices 1.0.{w=5}{nw}"
+    voice "audio/voice/matthew/W4-025.mp3"
+    matthew "But between us… Matthew… Matt… Rudy… -dy…{w=7}{nw}"
+    voice "audio/voice/captain/C4-029.mp3"
+    captain "Oh my god you combined our names.{w=2}{nw}"
+    voice "audio/voice/captain/C4-030.mp3"
+    captain "You’re such a dork!{w=2}{nw}"
+    voice "audio/voice/matthew/W4-026.mp3"
+    matthew "Hahahaha!{w=2}{nw}"
+    voice "audio/voice/captain/C4-031.mp3"
+    captain "I love you… so much, hun.{w=2}{nw}"
+    voice "audio/voice/matthew/W4-027.mp3"
+    matthew "I love you too, Pumpkin!{w=2}{nw}"
+    voice "audio/voice/captain/C4-032.mp3"
+    captain "Wait, are you recording this?{w=2}{nw}"
+    voice "audio/voice/matthew/W4-028.mp3"
+    matthew "It’s my first captain’s log!{w=2}{nw}"
+    voice "audio/voice/captain/C4-033.mp3"
+    captain "You’re supposed to start the recording by saying “Captain’s Log”.{w=4}{nw}"
+    voice "audio/voice/matthew/W4-029.mp3"
+    matthew "Well thankfully no one else is gonna hear this.{w=3}{nw}"
+    voice "audio/voice/captain/C4-034.mp3"
+    captain "Tsk. Dork.{w=4}{nw}"
+    $ renpy.end_replay()
         
