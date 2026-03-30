@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("My Captain, O' Captain")
+define config.name = _("O' Captain, My Captain")
 define build.itch_project ="skellytonnestudio/My Captain, O' Captain"
 
 
@@ -44,7 +44,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "DG8010OhCaptainMyCaptain"
+define build.name = "OCaptainMyCaptain"
 
 
 ## Sounds and music ############################################################

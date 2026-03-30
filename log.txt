@@ -1,11 +1,11 @@
-2026-03-30 20:55:43 UTC
+2026-03-30 21:36:31 UTC
 Windows-10-10.0.26200
 Ren'Py 8.3.7.25031702
 
 Early init took 0.09s
 Loading error handling took 0.03s
-Loading script took 0.12s
-Loading save slot metadata took 0.03s
+Loading script took 0.11s
+Loading save slot metadata took 0.02s
 Loading persistent took 0.00s
 Running init code took 0.04s
 Loading analysis data took 0.01s
@@ -15,7 +15,7 @@ Index archives took 0.00s
 Dump and make backups took 0.04s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.02s
+Initial gc took 0.03s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
@@ -29,16 +29,3 @@ Save screen analysis took 0.00s
 Prepare screens took 0.05s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
-Running _start took 0.00s
-Interface start took 0.74s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'ATI Technologies Inc.'"
-Renderer: b'AMD Radeon RX 6950 XT'
-Version: b'4.6.0 Compatibility Profile Context 26.3.1.260303'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(1920, 1080)
-Maximum texture size: 4096x4096

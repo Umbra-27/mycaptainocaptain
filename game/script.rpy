@@ -333,7 +333,7 @@ label start:
         show captain neutral-closed behind medic with dissolve
 
         show medic stressed
-        voice "audio/voice/sara/S1-001"
+        voice "audio/voice/sara/S1-001.mp3"
         medic "Captain! W-what just happened! Thank goodness you arrived when you did. The alarms went off and I was getting worried!" 
         
         show captain neutral-open behind medic
@@ -346,30 +346,30 @@ label start:
 
         show medic neutral
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-002"
+        voice "audio/voice/sara/S1-002.mp3"
         medic "Yes, yes, of course!" 
 
         show medic explaining
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-003"
+        voice "audio/voice/sara/S1-003.mp3"
         medic "I mean, this cargo—this discovery—would revolutionize everything." 
         voice "audio/voice/sara/S1-004"
         medic "Our very understanding of the universe. Extraterrestrial life! Aboard this ship." 
         show medic excited
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-005"
+        voice "audio/voice/sara/S1-005.mp3"
         medic "I still can’t believe it." 
         show medic neutral
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-006"
+        voice "audio/voice/sara/S1-006.mp3"
         medic "But this… development is most concerning." 
 
         show medic nervous
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-007"
+        voice "audio/voice/sara/S1-007.mp3"
         medic "What could possibly be happening, Captain?" 
         show medic stressed
-        voice "audio/voice/sara/S1-008"
+        voice "audio/voice/sara/S1-008.mp3"
         medic "Could this result in some kind of irreparable, cascading failure?"
 
         show captain neutral-open behind medic
@@ -378,7 +378,7 @@ label start:
 
         show captain neutral-closed behind medic
         show medic thinking
-        voice "audio/voice/sara/S1-009"
+        voice "audio/voice/sara/S1-009.mp3"
         medic "I understand. Just given what has happened before…"
 
         show captain anger-open behind medic
@@ -388,12 +388,12 @@ label start:
         # SI.1
         show medic stressed
         show captain anger-closed behind medic
-        voice "audio/voice/sara/S1-010"
+        voice "audio/voice/sara/S1-010.mp3"
         medic "I’m sorry. I-I guess I’ve always felt you were easier to talk to on this ship. You know, compared to Eugen." 
         voice "audio/voice/sara/S1-011"
         medic "I admit this incident isn’t making me think straight. I shouldn’t have brought it up." 
         show medic suggesting
-        voice "audio/voice/sara/S1-012"
+        voice "audio/voice/sara/S1-012.mp3"
         medic "I understand it must be painful for you—"
 
         menu:
@@ -408,7 +408,7 @@ label start:
 
                 show medic anxious
                 show captain concern-closed behind medic
-                voice "audio/voice/sara/S1-013"
+                voice "audio/voice/sara/S1-013.mp3"
                 medic "This is true. Still, I apologize for bringing it up."
 
             # SI.1.b
@@ -420,7 +420,7 @@ label start:
 
                 show medic stressed
                 show captain anger-closed behind medic
-                voice "audio/voice/sara/S1-014"
+                voice "audio/voice/sara/S1-014.mp3"
                 medic "I’m sorry, Captain. I’ll just, um…"
 
         show captain neutral-open behind medic
@@ -431,12 +431,12 @@ label start:
 
         show medic excited
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-015"
+        voice "audio/voice/sara/S1-015.mp3"
         medic "Yes, yes… I do have working hypotheses, though nothing exactly seems to work out perfectly at the moment. "
         
         show medic nervous
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-016"
+        voice "audio/voice/sara/S1-016.mp3"
         medic "I should be working harder…"
 
         show captain concern-open behind medic
@@ -447,11 +447,11 @@ label start:
 
         show medic neutral
         show captain concern-closed behind medic
-        voice "audio/voice/sara/S1-017"
+        voice "audio/voice/sara/S1-017.mp3"
         medic "Thank you, Captain. I can’t overstate how much this mission means to me."
         show medic excited
         show captain concern-closed behind medic
-        voice "audio/voice/sara/S1-018"
+        voice "audio/voice/sara/S1-018.mp3"
         medic "This—this specimen we’ve found is the holy grail of astrobiology."
 
         show captain neutral-open behind medic 
@@ -466,12 +466,12 @@ label start:
         # SI.2
         show medic stressed
         show captain neutral-closed behind medic
-        voice "audio/voice/sara/S1-019"
+        voice "audio/voice/sara/S1-019.mp3"
         medic "Thank you for the report Captain, but the rest of my research and reference materials are in the system." 
         show medic nervous
-        voice "audio/voice/sara/S1-020"
+        voice "audio/voice/sara/S1-020.mp3"
         medic "How long will it take?" 
-        voice "audio/voice/sara/S1-021"
+        voice "audio/voice/sara/S1-021.mp3"
         medic "How am I supposed to keep working if it takes too long?"
         
         show medic nervous
@@ -487,7 +487,7 @@ label start:
 
                 show medic anxious
                 show captain anger-closed behind medic
-                voice "audio/voice/sara/S1-022"
+                voice "audio/voice/sara/S1-022.mp3"
                 medic "O-of course Captain."
 
             # SI.2.b
