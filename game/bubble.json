@@ -77,6 +77,14 @@
             495
         ]
     },
+    "E3_01ba5fd6": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
     "E3_020a9123": {
         "area": [
             400,
@@ -159,6 +167,15 @@
             1120,
             495
         ]
+    },
+    "EndBLog_4f19dec7": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
     },
     "EndB_0b94da04": {
         "area": [
@@ -243,6 +260,15 @@
         ],
         "properties": "medic"
     },
+    "EndCLog_bba318c4": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
+    },
     "EndC_031fc5ea": {
         "area": [
             320,
@@ -288,6 +314,15 @@
         ],
         "properties": "engineer"
     },
+    "EndELog_6072ee5a": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "computersolution"
+    },
     "EndE_01f59ab2": {
         "area": [
             320,
@@ -323,6 +358,15 @@
             495
         ],
         "properties": "medic"
+    },
+    "EndGLog_896b1e12": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
     },
     "EndG_096bdf69": {
         "area": [
@@ -368,6 +412,33 @@
             495
         ],
         "properties": "engineer"
+    },
+    "EndSECLog_3a310877": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
+    },
+    "EndSECLog_63d7f36a": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "computersolution"
+    },
+    "EndSLog_2585ce58": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "computersolution"
     },
     "EndS_01f59ab2": {
         "area": [
@@ -449,7 +520,7 @@
             1120,
             495
         ],
-        "properties": "computer"
+        "properties": "computersolution"
     },
     "EugenSolution_cc53e4b8": {
         "area": [
@@ -724,6 +795,15 @@
         ],
         "properties": "computer"
     },
+    "M2_20132650": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
     "M2_267fef94": {
         "area": [
             400,
@@ -892,6 +972,24 @@
             540
         ]
     },
+    "MO_bd728a62": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
+    "MO_fd041947": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
     "S1_0144d17f": {
         "area": [
             400,
@@ -987,6 +1085,14 @@
         "properties": "medic"
     },
     "S3_40c29e5d": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ]
+    },
+    "S3_504cd856": {
         "area": [
             400,
             540,

@@ -7,11 +7,15 @@ define captain = Character("Captain", image="captain@3.5/captain", kind=bubble)
 define engineer = Character("Eugen", image="engineer/engineer", kind=bubble)
 define medic = Character("Sara", image="medic/medic", kind=bubble)
 define computer = Character("MAD1", image="computer/computer", kind=bubble)
+define mattputer = Character ("MAD1?", image="computer/computer", kind=bubble)
 define matthew = Character ("Matthew", image="computer/computer", kind=bubble)
 
 # persistent data variables for endings
 default persistent.secret_unlocked = False # if at least one ending has been unlocked
 default persistent.matthew_unlocked = False # seen Matt log in MO
+
+default persistent.seenC1 = False # for gallery
+default persistent.seenC2 = False # for gallery
 
 default persistent.endB_unlocked = False # bad ending achieved
 default persistent.endC_unlocked = False # Captain ending achieved
@@ -22,7 +26,7 @@ default persistent.endG_unlocked = False # good ending achieved
 default persistent.endSEC_unlocked = False # secret ending achieved
 
 # Sound Settings
-default preferences.volume.music = 0.6
+default preferences.volume.music = 0.3
 default preferences.volume.sfx = 0.5
 
 # Setting base approval scores
@@ -43,6 +47,7 @@ init python:
     seenS3 = False
     seenE3 = False
     seenMO = False
+    seenMattLog = False
     seenSaraSolution = False
     seenEugenSolution = False
 
@@ -395,6 +400,7 @@ label start:
             # SI.1.a
             "We’re all stressed.":
                 $ medApproval += 1
+                play sound "correct ding.mp3" volume 0.8
 
                 show captain concern-open behind medic
                 voice "audio/voice/captain/C1-026.mp3"
@@ -407,6 +413,7 @@ label start:
 
             # SI.1.b
             "Don't do it again.":
+                play sound "incorrect ding.mp3" volume 0.8
                 show captain anger-open behind medic
                 voice "audio/voice/captain/C1-027.mp3"
                 captain "It’s fine. Just don’t do it again."
@@ -473,6 +480,7 @@ label start:
         menu:
             # SI.2.a
             "Figure it out.":                
+                play sound "incorrect ding.mp3" volume 0.8
                 show captain anger-open behind medic
                 voice "audio/voice/captain/C1-035.mp3"
                 captain "Figure it out. That’s an order."
@@ -485,6 +493,7 @@ label start:
             # SI.2.b
             "I have faith in you." :
                 $ medApproval += 1
+                play sound "correct ding.mp3" volume 0.8
                 
                 show captain neutral-open behind medic
                 voice "audio/voice/captain/C1-036.mp3"
@@ -568,6 +577,7 @@ label start:
         menu:
             # EI.1a
             "I’m not sure yet.":
+                play sound "incorrect ding.mp3" volume 0.8
                 show captain thinking behind engineer
                 voice "audio/voice/captain/C1-041.mp3"
                 captain "I’m not sure yet. I want to find out a bit more before I give any concrete answers."
@@ -580,6 +590,7 @@ label start:
             # EI.1b
             "Share what you know.":
                 $ engApproval += 1
+                play sound "correct ding.mp3" volume 0.8
 
                 show captain thinking behind engineer
                 voice "audio/voice/captain/C1-042.mp3"
@@ -620,6 +631,8 @@ label start:
         menu: 
             # EI.2a
             "Stand by.":
+                play sound "incorrect ding.mp3" volume 0.8
+
                 show captain anger-open behind engineer
                 voice "audio/voice/captain/C1-047.mp3"
                 captain "I am proceeding methodically... I need more information first."
@@ -634,6 +647,8 @@ label start:
             # EI.2b
             "Make haste.":
                 $ engApproval += 1
+                play sound "correct ding.mp3" volume 0.8
+
                 show captain determined-open behind engineer
                 voice "audio/voice/captain/C1-049.mp3"
                 captain "Make haste but proceed with caution." 
@@ -792,6 +807,8 @@ label start:
         menu: 
             # S.1.1a
             "To be honest, the situation is dire.":
+                play sound "incorrect ding.mp3" volume 0.8
+
                 show captain concern-open behind medic
                 voice "audio/voice/captain/C2-002.mp3"
                 captain "I have to be honest with you, Sara." 
@@ -805,6 +822,8 @@ label start:
             # S.1.1b
             "We'll sort it out soon.":
                 $ medApproval += 1
+                play sound "correct ding.mp3" volume 0.8
+
                 show captain neutral-open behind medic
                 voice "audio/voice/captain/C2-004.mp3"
                 captain "I have hopes that we’ll sort it out soon." 
@@ -877,6 +896,8 @@ label start:
         menu: 
             # S.1.2a
             "This mission wasn't meant to be easy.":
+                play sound "incorrect ding.mp3" volume 0.8
+
                 show captain anger-open behind medic
                 voice "audio/voice/captain/C2-011.mp3"
                 captain "That risk is always there. Part of the job." 
@@ -891,6 +912,8 @@ label start:
             # S.1.2b
             "I will do my best to get us home.":
                 $ medApproval += 1
+                play sound "correct ding.mp3" volume 0.8
+
                 show captain neutral-open behind medic
                 voice "audio/voice/captain/C2-013.mp3"
                 captain "I will do my best to make sure that this mission is successful and everyone gets home."
@@ -991,6 +1014,8 @@ label start:
         menu: 
             # S.1.3a
             "Stay put while we sort this out.":
+                play sound "incorrect ding.mp3" volume 0.8
+
                 show captain concern-open behind medic
                 voice "audio/voice/captain/C2-023.mp3"
                 captain "Just stay put while we sort this out." 
@@ -1003,6 +1028,8 @@ label start:
             # S.1.3b
             "Keep studying your notes.":
                 $ medApproval += 1
+                play sound "correct ding.mp3" volume 0.8
+
                 show captain neutral-open behind medic
                 voice "audio/voice/captain/C2-024.mp3"
                 captain "Your work is important to this mission, Sara. And you’ve done excellent so far." 
@@ -1082,6 +1109,7 @@ label start:
             # E1.1a
             "He did not.":
                 $ engApproval += 1
+                play sound "correct ding.mp3" volume 0.8
 
                 show engineer neutral
                 show captain thinking behind engineer
@@ -1093,6 +1121,8 @@ label start:
 
             # EI.1b
             "What are you implying?":
+                play sound "incorrect ding.mp3" volume 0.8
+
                 show captain anger-open behind engineer 
                 voice "audio/voice/captain/C2-032.mp3"
                 captain "Are you implying I’m hiding things from you? Sabotaging the mission?"
@@ -1158,6 +1188,8 @@ label start:
         menu:
             # E1.2a
             "He was the programmer, not me.":
+                play sound "incorrect ding.mp3" volume 0.8
+
                 show captain anger-open behind engineer
                 voice "audio/voice/captain/C2-037.mp3"
                 captain "Listen, I’m not a programmer." 
@@ -1171,6 +1203,7 @@ label start:
             # EI.2b
             "He really liked poetry.":
                 $ engApproval += 1
+                play sound "correct ding.mp3" volume 0.8
 
                 show captain rememberance-open behind engineer
                 voice "audio/voice/captain/C2-039.mp3"
@@ -1226,6 +1259,8 @@ label start:
         menu:
             # E1.3a
             "That doesn’t matter right now.":
+                play sound "incorrect ding.mp3" volume 0.8
+
                 show captain anger-open behind engineer
                 voice "audio/voice/captain/C2-044.mp3"
                 captain "That does not matter right now. Why would you ask me that?!"
@@ -1240,6 +1275,7 @@ label start:
             # EI.3b
             "Yes.":
                 $ engApproval += 1
+                play sound "correct ding.mp3" volume 0.8
 
                 show captain rememberance-open behind engineer
                 voice "audio/voice/captain/C2-046.mp3"
@@ -1293,7 +1329,7 @@ label start:
         show computer error-2
         show captain concern-closed behind computer
         voice "audio/voice/madi/M2-003.mp3"
-        computer "langu̴̢͘age e̶̯̓r̴̺̀r̶̙̀o̶̖̚r"
+        computer "Langu̴̢͘age e̶̯̓r̴̺̀r̶̙̀o̶̖̚r"
         voice "audio/voice/madi/M2-004.mp3"
         computer "S̵p̶̳͘ē̵̝e̴̼̓c̷̫̎ḧ̴̫́ ̷̗̀e̵̗̋rr̸̦̀o̶̳͑ṙ̸͇rr"
         voice "audio/voice/madi/M2-005.mp3"
@@ -1303,21 +1339,21 @@ label start:
         show computer error-3
         show captain concern-closed behind computer
         voice "audio/voice/madi/M2-006.mp3"
-        computer "I watered it in fears,"
+        computer "I watered it in f̴͍̏ě̸̠ä̷͖́r̶͈̀s̶͑ͅ,"
         voice "audio/voice/madi/M2-007.mp3"
         computer "Night and morning with my tears."
         voice "audio/voice/madi/M2-008.mp3"
-        computer "And it grew both day and night,"
+        computer "And it ġ̸̪r̸̪̀ę̶͘ẁ̴ both day and night,"
         voice "audio/voice/madi/M2-009.mp3"
-        computer "Till it bore an apple bright."
+        computer "Till it bore an á̶̺p̶͠pl̶̞̊è̷ bright."
         voice "audio/voice/madi/M2-010.mp3"
-        computer "But, with a soft deceitful soul,"
+        computer "But, with a soft d̸ec̶è̴̺it̷̠́fư̵̟l s̴̭̓o̷͇̓u̸͚͠l̷͓̓,"
         voice "audio/voice/madi/M2-011.mp3"
-        computer "into my garden it stole."
+        computer "into my g̸a̷r̸͍͠d̴ë̴́n it stole."
         voice "audio/voice/madi/M2-012.mp3"
         computer "When the night had veiled the pole."
         voice "audio/voice/madi/M2-013.mp3"
-        computer "My friend, lost beneath the tree."
+        computer "My f̷r̴̛̘i̷͘ͅeǹ̶͉d l̸ó̶͍sṭ̴̎ beneath the tr̴ê̸̳ê̴̖."
 
         show captain anger-open behind computer
         voice "audio/voice/captain/C2-052.mp3"
@@ -1341,7 +1377,7 @@ label start:
         voice "audio/voice/madi/M2-015.mp3"
         computer "System functionality at 24%%."
         voice "audio/voice/madi/M2-016.mp3"
-        computer "Oxygen at 50%%. Captain, it may be time to plan for the worst case scenario."
+        computer "Oxygen at 65%%. Captain, it may be time to plan for the worst case scenario."
         show computer neutral-2
         show captain anger-closed behind computer
         voice "audio/voice/madi/M2-017.mp3"
@@ -1367,6 +1403,7 @@ label start:
         captain "..."
 
         show computer neutral-1
+        voice "audio/voice/madi/M2-021.mp3"
         computer "Apologies, Captain. But you mustttt-"
 
         show computer error-3 with hpunch
@@ -1374,7 +1411,7 @@ label start:
         voice "audio/voice/madi/M2-022.mp3"
         computer "Ah! Well- a-day! what é̶̝v̵̬͋i̸͇͌l̷ looks"
         voice "audio/voice/madi/M2-023.mp3"
-        computer "Had ẗ̵̯́hė̷̠e from o̴l̶d̶ ã̷̡n̷͎͛d̶̥̾ ̶̝̀y̷̫̓o̶͓̍ǔ̴͎n̵̞̾g̴̟͂!"
+        computer "Had I̶ from o̴l̶d̶ ã̷̡n̷d̶̥̾ ̶̝̀y̷̫̓o̶͓̍ǔ̴͎n̵̞̾g̴̟͂!"
         voice "audio/voice/madi/M2-024.mp3"
         computer "Instead of the c̵̭̆r̷̫̃ó̶̩s̴͇̓ș̸̍, the A̷lb̴ã̵͓tŕ̵̫ó̴̞ss"
         voice "audio/voice/madi/M2-025.mp3"
@@ -1391,6 +1428,7 @@ label start:
         play sound "Footsteps.mp3" volume 0.8
         scene onlayer screens
         scene bg escape pod with fade
+        $ persistent.seenC1 = True
 
         voice "audio/voice/captain/C2-056.mp3"
         captain "No. No…"
@@ -1487,6 +1525,8 @@ label start:
             menu:
                 # S.2.1a
                 "It’s not looking good.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain concern-open behind medic
                     voice "audio/voice/captain/C2-098.mp3"
                     captain "It’s not looking good at all, Sara. We might have to make difficult decisions… I want you to know that."   
@@ -1499,6 +1539,8 @@ label start:
                 # S.2.1b
                 "There is always hope.":
                     $ medApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain determined-open behind medic
                     voice "audio/voice/captain/C2-099.mp3"
                     captain "Things aren’t looking great at the moment. But there is always hope." 
@@ -1523,6 +1565,8 @@ label start:
                 # S.2.2a
                 "Anything is better than nothing.":
                     $ medApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain concern-open behind medic
                     voice "audio/voice/captain/C2-102.mp3"
                     captain "Anything is better than nothing. I trust your judgment."
@@ -1534,6 +1578,7 @@ label start:
 
                 # S.2.2b
                 "We need a little more than a theory.":
+                    play sound "incorrect ding.mp3" volume 0.8
                     show captain frustrated behind medic
                     voice "audio/voice/captain/C2-103.mp3"
                     captain "I was expecting a little more than a theory, to be honest…"
@@ -1613,6 +1658,8 @@ label start:
             menu: 
                 # S.2.3a
                 "That does sounds far-fetched.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain confusion-open behind medic
                     voice "audio/voice/captain/C2-110.mp3"
                     captain "That does sound far-fetched. However, we must think of all possibilities."
@@ -1625,6 +1672,8 @@ label start:
                 # S.2.3b
                 "There could be something there…":
                     $ medApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain thinking behind medic
                     voice "audio/voice/captain/C2-111.mp3"
                     captain "There could be something there… It could be the key to our survival. Find out all you can."
@@ -1665,6 +1714,8 @@ label start:
                 # S.2.1a
                 "Sorry for not getting to you sooner.":
                     $ medApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain concern-open behind medic
                     voice "audio/voice/captain/C2-072-1.mp3"
                     captain "I’m sorry I couldn’t come talk to you sooner. I’ve been speaking with Eugen about this problem."
@@ -1676,6 +1727,8 @@ label start:
 
                 # S.2.1b
                 "Everything’s fine.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain frustrated behind medic
                     voice "audio/voice/captain/C2-072-2.mp3"
                     captain "Everything’s fine. We’re sorting it out."
@@ -1747,6 +1800,8 @@ label start:
             menu: 
                 # S.2.2a
                 "You know the drill.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain anger-open behind medic
                     voice "audio/voice/captain/C2-080.mp3"
                     captain "You know the drill. Keep at it." 
@@ -1763,6 +1818,8 @@ label start:
                 # S.2.2b
                 "We’re counting on you.":
                     $ medApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain concern-open behind medic
                     voice "audio/voice/captain/C2-083.mp3"
                     captain "Hey, we’re all losing our minds. It’s okay."
@@ -1859,6 +1916,8 @@ label start:
             menu: 
                 # S.2.3a
                 "That does sound far-fetched.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain confusion-open behind medic
                     voice "audio/voice/captain/C2-094.mp3"
                     captain "That does sound far-fetched. But investigate any and all possibilities."
@@ -1871,6 +1930,8 @@ label start:
                 # S.2.3b
                 "There could be something there…":
                     $ medApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain thinking behind medic
                     voice "audio/voice/captain/C2-095.mp3"
                     captain "There could be something there… It could be the key to our survival."
@@ -1953,6 +2014,8 @@ label start:
                 # E.2.1a
                 "He didn’t plan on failing.":
                     $ engApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain rememberance-open behind engineer
                     voice "audio/voice/captain/C2-141.mp3"
                     captain "He didn’t plan on failing. I’m sure you can understand that."
@@ -1966,6 +2029,8 @@ label start:
 
                 # E.2.1b
                 "Your guess is as good as mine.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain neutral-open behind engineer
                     voice "audio/voice/captain/C2-143.mp3"
                     captain "Your guess is as good as mine."
@@ -2042,6 +2107,8 @@ label start:
                 # E.2.2a
                 "This OS was his baby.":
                     $ engApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain rememberance-open behind engineer
                     voice "audio/voice/captain/C2-152.mp3"
                     captain "This operating system was his baby, his pride and joy."
@@ -2055,6 +2122,8 @@ label start:
 
                 # E.2.2b
                 "He was my husband, not my clone.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain anger-open behind engineer
                     voice "audio/voice/captain/C2-154.mp3"
                     captain "Matthew Pratchett was my husband, not my clone."
@@ -2106,6 +2175,8 @@ label start:
             menu: 
                 # E.2.3a
                 "Stop asking about him.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain anger-open behind engineer
                     voice "audio/voice/captain/C2-160.mp3"
                     captain "Stop. Asking. About him."
@@ -2117,6 +2188,8 @@ label start:
                 # E.2.2b
                 "He was pragmatic.":
                     $ engApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain rememberance-open behind engineer
                     voice "audio/voice/captain/C2-163.mp3"
                     captain "Matthew was certainly a creative idealist, but he was also very pragmatic."
@@ -2189,6 +2262,8 @@ label start:
             menu: 
                 # E.2.1a
                 "I don’t have much…":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain frustrated behind engineer
                     voice "audio/voice/captain/C2-116.mp3"
                     captain "I don’t have much, but MAD1 is still reciting poetry. And incorrectly at that."
@@ -2205,6 +2280,8 @@ label start:
                 # E.2.1b
                 "For your information…":
                     $ engApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain anger-open behind engineer
                     voice "audio/voice/captain/C2-119.mp3"
                     captain "For your information, Technician Braun, I have been conferring with MAD1 and Sara to find a solution."
@@ -2261,6 +2338,8 @@ label start:
                 # E.2.2a
                 "He was a fan of poetry.":
                     $ engApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain rememberance-open behind engineer
                     voice "audio/voice/captain/C2-126.mp3"
                     captain "Matt… was a fan of poetry. Given MAD1’s clearly also become a big fan, there’s definitely something in there."
@@ -2272,6 +2351,8 @@ label start:
 
                 # E.2.2b
                 "He was the programmer, not me.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain neutral-open behind engineer
                     voice "audio/voice/captain/C2-127.mp3"
                     captain "If he had any programming secrets, he didn’t share them with me. I’m not exactly a programmer."
@@ -2306,6 +2387,8 @@ label start:
                 # E.2.3a
                 "To hell with your procedures.":
                     $ engApproval += 1
+                    play sound "correct ding.mp3" volume 0.8
+
                     show captain anger-open behind engineer
                     voice "audio/voice/captain/C2-129.mp3"
                     captain "To hell with your procedures and to hell with my dead husband’s preferences."
@@ -2326,6 +2409,8 @@ label start:
 
                 # E.2.3b
                 "I’m just as confused as you are.":
+                    play sound "incorrect ding.mp3" volume 0.8
+
                     show captain frustrated behind engineer
                     voice "audio/voice/captain/C2-133.mp3"
                     captain "Listen, I’m just as lost and confused as you are."
@@ -2365,34 +2450,36 @@ label start:
         # M.1.O optional MAD1
         scene onlayer screens
         $ seenMO = True
-        scene bg computer with fade
+        scene bg computer error with fade
 
         show computer error-4 with dissolve
-        show captain neutral-open behind computer with dissolve
+        show captain neutral-closed behind computer with dissolve
 
         if persistent.matthew_unlocked is False:
             # Matt log
+            $ seenMattLog = True
             
             voice "audio/voice/madi/M2-026.mp3"
-            computer "MAD1: No longer mourn for me when I am dead"
+            computer "No longer mourn for me when I am d̴̼͋ë̴̩́a̵͖̕d"
             voice "audio/voice/madi/M2-027.mp3"
             computer "Then you shall hear the surly sullen bell"
             voice "audio/voice/madi/M2-028.mp3"
-            computer "Give warning to the world that I am fled"
+            computer "Give wa̷rni̷ń̵̟g to the world t̷h̴a̸t̷ ̷I̷ am fled"
             voice "audio/voice/madi/M2-029.mp3"
-            computer "From this vile world, with vilest worms to dwell:"
+            computer "From this vile world, w̶ǐ̶͇t̸͈͋ḣ̷͜ ̶͔͑v̴̨̄i̵͙͒l̴͔͋e̷̹̐s̶͚̈́t̸̗̚ ̶̡̒w̶̜̚ő̴̬r̷͎̊m̷̳͒s̸̻̈́ ̷͇͒ṭ̸̾ǫ̸͗ ̴̰̉ḑ̷͆w̵͝ͅè̸̯l̴̡͒l̶̳͂:"
 
+            scene bg computer error bad
             show computer error-5 with hpunch
 
             show captain rememberance-closed
             computer "..."
             voice "audio/voice/matthew/W2-001.mp3"
-            matthew "Captain’s log, August 16th."
-            voice "audio/voice/matthew/W2-002"
+            mattputer "Captain’s log, August 16th."
+            voice "audio/voice/matthew/W2-002.mp3"
             matthew "We’ve collided with an asteroid. The impact has shut off primary communications, and all escape pods are malfunctioning."
             show captain distress
             voice "audio/voice/matthew/W2-003.mp3"
-            matthew "Oxygen is at 17%. Death is imminent. "
+            matthew "Oxygen is at 17%%. Death is imminent. "
             voice "audio/voice/matthew/W2-004.mp3"
             matthew "MAD1 has saved all information prior to this moment to her copy on Earth."
             voice "audio/voice/matthew/W2-005.mp3"
@@ -2567,7 +2654,6 @@ label start:
                 voice "audio/voice/madi/M4-068.mp3"
                 computer "And there the d̴̉ͅẻ̵͉a̵͔͘d̶̼̕ ̴̨̀m̷̱͑ê̴͓n̵̹̈́ lay."
 
-
         jump M3
 
     label M3:
@@ -2578,8 +2664,11 @@ label start:
             scene bg computer error with fade
 
         show computer error-1 with dissolve
-        show captain neutral-closed behind computer with dissolve
-
+        if seenMattLog is True:
+            show show captain distress behind computer with dissolve
+        else:
+            show captain neutral-closed behind computer with dissolve
+        
         voice "audio/voice/madi/M2-030.mp3"
         computer "Cap̴-̶ ̵C̴͂͜ä̴͎́p̸̪͒-̵̺̀ ̷͇͐ Ċ̷̯a̶̭͊p̴̹̆t̶̡̐a̸̬̓ï̴̬n."
 
@@ -2665,6 +2754,7 @@ label start:
         # Captain breakdown
 
         scene bg artifact with fade
+        $ persistent.seenC2 = True
 
         voice "audio/voice/captain/C3-001.mp3"
         captain "What the hell am I supposed to do…" 
@@ -2709,7 +2799,7 @@ label start:
                         voice "audio/voice/captain/C3-010.mp3"
                         captain "… I’m wasting oxygen with my outbursts…"
                         
-                        voice "audio/voice/captain/C3-011.mp3"
+                        voice "audio/voice/captain/C3-011-01.mp3"
                         captain "…"
                         voice "audio/voice/captain/C3-012.mp3"
                         captain "Should I just eject the specimen?"
@@ -2748,7 +2838,7 @@ label start:
 
             "Stay":
                 play sound "Metallic_Hit.mp3" volume 0.5
-                show bg escape pod with hpunch
+                show bg artifact with hpunch
 
                 voice "audio/voice/captain/C3-008.mp3"
                 captain "God damnit!"
@@ -2757,7 +2847,7 @@ label start:
                 voice "audio/voice/captain/C3-010.mp3"
                 captain "… I’m wasting oxygen with my outbursts…"
 
-                voice "audio/voice/captain/C3-011.mp3"
+                voice "audio/voice/captain/C3-011-01.mp3"
                 captain "…"
                 voice "audio/voice/captain/C3-012.mp3"
                 captain "Should I just eject the specimen?"
@@ -2811,7 +2901,7 @@ label start:
 
         voice "audio/voice/sara/S3-001.mp3"
         medic "Oh my god, Captain, I can’t tell you how happy I am to see you!"
-        show medic explaining
+        show medic explaining messy
         voice "audio/voice/sara/S3-002.mp3"
         medic "What’s happening now? How much time do we have?"
 
@@ -2857,7 +2947,7 @@ label start:
                 voice "audio/voice/captain/C3-023.mp3"
                 captain "I’ve made a decision regarding the specimen."
                 voice "audio/voice/captain/C3-024.mp3"
-                captain "Clearly it’s interfering with the ship in some way."
+                captain "I trust your suspicion, it’s interfering with the ship in some way."
                 voice "audio/voice/captain/C3-025.mp3"
                 captain "So… I’m going to eject it."
 
@@ -2880,7 +2970,10 @@ label start:
                 if seenE3 is False:
                     jump Map3
                 elif seenE3 is True:
-                    jump Final
+                    if secretChoice is True:
+                        jump EndSec
+                    else:
+                        jump Final
 
         #S.3.A: Low Approval/Failure
         if medApproval < 5:
@@ -3207,7 +3300,10 @@ label start:
                 if seenS3 is False:
                     jump Map3
                 elif seenS3 is True:
-                    jump Final
+                    if secretChoice is True:
+                        jump EndSec
+                    else:
+                        jump Final
 
         #E.3.A: Low Approval/Failure
         if engApproval < 5:
@@ -3650,6 +3746,7 @@ label start:
             captain "… Dammit… "
 
             show screen MapUIEnd with fade
+            pause
 
         label TheEnd:
             # Sara Scene
@@ -3762,325 +3859,217 @@ label start:
     # ENDINGS
     label EndB:
         $ quick_menu = False
-        play music "Goosebumps.mp3" volume 0.8
+        play music "Goosebumps.mp3" volume 1.0
+
         # Bad ending: Captain abandons ship
         scene ending captain with fade
         pause(0.5)
 
-        # show screen EndBPoem with dissolve
-        # pause(2)
+        show screen EndBPoemA with dissolve
+        pause(3)
 
-        voice "audio/voice/captain/C3-143.mp3"
-        captain "Matthew… We fai- I failed the mission… I failed you." 
-        voice "audio/voice/captain/C3-144.mp3"
-        captain "I told myself I would complete the mission whether or not it kills me, and I guess part of me hoped I would join you amongst the stars." 
-        voice "audio/voice/captain/C3-145.mp3"
-        captain "But I’m a coward… I failed the CSA, I failed my crew, I failed you."
-        voice "audio/voice/captain/C3-146.mp3"
-        captain "What have I done?"
+        voice "audio/voice/captain/C3-EndingB.mp3"
+        show screen EndBPoemB with dissolve
+        hide screen EndBPoemA with dissolve
+        pause(30)
 
         # During credits
+        hide screen EndBPoemB with dissolve
         show screen Credits1 with dissolve
-        pause(0.5)
+        pause(7)
 
-        voice "audio/voice/eugen/E3-067.mp3"
-        engineer "An absolute failure.{w=2}{nw}"
-        voice "audio/voice/eugen/E3-068.mp3"
-        engineer "My design was flawless. Perfect. However, that fact will be cast aside.{w=5}{nw}"
-        voice "audio/voice/eugen/E3-069.mp3"
-        engineer "To think this is how it ends. A failure I die for.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-070.mp3"
-        engineer "A program bested me, blinded me to the point of perpetual arrogance.{w=5}{nw}"
-        hide screen Credits1 with dissolve
         show screen Credits2 with dissolve
-        voice "audio/voice/eugen/E3-071.mp3"
-        engineer "Regardless of how I will be remembered by others, I die now knowing I was a fool.{w=7}{nw}"
+        hide screen Credits1 with dissolve
 
-        voice "audio/voice/sara/S3-049.mp3"
-        medic "It’s almost poetic that my life’s greatest achievement would kill me.{w=5}{nw}"
-        voice "audio/voice/sara/S3-050.mp3"
-        medic "And I’m a failure that never saw it coming. Completely at its mercy.{w=5}{nw}"
-        voice "audio/voice/sara/S3-051.mp3"
-        medic "I failed the Captain and Eugen. Death is fitting…{w=6}{nw}"
+        voice "audio/voice/eugen/E3-EndingB.mp3"
+        pause(25)
 
-        hide screen Credits2 with dissolve
         show screen Credits3 with dissolve
-        computer "Under the wide and starry sky,{w=4}{nw}"
-        computer "Dig the grave and let me lie.{w=4}{nw}"
-        computer "Glad did I live and gladly die,{w=4}{nw}"
-        computer "And I laid me down with a will.{w=4}{nw}"
+        hide screen Credits2 with dissolve
 
-        hide screen Credits3 with dissolve
+        voice "audio/voice/sara/S3-EndingB.mp3"
+        pause(20)
+
         show screen Credits4 with dissolve
-        voice "audio/voice/madi/M3-021.mp3"
-        computer "Grave men, near death, who see with blinding sight:{w=5}{nw}"
-        voice "audio/voice/madi/M3-022.mp3"
-        computer "Blind eyes could blaze like meteors and be gay,{w=4}{nw}"
-        voice "audio/voice/madi/M3-023.mp3"
-        computer "Rage, rage against the dying of the light.{w=4}{nw}"
-        voice "audio/voice/madi/M3-024.mp3"
-        computer "And you, my father, there on the sad height,{w=4}{nw}"
-        voice "audio/voice/madi/M3-025.mp3"
-        computer "Curse, bless, me now with your fierce tears, I pray.{w=4}{nw}"
-        voice "audio/voice/madi/M3-026.mp3"
-        computer "Do not go gentle into that good night.{w=6}{nw}"
+        hide screen Credits3 with dissolve
+
+        voice "audio/voice/madi/M3-EndingB.mp3"
+        pause(28)
+
+        show screen Credits5 with dissolve
+        hide screen Credits4 with dissolve
+        pause(5)
 
         $ persistent.secret_unlocked = True
         $ persistent.endB_unlocked = True
         
-        hide screen Credits4 with dissolve
+        hide screen Credits5 with dissolve
         scene black with dissolve
+        pause(1)
         
-        show screen TryAgain
+        show screen TryAgain with dissolve
         pause 
 
         return
 
     label EndC:
         $ quick_menu = False
-        play music "Goosebumps.mp3" volume 0.8
+        play music "Murder-Mystery.mp3" volume 0.8
         # Captain leaves with specimen 
         scene ending captain with fade
         pause(0.5)
 
-        show screen EndCPoem with dissolve
-        pause(2)
+        show screen EndCPoemA with dissolve
+        pause(3)
 
-        voice "audio/voice/captain/C3-121.mp3"
-        captain "Captain’s log, January 27th."
-        voice "audio/voice/captain/C3-122.mp3"
-        captain "The specimen has safely returned with me to Earth."
-        voice "audio/voice/captain/C3-123.mp3"
-        captain "Further investigations will commence soon. I think… I uh… I…"
-        voice "audio/voice/captain/C3-124.mp3"
-        captain "I-I’ve failed…"
-        voice "audio/voice/captain/C3-125.mp3"
-        captain "I’ve killed my crew members…"
-        voice "audio/voice/captain/C3-126.mp3"
-        captain "What kind of Captain am I?"
-        voice "audio/voice/captain/C3-127.mp3"
-        captain "I’ve come home with the specimen… but at what cost..?"
-        voice "audio/voice/captain/C3-128.mp3"
-        captain "I’m sorry, Sara…"
-        voice "audio/voice/captain/C3-129.mp3"
-        captain "I’m sorry, Eugen…"
-        voice "audio/voice/captain/C3-131.mp3"
-        captain "What have I done?"
+        voice "audio/voice/captain/C3-EndingC.mp3"
+        show screen EndCPoemB with dissolve
+        hide screen EndCPoemA with dissolve
+        pause(31)
 
         # During credits
-        hide screen EndCPoem with dissolve
+        hide screen EndCPoemB with dissolve
         show screen Credits1 with dissolve
-        pause(0.5)
+        pause(7)
 
-        voice "audio/voice/eugen/E3-047.mp3"
-        engineer "Father. It seems our name will no longer be held in esteem.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-048.mp3"
-        engineer "My design was flawless. Perfect. However, that fact will be cast aside.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-049.mp3"
-        engineer "To think this is how it ends. A failure I die for.{w=3}{nw}"
-        voice "audio/voice/eugen/E3-050.mp3"
-        engineer "The Captain is gone with the specimen; he will likely be considered a hero, a visionary.{w=5}{nw}"
-        voice "audio/voice/eugen/E3-051.mp3"
-        engineer "And the name Eugen Braun will be forgotten.{w=6}{nw}"
-
-        hide screen Credits1 with dissolve
         show screen Credits2 with dissolve
+        hide screen Credits1 with dissolve
 
-        voice "audio/voice/sara/S3-036.mp3"
-        medic "You’ve been a brilliant captain and a friend. {w=3}{nw}" 
-        voice "audio/voice/sara/S3-037.mp3"
-        medic "I wish I could see my family–their faces if I returned home successful. I never will see that.{w=5}{nw}"
-        voice "audio/voice/sara/S3-038.mp3"
-        medic "It’s painful…I never thought I’d go this way.{w=6}{nw}"
+        voice "audio/voice/eugen/E3-EndingC.mp3"
+        pause(25)
 
-        hide screen Credits2 with dissolve
         show screen Credits3 with dissolve
-        voice "audio/voice/madi/M3-002-1.mp3"
-        computer "Under the wide and starry sky,{w=4}{nw}"
-        voice "audio/voice/madi/M3-002-2.mp3"
-        computer "Dig the grave and let me lie.{w=4}{nw}"
-        voice "audio/voice/madi/M3-003.mp3"
-        computer "Glad did I live and gladly die,{w=4}{nw}"
-        voice "audio/voice/madi/M3-004.mp3"
-        computer "And I laid me down with a will.{w=4}{nw}"
+        hide screen Credits2 with dissolve
 
-        hide screen Credits3 with dissolve
+        voice "audio/voice/sara/S3-EndingC.mp3"
+        pause(25)
+
         show screen Credits4 with dissolve
-        voice "audio/voice/madi/M3-005.mp3"
-        computer "This be the verse you grave for me:{w=4}{nw}"
-        voice "audio/voice/madi/M3-006.mp3"
-        computer "Here he lies where he longed to be;{w=4}{nw}"
-        voice "audio/voice/madi/M3-007.mp3"
-        computer "Home is the captain, home from sea,{w=4}{nw}"
-        voice "audio/voice/madi/M3-008.mp3"
-        computer "And the lover lost to the hill.{w=6}{nw}"
+        hide screen Credits3 with dissolve
+
+        voice "audio/voice/madi/M3-EndingC.mp3"
+        pause(24)
+
+        show screen Credits5 with dissolve
+        hide screen Credits4 with dissolve
+        pause(5)
 
         $ persistent.secret_unlocked = True
         $ persistent.endC_unlocked = True
         
-        hide screen Credits4 with dissolve
+        hide screen Credits5 with dissolve
         scene black with dissolve
+        pause(1)
         
-        show screen TryAgain
+        show screen TryAgain with dissolve
         pause 
 
         return
 
     label EndE:
         $ quick_menu = False
-        play music "Goosebumps.mp3" volume 0.8
+        play music "Catching-Predators.mp3" volume 0.8
         # Eugen leaves with specimen 
         scene ending engineer with fade
         pause(0.5)
-        
-        # show screen EndEPoem with dissolve
-        # pause(2)
 
-        voice "audio/voice/eugen/E3-052.mp3"
-        engineer "All has come to an end, and the mission is behind me."
-        voice "audio/voice/eugen/E3-053.mp3"
-        engineer "However, I can’t stop thinking if it was truly the best outcome for me being saved."
-        voice "audio/voice/eugen/E3-054.mp3"
-        engineer "I accepted the mission to prove my drill; my design is flawless; however, I left it behind."
-        voice "audio/voice/eugen/E3-055.mp3"
-        engineer "What does my future as an engineer entail? I will never be rid of the memory of my failure, my design being lost in space."
-        voice "audio/voice/eugen/E3-056.mp3"
-        engineer "Getting in that return pod is just another addition to my list of regrets."
-        voice "audio/voice/eugen/E3-057.mp3"
-        engineer "I hope Sara and Rudy can forgive me."
+        show screen EndEPoemA with dissolve
+        pause(3)
+
+        voice "audio/voice/eugen/E3-EndingE.mp3"
+        show screen EndEPoemB with dissolve
+        hide screen EndEPoemA with dissolve
+        pause(30)
 
         # During credits
+        hide screen EndEPoemB with dissolve
         show screen Credits1 with dissolve
-        pause(0.5)
+        pause(7)
 
-        voice "audio/voice/captain/C3-132.mp3"
-        captain "Eugen deserves to go home. His tech is invaluable.{w=4}{nw}"
-        voice "audio/voice/captain/C3-133.mp3"
-        captain "At least Sara isn’t alone during our last moments.{w=4}{nw}"
-        voice "audio/voice/captain/C3-134.mp3"
-        captain "Matthew… My love…{w=3}{nw}"
-        voice "audio/voice/captain/C3-135.mp3"
-        captain "I’ll see you soon, amongst the stars…{w=6}{nw}"
-
-        hide screen Credits1 with dissolve
         show screen Credits2 with dissolve
+        hide screen Credits1 with dissolve
 
-        voice "audio/voice/sara/S3-039.mp3"
-        medic "It’s good that I die with a friend by my side.{w=5}{nw}"
-        voice "audio/voice/sara/S3-040.mp3"
-        medic "Looking back, it’s ironic that I found the validation I sought all my life not from my family but from a stranger amongst the stars.{w=9}{nw}"
+        voice "audio/voice/captain/C3-EndingE.mp3"
+        pause(18)
 
-        hide screen Credits2 with dissolve
         show screen Credits3 with dissolve
+        hide screen Credits2 with dissolve
 
-        voice "audio/voice/madi/M3-009.mp3"
-        computer "Exult O stars, and ring O bells!{w=4}{nw}"
-        voice "audio/voice/madi/M3-010.mp3"
-        computer "But I with mournful tread,{w=4}{nw}"
-        voice "audio/voice/madi/M3-011.mp3"
-        computer "Walk the deck my Captain lies,{w=4}{nw}"
-        voice "audio/voice/madi/M3-012.mp3"
-        computer "Fallen cold and dead.{w=4}{nw}"
-        
-        hide screen Credits3 with dissolve
+        voice "audio/voice/sara/S3-EndingE.mp3"
+        pause(20)
+
         show screen Credits4 with dissolve
-        voice "audio/voice/madi/M3-013.mp3"
-        computer "Here Captain! dear father!{w=4}{nw}"
-        voice "audio/voice/madi/M3-014.mp3"
-        computer "This arm beneath your head!{w=4}{nw}"
-        voice "audio/voice/madi/M3-015.mp3"
-        computer "It is some dream that on the deck,{w=4}{nw}"
-        voice "audio/voice/madi/M3-016.mp3"
-        computer "You’ve fallen cold and dead.{w=6}{nw}"
-    
+        hide screen Credits3 with dissolve
+
+        voice "audio/voice/madi/M3-EndingES.mp3"
+        pause(24)
+
+        show screen Credits5 with dissolve
+        hide screen Credits4 with dissolve
+        pause(5)
+
         $ persistent.secret_unlocked = True
         $ persistent.endE_unlocked = True
 
-        hide screen Credits4 with dissolve
+        hide screen Credits5 with dissolve
         scene black with dissolve
+        pause(1)
         
-        show screen TryAgain
+        show screen TryAgain with dissolve
         pause 
 
         return
 
     label EndS:
         $ quick_menu = False
-        play music "Goosebumps.mp3" volume 0.8
+        play music "Leaving-No-Trace.mp3" volume 0.8
         # Sara leaves with specimen 
         scene ending medic with fade
         pause(0.5)
-        
-        # show screen EndSPoem with dissolve
-        # pause(2)
 
-        voice "audio/voice/sara/S3-041.mp3"
-        medic "I made it back...I still can’t believe it. I found life out in space. I achieved my dream!"
-        voice "audio/voice/sara/S3-042.mp3"
-        medic "My family? They’re proud of me, but they still can’t fully accept my life. It’s not what I expected… But it doesn’t matter anymore."
-        voice "audio/voice/sara/S3-043.mp3"
-        medic "Captain, you believed in me. You gave me what I craved from my family all my life. And I left you to die in space."
-        voice "audio/voice/sara/S3-044.mp3"
-        medic "It’s hard to bear…I will keep going and do my best. I owe that to you."
+        show screen EndSPoemA with dissolve
+        pause(3)
+
+        voice "audio/voice/sara/S3-EndingS.mp3"
+        show screen EndSPoemB with dissolve
+        hide screen EndSPoemA with dissolve
+        pause(35)
 
         # During credits
+        hide screen EndSPoemB with dissolve
         show screen Credits1 with dissolve
-        pause(0.5)
+        pause(7)
 
-        voice "audio/voice/captain/C3-136.mp3"
-        captain "Sara deserves to go home. Her research will be priceless.{w=4}{nw}"
-        voice "audio/voice/captain/C3-137.mp3"
-        captain "Eugen’s been rather silent… At least my last moments with him will be quiet.{w=4}{nw}"
-        voice "audio/voice/captain/C3-134.mp3"
-        captain "Matthew… My love…{w=3}{nw}"
-        voice "audio/voice/captain/C3-135.mp3"
-        captain "I’ll see you soon, amongst the stars…{w=6}{nw}"
-
-        hide screen Credits1 with dissolve
         show screen Credits2 with dissolve
+        hide screen Credits1 with dissolve
 
-        voice "audio/voice/eugen/E3-058.mp3"
-        engineer "Father. It seems our name will no longer be held in esteem.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-059.mp3"
-        engineer "My design was flawless. Perfect. However, that fact will be cast aside.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-060.mp3"
-        engineer "To think this is how it ends. A failure I die for.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-061.mp3"
-        engineer "Fortunately, Sara will return with the specimen, furthering our knowledge of the universe.{w=6}{nw}"
-        voice "audio/voice/eugen/E3-062.mp3"
-        engineer "At least there will be some success to come from this mission.{w=7}{nw}"
+        voice "audio/voice/captain/C3-EndingS.mp3"
+        pause(18)
 
-        hide screen Credits2 with dissolve
         show screen Credits3 with dissolve
+        hide screen Credits2 with dissolve
 
-        voice "audio/voice/madi/M3-009.mp3"
-        computer "Exult O stars, and ring O bells!{w=4}{nw}"
-        voice "audio/voice/madi/M3-010.mp3"
-        computer "But I with mournful tread,{w=4}{nw}"
-        voice "audio/voice/madi/M3-011.mp3"
-        computer "Walk the deck my Captain lies,{w=4}{nw}"
-        voice "audio/voice/madi/M3-012.mp3"
-        computer "Fallen cold and dead.{w=4}{nw}"
-        
-        hide screen Credits3 with dissolve
+        voice "audio/voice/eugen/E3-EndingS.mp3"
+        pause(25)
+
         show screen Credits4 with dissolve
+        hide screen Credits3 with dissolve
 
-        voice "audio/voice/madi/M3-013.mp3"
-        computer "Here Captain! dear father!{w=4}{nw}"
-        voice "audio/voice/madi/M3-014.mp3"
-        computer "This arm beneath your head!{w=4}{nw}"
-        voice "audio/voice/madi/M3-015.mp3"
-        computer "It is some dream that on the deck,{w=4}{nw}"
-        voice "audio/voice/madi/M3-016.mp3"
-        computer "You’ve fallen cold and dead.{w=4}{nw}"
-        
+        voice "audio/voice/madi/M3-EndingES.mp3"
+        pause(24)
+
+        show screen Credits5 with dissolve
+        hide screen Credits4 with dissolve
+        pause(5)
+
         $ persistent.secret_unlocked = True
         $ persistent.endS_unlocked = True
 
-        hide screen Credits4 with dissolve
+        hide screen Credits5 with dissolve
         scene black with dissolve
+        pause(1)
         
-        show screen TryAgain
+        show screen TryAgain with dissolve
         pause 
         
         return
@@ -4089,137 +4078,107 @@ label start:
         $ quick_menu = False
         # Good ending
         play music "Future Utopia.mp3" volume 0.8
-        scene ending captain with fade
+        scene ending crew stars  with fade
         pause(0.5)
-        
-        show screen EndGPoem with dissolve
-        pause(2)
 
-        voice "audio/voice/captain/C3-138.mp3"
-        captain "Captain’s log, January 27th. A- a lot has happened since the last log."
-        voice "audio/voice/captain/C3-139.mp3"
-        captain "We’re all very shaken. But at least we’re home."
-        voice "audio/voice/captain/C3-140.mp3"
-        captain "Next log will be a recap of events."
-        voice "audio/voice/captain/C3-141.mp3"
-        captain "I… I did it Matthew…"
-        voice "audio/voice/captain/C3-142.mp3"
-        captain "I did it for you."
+        show screen EndGPoemA with dissolve
+        pause(3)
+
+        voice "audio/voice/captain/C3-EndingG.mp3"
+        show screen EndGPoemB with dissolve
+        hide screen EndGPoemA with dissolve
+        pause(30)
 
         # During credits
-        hide screen EndGPoem with dissolve
+        hide screen EndGPoemB with dissolve
         show screen Credits1 with dissolve
         pause(7)
-        
-        hide screen Credits1 with dissolve
+
         show screen Credits2 with dissolve
+        hide screen Credits1 with dissolve
 
-        voice "audio/voice/eugen/E3-063.mp3"
-        engineer "A mission success, I expected nothing less.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-064.mp3"
-        engineer "My design was flawless. Perfect, and now the world will know.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-065.mp3"
-        engineer "Though our methods were not to my standards, an engineer must know how to adapt to unorthodox situations.{w=6}{nw}"
-        voice "audio/voice/eugen/E3-066.mp3"
-        engineer "Something I had refused to accept. Perhaps that was my lesson.{w=6}{nw}"
+        voice "audio/voice/eugen/E3-EndingG.mp3"
+        pause(20)
 
-        hide screen Credits2 with dissolve
         show screen Credits3 with dissolve
+        hide screen Credits2 with dissolve
 
-        voice "audio/voice/sara/S3-045.mp3"
-        medic "We survived the impossible, and we did what no crew had done before.{w=5}{nw}"
-        voice "audio/voice/sara/S3-046.mp3"
-        medic "More than anything–more than this specimen–I found something more amongst the stars.{w=5}{nw}"
-        voice "audio/voice/sara/S3-047.mp3"
-        medic "There is now one person who knows me and truly believes in me. Captain, thank you for everything.{w=5}{nw}"
-        voice "audio/voice/sara/S3-048.mp3"
-        medic "It no longer matters what my family says. I am at peace.{w=5}{nw}"
+        voice "audio/voice/sara/S3-EndingG.mp3"
+        pause(25)
 
-        hide screen Credits3 with dissolve
         show screen Credits4 with dissolve
+        hide screen Credits3 with dissolve
 
-        voice "audio/voice/madi/M3-017.mp3"
-        computer "O Captain! my Captain! our fearful trip is done,{w=5}{nw}"
-        voice "audio/voice/madi/M3-018.mp3"
-        computer "The ship has weather’d every rack, the prize we sought is won,{w=5}{nw}"
-        voice "audio/voice/madi/M3-019.mp3"
-        computer "The port is near, the bells I hear, the people all exulting,{w=5}{nw}"
-        voice "audio/voice/madi/M3-020.mp3"
-        computer "While follow eyes the steady keel, the vessel grim and daring{w=5}{nw}"
+        voice "audio/voice/madi/M3-EndingG.mp3"
+        pause(25)
+
+        show screen Credits5 with dissolve
+        hide screen Credits4 with dissolve
+        pause(5)
 
         $ persistent.secret_unlocked = True
         $ persistent.endG_unlocked = True
 
-        hide screen Credits4 with dissolve
+        hide screen Credits5 with dissolve
         scene black with dissolve
+        pause(1)
         
-        show screen TryAgain
+        show screen TryAgain with dissolve
         pause 
 
         return
 
     label EndSec:
-        $ quick_menu is False
-        play music "Future Utopia.mp3" volume 0.8
+        $ quick_menu = False
+        play music "Strong-Convictions.mp3" volume 0.8
         # Secret ending: Throw away the specimen
+        scene ending byebye fungus with fade
 
-        voice "audio/voice/captain/C3-147.mp3"
-        captain "Captain’s log, September 24th."
-        voice "audio/voice/captain/C3-148.mp3"
-        captain "The mission was unsuccessful. The specimen has been discarded to save the ship."
-        voice "audio/voice/captain/C3-149.mp3"
-        captain "I- …"
-        voice "audio/voice/captain/C3-150.mp3"
-        captain "I love you, Matthew."
-        voice "audio/voice/captain/C3-151.mp3"
-        captain "Goodbye, my love."
+        pause 0.5
+        show screen EndSECPoemA with dissolve
+        pause(3)
+
+        voice "audio/voice/captain/C3-EndingSEC.mp3"
+        show screen EndSECPoemB with dissolve
+        hide screen EndSECPoemA with dissolve
+        pause(16)
 
         # During credits
+        hide screen EndSECPoemB with dissolve
         show screen Credits1 with dissolve
-        pause(0.5)
+        pause(7)
 
-        voice "audio/voice/eugen/E3-072.mp3"
-        engineer "A necessary sacrifice had to be made.{w=3}{nw}"
-        voice "audio/voice/eugen/E3-073.mp3"
-        engineer "My design was flawless… Perfect, and I will make sure that fact is clear.{w=4}{nw}"
-        voice "audio/voice/eugen/E3-074.mp3"
-        engineer "Returning with the specimen would have been ideal; however, its disposal was for the greater good.{w=5}{nw}"
-        voice "audio/voice/eugen/E3-075.mp3"
-        engineer "I hope the rest of the crew understands this.{w=6}{nw}"
-
-        hide screen Credits1 with dissolve
         show screen Credits2 with dissolve
-        
-        voice "audio/voice/sara/S3-052.mp3"
-        medic "That’s my life’s work! My dream. This is hard to bear.{w=5}{nw}"
-        voice "audio/voice/sara/S3-053.mp3"
-        medic "But we’re alive! And I have all of my notes. We have acquired knowledge, and that's priceless.{w=7}{nw}"
-        voice "audio/voice/sara/S3-054.mp3"
-        medic "Life exists in our solar system!{w=5}{nw}"
+        hide screen Credits1 with dissolve
 
-        hide screen Credits2 with dissolve
+        voice "audio/voice/eugen/E3-EndingSEC.mp3"
+        pause(20)
+
         show screen Credits3 with dissolve
+        hide screen Credits2 with dissolve
+
+        voice "audio/voice/sara/S3-EndingSEC.mp3"
+        pause(20)
+
+        show screen Credits4 with dissolve
+        hide screen Credits3 with dissolve
 
         # For now this will be computer, if we decide to add Matthew voice will change it.
+        # It's Watthew
+        voice "audio/voice/matthew/W3-EndingSEC.mp3"
+        pause(23)
 
-        computer "No longer mourn for me when I am dead{w=4}{nw}"
-        computer "Then you shall hear the surly sullen bell{w=4}{nw}"
-        computer "Give warning to the world that I am fled{w=4}{nw}"
-        computer "From this vile world, with vilest worms to dwell:{w=4}{nw}"
-        
-        hide screen Credits3 with dissolve
-        show screen Credits4 with dissolve
-
-        computer "Nay, if you read this line, remember not{w=4}{nw}"
-        computer "The hand that writ it; for I love you so{w=4}{nw}"
-        computer "That I in your sweet thoughts would be forgot{w=4}{nw}"
-        computer "If thinking on me then should make you woe.{w=6}{nw}"
+        show screen Credits5 with dissolve
+        hide screen Credits4 with dissolve
+        pause(5)
 
         $ persistent.secret_unlocked = True
         $ persistent.endSEC_unlocked = True
 
-        hide screen Credits4 with fade
-        scene SE-artifact with fadeout
+        hide screen Credits5 with dissolve
+        scene black with dissolve
+        pause
+        scene secret ending with fade
         pause
         scene black with dissolve
         return
@@ -4228,140 +4187,158 @@ label start:
 
 
 # Star Logs (putting in the script and lines, don't know how to program them actually working :p)
-# REMOVE THE #s BEFORE IMPLEMENTING
+label StarLogs:
+    label EndBLog:
+        $ quick_menu = False
+        scene black with dissolve
+        voice "audio/voice/captain/C4-001.mp3"
+        captain "Captain’s log. January 27th."
+        voice "audio/voice/captain/C4-002.mp3"
+        captain "My position at the CSA is being terminated. Effective immediately."
+        voice "audio/voice/captain/C4-003.mp3"
+        captain "I’m sorry…"
+        voice "audio/voice/captain/C4-004.mp3"
+        captain "I’m sorry Sara…"
+        voice "audio/voice/captain/C4-005.mp3"
+        captain "I’m sorry Eugen…"
+        voice "audio/voice/captain/C4-006.mp3"
+        captain "I’m sorry Matthew…"
+        $ renpy.end_replay()
+        
+    label EndSLog:
+        $ quick_menu = False
+        scene black with dissolve
+        voice "audio/voice/matthew/W4-001.mp3"
+        matthew "Captain’s log. 4 months until Expedition Europa 1 launches."
+        voice "audio/voice/matthew/W4-002.mp3"
+        matthew "Unfortunately, Dr. Sara Fernando’s current mission is taking longer than expected."
+        voice "audio/voice/matthew/W4-003.mp3"
+        matthew "She will not be able to join us to Europa. There won’t be enough prep time for her."
+        voice "audio/voice/matthew/W4-004.mp3"
+        matthew "Thankfully, I know other astrobiologists who can take her place."
+        voice "audio/voice/matthew/W4-005.mp3"
+        matthew "Hopefully, she’ll join the research team if we successfully bring home a specimen."
+        $ renpy.end_replay()
 
-    # End.B Log
-        #voice "audio/voice/captain/C4-001.mp3"
-        #captain "Captain’s log. January 27th."
-        #voice "audio/voice/captain/C4-002.mp3"
-        #captain "My position at the CSA is being terminated. Effective immediately."
-        #voice "audio/voice/captain/C4-003.mp3"
-        #captain "I’m sorry…"
-        #voice "audio/voice/captain/C4-004.mp3"
-        #captain "I’m sorry Sara…"
-        #voice "audio/voice/captain/C4-005.mp3"
-        #captain "I’m sorry Eugen…"
-        #voice "audio/voice/captain/C4-008.mp3"
-        #captain "I’m sorry Matthew…"
-    
-    # End.S Log
-        #voice "audio/voice/matthew/W4-001.mp3"
-        #matthew "Captain’s log. 4 months until Expedition Europa 1 launches."
-        #voice "audio/voice/matthew/W4-002.mp3"
-        #matthew "Unfortunately, Dr. Sara Fernando’s current mission is taking longer than expected."
-        #voice "audio/voice/matthew/W4-003.mp3"
-        #matthew "She will not be able to join us to Europa. There won’t be enough prep time for her."
-        #voice "audio/voice/matthew/W4-004.mp3"
-        #matthew "Thankfully, I know other astrobiologists who can take her place."
-        #voice "audio/voice/matthew/W4-005.mp3"
-        #matthew "Hopefully, she’ll join the research team if we successfully bring home a specimen."
+    label EndELog:
+        $ quick_menu = False
+        scene black with dissolve
+        voice "audio/voice/matthew/W4-006.mp3"
+        matthew "Captain’s log. 6 months until Expedition Europa 1 launches."
+        voice "audio/voice/matthew/W4-007.mp3"
+        matthew "Eugen Braun’s ice drill has completed the prototyping stage and is ready to be tested in the field."
+        voice "audio/voice/matthew/W4-008.mp3"
+        matthew "Unfortunately, the crew only has space for eight people, and all eight positions have been filled."
+        voice "audio/voice/matthew/W4-009.mp3"
+        matthew "Braun is unable to join us for this mission."
+        voice "audio/voice/matthew/W4-010.mp3"
+        matthew "A shame. I’m more than sure he would’ve liked to see it in action."
+        voice "audio/voice/matthew/W4-011.mp3"
+        matthew "I’ll be sure to log its success for him."
+        $ renpy.end_replay()
 
-    # End.E Log
-        #voice "audio/voice/matthew/W4-006.mp3"
-        #matthew "Captain’s log. 6 months until Expedition Europa 1 launches."
-        #voice "audio/voice/matthew/W4-007.mp3"
-        #matthew "Eugen Braun’s ice drill has completed the prototyping stage and is ready to be tested in the field."
-        #voice "audio/voice/matthew/W4-008.mp3"
-        #matthew "Unfortunately, the crew only has space for eight people, and all eight positions have been filled."
-        #voice "audio/voice/matthew/W4-009.mp3"
-        #matthew "Braun is unable to join us for this mission."
-        #voice "audio/voice/matthew/W4-010.mp3"
-        #matthew "A shame. I’m more than sure he would’ve liked to see it in action."
-        #voice "audio/voice/matthew/W4-012.mp3"
-        #matthew "I’ll be sure to log its success for him."
+    label EndCLog:
+        $ quick_menu = False
+        scene black with dissolve
+        voice "audio/voice/captain/C4-007.mp3"
+        captain "Captain’s log. February 2nd."
+        voice "audio/voice/captain/C4-008.mp3"
+        captain "I’m resigning from my position at the CSA."
+        voice "audio/voice/captain/C4-009.mp3"
+        captain "I’m no longer fit to be an astronaut, let alone a captain."
+        voice "audio/voice/captain/C4-010.mp3"
+        captain "I’m… I’m sorry, Sara and Eugen."
+        voice "audio/voice/captain/C4-011.mp3"
+        captain "I’m sorry I couldn’t save you."
+        $ renpy.end_replay()
 
-    # End.C Log
-        #voice "audio/voice/captain/C4-007.mp3"
-        #captain "Captain’s log. February 2nd."
-        #voice "audio/voice/captain/C4-008.mp3"
-        #captain "I’m resigning from my position at the CSA."
-        #voice "audio/voice/captain/C4-009.mp3"
-        #captain "I’m no longer fit to be an astronaut, let alone a captain."
-        #voice "audio/voice/captain/C4-010.mp3"
-        #captain "I’m… I’m sorry, Sara and Eugen."
-        #voice "audio/voice/captain/C4-011.mp3"
-        #captain "I’m sorry I couldn’t save you."
+    label EndGLog:
+        $ quick_menu = False
+        scene black with dissolve
+        voice "audio/voice/captain/C4-012.mp3"
+        captain "Captain’s log, I guess…"
+        voice "audio/voice/captain/C4-013.mp3"
+        captain "10 months until Expedition Europa 2 launches."
+        voice "audio/voice/captain/C4-014.mp3"
+        captain "It took weeks of convincing, but the CSA has agreed to allow me, Rudy Jensen, to captain this mission."
+        voice "audio/voice/captain/C4-015.mp3"
+        captain "They weren’t sure if having a grieving captain would be appropriate."
+        voice "audio/voice/captain/C4-016.mp3"
+        captain "But I need to helm this expedition. For Matthew. To finish what he started."
+        voice "audio/voice/captain/C4-017.mp3"
+        captain "What kind of husband would I be otherwise?"
+        voice "audio/voice/captain/C4-018.mp3"
+        captain "..."
+        voice "audio/voice/captain/C4-019.mp3"
+        captain "In any case, all information we have from Expedition Europa 1 has been saved on MAD1."
+        voice "audio/voice/captain/C4-020.mp3"
+        captain "We’ll be using her for this mission."
+        $ renpy.end_replay()
 
-    # End.G Log
-        #voice "audio/voice/captain/C4-012.mp3"
-        #captain "Captain’s log, I guess…"
-        #voice "audio/voice/captain/C4-013.mp3"
-        #captain "10 months until Expedition Europa 2 launches."
-        #voice "audio/voice/captain/C4-014.mp3"
-        #captain "It took weeks of convincing, but the CSA has agreed to allow me, Rudy Jensen, to captain this mission."
-        #voice "audio/voice/captain/C4-015.mp3"
-        #captain "They weren’t sure if having a grieving captain would be appropriate."
-        #voice "audio/voice/captain/C4-016.mp3"
-        #captain "But I need to helm this expedition. For Matthew. To finish what he started."
-        #voice "audio/voice/captain/C4-017.mp3"
-        #captain "What kind of husband would I be otherwise?"
-        #voice "audio/voice/captain/C4-018.mp3"
-        #captain "..."
-        #voice "audio/voice/captain/C4-019.mp3"
-        #captain "In any case, all information we have from Expedition Europa 1 has been saved on MAD1."
-        #voice "audio/voice/captain/C4-020.mp3"
-        #captain "We’ll be using her for this mission."
-
-    # End.SEC Log
-        #voice "audio/voice/matthew/W4-013.mp3"
-        #matthew "Ready to meet our baby?"
-        #voice "audio/voice/captain/C4-021.mp3"
-        #captain "Please don’t call the OS our “baby,” Matthew…"
-        #voice "audio/voice/matthew/W4-014.mp3"
-        #matthew "Fine. My baby. So… Wuddya think?"
-        #voice "audio/voice/captain/C4-022.mp3"
-        #captain "You built all of this… Yourself?"
-        #voice "audio/voice/matthew/W4-015.mp3"
-        #matthew "Yyyuuuuppp. The operating system had to be designed from the ground up." 
-        #voice "audio/voice/captain/C4-023.mp3"
-        #captain "Jesus, you didn’t wanna use an existing one to start with?"
-        #voice "audio/voice/matthew/W4-016.mp3"
-        #matthew "If we’re taking this thing all the way to Jupiter’s orbit we need something powerful."
-        #voice "audio/voice/matthew/W4-017.mp3"
-        #matthew "Plus, this way I know every little detail about it."
-        #voice "audio/voice/matthew/W4-018.mp3"
-        #matthew "So if anything needs fixing, I can handle it right away."
-        #voice "audio/voice/captain/C4-024.mp3"
-        #captain "Oh my god. That’s amazing, Hun!"
-        #voice "audio/voice/matthew/W4-019.mp3"
-        #matthew "Thank you, Pumpkin!"
-        #voice "audio/voice/matthew/W4-020.mp3"
-        #matthew "Wanna guess what I named her?"
-        #voice "audio/voice/captain/C4-025.mp3"
-        #captain "Her?"
-        #voice "audio/voice/matthew/W4-021.mp3"
-        #matthew "What’s wrong with that?"
-        #voice "audio/voice/captain/C4-026.mp3"
-        #captain "Don’t know, seems a little sexist. Having your servant robot be a woman and all that."
-        #voice "audio/voice/matthew/W4-022.mp3"
-        #matthew "Well it’ll make more sense once you know what I named her!"
-        #voice "audio/voice/captain/C4-027.mp3"
-        #captain "Alright alright, what’s her name?"
-        #voice "audio/voice/matthew/W4-023.mp3"
-        #matthew "MAD1!"
-        #voice "audio/voice/captain/C4-028.mp3"
-        #captain "Why Maddy? Is it an acronym?"
-        #voice "audio/voice/matthew/W4-024.mp3"
-        #matthew "Well technically, it stands for Manager of Astral Devices 1.0."
-        #voice "audio/voice/matthew/W4-025.mp3"
-        #matthew "But between us… Matthew… Matt… Rudy… -dy…"
-        #voice "audio/voice/captain/C4-029.mp3"
-        #captain "Oh my god you combined our names."
-        #voice "audio/voice/captain/C4-030.mp3"
-        #captain "You’re such a dork!"
-        #voice "audio/voice/matthew/W4-026.mp3"
-        #matthew "Hahahaha!"
-        #voice "audio/voice/captain/C4-031.mp3"
-        #captain "I love you… so much, hun."
-        #voice "audio/voice/matthew/W4-027.mp3"
-        #matthew "I love you too, Pumpkin!"
-        #voice "audio/voice/captain/C4-032.mp3"
-        #captain "Wait, are you recording this?"
-        #voice "audio/voice/matthew/W4-028.mp3"
-        #matthew "It’s my first captain’s log!"
-        #voice "audio/voice/captain/C4-033.mp3"
-        #captain "You’re supposed to start the recording by saying “Captain’s Log”."
-        #voice "audio/voice/matthew/W4-029.mp3"
-        #matthew "Well thankfully no one else is gonna hear this."
-        #voice "audio/voice/captain/C4-034.mp3"
-        #captain "Tsk. Dork."
+    label EndSECLog:
+        $ quick_menu = False
+        scene black with dissolve
+        voice "audio/voice/matthew/W4-012.mp3"
+        matthew "Ready to meet our baby?"
+        voice "audio/voice/captain/C4-021.mp3"
+        captain "Please don’t call the OS our “baby,” Matthew…"
+        voice "audio/voice/matthew/W4-014.mp3"
+        matthew "Fine. My baby. So… Wuddya think?"
+        voice "audio/voice/captain/C4-022.mp3"
+        captain "You built all of this… Yourself?"
+        voice "audio/voice/matthew/W4-015.mp3"
+        matthew "Yyyuuuuppp. The operating system had to be designed from the ground up." 
+        voice "audio/voice/captain/C4-023.mp3"
+        captain "Jesus, you didn’t wanna use an existing one to start with?"
+        voice "audio/voice/matthew/W4-016.mp3"
+        matthew "If we’re taking this thing all the way to Jupiter’s orbit we need something powerful."
+        voice "audio/voice/matthew/W4-017.mp3"
+        matthew "Plus, this way I know every little detail about it."
+        voice "audio/voice/matthew/W4-018.mp3"
+        matthew "So if anything needs fixing, I can handle it right away."
+        voice "audio/voice/captain/C4-024.mp3"
+        captain "Oh my god. That’s amazing, Hun!"
+        voice "audio/voice/matthew/W4-019.mp3"
+        matthew "Thank you, Pumpkin!"
+        voice "audio/voice/matthew/W4-020.mp3"
+        matthew "Wanna guess what I named her?"
+        voice "audio/voice/captain/C4-025.mp3"
+        captain "Her?"
+        voice "audio/voice/matthew/W4-021.mp3"
+        matthew "What’s wrong with that?"
+        voice "audio/voice/captain/C4-026.mp3"
+        captain "Don’t know, seems a little sexist. Having your servant robot be a woman and all that."
+        voice "audio/voice/matthew/W4-022.mp3"
+        matthew "Well it’ll make more sense once you know what I named her!"
+        voice "audio/voice/captain/C4-027.mp3"
+        captain "Alright alright, what’s her name?"
+        voice "audio/voice/matthew/W4-023.mp3"
+        matthew "MAD1!"
+        voice "audio/voice/captain/C4-028.mp3"
+        captain "Why Maddy? Is it an acronym?"
+        voice "audio/voice/matthew/W4-024.mp3"
+        matthew "Well technically, it stands for Manager of Astral Devices 1.0."
+        voice "audio/voice/matthew/W4-025.mp3"
+        matthew "But between us… Matthew… Matt… Rudy… -dy…"
+        voice "audio/voice/captain/C4-029.mp3"
+        captain "Oh my god you combined our names."
+        voice "audio/voice/captain/C4-030.mp3"
+        captain "You’re such a dork!"
+        voice "audio/voice/matthew/W4-026.mp3"
+        matthew "Hahahaha!"
+        voice "audio/voice/captain/C4-031.mp3"
+        captain "I love you… so much, hun."
+        voice "audio/voice/matthew/W4-027.mp3"
+        matthew "I love you too, Pumpkin!"
+        voice "audio/voice/captain/C4-032.mp3"
+        captain "Wait, are you recording this?"
+        voice "audio/voice/matthew/W4-028.mp3"
+        matthew "It’s my first captain’s log!"
+        voice "audio/voice/captain/C4-033.mp3"
+        captain "You’re supposed to start the recording by saying “Captain’s Log”."
+        voice "audio/voice/matthew/W4-029.mp3"
+        matthew "Well thankfully no one else is gonna hear this."
+        voice "audio/voice/captain/C4-034.mp3"
+        captain "Tsk. Dork."
+        $ renpy.end_replay()
+        

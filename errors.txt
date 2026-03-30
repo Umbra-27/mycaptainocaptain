@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3501: Line is indented, but the preceding return statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    captain "Captain’s log. January 27th."
-    ^
+File "game/screens.rpy", line 1204: textbutton expects a non-empty block.
+    textbutton _("Return"):
+                           ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Sat Mar 28 13:23:19 2026
+Mon Mar 30 06:39:53 2026

@@ -318,16 +318,18 @@ screen navigation():
                 action ShowMenu("help")
 
             imagebutton:
-                xpos 1750    
-                ypos 450
                 if persistent.secret_unlocked is True:
-                    idle "gui/gallery-icon.png" 
-                    hover "gui/gallery-icon.png"  
-                    action NullAction()
-                else: 
+                    xpos 1529    
+                    ypos 450
                     idle "gui/gallery-icon-expanded.png" 
                     hover "gui/gallery-icon-expanded.png" 
                     action ShowMenu("gallery") 
+                else: 
+                    xpos 1750    
+                    ypos 450
+                    idle "gui/gallery-icon.png" 
+                    hover "gui/gallery-icon.png"  
+                    action NullAction()
 
             # Ending Stars
             hbox:
@@ -338,10 +340,11 @@ screen navigation():
                     if persistent.endB_unlocked is True:
                         idle "images/End Stars@15/endB.PNG"                    
                         hover "images/End Stars@15/endB.PNG"
+                        action Replay("EndBLog")
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
-                    action NullAction()
+                        action NullAction()
                 
                 # Sara Star
                 imagebutton:
@@ -350,10 +353,11 @@ screen navigation():
                     if persistent.endS_unlocked is True:
                         idle "images/End Stars@15/endS.PNG"                    
                         hover "images/End Stars@15/endS.PNG"
+                        action Replay("EndSLog")
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
-                    action NullAction()
+                        action NullAction()
 
                 # Eugen Star
                 imagebutton:
@@ -362,10 +366,11 @@ screen navigation():
                     if persistent.endE_unlocked is True:
                         idle "images/End Stars@15/endE.PNG"                    
                         hover "images/End Stars@15/endE.PNG"
+                        action Replay("EndELog")
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
-                    action NullAction()
+                        action NullAction()
 
                 # Captain Star
                 imagebutton:
@@ -374,10 +379,11 @@ screen navigation():
                     if persistent.endC_unlocked is True:
                         idle "images/End Stars@15/endC.PNG"                    
                         hover "images/End Stars@15/endC.PNG"
+                        action Replay("EndCLog")
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
-                    action NullAction()
+                        action NullAction()
 
                 # Good End Star
                 imagebutton:
@@ -386,10 +392,11 @@ screen navigation():
                     if persistent.endG_unlocked is True:
                         idle "images/End Stars@15/endG.PNG"                    
                         hover "images/End Stars@15/endG.PNG"
+                        action Replay("EndGLog")
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
-                    action NullAction()
+                        action NullAction()
 
                 # Secret Star
                 imagebutton:
@@ -398,10 +405,11 @@ screen navigation():
                     if persistent.endSEC_unlocked is True:
                         idle "images/End Stars@15/endSEC.PNG"                    
                         hover "images/End Stars@15/endSEC.PNG"
+                        action Replay("EndSECLog")
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
-                    action NullAction()
+                        action NullAction()
 
         else:
             # FIX: These buttons must be indented 4 spaces further than the 'else:'
@@ -460,7 +468,7 @@ style navigation_button_text:
     hover_bold True
     color "#ffffff"
     hover_color "#ffffff"
-    size 44
+    size 44    
 
 ## Main Menu screen ############################################################
 ##
@@ -579,12 +587,11 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
                         transclude
 
     # 3. Handle the Return button for sub-menus
-    if not main_menu:
-        key "game_menu" action Return()
-        if title != _("Pause") and title != _("Game Paused"):
-            textbutton _("Return"):
-                style "return_button"
-                action Return()
+    key "game_menu" action Return()
+    if title != _("Pause") and title != _("Game Paused"):
+        textbutton _("Return"):
+            style "return_button"
+            action Return()
     
     label title
 
@@ -1096,12 +1103,107 @@ style history_label_text:
 ## Screen for ending CGs to be accessed after the player has seen them.
 ##
 
-screen gallery():
+init python:
+
+    # Step 1. Create the gallery object.
+    g = Gallery()
+
+    # Step 2. Add buttons and images to the gallery.
+
+    # A button with an image that is always unlocked.
+    g.button("Main Menu")
+    g.image("bg menu.png")
+
+    g.button("Eugen")
+    g.image("bg engineer.png")
+
+    g.button("Sara")
+    g.image("bg medic.png")
+    
+    g.button("MAD1")
+    g.image("bg computer.png")
+
+    g.button("Escape")
+    g.image("bg escape pod.png")
+    g.condition("persistent.seenC1")
+
+    # The last image in this button has an condition associated with it,
+    # so it will only unlock if the user gets both endings.
+    
+    g.button("Specimen")
+    g.condition("persistent.seenC2")
+    g.image("bg artifact.png")
+    g.image("bg artifact covered.png")
+    g.condition("persistent.endSEC_unlocked")
+    
+    g.button("Captain Ending")
+    g.condition("persistent.endC_unlocked or persistent.endB_unlocked")
+    g.image("ending captain.png")
+
+    g.button("Eugen Ending")
+    g.condition("persistent.endE_unlocked")
+    g.image("ending engineer.png")
+
+    g.button("Sara Ending")
+    g.condition("persistent.endS_unlocked")
+    g.image("ending sara.png")
+
+    g.button("Good Ending")
+    g.condition("persistent.endG_unlocked")
+    g.image("ending crew stars.png")
+
+    g.button("Secret Ending1")
+    g.condition("persistent.endSEC_unlocked")
+    g.image("ending byebye fungus.png")
+    
+    g.button("Secret Ending2")
+    g.condition("persistent.endSEC_unlocked")
+    g.image("secret ending.png")
+
+    # The transition used when switching images.
+    g.transition = dissolve
+
+# Step 3. The gallery screen we use.
+screen gallery:
+
+    # Ensure this replaces the main menu.
     tag menu
 
-    style_prefix "gallery"
+    # The background.
+    add "gui/main_menu.png"
+
+    # A grid of buttons.
+    grid 3 2:
+
+        xfill True
+        yfill True
+
+        # Call make_button to show a particular button.
+        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
+        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
+        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
+
+        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
+        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
+        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
 
 
+    # The screen is responsible for returning to the main menu. It could also
+    # navigate to other gallery screens.
+    hbox:
+        xalign 0.5
+
+        spacing gui.page_spacing
+
+        textbutton _("<") action FilePagePrevious()
+        key "save_page_prev" action FilePagePrevious()
+
+        textbutton _(">") action FilePageNext()
+        key "save_page_next" action FilePageNext()
+
+    textbutton _("Return"):
+        style "return_button"
+        action Return()
 
 
 ## Help screen #################################################################
@@ -1432,7 +1534,7 @@ style skip_text:
 style skip_triangle:
     ## We have to use a font that has the BLACK RIGHT-POINTING SMALL TRIANGLE
     ## glyph in it.
-    font "cuyabra.otf"
+    font "DejaVuSans.ttf"
 
 
 ## Notify screen ###############################################################
@@ -1656,6 +1758,7 @@ define bubble.computer = Frame("gui/computerbubble.png", 400, 540, 1120, 495)
 define bubble.engineer = Frame("gui/eugenebubble.png", 400, 540, 1120, 495)
 define bubble.medic = Frame("gui/sarabubble.png", 400, 540, 1120, 495)
 define bubble.captainbreakdown = Frame("gui/rudythoughtbubble.png", 400, 540, 1120, 495)
+define bubble.computersolution = Frame("gui/computer frame.png", 400, 540, 1120, 495)
 
 define bubble.properties = {
     "captain" : {
@@ -1686,6 +1789,11 @@ define bubble.properties = {
         "window_left_padding" : 25,
         "window_right_padding" : 20,
     },
+    
+    "computersolution" : {
+        "window_background" : bubble.computersolution,
+        "window_top_padding" : 10,
+    },
 }
 
 define bubble.expand_area = {
@@ -1697,7 +1805,7 @@ define bubble.expand_area = {
 }
 
 
-# Map 0 %90
+# Map 0 %99
 screen MapUI0():
     tag map
     imagebutton:
@@ -1705,11 +1813,18 @@ screen MapUI0():
         hover "map/bg spaceship.png"
         action NullAction()
 
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-90.png"
-        hover "oxygen/oxygen-meter-90.png"
-        action NullAction()
+    if seenSI is True or seenEI is True:
+        imagebutton:
+            xalign 1.0
+            idle "oxygen/oxygen-meter-99.png"
+            hover "oxygen/oxygen-meter-99.png"
+            action NullAction()
+    else:
+        imagebutton:
+            xalign 1.0
+            idle "oxygen/oxygen-meter-90.png"
+            hover "oxygen/oxygen-meter-90.png"
+            action NullAction()
    
     # medic
     if seenSI is False:
@@ -1739,7 +1854,6 @@ screen MapUI1():
         idle "map/bg spaceship.png"
         hover "map/bg spaceship.png"
         action NullAction()
-        activate_sound "audio/Button_Select.mp3"
 
     # oxygen at 80%
     imagebutton:
@@ -1775,11 +1889,11 @@ screen MapUIC1():
         hover "map/bg spaceship.png"
         action NullAction()
 
-    # oxygen at 55%
+    # oxygen at 65%
     imagebutton:
         xalign 1.0
-        idle "oxygen/oxygen-meter-50.png"
-        hover "oxygen/oxygen-meter-50.png"
+        idle "oxygen/oxygen-meter-65.png"
+        hover "oxygen/oxygen-meter-65.png"
         action NullAction()
 
     # escape
@@ -1800,12 +1914,18 @@ screen MapUI2():
         hover "map/bg spaceship.png"
         action NullAction()
 
-    # oxygen at 50%
-    imagebutton:
-        xalign 1.0
-        idle "oxygen/oxygen-meter-50.png"
-        hover "oxygen/oxygen-meter-50.png"
-        action NullAction()
+    # oxygen at 50% (if seen MO, 30%)
+    if seenMO is True:
+        imagebutton:
+            idle "oxygen/oxygen-meter-30.png"
+            hover "oxygen/oxygen-meter-30.png"
+            action NullAction()
+    else:
+        imagebutton:
+            xalign 1.0
+            idle "oxygen/oxygen-meter-50.png"
+            hover "oxygen/oxygen-meter-50.png"
+            action NullAction()
 
     # medic
     imagebutton:
@@ -1844,11 +1964,11 @@ screen MapUIC2():
         hover "map/bg spaceship.png"
         action NullAction()
 
-    # oxygen at 25%
+    # oxygen at 20%
     imagebutton:
         xalign 1.0
-        idle "oxygen/oxygen-meter-25.png"
-        hover "oxygen/oxygen-meter-25.png"
+        idle "oxygen/oxygen-meter-20.png"
+        hover "oxygen/oxygen-meter-20.png"
         action NullAction()
 
     # storage
@@ -1943,12 +2063,12 @@ screen MapUIEnd():
         hover "oxygen/oxygen-meter-10.png"
         action NullAction()
 
-    # storage
+    # escape pod
     imagebutton:
-        xpos 1080
-        ypos 268
-        idle "map/storageidle.png"
-        hover "map/storagehover.png"
+        xpos 1405
+        ypos 513
+        idle "map/escapeidle.png"
+        hover "map/escapehover.png"
         action Jump("Choice")
 
 
@@ -2016,74 +2136,314 @@ screen MapUIEnd():
 #         hover "map/computerhover.png"
 #         action NullAction()
 
-screen EndCPoem():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        He rose the morrow morn.
-        A sadder and a wiser man.
-        He went like one that hath been stunned,
-        And is of sense forlorn:
-        The Captain, whose eye is dark,
-        Whose beard with age is hoar
-        Is gone.
-        """
+screen EndCPoemA():
+    
+    style_prefix "credits"
+    
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 225
+            text """
+            He rose the morrow morn.
+            A sadder and a wiser man.
+            He went like one that hath been stunned,
+            And is of sense forlorn:
+            The Captain, whose eye is dark,
+            Whose beard with age is hoar
+            Is gone.
+            """
 
-screen EndEPoem():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        We are the hard-luck folk, who strove
-        Zealously, but in vain;
-        We lost and lost, while our comrades throve,
-        And still we lost again.
-        """
+screen EndCPoemB():
+    
+    style_prefix "credits"
+    
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 225
+            text """
+            He rose the morrow morn.
+            A sadder and a wiser man.
+            He went like one that hath been stunned,
+            And is of sense forlorn:
+            The Captain, whose eye is dark,
+            Whose beard with age is hoar
+            Is gone.
+            """
 
-screen EndSPoem():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        When I compare
-        What I have lost with what I have gained,
-        What I have missed with what attained,
-        Little room do I find for pride
-        """
+        vbox:
+            ypos 350
+            xpos 15
+            text """
+            Captain’s log, January 27th.
+            The specimen has safely returned with me to Earth.
+            Further investigations will commence soon. 
+            I think… I uh… I…
+            I-I’ve failed…
+            I’ve killed my crew members…
+            What kind of Captain am I?                
+            I’ve come home with the specimen… but at what cost..?
+            I’m sorry, Sara…
+            I’m sorry, Eugen…
+            What have I done?
+            """
 
-screen EndGPoem():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        The ship is anchor’d safe and sound, its voyage closed and done,
-        From fearful trip the victor ship comes in with object won.
-        """
+screen EndEPoemA():
+    style_prefix "credits"
+    
+    frame:
+        xpos 75
+        ypos 50
+        
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 225
+            text """
+            We are the hard-luck folk, who strove
+            Zealously, but in vain;
+            We lost and lost, while our comrades throve,
+            And still we lost again.
+            """
 
-screen EndBPoem():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        Not every man knows what is waiting for him, or what he shall sing
-        When the ship he is on slips into darkness, there at the end.
-        """
+screen EndEPoemB():
+    style_prefix "credits"
+    
+    frame:
+        xpos 75
+        ypos 50
+        
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 225
+            text """
+            We are the hard-luck folk, who strove
+            Zealously, but in vain;
+            We lost and lost, while our comrades throve,
+            And still we lost again.
+            """
 
-screen EndSECPoem():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        I love thee freely, as men strive for right.
-        I love thee purely, as they turn from praise.
-        I love thee with the passion put to use.
-        """
+        vbox:
+            ypos 300
+            xpos 15
+            text """
+            Eugen's Log:
+            All has come to an end, and the mission is behind me.
+            However, I can’t stop thinking if it was truly the best 
+            outcome for me being saved.
+            I accepted the mission to prove my drill; my design is 
+            flawless; however, I left it behind.
+            What does my future as an engineer entail? I will never be 
+            rid of the memory of my failure, my design being lost in space.
+            Getting in that return pod is just another addition to my 
+            list of regrets.
+            I hope Sara and Rudy can forgive me.
+            """
+
+screen EndSPoemA():
+
+    style_prefix "credits"
+
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 250
+            text """
+            When I compare
+            What I have lost with what I have gained,
+            What I have missed with what attained,
+            Little room do I find for pride
+            """
+
+screen EndSPoemB():
+
+    style_prefix "credits"
+
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 250
+            text """
+            When I compare
+            What I have lost with what I have gained,
+            What I have missed with what attained,
+            Little room do I find for pride
+            """
+
+        vbox:
+            ypos 300
+            xpos 15
+            text """
+            Sara's Log:
+            I made it back...I still can’t believe it. 
+            I found life out in space. I achieved my dream!
+            My family? They’re proud of me, but they still can’t fully 
+            accept my life. 
+            It’s not what I expected… But it doesn’t matter anymore.
+            Captain, you believed in me. You gave me what I craved 
+            from my family all my life. And I left you to die in space.
+            It’s hard to bear…I will keep going and do my best. 
+            I owe that to you.
+            """
+
+screen EndGPoemA():
+    
+    style_prefix "credits"
+
+    frame:
+        xpos 75
+        ypos 50
+    
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 75
+            text """
+            The ship is anchor’d safe and sound, its voyage closed and done,
+            From fearful trip the victor ship comes in with object won.
+            """
+
+screen EndGPoemB():
+    
+    style_prefix "credits"
+
+    frame:
+        xpos 75
+        ypos 50
+    
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 75
+            text """
+            The ship is anchor’d safe and sound, its voyage closed and done,
+            From fearful trip the victor ship comes in with object won.
+            """
+
+        vbox:
+            ypos 250
+            xpos 15
+            text """
+            Captain’s log, January 27th. 
+            A- a lot has happened since the last log.
+            We’re all very shaken. But at least we’re home.
+            Next log will be a recap of events.
+            I… I did it Matthew…
+            I did it for you.
+            """
+
+screen EndBPoemA():
+    
+    style_prefix "credits"
+    
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 75
+            text """
+            Not every man knows what is waiting for him, or what he shall sing
+            When the ship he is on slips into darkness, there at the end.
+            """
+
+screen EndBPoemB():
+    
+    style_prefix "credits"
+
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 75
+            text """
+            Not every man knows what is waiting for him, or what he shall sing
+            When the ship he is on slips into darkness, there at the end.
+            """
+
+        vbox:
+            ypos 250
+            xpos 15
+            text """
+            Captain's Log:
+            Matthew… We fai- I failed the mission… I failed you. 
+            I told myself I would complete the mission whether 
+            or not it kills me, and I guess part of me hoped 
+            I would join you amongst the stars. 
+            But I’m a coward… I failed the CSA, 
+            I failed my crew, I failed you.
+            What have I done?
+            """
+
+
+screen EndSECPoemA():
+    
+    style_prefix "credits"
+
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 225
+            text """
+            I love thee freely, as men strive for right.
+            I love thee purely, as they turn from praise.
+            I love thee with the passion put to use.
+            """
+
+screen EndSECPoemB():
+    
+    style_prefix "credits"
+
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            style_prefix "poem"
+            ypos 100
+            xpos 225
+            text """
+            I love thee freely, as men strive for right.
+            I love thee purely, as they turn from praise.
+            I love thee with the passion put to use.
+            """
+
+        vbox:
+            ypos 250
+            xpos 15
+            text """
+            Captain’s log, September 24th.
+            The mission was unsuccessful. 
+            The specimen has been discarded to save the ship.
+            I- …
+            I love you, Matthew.
+            Goodbye, my love.
+            """
 
 screen TryAgain():
     vbox :
-        ypos 80
-        xpos 80
+        style_prefix "tryagain"
+        ypos 600
+        xalign 0.5
         text """
         Death is nothing at all.
         I have only slipped away to the next room.
@@ -2091,112 +2451,152 @@ screen TryAgain():
         I am but waiting for you.
         """
 
+style poem_text:
+    text_align 0.5
+    size gui.poem_text_size
+
+style tryagain_text:
+    text_align 0.5
 ## Credits ######
 
 screen Credits1():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        Created By
-            Lindsay Buckingham & Mariya Mubeen
 
-        Art Director
-            Lindsay Buckingham
+    style_prefix "credits"
+    frame:
+        xpos 75
+        ypos 50
 
-        Game Producer
-            Mariya Mubeen
-        """
+        vbox:
+            ypos 80
+            xpos 80
+            text """
+            Created By
+                Lindsay Buckingham & Mariya Mubeen
 
-    vbox:
-        ypos 80
-        xpos 0.5
-        text """
-        Team Captains
+            Art Director
+                Lindsay Buckingham
 
-            Art - Lindsay Buckingham
-            Programming - Carine Ho
-            Sound - Jason Byrne
-            UI/UX - Karina Bittencourt
-            Writing - Mariya Mubeen
-            Voice - Feodor Romanenkov
-        """
+            Game Producer
+                Mariya Mubeen
+
+            
+            Team Captains
+
+                Art - Lindsay Buckingham
+                Programming - Carine Ho
+                Sound - Jason Byrne
+                UI/UX - Karina Bittencourt
+                Writing - Mariya Mubeen
+                Voice - Feodor Romanenkov
+            """
 
 screen Credits2():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        Art
+    
+    style_prefix "credits"
+    frame:
+        xpos 75
+        ypos 50
 
-        Captain Rudy - Lindsay Buckingham
-        MAD1 - Alex Kurina
-        Cosmotechnician Eugen - Muhammad Nafeh Masood
-        Astrobiologist Sara - Leah Tran
-        Map and console design - Ling Yang
-        """ 
+        vbox:
+            ypos 80
+            xpos 80
+            text """
+            Art
 
-    vbox:
-        ypos 80
-        xpos 0.5
-        text """
-        Writing
+            Captain Rudy - Lindsay Buckingham
+            MAD1 - Alex Kurina
+            Cosmotechnician Eugen - Muhammad Nafeh Masood
+            Astrobiologist Sara - Leah Tran
+            Map and console design - Ling Yang
 
-        Captain Rudy - Feodor Romanenkov
-        MAD1 - Carine Ho
-        Cosmotechnician Eugen - Omar Shahin
-        Astrobiologist Sara - Suprabha Irugalratne
-        Final Editing - Mariya Mubeen
-        """ 
+
+            Writing
+
+            Captain Rudy - Feodor Romanenkov
+            MAD1 - Carine Ho
+            Cosmotechnician Eugen - Omar Shahin
+            Astrobiologist Sara - Suprabha Irugalratne
+            Final Editing - Mariya Mubeen
+            """ 
 
 screen Credits3():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        Programming
+    
+    style_prefix "credits"
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            ypos 80
+            xpos 80
+            text """
+            Programming
 
-        Carine Ho
-        Feodor Romanenkov
-        Jason Byrne
+            Carine Ho
+            Feodor Romanenkov
+            Jason Byrne
 
-        User Experience/Interface Design
 
-        Karina Bittencourt
-        Lucie Hunter
-        Jamie Choi
-        Ling Yang 
-        """ 
+            User Experience/Interface Design
 
-    vbox:
-        ypos 80
-        xpos 0.5
-        text """
-        Sound Design
+            Karina Bittencourt
+            Lucie Hunter
+            Jamie Choi
+            Ling Yang 
+            
 
-        Jason Byrne
-        Feodor Romanenkov
+            Game Design
 
-        Game Design
-
-        Mariya Mubeen 
-        Omar Shahin
-        """ 
+            Mariya Mubeen 
+            Omar Shahin
+            """ 
 
 screen Credits4():
-    vbox:
-        ypos 80
-        xpos 80
-        text """
-        Voice Talent
+    
+    style_prefix "credits"
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            ypos 80
+            xpos 80
+            text """
+            Sound Design
 
-        Performance Director - Feodor Romanenkov
+            Jason Byrne
+            Feodor Romanenkov
 
-        Captain Rudy - Feodor Romanenkov
-        MAD1 - Carine Ho
-        Cosmotechnician Eugen - Jason Byrne
-        Astrobiologist Sara - Mariya Mubeen
-        """ 
+
+            Voice Talent
+
+            Performance Director - Feodor Romanenkov
+
+            Captain Rudy - Feodor Romanenkov
+            MAD1 - Carine Ho
+            Cosmotechnician Eugen - Jason Byrne
+            Astrobiologist Sara - Mariya Mubeen
+            """ 
+
+screen Credits5():
+
+    style_prefix "credits"
+    frame:
+        xpos 75
+        ypos 50
+        vbox:
+            ypos 80
+            xpos 80
+            text """
+            Special Thanks To
+
+            Dr. Kristopher Alexander
+            Maeve Fitzgerald
+            TMU Sound Library
+
+            """
+
+style credits_frame:
+    background Frame("gui/credit frame.png", gui.credit_frame_borders)
+    xysize (1182, 982)
 
 
 ################################################################################

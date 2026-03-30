@@ -57,10 +57,10 @@ define gui.interface_text_color = '#ffffff'
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = "cuyabra.otf"
+define gui.text_font = "DejaVuSans.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "cuyabra.otf"
+define gui.name_text_font = "DejaVuSans.ttf"
 
 ## The font used for out-of-game text.
 define gui.interface_text_font = "fonts/Orbitron-VariableFont_wght.ttf"
@@ -82,6 +82,10 @@ define gui.notify_text_size = 24
 
 ## The size of the game's title.
 define gui.title_text_size = 75
+
+# The size of ending poems.
+define gui.poem_text_size = 25
+define gui.poem_text_font = "DejaVuSans.ttf"
 
 
 ## Main and Game Menus #########################################################
@@ -209,7 +213,7 @@ define gui.quick_button_text_selected_color = gui.accent_color
 define gui.choice_button_width = 400
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(30, 50, 30, 50)
+define gui.choice_button_borders = Borders(5, 50, 5, 50)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
@@ -299,6 +303,8 @@ define gui.notify_frame_borders = Borders(24, 8, 60, 8)
 
 ## Should frame backgrounds be tiled?
 define gui.frame_tile = False
+
+define gui.credit_frame_borders = Borders(10, 10, 10, 10)
 
 
 ## Bars, Scrollbars, and Sliders ###############################################
