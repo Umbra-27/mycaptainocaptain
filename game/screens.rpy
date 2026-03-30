@@ -1109,102 +1109,183 @@ init python:
     g = Gallery()
 
     # Step 2. Add buttons and images to the gallery.
-
-    # A button with an image that is always unlocked.
+    g.button ("Lock")
+    
     g.button("Main Menu")
-    g.image("bg menu.png")
+    g.image("images/bg menu.png")
 
     g.button("Eugen")
-    g.image("bg engineer.png")
+    g.image("images/bg engineer.png")
 
     g.button("Sara")
-    g.image("bg medic.png")
+    g.image("images/bg medic.jpg")
     
     g.button("MAD1")
-    g.image("bg computer.png")
+    g.image("images/bg computer.png")
 
     g.button("Escape")
-    g.image("bg escape pod.png")
-    g.condition("persistent.seenC1")
+    g.image("images/bg escape pod.png")
 
-    # The last image in this button has an condition associated with it,
-    # so it will only unlock if the user gets both endings.
-    
     g.button("Specimen")
     g.condition("persistent.seenC2")
-    g.image("bg artifact.png")
-    g.image("bg artifact covered.png")
-    g.condition("persistent.endSEC_unlocked")
+    g.image("images/bg artifact.png")
+    g.image("images/bg artifact covered.png")
+    g.condition("persistent.seenC2 and persistent.endSEC_unlocked")
     
     g.button("Captain Ending")
+    g.image("images/End Screens/ending captain.png")
     g.condition("persistent.endC_unlocked or persistent.endB_unlocked")
-    g.image("ending captain.png")
 
     g.button("Eugen Ending")
+    g.image("images/End Screens/ending engineer.png")
     g.condition("persistent.endE_unlocked")
-    g.image("ending engineer.png")
 
     g.button("Sara Ending")
+    g.image("images/End Screens/ending medic.png")
     g.condition("persistent.endS_unlocked")
-    g.image("ending sara.png")
 
     g.button("Good Ending")
+    g.image("images/End Screens/ending crew stars.png")
     g.condition("persistent.endG_unlocked")
-    g.image("ending crew stars.png")
 
     g.button("Secret Ending1")
+    g.image("images/End Screens/ending byebye fungus.png")
     g.condition("persistent.endSEC_unlocked")
-    g.image("ending byebye fungus.png")
     
     g.button("Secret Ending2")
+    g.image("images/End Screens/secret ending.png")
     g.condition("persistent.endSEC_unlocked")
-    g.image("secret ending.png")
 
     # The transition used when switching images.
     g.transition = dissolve
 
+    thumbnail_x = 455
+    thumbnail_y = 261
+    
+
 # Step 3. The gallery screen we use.
-screen gallery:
+screen gallery():
 
     # Ensure this replaces the main menu.
     tag menu
 
+    ## Avoid predicting this screen, as it can be very large.
+    predict False
+
     # The background.
     add "gui/main_menu.png"
+    add "gui/pause_overlay.png"
 
-    # A grid of buttons.
-    grid 3 2:
+    default gallery_page = FilePage(1)
 
-        xfill True
-        yfill True
+    fixed:
+        use game_menu(_("Gallery")):
 
-        # Call make_button to show a particular button.
-        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
-        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
-        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
+            # A grid of buttons.
+            grid 3 2:
+                style_prefix "gallery"
 
-        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
-        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
-        add g.make_button("Main Menu", "bg menu.png", xalign=0.5, yalign=0.5)
+                xalign 0.5
+                yalign 0.000002
+                yoffset -20
+
+                spacing gui.slot_spacing
+
+                xfill True
+                yfill True
+                
+                # if FilePage(1):
+                #     # Call make_button to show a particular button.
+                #     add g.make_button("Main Menu", im.Scale("images/bg menu.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                #     add g.make_button("Eugen", im.Scale("images/bg engineer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                #     add g.make_button("Sara", im.Scale("images/bg medic.jpg", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+
+                #     add g.make_button("MAD1", im.Scale("images/bg computer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                #     add g.make_button("Escape", im.Scale("images/bg escape pod.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                #     if persistent.seenC2 == True:
+                #         add g.make_button("Specimen", im.Scale("images/bg artifact.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5)
+                #     else:
+                #         add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+
+                # elif FilePage(2):
+                # Captain End Screen
+                if persistent.endB_unlocked == True or persistent.endC_unlocked == True:
+                    add g.make_button("Captain Ending", im.Scale("images/End Screens/ending captain.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                else:
+                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                
+                # Eugen End Screen
+                if persistent.endE_unlocked == True:
+                    add g.make_button("Eugen Ending", im.Scale("images/End Screens/ending engineer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                else:
+                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+
+                # Sara End Screen
+                if persistent.endS_unlocked == True:
+                    add g.make_button("Sara Ending", im.Scale("images/End Screens/ending medic.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                else:
+                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+
+                # Good End Screen
+                if persistent.endG_unlocked == True:
+                    add g.make_button("Good Ending", im.Scale("images/End Screens/ending crew stars.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                else:
+                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+
+                # Secrert End Screen
+                if persistent.endSEC_unlocked == True:
+                    add g.make_button("Secret Ending1", im.Scale("images/End Screens/ending byebye fungus.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                else:
+                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+
+                # Secret End Screen
+                if persistent.endSEC_unlocked == True:
+                    add g.make_button("Secret Ending2", im.Scale("images/End Screens/secret ending.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                else:
+                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+
+                # The screen is responsible for returning to the main menu. It could also
+                # navigate to other gallery screens.
+            # hbox:
+            #     style_prefix "page"
+            #     xalign 0.5
+            #     yalign 1.0
+
+            #     spacing gui.page_spacing
+            #     textbutton _("<") action FilePagePrevious()
+            #     key "save_page_prev" action FilePagePrevious()
+
+            #     textbutton _("1") action FilePage(1)
+            #     textbutton _("2") action FilePage(2)
+
+            #     textbutton _(">") action FilePageNext()
+            #     key "save_page_next" action FilePageNext()
 
 
-    # The screen is responsible for returning to the main menu. It could also
-    # navigate to other gallery screens.
-    hbox:
-        xalign 0.5
+style gallery_label is gui_label
+style gallery_label_text is gui_label_text
+style gallery_button is gui_button
+style gallery_button_text is gui_button_text
 
-        spacing gui.page_spacing
+style gallery_label:
+    xpadding 75
+    ypadding 5
+    xalign 0.5
+    yoffset -90
 
-        textbutton _("<") action FilePagePrevious()
-        key "save_page_prev" action FilePagePrevious()
+style gallery_label_text:
+    textalign 0.5
+    layout "subtitle"
+    hover_color gui.hover_color
 
-        textbutton _(">") action FilePageNext()
-        key "save_page_next" action FilePageNext()
+style gallery_button:
+    properties gui.button_properties("gallery_button")
+    xpadding 15
+    ypadding 15
+    background Frame(("gui/Gallery Unlock.png"), gui.slot_button_borders, tile=gui.frame_tile)
 
-    textbutton _("Return"):
-        style "return_button"
-        action Return()
-
+style gallery_button_text:
+    properties gui.text_properties("gallery_button")
 
 ## Help screen #################################################################
 ##

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1204: textbutton expects a non-empty block.
-    textbutton _("Return"):
-                           ^
+File "game/screens.rpy", line 1267: end of line expected.
+    style gallery_button is gui.slot_button_borders
+                               ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Mon Mar 30 06:39:53 2026
+Mon Mar 30 14:25:30 2026

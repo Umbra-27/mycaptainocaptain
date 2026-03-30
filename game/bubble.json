@@ -177,6 +177,15 @@
         ],
         "properties": "captainbreakdown"
     },
+    "EndBLog_e6c25fdb": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
+    },
     "EndB_0b94da04": {
         "area": [
             320,
@@ -260,6 +269,15 @@
         ],
         "properties": "medic"
     },
+    "EndCLog_0b0e6530": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
+    },
     "EndCLog_bba318c4": {
         "area": [
             320,
@@ -323,6 +341,15 @@
         ],
         "properties": "computersolution"
     },
+    "EndELog_b00b492d": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "computersolution"
+    },
     "EndE_01f59ab2": {
         "area": [
             320,
@@ -360,6 +387,15 @@
         "properties": "medic"
     },
     "EndGLog_896b1e12": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
+    },
+    "EndGLog_9fa96853": {
         "area": [
             320,
             630,
@@ -423,6 +459,33 @@
         "properties": "captainbreakdown"
     },
     "EndSECLog_63d7f36a": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "computersolution"
+    },
+    "EndSECLog_b41f46fc": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "computersolution"
+    },
+    "EndSECLog_fbd30824": {
+        "area": [
+            320,
+            630,
+            1280,
+            450
+        ],
+        "properties": "captainbreakdown"
+    },
+    "EndSLog_1dcf4140": {
         "area": [
             320,
             630,

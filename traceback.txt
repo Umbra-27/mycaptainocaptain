@@ -1,7 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-Exception: Invalid key specifier gallery_page_next
+  File "game/screens.rpy", line 1167, in execute
+    screen gallery():
+  File "game/screens.rpy", line 1167, in execute
+    screen gallery():
+  File "game/screens.rpy", line 1182, in execute
+    fixed:
+  File "game/screens.rpy", line 1183, in execute
+    use game_menu(_("Gallery")):
+  File "game/screens.rpy", line 547, in execute
+    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
+  File "game/screens.rpy", line 547, in execute
+    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
+  File "game/screens.rpy", line 560, in execute
+    if title == _("Pause") or title == _("Game Paused"):
+  File "game/screens.rpy", line 566, in execute
+    frame:
+  File "game/screens.rpy", line 568, in execute
+    hbox:
+  File "game/screens.rpy", line 573, in execute
+    frame:
+  File "game/screens.rpy", line 575, in execute
+    if scroll == "viewport":
+  File "game/screens.rpy", line 587, in execute
+    transclude
+  File "game/screens.rpy", line 1183, in execute
+    use game_menu(_("Gallery")):
+  File "game/screens.rpy", line 1186, in execute
+    grid 3 2:
+Exception: Grid overfull.
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -32,38 +60,63 @@ Traceback (most recent call last):
         ^^^^^^^^^
     )
     ^
-  File "renpy/display/core.py", line 3248, in interact_core
-    rv = root_widget.event(ev, x, y, 0)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 805, in event
-    rv = self.child.event(ev, x, y, st)
-         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/behavior.py", line 556, in event
-    if map_event(ev, name):
-       ~~~~~~~~~^^^^^^^^^^ 
-  File "renpy/display/behavior.py", line 312, in map_event
-    check_code = eval("lambda ev : " + compile_event(keysym, True), globals())
-                                       ~~~~~~~~~~~~~^^^^^^^^^^^^^^            
-  File "renpy/display/behavior.py", line 207, in compile_event
-    raise Exception("Invalid key specifier %s" % key)
-Exception: Invalid key specifier gallery_page_next
+  File "renpy/display/core.py", line 2700, in interact_core
+    root_widget.visit_all(lambda d: d.per_interact())
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 457, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 457, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 457, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/screen.py", line 503, in visit_all
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "renpy/display/core.py", line 2700, in <lambda>
+    root_widget.visit_all(lambda d: d.per_interact())
+                                    ~~~~~~~~~~~~~~^^ 
+  File "renpy/display/screen.py", line 514, in per_interact
+    self.update()
+    ~~~~~~~~~~~^^
+  File "renpy/display/screen.py", line 715, in update
+    self.screen.function(**self.scope)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "game/screens.rpy", line 1167, in execute
+    screen gallery():
+  File "game/screens.rpy", line 1167, in execute
+    screen gallery():
+  File "game/screens.rpy", line 1182, in execute
+    fixed:
+  File "game/screens.rpy", line 1183, in execute
+    use game_menu(_("Gallery")):
+  File "game/screens.rpy", line 547, in execute
+    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
+  File "game/screens.rpy", line 547, in execute
+    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
+  File "game/screens.rpy", line 560, in execute
+    if title == _("Pause") or title == _("Game Paused"):
+  File "game/screens.rpy", line 566, in execute
+    frame:
+  File "game/screens.rpy", line 568, in execute
+    hbox:
+  File "game/screens.rpy", line 573, in execute
+    frame:
+  File "game/screens.rpy", line 575, in execute
+    if scroll == "viewport":
+  File "game/screens.rpy", line 587, in execute
+    transclude
+  File "game/screens.rpy", line 1183, in execute
+    use game_menu(_("Gallery")):
+  File "game/screens.rpy", line 1186, in execute
+    grid 3 2:
+  File "renpy/display/layout.py", line 547, in add
+    raise Exception("Grid overfull.")
+Exception: Grid overfull.
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.2.26010301
 My Captain, O' Captain 1.0
-Mon Mar 30 06:38:02 2026
+Mon Mar 30 14:11:50 2026
