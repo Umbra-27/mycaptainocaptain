@@ -24,6 +24,8 @@ default persistent.endG_unlocked = False # good ending achieved
 
 default persistent.endSEC_unlocked = False # secret ending achieved
 
+define config.allow_skipping = True
+
 # Sound Settings
 default preferences.volume.music = 0.3
 default preferences.volume.sfx = 0.5
@@ -125,13 +127,12 @@ label start:
     show captain neutral-closed behind computer
 
     voice "audio/voice/madi/M1-002-1.mp3"
-    computer "Engineer: Captain, I have been reviewing the bio lab’s system; the data does not align with standard 
+    computer "Eugen: Captain, I have been reviewing the bio lab’s system; the data does not align with standard 
                 operating parameters." 
     voice "audio/voice/madi/M1-002-2.mp3"
-    computer "Engineer: This does not appear to be a malfunction or human error; there seems to be an 
-                interference with the processes."
+    computer "Eugen: This does not appear to be a malfunction or human error; there seems to be an entirely different interference with the processes."
     voice "audio/voice/madi/M1-002-3.mp3"
-    computer "It will be best to address this immediately."
+    computer "Eugen: It will be best to address this immediately."
 
     show captain frustrated behind computer
     voice "audio/voice/captain/C1-008.mp3"
@@ -317,13 +318,16 @@ label start:
     jump map0
 
     label map0:
-        show screen MapUI0 with fade
         $ preferences.afm_enable = False
-        $ _skipping = False
+        $ renpy.stop_skipping()
+        $ config.allow_skipping = False
+        show screen MapUI0 with fade
         pause
         
     label SI:
         hide screen MapUI0 with dissolve
+        $ config.allow_skipping = True
+
         show captain neutral-open behind computer 
         voice "audio/voice/captain/C1-019.mp3"
         captain "I should speak to Sara. She’s probably freaking out right now."
@@ -355,7 +359,7 @@ label start:
         medic "Yes, yes, of course!" 
         voice "audio/voice/sara/S1-003.mp3"
         medic "I mean, this cargo—this discovery—would revolutionize everything." 
-        voice "audio/voice/sara/S1-004"
+        voice "audio/voice/sara/S1-004.mp3"
         medic "Our very understanding of the universe. Extraterrestrial life! Aboard this ship." 
         show medic explaining
         show captain neutral-closed behind medic
@@ -392,7 +396,7 @@ label start:
         show captain anger-closed behind medic
         voice "audio/voice/sara/S1-010.mp3"
         medic "I’m sorry. I-I guess I’ve always felt you were easier to talk to on this ship. You know, compared to Eugen." 
-        voice "audio/voice/sara/S1-011"
+        voice "audio/voice/sara/S1-011.mp3"
         medic "I admit this incident isn’t making me think straight. I shouldn’t have brought it up." 
         voice "audio/voice/sara/S1-012.mp3"
         medic "I understand it must be painful for you—"
@@ -499,7 +503,7 @@ label start:
 
                 show medic neutral
                 show captain neutral-closed behind medic
-                voice "audio/voice/sara/S1-023"
+                voice "audio/voice/sara/S1-023.mp3"
                 medic "I won’t let you down Captain."
         
         show captain neutral-open behind medic
@@ -521,6 +525,7 @@ label start:
 
     label EI:
         hide screen MapUI0 with dissolve
+        $ config.allow_skipping = True
         show captain neutral-open behind computer 
         voice "audio/voice/captain/C1-020.mp3"
         captain "I should speak to Eugen. He’ll probably know what’s happening."
@@ -778,13 +783,15 @@ label start:
         
         jump Map1
 
-    label Map1:
-        show screen MapUI1 with fade    
+    label Map1: 
         $ preferences.afm_enable = False
-        $ _skipping = False 
+        $ renpy.stop_skipping()
+        $ config.allow_skipping = False
+        show screen MapUI1 with fade   
         pause
 
     label S1:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
@@ -1027,7 +1034,7 @@ label start:
                 medic "O-okay."
 
             # S.1.3b
-            "Keep studying your notes.":
+            "    Keep studying your notes.   ":
                 $ medApproval += 1
                 play sound "correct ding.mp3" volume 0.8
 
@@ -1045,6 +1052,7 @@ label start:
         jump M2
 
     label E1:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
@@ -1427,12 +1435,14 @@ label start:
         jump MapC1
 
     label MapC1:
-        show screen MapUIC1 with fade
         $ preferences.afm_enable = False
-        $ _skipping = False 
+        $ renpy.stop_skipping()
+        $ config.allow_skipping = False
+        show screen MapUIC1 with fade
         pause
 
     label C1:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         scene onlayer screens
         scene bg escape pod with fade
@@ -1494,12 +1504,14 @@ label start:
                 jump Map2
 
     label Map2:
-        show screen MapUI2 with fade
         $ preferences.afm_enable = False
-        $ _skipping = False 
+        $ renpy.stop_skipping()
+        $ config.allow_skipping = False
+        show screen MapUI2 with fade
         pause
 
     label S2:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
@@ -1638,12 +1650,12 @@ label start:
 
             show medic excited messy
             show captain confusion-closed behind medic
-            voice "audio/voice/sara/S2-071"
+            voice "audio/voice/sara/S2-071.mp3"
             medic "I mentioned this before–has it occurred to you that two incredible events have taken place in a short time span?"
-            voice "audio/voice/sara/S2-072"
+            voice "audio/voice/sara/S2-072.mp3"
             medic "Us finding this specimen and now this crisis we’re facing!" 
             show medic nostalgic messy
-            voice "audio/voice/sara/S2-072-1"
+            voice "audio/voice/sara/S2-072-1.mp3"
             medic "Hah, my family would associate something supernatural to this kind of coincidence…" 
 
             show captain confusion-open behind medic
@@ -1652,9 +1664,9 @@ label start:
 
             show medic excited messy
             show captain confusion-closed behind medic
-            voice "audio/voice/sara/S2-073.mp3"
+            voice "audio/voice/sara/S2-073.mp3.mp3"
             medic "Yes! That’s what I think we’ve been missing!"
-            voice "audio/voice/sara/S2-074.mp3"
+            voice "audio/voice/sara/S2-074.mp3.mp3"
             medic "This organism is probably emitting electromagnetic waves that are interfering with the computer and other systems on the ship!"
 
             menu: 
@@ -1948,6 +1960,7 @@ label start:
             jump M3
 
     label E2:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
@@ -2441,6 +2454,7 @@ label start:
             jump M3
 
     label MO:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         play music "Electric_Dawn.mp3" volume 0.8
         # M.1.O optional MAD1
@@ -2745,12 +2759,14 @@ label start:
         jump MapC2
 
     label MapC2: 
-        show screen MapUIC2 with fade
         $ preferences.afm_enable = False
-        $ _skipping = False 
+        $ renpy.stop_skipping()
+        $ config.allow_skipping = False
+        show screen MapUIC2 with fade
         pause
 
     label C2:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         scene onlayer screens
         # Captain breakdown
@@ -2772,7 +2788,7 @@ label start:
         voice "audio/voice/captain/C3-006.mp3"
         captain "I could skip the charade and just leave."
 
-        "(You stare at the specimen as tears roll down your face)"
+        "*You stare at the specimen as tears roll down your face*"
 
         voice "audio/voice/captain/C3-007.mp3"
         captain "Should I escape?"
@@ -2888,12 +2904,14 @@ label start:
 
 
     label Map3:
-        show screen MapUI3 with fade
         $ preferences.afm_enable = False
-        $ _skipping = False 
+        $ renpy.stop_skipping()
+        $ config.allow_skipping = False
+        show screen MapUI3 with fade
         pause
 
     label S3:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         play music "Microbiology.mp3" volume 0.8
         scene onlayer screens
@@ -3217,6 +3235,7 @@ label start:
                     jump Final
 
     label E3:
+        $ config.allow_skipping = True
         play sound "Footsteps.mp3" volume 0.8
         play music "Spark_Of_Awareness.mp3" volume 0.8
         scene onlayer screens
@@ -3609,7 +3628,10 @@ label start:
                 jump Final
 
     label Final:
+        $ config.allow_skipping = True
         if medApproval >= 5 and engApproval >= 5:
+            $ renpy.stop_skipping()
+            $ config.allow_skipping = False
             show screen MapUIFin with dissolve
             pause
 
@@ -3666,6 +3688,9 @@ label start:
                     captain "I think it worked."
                     voice "audio/voice/captain/C3-094.mp3"
                     captain "Now to manually control the ship."
+
+                    $ renpy.stop_skipping() 
+                    $ config.allow_skipping = False
                     show screen MapUIFin with dissolve
                     pause
 
@@ -3748,10 +3773,13 @@ label start:
             voice "audio/voice/captain/C3-091.mp3"
             captain "… Dammit… "
 
+            $ renpy.stop_skipping() 
+            $ config.allow_skipping = False
             show screen MapUIEnd with fade
             pause
 
         label TheEnd:
+            $ config.allow_skipping = True
             # Sara Scene
             play sound "Footsteps.mp3" volume 0.8
             play music "Microbiology.mp3" volume 0.8
@@ -3807,6 +3835,7 @@ label start:
             jump EndG
 
     label Choice:
+        $ config.allow_skipping = True
         scene onlayer screens
         play sound "Footsteps.mp3" volume 0.8
         scene bg escape pod with fade

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 2063: 'hover_sound' is not a keyword argument or valid child of the screen statement.
-    hover_sound "audio/Beephover.mp3"
-               ^
+File "game/script.rpy", line 322: cannot assign to function call here. Maybe you meant '==' instead of '='?
+    renpy.stop_skipping() = True
+              ^^^^^^^^^^^^^^^^^^^^^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Sat Apr  4 00:08:03 2026
+Sat Apr  4 02:39:30 2026
