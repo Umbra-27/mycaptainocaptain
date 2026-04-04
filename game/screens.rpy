@@ -250,7 +250,7 @@ screen quick_menu():
 
             textbutton _("Back") action Rollback()
             # textbutton _("History") action ShowMenu('history')
-            # textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Load") action ShowMenu('load')
@@ -340,7 +340,7 @@ screen navigation():
                     if persistent.endB_unlocked is True:
                         idle "images/End Stars@15/endB.PNG"                    
                         hover "images/End Stars@15/endB.PNG"
-                        action Replay("EndBLog")
+                        action Replay("EndBLog", locked=False)
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
@@ -353,7 +353,7 @@ screen navigation():
                     if persistent.endS_unlocked is True:
                         idle "images/End Stars@15/endS.PNG"                    
                         hover "images/End Stars@15/endS.PNG"
-                        action Replay("EndSLog")
+                        action Replay("EndSLog", locked=False)
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
@@ -366,7 +366,7 @@ screen navigation():
                     if persistent.endE_unlocked is True:
                         idle "images/End Stars@15/endE.PNG"                    
                         hover "images/End Stars@15/endE.PNG"
-                        action Replay("EndELog")
+                        action Replay("EndELog", locked=False)
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
@@ -379,7 +379,7 @@ screen navigation():
                     if persistent.endC_unlocked is True:
                         idle "images/End Stars@15/endC.PNG"                    
                         hover "images/End Stars@15/endC.PNG"
-                        action Replay("EndCLog")
+                        action Replay("EndCLog", locked=False)
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
@@ -392,7 +392,7 @@ screen navigation():
                     if persistent.endG_unlocked is True:
                         idle "images/End Stars@15/endG.PNG"                    
                         hover "images/End Stars@15/endG.PNG"
-                        action Replay("EndGLog")
+                        action Replay("EndGLog", locked=False)
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
@@ -405,7 +405,7 @@ screen navigation():
                     if persistent.endSEC_unlocked is True:
                         idle "images/End Stars@15/endSEC.PNG"                    
                         hover "images/End Stars@15/endSEC.PNG"
-                        action Replay("EndSECLog")
+                        action Replay("EndSECLog", locked=False)
                     else:
                         idle "images/End Stars@15/empty star.PNG"                    
                         hover "images/End Stars@15/empty star.PNG"
@@ -1176,7 +1176,7 @@ screen gallery():
     add "gui/main_menu.png"
     add "gui/pause_overlay.png"
 
-    default gallery_page = FilePage(1)
+    default gallery_page = "page1"
 
     fixed:
         use game_menu(_("Gallery")):
@@ -1194,72 +1194,70 @@ screen gallery():
                 xfill True
                 yfill True
                 
-                # if FilePage(1):
-                #     # Call make_button to show a particular button.
-                #     add g.make_button("Main Menu", im.Scale("images/bg menu.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                #     add g.make_button("Eugen", im.Scale("images/bg engineer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                #     add g.make_button("Sara", im.Scale("images/bg medic.jpg", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                if gallery_page == "page1":
+                    # Call make_button to show a particular button.
+                    add g.make_button("Main Menu", im.Scale("images/bg menu.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    add g.make_button("Eugen", im.Scale("images/bg engineer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    add g.make_button("Sara", im.Scale("images/bg medic.jpg", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
 
-                #     add g.make_button("MAD1", im.Scale("images/bg computer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                #     add g.make_button("Escape", im.Scale("images/bg escape pod.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                #     if persistent.seenC2 == True:
-                #         add g.make_button("Specimen", im.Scale("images/bg artifact.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5)
-                #     else:
-                #         add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                    add g.make_button("MAD1", im.Scale("images/bg computer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    add g.make_button("Escape", im.Scale("images/bg escape pod.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    if persistent.seenC2 == True:
+                        add g.make_button("Specimen", im.Scale("images/bg artifact.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5)
+                    else:
+                        add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
 
-                # elif FilePage(2):
-                # Captain End Screen
-                if persistent.endB_unlocked == True or persistent.endC_unlocked == True:
-                    add g.make_button("Captain Ending", im.Scale("images/End Screens/ending captain.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                else:
-                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
-                
-                # Eugen End Screen
-                if persistent.endE_unlocked == True:
-                    add g.make_button("Eugen Ending", im.Scale("images/End Screens/ending engineer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                else:
-                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                elif gallery_page == "page2":
+                    # Captain End Screen
+                    if persistent.endB_unlocked == True or persistent.endC_unlocked == True:
+                        add g.make_button("Captain Ending", im.Scale("images/End Screens/ending captain.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    else:
+                        add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                    
+                    # Eugen End Screen
+                    if persistent.endE_unlocked == True:
+                        add g.make_button("Eugen Ending", im.Scale("images/End Screens/ending engineer.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    else:
+                        add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
 
-                # Sara End Screen
-                if persistent.endS_unlocked == True:
-                    add g.make_button("Sara Ending", im.Scale("images/End Screens/ending medic.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                else:
-                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                    # Sara End Screen
+                    if persistent.endS_unlocked == True:
+                        add g.make_button("Sara Ending", im.Scale("images/End Screens/ending medic.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    else:
+                        add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
 
-                # Good End Screen
-                if persistent.endG_unlocked == True:
-                    add g.make_button("Good Ending", im.Scale("images/End Screens/ending crew stars.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                else:
-                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                    # Good End Screen
+                    if persistent.endG_unlocked == True:
+                        add g.make_button("Good Ending", im.Scale("images/End Screens/ending crew stars.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    else:
+                        add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
 
-                # Secrert End Screen
-                if persistent.endSEC_unlocked == True:
-                    add g.make_button("Secret Ending1", im.Scale("images/End Screens/ending byebye fungus.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                else:
-                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                    # Secrert End Screen
+                    if persistent.endSEC_unlocked == True:
+                        add g.make_button("Secret Ending1", im.Scale("images/End Screens/ending byebye fungus.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    else:
+                        add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
 
-                # Secret End Screen
-                if persistent.endSEC_unlocked == True:
-                    add g.make_button("Secret Ending2", im.Scale("images/End Screens/secret ending.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
-                else:
-                    add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
+                    # Secret End Screen
+                    if persistent.endSEC_unlocked == True:
+                        add g.make_button("Secret Ending2", im.Scale("images/End Screens/secret ending.png", thumbnail_x, thumbnail_y), xalign=0.5, yalign=0.5) 
+                    else:
+                        add g.make_button("Lock", im.Scale("gui/Gallery Locked.png", 485, 291), xalign=0.5, yalign=0.5)
 
                 # The screen is responsible for returning to the main menu. It could also
                 # navigate to other gallery screens.
-            # hbox:
-            #     style_prefix "page"
-            #     xalign 0.5
-            #     yalign 1.0
+            hbox:
+                style_prefix "page"
+                xalign 0.5
+                yalign 1.0
 
-            #     spacing gui.page_spacing
-            #     textbutton _("<") action FilePagePrevious()
-            #     key "save_page_prev" action FilePagePrevious()
+                spacing gui.page_spacing
+                textbutton _("<") action SetScreenVariable("gallery_page", "page1")
 
-            #     textbutton _("1") action FilePage(1)
-            #     textbutton _("2") action FilePage(2)
+                textbutton _("1") action SetScreenVariable("gallery_page", "page1")
+                textbutton _("2") action SetScreenVariable("gallery_page", "page2")
 
-            #     textbutton _(">") action FilePageNext()
-            #     key "save_page_next" action FilePageNext()
+                textbutton _(">") action SetScreenVariable("gallery_page", "page2")
 
 
 style gallery_label is gui_label
@@ -1852,16 +1850,22 @@ define bubble.properties = {
     "computer" : {
         "window_background" : bubble.computer,
         "window_top_padding" : 10,
+        "window_left_padding" : 25,
+        "window_right_padding" : 20,
     },
 
     "engineer" : {
         "window_background" : bubble.engineer,
         "window_top_padding" : 10,
+        "window_left_padding" : 25,
+        "window_right_padding" : 20,
     },
     
     "medic" : {
         "window_background" : bubble.medic,
         "window_top_padding" : 10,
+        "window_left_padding" : 25,
+        "window_right_padding" : 20,
     },
 
     "captainbreakdown" : {
@@ -1874,6 +1878,8 @@ define bubble.properties = {
     "computersolution" : {
         "window_background" : bubble.computersolution,
         "window_top_padding" : 10,
+        "window_left_padding" : 25,
+        "window_right_padding" : 20,
     },
 }
 
@@ -1920,8 +1926,8 @@ screen MapUI0():
     # engineer
     if seenEI is False:
         imagebutton:
-            xpos 1080
-            ypos 615
+            xpos 1079
+            ypos 614
             idle "map/engineeridle.png"
             hover "map/engineerhover.png"
             activate_sound "audio/Button_Select.mp3"
@@ -1954,8 +1960,8 @@ screen MapUI1():
          
     # engineer
     imagebutton:
-        xpos 1080
-        ypos 615
+        xpos 1079
+        ypos 614
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
         activate_sound "audio/Button_Select.mp3"
@@ -2020,8 +2026,8 @@ screen MapUI2():
 
     # engineer
     imagebutton:
-        xpos 1080
-        ypos 615
+        xpos 1079
+        ypos 614
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
         activate_sound "audio/Button_Select.mp3"
@@ -2030,7 +2036,7 @@ screen MapUI2():
     # computer
     if seenMO is False:
         imagebutton:
-            xpos 180
+            xpos 179
             ypos 480
             idle "map/computeridle.png"
             hover "map/computerhover.png"
@@ -2097,8 +2103,8 @@ screen MapUI3():
     # engineer
     if seenE3 is False:
         imagebutton:
-            xpos 1080
-            ypos 615
+            xpos 1079
+            ypos 614
             idle "map/engineeridle.png"
             hover "map/engineerhover.png"
             activate_sound "audio/Button_Select.mp3"
@@ -2211,15 +2217,15 @@ screen MapUIEnd():
 
 #     # engineer
 #     imagebutton:
-#         xpos 1080
-#         ypos 615
+#         xpos 1079
+#         ypos 614
 #         idle "map/engineeridle.png"
 #         hover "map/engineerhover.png"
 #         action NullAction()
 
 #     # computer
 #     imagebutton:
-#         xpos 180
+#         xpos 179
 #         ypos 480
 #         idle "map/computeridle.png"
 #         hover "map/computerhover.png"

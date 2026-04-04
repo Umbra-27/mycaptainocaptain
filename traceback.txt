@@ -1,52 +1,18 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/screens.rpy", line 1167, in execute
-    screen gallery():
-  File "game/screens.rpy", line 1167, in execute
-    screen gallery():
-  File "game/screens.rpy", line 1182, in execute
-    fixed:
-  File "game/screens.rpy", line 1183, in execute
-    use game_menu(_("Gallery")):
-  File "game/screens.rpy", line 547, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 547, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 560, in execute
-    if title == _("Pause") or title == _("Game Paused"):
-  File "game/screens.rpy", line 566, in execute
-    frame:
-  File "game/screens.rpy", line 568, in execute
-    hbox:
-  File "game/screens.rpy", line 573, in execute
-    frame:
-  File "game/screens.rpy", line 575, in execute
-    if scroll == "viewport":
-  File "game/screens.rpy", line 587, in execute
-    transclude
-  File "game/screens.rpy", line 1183, in execute
-    use game_menu(_("Gallery")):
-  File "game/screens.rpy", line 1186, in execute
-    grid 3 2:
-Exception: Grid overfull.
+renpy.game.UtterRestartException
+
+During handling of the above exception, another exception occurred:
+
+KeyError: '_did_load_reload'
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
-  File "renpy/ast.py", line 1187, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1273, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
-    python hide:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
-    ui.interact()
-    ~~~~~~~~~~~^^
+  File "renpy/common/00keymap.rpy", line 570, in _execute_python_hide
+    ui.interact(suppress_underlay=True, suppress_overlay=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "renpy/ui.py", line 306, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -60,63 +26,59 @@ Traceback (most recent call last):
         ^^^^^^^^^
     )
     ^
-  File "renpy/display/core.py", line 2700, in interact_core
-    root_widget.visit_all(lambda d: d.per_interact())
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/displayable.py", line 457, in visit_all
-    d.visit_all(callback, seen)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 503, in visit_all
-    callback(self)
-    ~~~~~~~~^^^^^^
-  File "renpy/display/core.py", line 2700, in <lambda>
-    root_widget.visit_all(lambda d: d.per_interact())
-                                    ~~~~~~~~~~~~~~^^ 
-  File "renpy/display/screen.py", line 514, in per_interact
-    self.update()
+  File "renpy/display/core.py", line 2773, in interact_core
+    renpy.loader.check_autoreload()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "renpy/loader.py", line 995, in check_autoreload
+    renpy.exports.reload_script()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "renpy/exports/restartexports.py", line 98, in reload_script
+    renpy.game.call_in_new_context("_save_reload_game")
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/game.py", line 346, in call_in_new_context
+    return renpy.execution.run_context(False)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "renpy/execution.py", line 1036, in run_context
+    context.run()
     ~~~~~~~~~~~^^
-  File "renpy/display/screen.py", line 715, in update
-    self.screen.function(**self.scope)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "game/screens.rpy", line 1167, in execute
-    screen gallery():
-  File "game/screens.rpy", line 1167, in execute
-    screen gallery():
-  File "game/screens.rpy", line 1182, in execute
-    fixed:
-  File "game/screens.rpy", line 1183, in execute
-    use game_menu(_("Gallery")):
-  File "game/screens.rpy", line 547, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 547, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 560, in execute
-    if title == _("Pause") or title == _("Game Paused"):
-  File "game/screens.rpy", line 566, in execute
-    frame:
-  File "game/screens.rpy", line 568, in execute
-    hbox:
-  File "game/screens.rpy", line 573, in execute
-    frame:
-  File "game/screens.rpy", line 575, in execute
-    if scroll == "viewport":
-  File "game/screens.rpy", line 587, in execute
-    transclude
-  File "game/screens.rpy", line 1183, in execute
-    use game_menu(_("Gallery")):
-  File "game/screens.rpy", line 1186, in execute
-    grid 3 2:
-  File "renpy/display/layout.py", line 547, in add
-    raise Exception("Grid overfull.")
-Exception: Grid overfull.
+  File "renpy/common/00keymap.rpy", line 504, in script
+    python hide:
+  File "renpy/ast.py", line 1187, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1273, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/common/00keymap.rpy", line 504, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 509, in _execute_python_hide
+    renpy.utter_restart()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "renpy/exports/restartexports.py", line 64, in utter_restart
+    raise renpy.game.UtterRestartException()
+renpy.game.UtterRestartException
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "renpy/common/00start.rpy", line 234, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 558, in script
+    python hide:
+  File "renpy/ast.py", line 1187, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1273, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/common/00keymap.rpy", line 558, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 579, in _execute_python_hide
+    del renpy.session["_did_load_reload"]
+        ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: '_did_load_reload'
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.2.26010301
-My Captain, O' Captain 1.0
-Mon Mar 30 14:11:50 2026
+O' Captain, My Captain 1.0
+Fri Apr  3 21:49:52 2026

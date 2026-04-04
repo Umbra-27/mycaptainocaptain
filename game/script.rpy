@@ -68,11 +68,11 @@ image captainNeutralOpenDark = im.MatrixColor(
     yalign=0.25)
 
 image captainConfusedOpenDark = im.MatrixColor(
-    "captain@3.5/captain confusion-open.png", 
+    "captain@3.5/captain anger-open.png", 
     im.matrix.brightness(-0.2))
 
 image captainConfusedClosedDark = im.MatrixColor(
-    "captain@3.5/captain confusion-closed.png", 
+    "captain@3.5/captain anger-closed.png", 
     im.matrix.brightness(-0.2))
 
 
@@ -232,7 +232,7 @@ label start:
     play music "Ice_Cold.mp3"
 
     show computer reboot-1
-    show captain confusion-closed behind computer   
+    show captain anger-closed behind computer   
 
     "Then the lights come on again. Thankfully."
     show computer reboot-2
@@ -243,6 +243,8 @@ label start:
     pause(0.5)
     show computer reboot-5
     "Sound returns as I presume the system reboots."
+
+    show captain confusion-closed behind computer   
 
     voice "audio/voice/madi/M1-016.mp3"
     computer "System force restart. Diagnostics complete." 
@@ -315,6 +317,8 @@ label start:
 
     label map0:
         show screen MapUI0 with fade
+        $ preferences.afm_enable = False
+        $ _skipping = False
         pause
         
     label SI:
@@ -344,18 +348,15 @@ label start:
         voice "audio/voice/captain/C1-023.mp3"
         captain "We’ve had good luck so far—we’ve achieved something no man has managed before. These things happen."
 
-        show medic neutral
+        show medic excited
         show captain neutral-closed behind medic
         voice "audio/voice/sara/S1-002.mp3"
         medic "Yes, yes, of course!" 
-
-        show medic explaining
-        show captain neutral-closed behind medic
         voice "audio/voice/sara/S1-003.mp3"
         medic "I mean, this cargo—this discovery—would revolutionize everything." 
         voice "audio/voice/sara/S1-004"
         medic "Our very understanding of the universe. Extraterrestrial life! Aboard this ship." 
-        show medic excited
+        show medic explaining
         show captain neutral-closed behind medic
         voice "audio/voice/sara/S1-005.mp3"
         medic "I still can’t believe it." 
@@ -364,11 +365,11 @@ label start:
         voice "audio/voice/sara/S1-006.mp3"
         medic "But this… development is most concerning." 
 
-        show medic nervous
+        show medic worried
         show captain neutral-closed behind medic
         voice "audio/voice/sara/S1-007.mp3"
         medic "What could possibly be happening, Captain?" 
-        show medic stressed
+        show medic explaining
         voice "audio/voice/sara/S1-008.mp3"
         medic "Could this result in some kind of irreparable, cascading failure?"
 
@@ -377,7 +378,7 @@ label start:
         captain "Like I said before, Sara, we’ll find out soon. There is no reason to assume the worst." 
 
         show captain neutral-closed behind medic
-        show medic thinking
+        show medic anxious
         voice "audio/voice/sara/S1-009.mp3"
         medic "I understand. Just given what has happened before…"
 
@@ -386,13 +387,12 @@ label start:
         captain "What happened to the previous mission has nothing to do with what is happening now."
 
         # SI.1
-        show medic stressed
+        show medic explaining
         show captain anger-closed behind medic
         voice "audio/voice/sara/S1-010.mp3"
         medic "I’m sorry. I-I guess I’ve always felt you were easier to talk to on this ship. You know, compared to Eugen." 
         voice "audio/voice/sara/S1-011"
         medic "I admit this incident isn’t making me think straight. I shouldn’t have brought it up." 
-        show medic suggesting
         voice "audio/voice/sara/S1-012.mp3"
         medic "I understand it must be painful for you—"
 
@@ -402,12 +402,12 @@ label start:
                 $ medApproval += 1
                 play sound "correct ding.mp3" volume 0.8
 
-                show captain concern-open behind medic
+                show captain neutral-open behind medic
                 voice "audio/voice/captain/C1-026.mp3"
                 captain "It’s okay, Sara. This is stressful for all of us."
 
-                show medic anxious
-                show captain concern-closed behind medic
+                show medic nervous
+                show captain neutral-closed behind medic
                 voice "audio/voice/sara/S1-013.mp3"
                 medic "This is true. Still, I apologize for bringing it up."
 
@@ -429,24 +429,24 @@ label start:
         voice "audio/voice/captain/C1-029.mp3"
         captain "We could use any theories on what this specimen is and its properties."
 
-        show medic excited
+        show medic explaining
         show captain neutral-closed behind medic
         voice "audio/voice/sara/S1-015.mp3"
         medic "Yes, yes… I do have working hypotheses, though nothing exactly seems to work out perfectly at the moment. "
         
-        show medic nervous
+        show medic thinking
         show captain neutral-closed behind medic
         voice "audio/voice/sara/S1-016.mp3"
         medic "I should be working harder…"
 
-        show captain concern-open behind medic
+        show captain neutral-open behind medic
         voice "audio/voice/captain/C1-030.mp3"
         captain "Sara, you’re already working very hard."
         voice "audio/voice/captain/C1-031.mp3"
         captain "You’re the best in the field. Remember; it’s why we have you on this mission."
 
-        show medic neutral
-        show captain concern-closed behind medic
+        show medic suggesting
+        show captain neutral-closed behind medic
         voice "audio/voice/sara/S1-017.mp3"
         medic "Thank you, Captain. I can’t overstate how much this mission means to me."
         show medic excited
@@ -454,28 +454,23 @@ label start:
         voice "audio/voice/sara/S1-018.mp3"
         medic "This—this specimen we’ve found is the holy grail of astrobiology."
 
-        show captain neutral-open behind medic 
+        show captain determined-open behind medic 
         voice "audio/voice/captain/C1-032.mp3"
         captain "And that’s exactly why you must continue your work."
-        show medic thinking
         voice "audio/voice/captain/C1-033.mp3"
         captain "I’m counting on you Sara. Here, I’ve brought you the most recent readings on the specimen."
         voice "audio/voice/captain/C1-034.mp3"    
         captain "We’ll get the system back up one way or another."
 
         # SI.2
-        show medic stressed
-        show captain neutral-closed behind medic
+        show medic anxious
+        show captain determined-closed behind medic
         voice "audio/voice/sara/S1-019.mp3"
         medic "Thank you for the report Captain, but the rest of my research and reference materials are in the system." 
-        show medic nervous
         voice "audio/voice/sara/S1-020.mp3"
         medic "How long will it take?" 
         voice "audio/voice/sara/S1-021.mp3"
         medic "How am I supposed to keep working if it takes too long?"
-        
-        show medic nervous
-        show captain neutral-closed behind medic
 
         menu:
             # SI.2.a
@@ -485,7 +480,7 @@ label start:
                 voice "audio/voice/captain/C1-035.mp3"
                 captain "Figure it out. That’s an order."
 
-                show medic anxious
+                show medic stressed
                 show captain anger-closed behind medic
                 voice "audio/voice/sara/S1-022.mp3"
                 medic "O-of course Captain."
@@ -513,8 +508,10 @@ label start:
         voice "audio/voice/captain/C1-037-3.mp3"
         captain "I’ll be back to check in later."
 
+        show captain neutral-closed behind medic
+
         if seenEI is False:
-            show screen MapUI0 with fade
+            jump map0
             pause
 
         else:
@@ -532,7 +529,7 @@ label start:
         scene onlayer screens
         $ seenEI = True
         scene bg engineer with fade
-        show engineer neutral with dissolve
+        show engineer thinking with dissolve
         pause(0.5)
         show captain neutral-closed behind engineer with dissolve
 
@@ -541,12 +538,12 @@ label start:
         captain "How’re you holding up Eugen?"
 
         show captain neutral-closed behind engineer
-        show engineer thinking
         voice "audio/voice/eugen/E1-004.mp3"
         engineer "As well as one can, given the circumstances." 
         voice "audio/voice/eugen/E1-005.mp3"
         engineer "May we skip the pleasantries? I dislike small talk." 
         show engineer neutral
+        show captain neutral-closed behind engineer
         voice "audio/voice/eugen/E1-006.mp3"
         engineer "I’m sure Sara would appreciate it more."
 
@@ -554,7 +551,7 @@ label start:
         voice "audio/voice/captain/C1-039.mp3"
         captain "Got it... Straight to the point then. Report."
 
-        show engineer thinking
+        show engineer neutral
         show captain neutral-closed behind engineer
         voice "audio/voice/eugen/E1-007.mp3"
         engineer "Captain, the situation is not ideal. There appears to be a system failure on a magnitude I’ve never seen."
@@ -569,7 +566,7 @@ label start:
         captain "Damn… Well there goes my hope for any good news."
 
         # EI.1
-        show engineer thinking
+        show engineer neutral
         show captain concern-closed behind engineer
         voice "audio/voice/eugen/E1-010.mp3"
         engineer "Is there any information you can provide? Do you know what might have caused this?"
@@ -606,7 +603,7 @@ label start:
                 engineer "I’ll begin looking into this immediately."
         
         show engineer neutral
-        show captain neutral-closed behind engineer    
+        show captain thinking behind engineer    
 
         voice "audio/voice/eugen/E1-014.mp3"
         engineer "In the meantime, I’ve reviewed the oxygen depletion curve 3 times now."
@@ -639,7 +636,7 @@ label start:
                 voice "audio/voice/captain/C1-048.mp3"
                 captain "Stand by for now."
 
-                show engineer anger
+                show engineer frustration
                 show captain anger-closed behind engineer
                 voice "audio/voice/eugen/E1-017.mp3"
                 engineer "As you wish, however, I urge you to think about this decision further."
@@ -655,7 +652,7 @@ label start:
                 voice "audio/voice/captain/C1-050.mp3"
                 captain "We don’t fully know yet what’s happening, but I trust you to make progress."
 
-                show engineer thinking
+                show engineer neutral
                 show captain determined-closed behind engineer
                 voice "audio/voice/eugen/E1-018.mp3"
                 engineer "Of course, the sooner we address this, the sooner the root of the problem will present itself."
@@ -667,7 +664,7 @@ label start:
         captain "I’ll be back when I have more to update."
 
         if seenSI is False:
-            show screen MapUI0 with fade
+            jump map0
             pause
 
         else:
@@ -742,10 +739,10 @@ label start:
         voice "audio/voice/madi/M1-040.mp3"
         computer "Captain, I’m afraid my ability to assist you will be limited soon."
 
-        show captain frustrated behind computer
+        show captain anger-open behind computer
         voice "audio/voice/captain/C1-057.mp3"
         captain "Dammit! I can’t afford to have more things break down now."
-        show captain concern-closed behind computer
+        show captain concern-open behind computer
         voice "audio/voice/captain/C1-058.mp3"
         captain "What am I supposed to do?"
 
@@ -757,7 +754,7 @@ label start:
 
         show computer error-1 with hpunch
         play sound "Metallic_Hit.mp3" volume 0.8
-        show captain anger-closed behind computer with hpunch 
+        show captain concern-closed behind computer with hpunch 
 
         voice "audio/voice/madi/M1-042.mp3"
         computer "The one by toi̷l̵, the other to comp̸̖̓l̴͎̀a̴̺͗ì̴̩n"
@@ -765,7 +762,7 @@ label start:
         computer "How far I t̴̡̃o̴̳͒i̶̥͋l̶̮̍, still farther ó̷̖ff f̵̲͒ȑ̷͉o̵̮̓m̴̮̌ ̶͓̈́t̷͎̑h̶̏e̶e̶̻̔."
 
         show computer error-2
-        show captain rememberance-open behind computer
+        show captain thinking behind computer
         voice "audio/voice/captain/C1-059.mp3"
         captain "... How far I toil, indeed."
         voice "audio/voice/captain/C1-060.mp3"
@@ -781,7 +778,9 @@ label start:
         jump Map1
 
     label Map1:
-        show screen MapUI1 with fade        
+        show screen MapUI1 with fade    
+        $ preferences.afm_enable = False
+        $ _skipping = False 
         pause
 
     label S1:
@@ -795,7 +794,7 @@ label start:
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
-        show medic explaining
+        show medic excited
         voice "audio/voice/sara/S2-001.mp3"
         medic "Captain, any update on what’s going on? What did Eugen say?"
 
@@ -815,7 +814,7 @@ label start:
                 voice "audio/voice/captain/C2-003.mp3"
                 captain "The situation is more dire than we thought. But I need you to remain calm."
                 show captain concern-closed behind medic
-                show medic nervous
+                show medic worried
                 voice "audio/voice/sara/S2-002.mp3"
                 medic "Oh my god… T-thank you for your honesty, Captain."
 
@@ -853,8 +852,6 @@ label start:
         show captain neutral-closed behind medic
         voice "audio/voice/sara/S2-007.mp3"
         medic "I’ve been thinking of life in Earth’s oceans, and the closest equivalent is a marine fungus."
-        show medic thinking
-        show captain neutral-closed behind medic
         voice "audio/voice/sara/S2-008.mp3"
         medic "However, Earth's marine fungi are largely microscopic."
         
@@ -866,7 +863,7 @@ label start:
         show captain thinking behind medic
         voice "audio/voice/sara/S2-009.mp3"
         medic "Indeed. Even on Earth, we have creatures called extremophiles. The tardigrade is a good example."
-        show medic nervous
+        show medic anxious
         show captain thinking behind medic
         voice "audio/voice/sara/S2-010.mp3"
         medic "As exciting and era-defining as this discovery is, I must say… I’m worried for our survival. "
@@ -877,7 +874,8 @@ label start:
         voice "audio/voice/captain/C2-008.mp3"
         captain "Sara, we went over this…"
         
-        show medic worried
+        show medic suggesting
+        show captain frustrated behind medic
         voice "audio/voice/sara/S2-012.mp3"
         medic "Okay… How is Eugen doing? Is he alright?"
         
@@ -909,6 +907,9 @@ label start:
                 voice "audio/voice/sara/S2-014.mp3"
                 medic "Yes, yes, I know…"
 
+                show medic thinking
+                show captain anger-closed behind medic 
+
             # S.1.2b
             "I will do my best to get us home.":
                 $ medApproval += 1
@@ -918,7 +919,7 @@ label start:
                 voice "audio/voice/captain/C2-013.mp3"
                 captain "I will do my best to make sure that this mission is successful and everyone gets home."
 
-                show medic anxious
+                show medic excited
                 show captain neutral-closed behind medic
                 voice "audio/voice/sara/S2-015.mp3"
                 medic "Thank you…I know you will."
@@ -946,11 +947,10 @@ label start:
         voice "audio/voice/captain/C2-016.mp3"
         captain "Your family should be proud of you regardless of the outcome of this mission."
 
-        show medic suggesting
+        show medic explaining
         show captain concern-closed behind medic
         voice "audio/voice/sara/S2-019.mp3"
         medic "I’m just a lone woman who’s devoted my life to the sciences." 
-        show medic anxious
         voice "audio/voice/sara/S2-020.mp3"
         medic "Not everyone views this life as ideal." 
         voice "audio/voice/sara/S2-021.mp3"
@@ -992,7 +992,7 @@ label start:
         voice "audio/voice/captain/C2-021.mp3"
         captain "I will let you know once we have something concrete."
 
-        show medic anxious
+        show medic nervous
         show captain concern-closed behind medic
         voice "audio/voice/sara/S2-026.mp3"
         medic "It’s just… two new crazy developments on this ship in such a short time!"
@@ -1050,7 +1050,7 @@ label start:
         $ seenE1 = True
         $ seenS1 = False
         scene bg engineer with fade
-        show engineer neutral with dissolve
+        show engineer thinking with dissolve
         pause(0.5)
         show captain neutral-closed behind engineer with dissolve
 
@@ -1061,18 +1061,19 @@ label start:
         voice "audio/voice/captain/C2-026.mp3"
         captain "Alright, shoot."
 
+        show engineer neutral
         show captain neutral-closed behind engineer
         voice "audio/voice/eugen/E2-002.mp3"
         engineer "I have been navigating through MAD1’s system to find the interference."
         voice "audio/voice/eugen/E2-003.mp3"
         engineer "The core system architecture is… not a standard framework."
 
-        show captain neutral-open behind engineer
+        show captain confusion-open behind engineer
         voice "audio/voice/captain/C2-027.mp3"
         captain "How do you mean?"
 
         show engineer shock
-        show captain neutral-closed behind engineer
+        show captain confusion-closed behind engineer
         voice "audio/voice/eugen/E2-004.mp3"
         engineer "It’s layered. Recursive even. "
         voice "audio/voice/eugen/E2-005.mp3"
@@ -1081,27 +1082,29 @@ label start:
         show captain neutral-open behind engineer
         voice "audio/voice/captain/C2-028.mp3"
         captain "Can’t you normally manually bypass these things through administrative controls?"
+        
         show engineer frustration
         show captain neutral-closed behind engineer
         voice "audio/voice/eugen/E2-006.mp3"
         engineer "Matthew built this differently"
+        
         show captain concern-open behind engineer
         voice "audio/voice/captain/C2-029.mp3"
         captain "Isn’t there something in the programming language that you could find or use?"
+        
         show captain concern-closed behind engineer
         voice "audio/voice/eugen/E2-007.mp3"
         engineer "This ship’s operating system has programming that is beyond the industry standard."
 
-        show captain rememberance-open behind engineer
+        show captain thinking behind engineer
         voice "audio/voice/captain/C2-030.mp3"
         captain "Right. He… liked things his own way."
 
         # E1.1
-        show engineer neutral
-        show captain rememberance-closed behind engineer
+        show engineer thinking
+        show captain thinking behind engineer
         voice "audio/voice/eugen/E2-008.mp3"
         engineer "When Matthew built this system, did he ever share hidden contingencies? System overrides?"
-        show engineer surprise
         voice "audio/voice/eugen/E2-009.mp3"
         engineer "If there is something embedded in this code that only you would recognize, now is the time to share."
 
@@ -1111,11 +1114,11 @@ label start:
                 $ engApproval += 1
                 play sound "correct ding.mp3" volume 0.8
 
-                show engineer neutral
+                show engineer thinking
                 show captain thinking behind engineer
                 voice "audio/voice/captain/C2-031.mp3"
                 captain "If he… If Matthew wrote any contingencies, he didn’t share them outright with me, unfortunately."
-                show engineer thinking
+                show engineer resolve
                 voice "audio/voice/eugen/E2-010.mp3"
                 engineer "I can’t say that's ideal; however, this does help with what needs to be looked into."
 
@@ -1123,12 +1126,12 @@ label start:
             "What are you implying?":
                 play sound "incorrect ding.mp3" volume 0.8
 
-                show captain anger-open behind engineer 
+                show captain anger-open-tense behind engineer 
                 voice "audio/voice/captain/C2-032.mp3"
                 captain "Are you implying I’m hiding things from you? Sabotaging the mission?"
                 
-                show engineer frustration
-                show captain anger-closed behind engineer 
+                show engineer anger
+                show captain anger-closed-tense behind engineer 
                 voice "audio/voice/eugen/E2-011.mp3"
                 engineer "My only concern is accomplishing this mission with minimal complexities." 
 
@@ -1140,7 +1143,7 @@ label start:
         voice "audio/voice/captain/C2-033.mp3"
         captain "Intercepted? By what?"
         
-        show engineer thinking
+        show engineer neutral
         show captain concern-closed behind engineer
         voice "audio/voice/eugen/E2-013.mp3"
         engineer "There is a line of defence that, according to standard protocol, should not exist."
@@ -1153,12 +1156,12 @@ label start:
         voice "audio/voice/eugen/E2-016.mp3"
         engineer "Written in a way where the logic only makes sense to specific personnel."
 
-        show captain rememberance-open behind engineer 
+        show captain thinking behind engineer 
         voice "audio/voice/captain/C2-034.mp3"
         captain "… I see."
 
         show engineer frustration
-        show captain rememberance-closed behind engineer
+        show captain thinking behind engineer
         voice "audio/voice/eugen/E2-017.mp3"
         engineer "There is a lack of documentation, no engineering notes; it is the equivalent to a ghost layer in the system."
 
@@ -1176,12 +1179,13 @@ label start:
         voice "audio/voice/eugen/E2-020.mp3"
         engineer "This one seems to be able to answer only to him."
 
-        show captain rememberance-closed behind engineer
+        show captain frustrated behind engineer
         voice "audio/voice/captain/C2-036.mp3"
         captain "..."
 
         # E1.2
-        show engineer thinking
+        show engineer neutral
+        show captain neutral-closed behind engineer
         voice "audio/voice/eugen/E2-021.mp3"
         engineer "Did he trust you with everything? Or did he keep parts of this ship's secrets to himself?"
 
@@ -1195,7 +1199,7 @@ label start:
                 captain "Listen, I’m not a programmer." 
                 voice "audio/voice/captain/C2-038.mp3"
                 captain "He wouldn’t have shared anything like that with me."
-                show engineer surprise
+                show engineer stern
                 show captain anger-closed behind engineer
                 voice "audio/voice/eugen/E2-022.mp3"
                 engineer "As a Captain, I would have expected you to have more knowledge of your vessel's intricacies."
@@ -1211,7 +1215,7 @@ label start:
                 show captain thinking behind engineer
                 voice "audio/voice/captain/C2-040.mp3"
                 captain "MAD1 recited another verse after I visited you last. There could be something in that."
-                show engineer neutral
+                show engineer thinking
                 voice "audio/voice/eugen/E2-023.mp3"
                 engineer "That is very strange, but at least it is something."
 
@@ -1221,7 +1225,7 @@ label start:
         show captain neutral-closed behind engineer
         voice "audio/voice/eugen/E2-025.mp3"
         engineer "Each one of these assignments, I knew that with structure and protocol, our lives were safe."
-        show engineer thinking
+        show engineer stern
         voice "audio/voice/eugen/E2-026.mp3"
         engineer "This is the first time in my long, calculated life…"
         voice "audio/voice/eugen/E2-027.mp3"
@@ -1261,14 +1265,14 @@ label start:
             "That doesn’t matter right now.":
                 play sound "incorrect ding.mp3" volume 0.8
 
-                show captain anger-open behind engineer
+                show captain anger-open-tense behind engineer
                 voice "audio/voice/captain/C2-044.mp3"
                 captain "That does not matter right now. Why would you ask me that?!"
                 voice "audio/voice/captain/C2-045.mp3"
                 captain "Just… figure something out."
                 
                 show engineer shock
-                show captain anger-closed behind engineer
+                show captain anger-closed-tense behind engineer
                 voice "audio/voice/eugen/E2-034.mp3"
                 engineer "Not knowing if the designer himself could be able to solve this crisis is not a reassuring belief."
 
@@ -1280,15 +1284,16 @@ label start:
                 show captain rememberance-open behind engineer
                 voice "audio/voice/captain/C2-046.mp3"
                 captain "Yes. He would." 
-                show captain anger-open behind engineer
                 voice "audio/voice/captain/C2-047.mp3"
                 captain "But as far as I can tell he’s not here anymore." 
                 voice "audio/voice/captain/C2-048.mp3"
                 captain "So get it together and figure it out." 
+                show captain neutral-open behind engineer
                 voice "audio/voice/captain/C2-049.mp3"
                 captain "That’s an order."
+                
                 show engineer neutral
-                show captain anger-closed behind engineer
+                show captain neutral-closed behind engineer
                 voice "audio/voice/eugen/E2-035.mp3"
                 engineer "That must mean there is a plausible solution. I will begin investigating."
 
@@ -1298,7 +1303,7 @@ label start:
         engineer "The mission has been going smoothly up until now."
         voice "audio/voice/eugen/E2-037.mp3"
         engineer "My equipment, my design, we have seen it in action. There were no shortcomings; this is how all things should be."
-        show engineer surprise
+        show engineer stern
         voice "audio/voice/eugen/E2-038.mp3"
         engineer "If this mission fails, just know it wasn’t from my contribution."
 
@@ -1355,13 +1360,13 @@ label start:
         voice "audio/voice/madi/M2-013.mp3"
         computer "My f̷r̴̛̘i̷͘ͅeǹ̶͉d l̸ó̶͍sṭ̴̎ beneath the tr̴ê̸̳ê̴̖."
 
-        show captain anger-open behind computer
+        show captain anger-open-tense behind computer
         voice "audio/voice/captain/C2-052.mp3"
         captain "Another one? God damnmit..."
 
         scene bg computer
         show computer reboot-1
-        show captain anger-closed behind computer
+        show captain anger-closed-tense behind computer
         voice "audio/voice/madi/M2-014.mp3"
         computer "Rebootinggg.{w=0.3}{nw}"
         show computer reboot-2
@@ -1385,20 +1390,20 @@ label start:
         voice "audio/voice/madi/M2-018.mp3"
         computer "The escape pod has capacity for only one person."
 
-        show captain confusion-open behind computer
+        show captain confusion-open-tense behind computer
         voice "audio/voice/captain/C2-053.mp3"
         captain "... What?"
 
         show computer neutral-3
-        show captain confusion-closed behind computer
+        show captain confusion-closed-tense behind computer
         voice "audio/voice/madi/M2-019.mp3"
         computer "The escape pod has capacity for-"
 
-        show captain anger-open behind computer with hpunch
+        show captain anger-open-tense behind computer with hpunch
         voice "audio/voice/captain/C2-054.mp3"
         captain "NO I HEARD YOU THE FIRST TIME!"
 
-        show captain frustrated behind computer
+        show captain distress behind computer
         voice "audio/voice/captain/C2-055.mp3"
         captain "..."
 
@@ -1407,7 +1412,7 @@ label start:
         computer "Apologies, Captain. But you mustttt-"
 
         show computer error-3 with hpunch
-        show captain distress
+        show captain distress-tense
         voice "audio/voice/madi/M2-022.mp3"
         computer "Ah! Well- a-day! what é̶̝v̵̬͋i̸͇͌l̷ looks"
         voice "audio/voice/madi/M2-023.mp3"
@@ -1422,6 +1427,8 @@ label start:
 
     label MapC1:
         show screen MapUIC1 with fade
+        $ preferences.afm_enable = False
+        $ _skipping = False 
         pause
 
     label C1:
@@ -1470,9 +1477,6 @@ label start:
                         jump EndB
 
                     "No":
-                        play sound "Metallic_Hit.mp3" volume 0.5
-                        show bg escape pod with hpunch
-                        captain "*slams fist on escape pod*"
                         voice "audio/voice/captain/C2-068.mp3"
                         captain "... Get it together Rudy. Your crew needs you to focus up and get us out of here."
                         voice "audio/voice/captain/C2-070.mp3"
@@ -1480,11 +1484,7 @@ label start:
 
                         jump Map2
             
-            "No, I can't leave.":
-                
-                show bg escape pod with hpunch
-                play sound "Metallic_Hit.mp3" volume 0.5
-                captain "*slams fist on escape pod*"
+            "No, I can't leave.":                
                 voice "audio/voice/captain/C2-068.mp3"
                 captain "... Get it together Rudy. Your crew needs you to focus up and get us out of here."
                 voice "audio/voice/captain/C2-070.mp3"
@@ -1494,6 +1494,8 @@ label start:
 
     label Map2:
         show screen MapUI2 with fade
+        $ preferences.afm_enable = False
+        $ _skipping = False 
         pause
 
     label S2:
@@ -1503,21 +1505,22 @@ label start:
         $ seenE2 = False
         $ seenS2 = True
         scene bg medic with fade
-        show medic worried messy with dissolve
-        pause(0.5)
-        show captain neutral-closed behind medic with dissolve
 
         # Spoken to Sara in S1
         if seenS1 is True:
             # S2.A
+            show medic excited messy with dissolve
+            pause(0.5)
+            show captain neutral-closed behind medic with dissolve
             voice "audio/voice/sara/S2-058.mp3"
             medic "Any update on the ship Captain?"
 
+            show medic neutral messy 
             show captain neutral-open behind medic
             voice "audio/voice/captain/C2-097.mp3"
             captain "Still working on it."
 
-            show medic stressed messy
+            show medic excited messy
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S2-059.mp3"
             medic "How much time do we really have? To solve this problem? T-the ship cannot possibly hold up this way for long?"
@@ -1531,7 +1534,7 @@ label start:
                     voice "audio/voice/captain/C2-098.mp3"
                     captain "It’s not looking good at all, Sara. We might have to make difficult decisions… I want you to know that."   
 
-                    show medic anxious messy
+                    show medic nervous messy
                     show captain concern-closed behind medic
                     voice "audio/voice/sara/S2-060.mp3"
                     medic "I-I see…"
@@ -1547,7 +1550,7 @@ label start:
                     voice "audio/voice/captain/C2-100.mp3"
                     captain "We are all working hard to fix this. Let’s continue to do so."
 
-                    show medic neutral messy
+                    show medic explaining messy
                     show captain determined-closed behind medic
                     voice "audio/voice/sara/S2-061.mp3"
                     medic "Yes, yes, of course!"
@@ -1571,7 +1574,7 @@ label start:
                     voice "audio/voice/captain/C2-102.mp3"
                     captain "Anything is better than nothing. I trust your judgment."
 
-                    show medic explaining messy
+                    show medic neutral messy
                     show captain concern-closed behind medic
                     voice "audio/voice/sara/S2-063.mp3"
                     medic "Thank you, Captain!"
@@ -1583,7 +1586,7 @@ label start:
                     voice "audio/voice/captain/C2-103.mp3"
                     captain "I was expecting a little more than a theory, to be honest…"
                     
-                    show medic anxious messy
+                    show medic worried messy
                     show captain frustrated behind medic
                     voice "audio/voice/sara/S2-064.mp3"
                     medic "I-I’m sorry, but I’ve put quite a bit of thought into it."
@@ -1592,22 +1595,22 @@ label start:
             voice "audio/voice/captain/C2-104.mp3"
             captain "Tell me your theory."
 
-            show medic explaining messy
+            show medic excited messy
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S2-065.mp3"
             medic "I know I said this organism has similarities to a marine fungus, but it appears to be more complex."
 
-            show captain neutral-open behind medic
+            show captain confusion-open behind medic
             voice "audio/voice/captain/C2-105.mp3"
             captain "How do you mean?"
 
             show medic excited messy
-            show captain neutral-closed behind medic
+            show captain confusion-closed behind medic
             voice "audio/voice/sara/S2-066.mp3"
             medic "You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
             voice "audio/voice/sara/S2-067.mp3"
             medic "My theory is that this organism may have a symbiosis with others in its ecosystem."
-            show medic suggesting messy
+            show medic explaining messy
             voice "audio/voice/sara/S2-068.mp3"
             medic "This could be more developed than what we see on Earth, depending on hundreds of millions of years of evolution."
             
@@ -1632,26 +1635,24 @@ label start:
             voice "audio/voice/captain/C2-108.mp3"
             captain "What kind of communication capabilities are we talking about here?"
 
-            show medic stressed messy
+            show medic excited messy
             show captain confusion-closed behind medic
             voice "audio/voice/sara/S2-071"
             medic "I mentioned this before–has it occurred to you that two incredible events have taken place in a short time span?"
-            show medic excited messy
             voice "audio/voice/sara/S2-072"
             medic "Us finding this specimen and now this crisis we’re facing!" 
-            show medic neutral messy
+            show medic nostalgic messy
             voice "audio/voice/sara/S2-072-1"
             medic "Hah, my family would associate something supernatural to this kind of coincidence…" 
 
-            show captain concern-open behind medic
+            show captain confusion-open behind medic
             voice "audio/voice/captain/C2-109.mp3"
             captain "Sara, are you implying that this organism could have something to do with this?"
 
             show medic excited messy
-            show captain concern-closed behind medic
+            show captain confusion-closed behind medic
             voice "audio/voice/sara/S2-073.mp3"
             medic "Yes! That’s what I think we’ve been missing!"
-            show medic explaining messy
             voice "audio/voice/sara/S2-074.mp3"
             medic "This organism is probably emitting electromagnetic waves that are interfering with the computer and other systems on the ship!"
 
@@ -1664,7 +1665,7 @@ label start:
                     voice "audio/voice/captain/C2-110.mp3"
                     captain "That does sound far-fetched. However, we must think of all possibilities."
 
-                    show medic anxious messy
+                    show medic worried messy
                     show captain confusion-closed behind medic
                     voice "audio/voice/sara/S2-075.mp3"
                     medic "Yes, indeed…" 
@@ -1705,7 +1706,8 @@ label start:
         # Did not speak to Sara in S1
         elif seenS1 is False:
             # S2.B
-            show medic anxious messy
+            show medic nervous messy
+            pause(0.5)
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S2-031.mp3"
             medic "Captain! Oh my god. What is happening!"
@@ -1738,7 +1740,7 @@ label start:
                     voice "audio/voice/sara/S2-033.mp3"
                     medic "Okay then…"
             
-            show medic stressed messy
+            show medic anxious messy
             voice "audio/voice/sara/S2-034.mp3"
             medic "What does Eugen say? Is he okay?!"
 
@@ -1749,7 +1751,7 @@ label start:
             voice "audio/voice/captain/C2-073.mp3"
             captain "But I must tell you that MAD1 is malfunctioning. This complicates everything."
 
-            show medic worried messy
+            show medic nervous messy
             show captain concern-closed behind medic
             voice "audio/voice/sara/S2-035.mp3"
             medic "Oh my god… Here I was thinking we would very much make it back home with the specimen."
@@ -1769,31 +1771,31 @@ label start:
             voice "audio/voice/sara/S2-037.mp3"
             medic "It’s not just about that. It’s just… this is my one chance to prove that everything I’ve done– that it’s all worth it, you know?"
 
-            show captain concern-open behind medic
+            show captain neutral-open behind medic
             voice "audio/voice/captain/C2-076.mp3"
             captain "Your previous achievements are more than average to say the least. Is that not enough?"
             voice "audio/voice/captain/C2-077.mp3"
             captain "Your family should be proud of you regardless of the outcome of this mission."
 
-            show medic neutral messy
-            show captain concern-closed behind medic
+            show medic explaining messy
+            show captain neutral-closed behind medic
             voice "audio/voice/sara/S2-038.mp3"
             medic "I’m a lone woman who’s devoted my life to the sciences. Not everyone views that as ideal, to say the least."
 
-            show captain anger-open behind medic
+            show captain concern-open behind medic
             voice "audio/voice/captain/C2-078.mp3"
             captain "That’s not very fair."
 
-            show captain anger-closed behind medic
+            show captain concern-closed behind medic
             voice "audio/voice/sara/S2-039.mp3"
             medic "It's not, but taking this home would change my life in more ways than one… And now, I don’t know. We might not make it back."
 
-            show captain neutral-open behind medic
+            show captain determined-open behind medic
             voice "audio/voice/captain/C2-079.mp3"
             captain "Focus Sara. Have you managed to come up with any theories about the specimen?"
 
-            show medic explaining messy
-            show captain neutral-closed behind medic
+            show medic excited messy
+            show captain determined-closed behind medic
             voice "audio/voice/sara/S2-040.mp3"
             medic "What? I-no, my research is in the computer! I’ve been reviewing my journal a-and the report you gave me but I’m losing my mind in here."
 
@@ -1837,17 +1839,17 @@ label start:
             voice "audio/voice/captain/C2-086.mp3"
             captain "We’ve come this far. We cannot let everything go to waste."
 
-            show medic anxious messy
+            show medic nervous messy
             show captain determined-closed behind medic
             voice "audio/voice/sara/S2-043.mp3"
             medic "I know… I know it more than anyone. This mission is everything to me."
 
-            show captain rememberance-open behind medic
+            show captain concern-open behind medic
             voice "audio/voice/captain/C2-087.mp3"
             captain "It is to all three of us…"
 
             show medic thinking messy
-            show captain neutral-closed behind medic
+            show captain concern-closed behind medic
             voice "audio/voice/sara/S2-044.mp3"
             medic "… I’ll do what I can… Would you like to hear what I’ve come up with so far?"
             voice "audio/voice/sara/S2-045.mp3"
@@ -1868,7 +1870,7 @@ label start:
             voice "audio/voice/captain/C2-089.mp3"
             captain "Yes?"
 
-            show medic explaining messy
+            show medic excited messy
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S2-048.mp3"
             medic "It appears to be more complex. You know how there are mycelium networks that enable transfer of nutrients in forest ecosystems?"
@@ -1882,7 +1884,7 @@ label start:
             voice "audio/voice/captain/C2-090.mp3"
             captain "Go on."
 
-            show medic excited messy
+            show medic explaining messy
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S2-051.mp3"
             medic "This organism might have communication capabilities that we are unfamiliar with."
@@ -1892,7 +1894,6 @@ label start:
             show captain thinking behind medic
             voice "audio/voice/captain/C2-091.mp3"
             captain "A fungus on steroids? You were hoping for single-celled life in that ocean…"
-            show captain neutral-open behind medic
             voice "audio/voice/captain/C2-092.mp3"
             captain "What kind of communication capabilities are we talking about here?"
 
@@ -1900,7 +1901,6 @@ label start:
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S2-053.mp3"
             medic "I’m not sure, Captain… But has it occurred to you that two strange events have taken place in such a short period of time?"
-            show medic neutral messy
             voice "audio/voice/sara/S2-054.mp3"
             medic "Hah, my family would associate something supernatural to this kind of coincidence…"
 
@@ -1956,18 +1956,16 @@ label start:
         if seenE1 is True:
             # E2.A
             scene bg engineer with fade
-            show engineer neutral with dissolve
+            show engineer resolve with dissolve
             pause(0.5)
             show captain neutral-open behind engineer with dissolve
 
             voice "audio/voice/captain/C2-137.mp3"
             captain "Eugen."
 
-            show engineer resolve
             show captain neutral-closed behind engineer
             voice "audio/voice/eugen/E2-070.mp3"
             engineer "Good, I was about to come find you myself. The situation has reached far too unstable a state."
-            show engineer shock
             voice "audio/voice/eugen/E2-071.mp3"
             engineer "The defense layer I mentioned earlier, it has evolved."
 
@@ -1988,7 +1986,7 @@ label start:
             voice "audio/voice/captain/C2-139.mp3"
             captain "Eugen, you’re saying a lot of words and I’m following none of them."
             
-            show engineer frustration
+            show engineer neutral
             show captain confusion-closed behind engineer
             voice "audio/voice/eugen/E2-075.mp3"
             engineer "Imagine trying to play a trick on someone reading your mind."
@@ -2022,7 +2020,7 @@ label start:
                     voice "audio/voice/captain/C2-142.mp3"
                     captain "Even so, a failsafe wouldn’t be obvious or easy to access."
 
-                    show engineer thinking
+                    show engineer resolve
                     show captain rememberance-closed behind engineer
                     voice "audio/voice/eugen/E2-080.mp3"
                     engineer "I admire his confidence; however, planning for failure is almost as important as expecting to succeed."
@@ -2035,12 +2033,12 @@ label start:
                     voice "audio/voice/captain/C2-143.mp3"
                     captain "Your guess is as good as mine."
 
-                    show engineer surprise
+                    show engineer shock
                     show captain neutral-closed behind engineer
                     voice "audio/voice/eugen/E2-081.mp3"
                     engineer "I would like to believe that isn’t true, considering your role for this mission."
             
-            show engineer thinking
+            show engineer neutral
             voice "audio/voice/eugen/E2-082.mp3"
             engineer "I noticed poetry being produced by the computer at times."
 
@@ -2048,7 +2046,7 @@ label start:
             voice "audio/voice/captain/C2-144.mp3"
             captain "Yes, MAD1 has been reciting it since the initial crash."
 
-            show engineer neutral
+            show engineer resolve
             show captain neutral-closed behind engineer
             voice "audio/voice/eugen/E2-083.mp3"
             engineer "Seeing as this is not even standard for a system error, I investigated it."
@@ -2057,7 +2055,7 @@ label start:
             voice "audio/voice/captain/C2-145.mp3"
             captain "And?"
 
-            show engineer shock
+            show engineer thinking
             show captain neutral-closed behind engineer
             voice "audio/voice/eugen/E2-084.mp3"
             engineer "It seems they are not decorative artifacts, fortunately."
@@ -2071,11 +2069,11 @@ label start:
             voice "audio/voice/captain/C2-147.mp3"
             captain "... Unfortunately… My grasp of poetry isn’t as strong as his…"
 
-            show engineer frustration
+            show engineer neutral
             voice "audio/voice/eugen/E2-086.mp3"
             engineer "I have to say, if I had known this was what was to be expected working with this ship, I would not have agreed to participate in this mission."
             
-            show captain anger-open behind engineer
+            show captain neutral-open behind engineer
             voice "audio/voice/captain/C2-148.mp3"
             captain "It was either this or risking another massive crew like the last mission."
             show captain concern-open behind engineer
@@ -2085,7 +2083,7 @@ label start:
             voice "audio/voice/captain/C2-150.mp3"
             captain "None, and I mean none of us expected any of this."
             
-            show engineer thinking
+            show engineer neutral
             show captain anger-closed behind engineer
             voice "audio/voice/eugen/E2-087.mp3"
             engineer "Anyhow, this is not necessarily corruption; rather, it seems to be symbolic indexing."
@@ -2115,7 +2113,7 @@ label start:
                     voice "audio/voice/captain/C2-154.mp3"
                     captain "It was made perfectly - in his eyes, to his touch."
 
-                    show engineer anger
+                    show engineer resolve
                     show captain rememberance-closed behind engineer
                     voice "audio/voice/eugen/E2-091.mp3"
                     engineer "So that means this could be beyond our understanding, and potentially, some ulterior methods must be considered."
@@ -2130,19 +2128,19 @@ label start:
                     voice "audio/voice/captain/C2-155.mp3"
                     captain "I don’t know every possible thought that was going through his head, Braun."
 
-                    show engineer surprise
+                    show engineer stern
                     show captain anger-closed behind engineer
                     voice "audio/voice/eugen/E2-092.mp3"
                     engineer "Choosing to use his vessel for this mission was a decision you made; at the very least, I’d hope you knew enough about it to offer some insight."
 
-            show captain neutral-open behind engineer
+            show captain thinking behind engineer
             voice "audio/voice/captain/C2-156.mp3"
             captain "I don’t think he intended for it to be captained by anyone other than him."
             voice "audio/voice/captain/C2-157.mp3"
             captain "But no one else has programmed a system quite like his that’s necessary for a mission like this."
             
             show engineer neutral
-            show captain neutral-closed behind engineer
+            show captain thinking behind engineer
             voice "audio/voice/eugen/E2-093.mp3"
             engineer "There is something else you need to understand."
 
@@ -2150,7 +2148,7 @@ label start:
             voice "audio/voice/captain/C2-158.mp3"
             captain "Enlighten me."
 
-            show engineer shock
+            show engineer thinking
             show captain neutral-closed behind engineer
             voice "audio/voice/eugen/E2-094.mp3"
             engineer "While I have been trying to stabilize our life support, the background processes have been reallocating power autonomously."  
@@ -2165,10 +2163,9 @@ label start:
             engineer "Containment integrity is being reinforced, data preservation protocols are preserved, and the specimen’s environmental chamber has not dropped past optimal range even once."
             voice "audio/voice/eugen/E2-096.mp3"
             engineer "All while our life support has been steadily dropping. This doesn’t appear to be a malfunction; this seems to be prioritization."
-            show engineer surprise
+            show engineer neutral
             voice "audio/voice/eugen/E2-097.mp3"
             engineer "Let me ask you this very clearly, Captain, when Matthew designed this system, did he ever imply that the discovery outweighed the lives involved in its recovery?" 
-            show engineer shock
             voice "audio/voice/eugen/E2-098.mp3"
             engineer "If he did, then rest assured the ship is behaving exactly as it was programmed to."
 
@@ -2177,13 +2174,15 @@ label start:
                 "Stop asking about him.":
                     play sound "incorrect ding.mp3" volume 0.8
 
-                    show captain anger-open behind engineer
+                    show captain anger-open-tense behind engineer
                     voice "audio/voice/captain/C2-160.mp3"
                     captain "Stop. Asking. About him."
                     voice "audio/voice/captain/C2-161.mp3"
                     captain "He’s not- … He wasn’t an idiot."
                     voice "audio/voice/captain/C2-162.mp3"
                     captain "He wouldn’t have prioritised the mission over the crew’s survival, not even his own."
+                    
+                    show captain anger-closed-tense behind engineer
 
                 # E.2.2b
                 "He was pragmatic.":
@@ -2196,7 +2195,9 @@ label start:
                     show captain determined-open behind engineer
                     voice "audio/voice/captain/C2-164.mp3"
                     captain "He wouldn’t have prioritised the mission over the crew’s survival, not even his own."
-            
+
+                    show captain determined-closed behind engineer
+
             show captain thinking behind engineer
             voice "audio/voice/captain/C2-165.mp3"
             captain "Which means the ship is not supposed to act this way, something’s interfering."
@@ -2218,12 +2219,13 @@ label start:
             show captain neutral-open behind captain
             voice "audio/voice/captain/C2-167.mp3"
             captain "That’s a good lead. Follow it."
+            show captain neutral-closed behind captain
             jump M3
 
         elif seenE1 is False:
             # E2.B
             scene bg engineer with fade
-            show engineer thinking with dissolve
+            show engineer anger with dissolve
             pause(0.5)
             show captain neutral-closed behind engineer with dissolve
 
@@ -2245,17 +2247,13 @@ label start:
             show engineer thinking
             voice "audio/voice/eugen/E2-042.mp3"
             engineer "At 20%% deviation, it was manageable, nothing I haven’t dealt with before."
-            show engineer frustration
             voice "audio/voice/eugen/E2-043.mp3"
             engineer "At 35, it became anomalous."
-            show engineer shock
             voice "audio/voice/eugen/E2-044.mp3"
             engineer "At 45, it became clear that what was happening was intentionally programmed into the ship."
-            show engineer anger
+            show engineer frustration
             voice "audio/voice/eugen/E2-045.mp3"
             engineer "I needed more information half an hour ago, so I can only hope you come to me with an update about the ship."
-
-            show engineer surprise
             voice "audio/voice/eugen/E2-046.mp3"
             engineer "Were you gathering information, or were you hoping this would resolve itself without much involvement from you?"
 
@@ -2272,7 +2270,7 @@ label start:
                     voice "audio/voice/captain/C2-118.mp3"
                     captain "I’m sorry I don’t have anything concrete."
 
-                    show engineer anger
+                    show engineer stern
                     show captain frustrated behind engineer
                     voice "audio/voice/eugen/E2-047.mp3"
                     engineer "Hmm… Disappointing."
@@ -2282,50 +2280,50 @@ label start:
                     $ engApproval += 1
                     play sound "correct ding.mp3" volume 0.8
 
-                    show captain anger-open behind engineer
+                    show captain concern-open behind engineer
                     voice "audio/voice/captain/C2-119.mp3"
                     captain "For your information, Technician Braun, I have been conferring with MAD1 and Sara to find a solution."
                     voice "audio/voice/captain/C2-120.mp3"
                     captain "Sara is investigating the specimen to see if it’s affecting anything."
                     voice "audio/voice/captain/C2-121.mp3"
+                    show captain anger-open behind engineer
                     captain "And MAD1 is still reciting different poems."
                     voice "audio/voice/captain/C2-122.mp3"
                     captain "And they’re not even correct! Sometimes the words are changed or lines are misplaced."
-                    show captain frustrated behind engineer
                     voice "audio/voice/captain/C2-123.mp3"
                     captain "I hope you can forgive the lack of specificity when all I’m getting are damn riddles."
 
                     show engineer resolve
-                    show captain neutral-closed behind engineer
+                    show captain anger-closed behind engineer
                     voice "audio/voice/eugen/E2-048.mp3"
                     engineer "Apologies Captain…"
             
-            show engineer neutral
             voice "audio/voice/eugen/E2-049.mp3"
             engineer "By my calculations, there is only 50%% of our oxygen supply remaining."
 
-            show captain frustrated behind engineer
+            show captain concern-open behind engineer
             voice "audio/voice/captain/C2-124.mp3"
             captain "Oh I am well aware…"
 
             show engineer frustration
+            show captain concern-closed behind engineer
             voice "audio/voice/eugen/E2-050.mp3"
             engineer "Only now do you decide to meet with the Engineer you have on board."
     
-            show captain anger-open behind engineer
+            show captain frustrated behind engineer
             voice "audio/voice/captain/C2-125.mp3"
             captain "Apologies for not being able to juggle with one hand tied behind my back."
 
             show engineer neutral
-            show captain anger-closed behind engineer
+            show captain frustrated behind engineer
             voice "audio/voice/eugen/E2-051.mp3"
             engineer "... I have been trying to access the auxiliary core for the past half hour without any structural access provided to me."
             show engineer shock
             voice "audio/voice/eugen/E2-052.mp3"
             engineer "Every override attempt is intercepted, every reroute collapses… The system doesn’t seem to be failing, rather the opposite - it’s seemingly defending itself."
 
-            show engineer frustration
-            show captain neutral-closed behind engineer
+            show engineer neutral
+            show captain frustrated behind engineer
             voice "audio/voice/eugen/E2-053.mp3"
             engineer "The only reason I believe makes sense is that Matthew designed it this way on purpose."
             show engineer thinking
@@ -2353,12 +2351,12 @@ label start:
                 "He was the programmer, not me.":
                     play sound "incorrect ding.mp3" volume 0.8
 
-                    show captain neutral-open behind engineer
+                    show captain thinking behind engineer
                     voice "audio/voice/captain/C2-127.mp3"
                     captain "If he had any programming secrets, he didn’t share them with me. I’m not exactly a programmer."
 
-                    show engineer surprise
-                    show captain neutral-closed behind engineer
+                    show engineer stern
+                    show captain thinking behind engineer
                     voice "audio/voice/eugen/E2-057.mp3"
                     engineer "I’d imagine, as the Captain and someone who knew Matthew closely, you’d have more to share. We’ll have to make-do I suppose."
 
@@ -2378,7 +2376,6 @@ label start:
             voice "audio/voice/captain/C2-128.mp3"
             captain "He absolutely liked things his own way, that’s for sure."
 
-            show engineer shock
             show captain rememberance-closed behind engineer
             voice "audio/voice/eugen/E2-062.mp3"
             engineer "Given this, I want to ask you, Captain, in this chain of command we have, have we been operating on procedure, or his preference?"
@@ -2411,22 +2408,20 @@ label start:
                 "I’m just as confused as you are.":
                     play sound "incorrect ding.mp3" volume 0.8
 
-                    show captain frustrated behind engineer
+                    show captain concern-open behind engineer
                     voice "audio/voice/captain/C2-133.mp3"
                     captain "Listen, I’m just as lost and confused as you are."
-                    show captain neutral-open behind engineer
                     voice "audio/voice/captain/C2-134.mp3"
                     captain "But if we want to figure this out, we have to do the best we can with the cards we are dealt."
                     voice "audio/voice/captain/C2-135.mp3"
                     captain "I’ll return shortly."
 
-                    show engineer surprise
-                    show captain neutral-closed behind engineer
+                    show engineer anger
+                    show captain concern-closed behind engineer
                     voice "audio/voice/eugen/E2-065.mp3"
                     engineer "I’ve never been a gambling man, Captain. At this rate, I don’t suggest you return with high hopes."
             
-            show captain neutral-closed behind engineer
-            show engineer resolve
+            show engineer stern
             voice "audio/voice/eugen/E2-066.mp3"
             engineer "So long as my equipment is being used for this mission, I am determined to make it back in one piece."
             voice "audio/voice/eugen/E2-067.mp3"
@@ -2463,6 +2458,7 @@ label start:
             computer "No longer mourn for me when I am d̴̼͋ë̴̩́a̵͖̕d"
             voice "audio/voice/madi/M2-027.mp3"
             computer "Then you shall hear the surly sullen bell"
+            show captain confusion-closed behind computer
             voice "audio/voice/madi/M2-028.mp3"
             computer "Give wa̷rni̷ń̵̟g to the world t̷h̴a̸t̷ ̷I̷ am fled"
             voice "audio/voice/madi/M2-029.mp3"
@@ -2673,11 +2669,11 @@ label start:
         voice "audio/voice/madi/M2-030.mp3"
         computer "Cap̴-̶ ̵C̴͂͜ä̴͎́p̸̪͒-̵̺̀ ̷͇͐ Ċ̷̯a̶̭͊p̴̹̆t̶̡̐a̸̬̓ï̴̬n."
 
-        show captain concern-open behind computer 
+        show captain confusion-open behind computer 
         voice "audio/voice/captain/C2-168.mp3"
         captain "… MAD1?"
 
-        show captain concern-closed behind computer 
+        show captain confusion-closed behind computer 
         voice "audio/voice/madi/M2-031.mp3"
         computer "We meet in an e̷̯͂̉v̸̜͘ị̶̃l̵͕̆̾ land"
         voice "audio/voice/madi/M2-032.mp3"
@@ -2695,13 +2691,13 @@ label start:
         voice "audio/voice/madi/M2-038.mp3"
         computer "There is daǹ̶̳ger̷͉͌ beṅ̴eȁ̵͚th̷͖͆ ă̴ń̷̩d o'erh̴̗̔e̷͖͐ả̷̭d̶̢́."
 
-        show captain confusion-open behind computer 
+        show captain concern-open behind computer 
         voice "audio/voice/captain/C2-169.mp3"
         captain "What? What other danger?"
         voice "audio/voice/captain/C2-170.mp3"
         captain "What are you trying to tell me?"
 
-        show captain confusion-closed behind computer 
+        show captain concern-closed behind computer 
         voice "audio/voice/madi/M2-039.mp3"
         computer "There pă̸s̴͎̀sed̷͚̃ a weary time. Each t̵h̴r̶o̷a̷t̶ "
         voice "audio/voice/madi/M2-040.mp3"
@@ -2722,6 +2718,7 @@ label start:
         voice "audio/voice/captain/C2-173.mp3"
         captain "Why…"
 
+        show captain distress-tense behind computer 
         voice "audio/voice/madi/M2-044.mp3"
         computer "Let the bell toll! — A sai̵n̶t̵̩̀ly̵ s̴ŏ̴̹ú̴̼l"
         voice "audio/voice/madi/M2-045.mp3"
@@ -2741,12 +2738,15 @@ label start:
         voice "audio/voice/madi/M2-052.mp3"
         computer "Weep now or nev̵e̷r̷m̷õ̸̬re!"
 
+        show captain distress tears-tense behind computer 
         voice "audio/voice/captain/C2-174.mp3"
         captain "I… I uh…"
         jump MapC2
 
     label MapC2: 
         show screen MapUIC2 with fade
+        $ preferences.afm_enable = False
+        $ _skipping = False 
         pause
 
     label C2:
@@ -2888,6 +2888,8 @@ label start:
 
     label Map3:
         show screen MapUI3 with fade
+        $ preferences.afm_enable = False
+        $ _skipping = False 
         pause
 
     label S3:
@@ -2896,7 +2898,7 @@ label start:
         scene onlayer screens
         $ seenS3 = True
         scene bg medic with fade
-        show medic worried messy with dissolve
+        show medic excited messy with dissolve
         pause(0.5)
         show captain neutral-closed behind medic with dissolve
 
@@ -2909,14 +2911,14 @@ label start:
         menu:    
             # S.3.1a
             "Our survival rests on you, Sara.":
-                show captain neutral-open behind medic
+                show captain concern-open-tense behind medic
                 voice "audio/voice/captain/C3-019.mp3"
                 captain "Not much time…"
                 voice "audio/voice/captain/C3-020.mp3"
                 captain "Our survival rests on you, Sara. Your solution."
 
-                show medic nervous messy
-                show captain neutral-closed behind medic
+                show medic stressed messy
+                show captain concern-closed-tense behind medic
                 voice "audio/voice/sara/S3-003.mp3"
                 medic "T-that’s a lot of pressure, Captain! I-I’ve done what I can…"
 
@@ -2936,15 +2938,14 @@ label start:
                 voice "audio/voice/captain/C3-022.mp3"
                 captain "Thank you for all you’ve done up to this point. Your work might save us all."
 
-                show medic neutral messy
+                show medic suggesting messy
                 show captain concern-closed behind medic
                 voice "audio/voice/sara/S3-005.mp3"
                 medic "Thank you, Captain…"
 
             # S.3.1c IF SEEN MO SECRET
-            "We’re ejecting the specimen." if secretChoice is True and medApproval >= 3:
+            "We’re ejecting the specimen." if secretChoice is True:
                 show captain rememberance-open behind medic 
-                show captain frustrated behind medic
                 voice "audio/voice/captain/C3-023.mp3"
                 captain "I’ve made a decision regarding the specimen."
                 voice "audio/voice/captain/C3-024.mp3"
@@ -2957,7 +2958,7 @@ label start:
                 voice "audio/voice/sara/S3-006.mp3"
                 medic "What?! But the research, the possibilities-"
 
-                show captain rememberance-open behind medic 
+                show captain concern-open behind medic 
                 voice "audio/voice/captain/C3-026.mp3"
                 captain "Aren’t worth our lives. We have enough to go off of."
                 show captain distress behind medic
@@ -2965,6 +2966,7 @@ label start:
                 captain "It’s… It’s time to let go."
 
                 show medic thinking messy
+                show captain distress behind medic
                 voice "audio/voice/sara/S3-007.mp3"
                 medic "I- oh… I understand…"
                 
@@ -2978,7 +2980,7 @@ label start:
 
         #S.3.A: Low Approval/Failure
         if medApproval < 5:
-            show medic anxious messy
+            show medic nervous messy
             voice "audio/voice/sara/S3-008.mp3"
             medic "I’m very certain now that it’s the specimen emitting electromagnetic waves that are interfering with our systems."
             
@@ -2986,13 +2988,12 @@ label start:
             voice "audio/voice/captain/C3-028.mp3"
             captain "How certain?"
 
-            show medic explaining messy
             show captain concern-closed behind medic
             voice "audio/voice/sara/S3-009.mp3"
             medic "95%%? In fact, I’m about to confirm it with a VLF detector. My theory is that it is using low frequency bursts as a form of threat response."
             voice "audio/voice/sara/S3-010.mp3"
             medic "It makes sense for it to be low frequency, since this organism’s natural habitat is water."
-            show medic suggesting messy
+            show medic explaining messy
             voice "audio/voice/sara/S3-011.mp3"
             medic "And lower frequencies transmit better in water."
 
@@ -3006,28 +3007,29 @@ label start:
 
             # IF SPOKEN TO Act 3 LOW APPROVAL EUGEN
             if seenE3 is True and engApproval < 5:
-                show captain frustrated behind medic
+                show captain rememberance-open-tense behind medic
                 voice "audio/voice/captain/C3-030.mp3"
                 captain "About that…"
-                show captain concern-open behind medic
                 voice "audio/voice/captain/C3-031.mp3"
                 captain "Eugen couldn’t find a solution for MAD1. We couldn’t intercept the interference in time."
-                show medic stressed messy
-                show captain concern-closed behind medic
+                
+                show medic anxious messy
+                show captain rememberance-closed-tense behind medic
                 voice "audio/voice/sara/S3-013.mp3"
                 medic "Oh my god…"
                 show medic nervous messy
                 voice "audio/voice/sara/S3-014.mp3"
                 medic "I’m sorry that I couldn’t locate the cause sooner. We could’ve averted this disaster–"
-                show captain concern-open behind medic
+                show captain concern-open-tense behind medic
                 voice "audio/voice/captain/C3-032.mp3"
                 captain "None of us could’ve foreseen this would happen."
                 voice "audio/voice/captain/C3-033.mp3"
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
-                show medic anxious messy
-                show captain concern-closed behind medic
+                
+                show captain concern-closed-tense behind medic
                 voice "audio/voice/sara/S3-015.mp3"
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
+                show medic nostalgic messy
                 voice "audio/voice/sara/S3-016.mp3"
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
                 
@@ -3038,7 +3040,7 @@ label start:
                 voice "audio/voice/captain/C3-034.mp3"
                 captain "Sara, can you come up with a containment plan?"
 
-                show medic stressed messy
+                show medic excited messy
                 show captain neutral-closed behind medic
                 voice "audio/voice/sara/S3-017.mp3"
                 medic "I-I don’t know! I don’t think so. There’s no time!"
@@ -3049,7 +3051,7 @@ label start:
                     voice "audio/voice/sara/S3-018.mp3"
                     medic "Even if Eugen has a solution to fix MAD1, without a way to shield the specimen, it will continue to damage the ship."
 
-                    show captain frustrated behind medic
+                    show captain distress-tense behind medic
                     voice "audio/voice/captain/C3-035.mp3"
                     captain "So even if he’s figured out how to bypass the computer, we’re still screwed…"
 
@@ -3058,33 +3060,34 @@ label start:
                     show captain determined-open behind medic
                     voice "audio/voice/captain/C3-036.mp3"
                     captain "Eugen’s found a solution for MAD1, we just need you to tell us what to do about the specimen’s interception."
-                    show medic stressed messy
+                    show medic nervous messy
                     show captain determined-closed behind medic
                     voice "audio/voice/sara/S3-019.mp3"
                     medic "I-it’s too late… Any solution we think of now can’t be done in time."
-                    show captain frustrated behind medic
+                    show captain distress-tense behind medic
                     voice "audio/voice/captain/C3-037.mp3"
                     captain "So we’re doomed…"
 
-                show captain frustrated behind medic
+                show captain frustrated-tense behind medic
                 voice "audio/voice/captain/C3-038.mp3"
                 captain "Dammit. At least if we can get the specimen to Earth… Our efforts won’t be in vain."
 
-                show medic anxious messy
+                show medic suggesting messy
                 voice "audio/voice/sara/S3-020.mp3"
                 medic "Yes, yes, we need to. I’m sorry that I couldn’t find out sooner. We could’ve averted this disaster–"
 
-                show captain concern-open behind medic
+                show captain concern-open-tense behind medic
                 voice "audio/voice/captain/C3-032.mp3"
                 captain "None of us could’ve foreseen this would happen."
                 voice "audio/voice/captain/C3-033.mp3"
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
                     
                 show medic anxious messy
-                show captain concern-closed
+                show captain concern-closed-tense
                 voice "audio/voice/sara/S3-015.mp3"
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
                 voice "audio/voice/sara/S3-016.mp3"
+                show medic nostalgic
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
 
             if seenE3 is False:
@@ -3094,7 +3097,7 @@ label start:
     
         #S.3.B: High Approval/Success
         elif medApproval >= 5:
-            show medic explaining messy
+            show medic excited messy
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S3-021.mp3"
             medic "I have used a VLF detector and confirmed that the specimen is emitting low frequency electromagnetic waves."
@@ -3113,43 +3116,40 @@ label start:
             voice "audio/voice/captain/C3-040.mp3"
             captain "You’ve done well, Sara."
             
-            show medic neutral messy
+            show medic suggesting messy
             show captain neutral-closed behind medic
             voice "audio/voice/sara/S3-024.mp3"
             medic "Thank you. It wouldn’t have been possible if you didn’t believe in me all this time…"
             show medic excited messy
             voice "audio/voice/sara/S3-025.mp3"
             medic "I’ve even looked into containment. But it won’t be easy. I don’t know–we might not have time!"
-            
-            show captain determined-open behind medic
 
             # IF SPOKEN TO Act 3 LOW APPROVAL EUGEN
             if seenE3 is True and engApproval < 5:
-                show captain frustrated behind medic
+                show captain concern-open-tense behind medic
                 voice "audio/voice/captain/C3-041.mp3"
                 captain "Even if we did… There’s no point."
-                show captain concern-open behind medic
                 voice "audio/voice/captain/C3-042.mp3"
                 captain "Eugen couldn’t find a solution for MAD1. We couldn’t intercept the interference in time."
 
                 show medic nervous messy
-                show captain concern-closed behind medic
+                show captain concern-closed-tense behind medic
                 voice "audio/voice/sara/S3-013.mp3"
                 medic "Oh my god…  "
                 voice "audio/voice/sara/S3-014.mp3"
                 medic "I’m sorry that I couldn’t locate the cause sooner. We could’ve averted this disaster–"
 
-                show captain concern-open behind medic
+                show captain concern-open-tense behind medic
                 voice "audio/voice/captain/C3-032.mp3"
                 captain "None of us could’ve foreseen this would happen."
                 voice "audio/voice/captain/C3-033.mp3"
                 captain "We followed protocol. This mission went without a glitch all this time. Our luck ran out."
 
-                show medic anxious messy
-                show captain concern-closed behind medic
+                show captain concern-closed-tense behind medic
                 voice "audio/voice/sara/S3-015.mp3"
                 medic "We manipulate “luck” with science, with probability. I could’ve done better…"
                 voice "audio/voice/sara/S3-016.mp3"
+                show medic nostalgic
                 medic "Thank you for your kind words, Captain. But they ring hollow in the face of death."
 
                 jump Final
@@ -3188,17 +3188,18 @@ label start:
 
                 # IF NOT SPOKEN TO Act 3 EUGEN
                 if seenE3 is False:
-                    show medic worried messy
+                    show medic thinking messy
                     voice "audio/voice/sara/S3-031.mp3"
                     medic "I just hope Eugen has a solution for MAD1 and the ship… The damage that has been done cannot be reversed."
                     voice "audio/voice/sara/S3-032.mp3"
                     medic "If he hasn’t found a way to bypass the OS, I’m afraid we’re still doomed."
 
-                    show captain neutral-open behind medic
+                    show captain determined-open behind medic
                     voice "audio/voice/captain/C3-046.mp3"
                     captain "I’ll go speak with him now, hopefully he’s found something out."
 
                     jump Map3
+
                 # IF SPOKEN TO Act 3 HIGH APPROVAL EUGEN
                 elif seenE3 is True and engApproval >= 5:
                     show captain determined-open behind medic
@@ -3220,7 +3221,7 @@ label start:
         scene onlayer screens
         $ seenE3 = True
         scene bg engineer with fade
-        show engineer thinking with dissolve
+        show engineer neutral with dissolve
         pause(0.5)
         show captain neutral-closed behind engineer with dissolve
 
@@ -3230,7 +3231,7 @@ label start:
         engineer "After trying to combat the system and its programming, nothing seems to be working in our favour."
         voice "audio/voice/eugen/E3-003.mp3"
         engineer "In terms of possible solutions, I don’t see many that I can confidently give precedence to."
-        show engineer neutral
+        show engineer thinking
         voice "audio/voice/eugen/E3-004.mp3"
         engineer "I have to ask, after everything we went through to get the specimen, are you willing to lose it all to survive, knowing that there is no guarantee in that result as well?"
 
@@ -3241,7 +3242,7 @@ label start:
                 voice "audio/voice/captain/C3-049.mp3"
                 captain "Whatever it takes."
 
-                show engineer frustration
+                show engineer stern
                 show captain determined-closed behind engineer
                 voice "audio/voice/eugen/E3-005.mp3"
                 engineer "I see."
@@ -3262,7 +3263,7 @@ label start:
                 engineer "I share your frustrations, captain."
 
             # E.3.1c IF SEEN MO.1 and Approval = 3+
-            "We’re ejecting the specimen." if secretChoice is True and engApproval >= 3:
+            "We’re ejecting the specimen." if secretChoice is True:
                 show captain frustrated behind engineer
                 voice "audio/voice/captain/C3-052.mp3"
                 captain "About that…"
@@ -3288,7 +3289,7 @@ label start:
                 show engineer thinking
                 voice "audio/voice/eugen/E3-008.mp3"
                 engineer "I see."
-                show engineer surprise
+                show engineer stern
                 voice "audio/voice/eugen/E3-009.mp3"
                 engineer "This is a difficult decision you’ve made."
 
@@ -3484,7 +3485,7 @@ label start:
             voice "audio/voice/captain/C3-058-1.mp3"
             captain "What’s the plan for protocol?"
             
-            show engineer surprise
+            show engineer stern
             show captain neutral-closed behind engineer
             voice "audio/voice/eugen/E3-031.mp3"
             engineer "To hell with protocol, this system is clearly beyond following traditional procedures."
@@ -3559,7 +3560,7 @@ label start:
             show captain neutral-closed behind engineer
             voice "audio/voice/eugen/E3-036.mp3"
             engineer "I cannot override anything anymore without triggering a complete system failure that would serve no purpose besides ending this immediately."
-            show engineer surprise
+            show engineer stern
             voice "audio/voice/eugen/E3-037.mp3"
             engineer "To override MAD1 you have to go to the control room; there is a security door locked inside; only you can enter with your personnel badge."
             show engineer shock
@@ -3584,7 +3585,7 @@ label start:
             voice "audio/voice/captain/C3-081.mp3"
             captain "If this is our best last resort, so be it."
             
-            show engineer surprise
+            show engineer stern
             show captain determined-closed behind engineer
             voice "audio/voice/eugen/E3-043.mp3"
             engineer "This is what remains, a final countdown. Please tell me you will make the right decision and save this mission."
@@ -3790,7 +3791,7 @@ label start:
             voice "audio/voice/captain/C3-103.mp3"
             captain "Yes it did."
 
-            show engineer surprise
+            show engineer stern
             show captain determined-closed behind engineer
             voice "audio/voice/eugen/E3-045.mp3"
             engineer "I will begin rerouting life support immediately."
@@ -4202,7 +4203,7 @@ label start:
 
         hide screen Credits6 with dissolve
         scene black with dissolve
-        pause
+        pause(2)
         scene secret ending with fade
         pause
         scene black with dissolve
