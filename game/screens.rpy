@@ -27,7 +27,8 @@ style gui_text:
 
 style button:
     properties gui.button_properties("button")
-    activate_sound "audio/Button_Select.mp3"
+    activate_sound "audio/Button_Select.mp3"    
+    hover_sound "audio/Beephover.mp3"
     
 style button_text is gui_text:
     properties gui.text_properties("button")
@@ -227,6 +228,7 @@ style choice_hbox:
 style choice_button is default:
     properties gui.button_properties("choice_button")
     activate_sound "audio/Button_Select.mp3"
+    hover_sound "audio/Beephover.mp3"
 style choice_button_text is default:
     hover_bold True
     properties gui.text_properties("choice_button")
@@ -239,6 +241,12 @@ style choice_button_text is default:
 
 screen quick_menu():
 
+    mousearea:
+        xysize(1920,50)
+        yalign(1.0)
+        hovered SetVariable("quick_menu",True)
+        unhovered SetVariable("quick_menu",False)
+        
     ## Ensure this appears on top of other screens.
     zorder 100
 
@@ -315,6 +323,8 @@ screen navigation():
                 ypos 630
                 idle "gui/information-button-hover.png" 
                 hover "gui/information-button-hover.png" 
+                activate_sound "audio/Button_Select.mp3"
+                hover_sound "audio/Beephover.mp3"
                 action ShowMenu("help")
 
             imagebutton:
@@ -323,6 +333,8 @@ screen navigation():
                     ypos 450
                     idle "gui/gallery-icon-expanded.png" 
                     hover "gui/gallery-icon-expanded.png" 
+                    activate_sound "audio/Button_Select.mp3"
+                    hover_sound "audio/Beephover.mp3"
                     action ShowMenu("gallery") 
                 else: 
                     xpos 1750    
@@ -451,6 +463,7 @@ style navigation_button:
     properties gui.button_properties("navigation_button")
     
     activate_sound "audio/Button_Select.mp3"
+    hover_sound "audio/Beephover.mp3"
 
     # 3. Center the button and its contents
     xalign 0.5
@@ -591,6 +604,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     if title != _("Pause") and title != _("Game Paused"):
         textbutton _("Return"):
             style "return_button"
+            activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Return()
     
     label title
@@ -1334,6 +1349,8 @@ screen help():
         ypos 120
         idle "gui/exit-button.png" 
         hover "gui/exit-button.png" 
+        activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Return()
 
 
@@ -1478,6 +1495,7 @@ style help_side_button:
     properties gui.button_properties("confirm_button")    
 
     activate_sound "audio/Button_Select.mp3"
+    hover_sound "audio/Beephover.mp3"
 
     # 3. Center the button and its contents
     xalign 0.5
@@ -1550,6 +1568,7 @@ style confirm_button:
     properties gui.button_properties("confirm_button")    
 
     activate_sound "audio/Button_Select.mp3"
+    hover_sound "audio/Beephover.mp3"
 
     # 3. Center the button and its contents
     xalign 0.5
@@ -1921,6 +1940,7 @@ screen MapUI0():
             idle "map/medicidle.png"
             hover "map/medichover.png"
             activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Jump("SI")
 
     # engineer
@@ -1931,6 +1951,7 @@ screen MapUI0():
             idle "map/engineeridle.png"
             hover "map/engineerhover.png"
             activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Jump("EI")
 
 # Map 1
@@ -1956,6 +1977,7 @@ screen MapUI1():
         idle "map/medicidle.png"
         hover "map/medichover.png"
         activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Jump("S1")
          
     # engineer
@@ -1965,6 +1987,7 @@ screen MapUI1():
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
         activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Jump("E1")
         
 # Map 1b transition to C1
@@ -1989,6 +2012,8 @@ screen MapUIC1():
         ypos 513
         idle "map/escapeidle.png"
         hover "map/escapehover.png"
+        activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Jump("C1")
 
 
@@ -2022,6 +2047,7 @@ screen MapUI2():
         idle "map/medicidle.png"
         hover "map/medichover.png"
         activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Jump("S2")
 
     # engineer
@@ -2031,6 +2057,7 @@ screen MapUI2():
         idle "map/engineeridle.png"
         hover "map/engineerhover.png"
         activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Jump("E2")
 
     # computer
@@ -2041,6 +2068,7 @@ screen MapUI2():
             idle "map/computeridle.png"
             hover "map/computerhover.png"
             activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Jump("MO")
 
 # Map 2b transition to C2
@@ -2065,6 +2093,8 @@ screen MapUIC2():
         ypos 268
         idle "map/storageidle.png"
         hover "map/storagehover.png"
+        activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Jump("C2")
 
 # Map 3
@@ -2098,6 +2128,7 @@ screen MapUI3():
             idle "map/medicidle.png"
             hover "map/medichover.png"
             activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Jump("S3")
 
     # engineer
@@ -2108,6 +2139,7 @@ screen MapUI3():
             idle "map/engineeridle.png"
             hover "map/engineerhover.png"
             activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Jump("E3")
 
 screen MapUIFin():
@@ -2132,6 +2164,8 @@ screen MapUIFin():
             ypos 268
             idle "map/storageidle.png"
             hover "map/storagehover.png"
+            activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Jump("SaraSolution")
 
     # computer
@@ -2141,6 +2175,8 @@ screen MapUIFin():
             ypos 480
             idle "map/computeridle.png"
             hover "map/computerhover.png"
+            activate_sound "audio/Button_Select.mp3"
+            hover_sound "audio/Beephover.mp3"
             action Jump("EugenSolution")
     
 screen MapUIEnd():
@@ -2164,6 +2200,8 @@ screen MapUIEnd():
         ypos 513
         idle "map/escapeidle.png"
         hover "map/escapehover.png"
+        activate_sound "audio/Button_Select.mp3"
+        hover_sound "audio/Beephover.mp3"
         action Jump("Choice")
 
 

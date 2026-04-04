@@ -78,6 +78,7 @@ image captainConfusedClosedDark = im.MatrixColor(
 
 # The game starts here.
 label start:    
+    $ quick_menu = True
     play music "Electric_Dawn.mp3" volume 0.8
 
     scene bg computer with fade
