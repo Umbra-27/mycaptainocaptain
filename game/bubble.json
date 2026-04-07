@@ -1395,6 +1395,15 @@
         ],
         "properties": "computer"
     },
+    "MO_6ed2659b": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
     "MO_73989090": {
         "area": [
             400,
@@ -1412,6 +1421,24 @@
             540
         ]
     },
+    "MO_b00cf3b1": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
+    "MO_b44a9d45": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
     "MO_bd728a62": {
         "area": [
             400,
@@ -1421,7 +1448,43 @@
         ],
         "properties": "computer"
     },
+    "MO_cb723f7e": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
+    "MO_cbb712d6": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
+    "MO_ccf3b9ae": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
     "MO_dc5dda04": {
+        "area": [
+            400,
+            540,
+            1120,
+            495
+        ],
+        "properties": "computer"
+    },
+    "MO_f16831a7": {
         "area": [
             400,
             540,

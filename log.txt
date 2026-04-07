@@ -1,29 +1,29 @@
-2026-04-04 06:41:17 UTC
+2026-04-07 01:14:00 UTC
 Windows-11-10.0.26200-SP0
 Ren'Py 8.5.2.26010301
 
-Early init took 35 ms
-Loading error handling took 88 ms
-Loading script took 1111 ms
+Early init took 38 ms
+Loading error handling took 91 ms
+Loading script took 1078 ms
 Loading save slot metadata took 18 ms
 Loading persistent took 0 ms
-Running init code took 91 ms
+Running init code took 78 ms
 Loading analysis data took 0 ms
-Analyze and compile ATL took 3 ms
-Reloading save slot metadata took 10 ms
+Analyze and compile ATL took 2 ms
+Reloading save slot metadata took 9 ms
 Backing up script files to 'C:\\Users\\carin\\AppData\\Roaming/RenPy/backups\\mycaptainocaptain':
-Dump and make backups took 27 ms
+Dump and make backups took 24 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 26 ms
+Initial gc took 22 ms
 DPI scale factor: 2.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
 Creating interface object took 2 ms
-Init translation took 0 ms
-Cleaning stores took 1 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
 Load screen analysis took 0 ms
-Analyze screens took 15 ms
-Save screen analysis took 9 ms
+Analyze screens took 14 ms
+Save screen analysis took 8 ms
 Save pyanalysis took 2 ms
-Save bytecode took 0 ms
+Save bytecode took 1 ms

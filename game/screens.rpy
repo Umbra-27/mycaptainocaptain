@@ -1850,7 +1850,7 @@ style bubble_what:
     layout "subtitle"
     color "#fff"
 
-define bubble.frame = Frame("gui/bubble.png", 400, 600, 1120, 315)
+define bubble.frame = Frame("gui/bubble.png", 400, 540, 1120, 495)
 define bubble.captain = Frame("gui/rudybubble.png", 400, 540, 1120, 495)
 define bubble.computer = Frame("gui/computerbubble.png", 400, 540, 1120, 495)
 define bubble.engineer = Frame("gui/eugenebubble.png", 400, 540, 1120, 495)
